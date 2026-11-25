@@ -1,11 +1,25 @@
 #!/usr/bin/env node
 /**
- * Layout check: loads every page in both languages at ten widths and reports
+ * Layout check: loads every page in both languages at sixteen widths and reports
  *  - horizontal overflow of the document,
  *  - visible elements that extend past the right or left edge of the viewport,
  *  - text that is cut off (an element whose content is wider than its box
- *    while overflow is hidden), and
- *  - images that failed to load.
+ *    while overflow is hidden),
+ *  - images that failed to load, and
+ *  - words broken across lines:
+ *      a Latin word, number, e-mail address or product name ("Solid Edge",
+ *      "Teamcenter X") split between two lines, anywhere on the page, in either language;
+ *      and on Japanese pages, in headings, leads, labels, table headers,
+ *      buttons, chips, the address, footer links and any other short text,
+ *      a line break that is not at a phrase boundary. Phrase boundaries are
+ *      the <wbr> elements the build inserts, spaces and punctuation; a break
+ *      anywhere else inside a text node is a break inside a phrase.
+ *
+ * The ten original widths are the common device sizes. 360, 900, 1000, 1100,
+ * 1180 and 1366 were added because columns are at their narrowest just above
+ * a breakpoint, which is where words broke and no device size happened to be.
+ *
+ * WB_JSON=<file> writes every broken word found, for diagnosis.
  *
  * Usage: NODE_PATH=<dir with puppeteer-core> node improved-src/tools/test-layout.js [widths]
  * Env:   BASE (default http://127.0.0.1:8810/), CHROME (default /usr/bin/google-chrome)
@@ -16,7 +30,7 @@ const puppeteer = require("puppeteer-core");
 
 const BASE = process.env.BASE || "http://127.0.0.1:8810/";
 const DOCS = path.join(__dirname, "..", "..", "docs");
-const WIDTHS = (process.argv[2] || "320,375,390,430,768,1024,1280,1440,1920,2560").split(",").map(Number);
+const WIDTHS = (process.argv[2] || "320,360,375,390,430,768,900,1000,1024,1100,1180,1280,1366,1440,1920,2560").split(",").map(Number);
 const STUBS = new Set(["page.html", "jobdetails.html", "application.html"]);
 
 function pages(dir, prefix = "") {
@@ -56,11 +70,83 @@ function inspect() {
   return out;
 }
 
+/** Words and Japanese phrases broken across lines. Runs in the page. */
+function wordBreaks() {
+  const isJa = document.documentElement.lang === "ja";
+  // Japanese display text that must break at phrase boundaries only.
+  const JA_TARGETS = "h1,h2,h3,h4,th,dt,label,legend,button,summary,address,.btn,.lead,.link-arrow,.chip,.badge,.footer-col a,.contact-lines";
+  const JA_SHORT = 30; // and any element whose whole text is this short
+  const SKIP = "script,style,noscript,svg,[hidden],dialog:not([open]),.visually-hidden,.skip-link,.field-trap,option,textarea";
+  const OK_BEFORE = "、。・，．：；！？）］｝」』】〉》/-–—…";
+  const OK_AFTER = "（［｛「『【〈《";
+  // Product names of two words, e-mail addresses, then any Latin word or number.
+  const TOKEN = /Solid Edge|Teamcenter X|[\w.+-]+@[\w-]+(?:\.[\w-]+)+|[A-Za-z0-9][A-Za-z0-9'’]*[A-Za-z0-9]/g;
+  const describe = (el) => {
+    const parts = [];
+    for (let e = el, k = 0; e && e !== document.body && k < 3; e = e.parentElement, k += 1) parts.push(e.tagName.toLowerCase() + (typeof e.className === "string" && e.className.trim() ? "." + e.className.trim().split(/\s+/).join(".") : ""));
+    return parts.join(" < ");
+  };
+  const out = [];
+  const range = document.createRange();
+  const topOf = (node, i) => {
+    range.setStart(node, i);
+    range.setEnd(node, i + 1);
+    const r = range.getClientRects()[0];
+    return r && r.width > 0.5 ? r.top : null;
+  };
+  const walker = document.createTreeWalker(document.body, NodeFilter.SHOW_TEXT);
+  for (let node = walker.nextNode(); node; node = walker.nextNode()) {
+    const el = node.parentElement;
+    const text = node.nodeValue;
+    if (!el || text.trim().length < 2 || el.closest(SKIP)) continue;
+    const style = getComputedStyle(el);
+    if (style.visibility === "hidden" || style.display === "none") continue;
+    range.selectNodeContents(node);
+    const lineTops = new Set([...range.getClientRects()].filter((r) => r.width > 0.5).map((r) => Math.round(r.top)));
+    if (lineTops.size < 2) continue;
+    const lineStep = parseFloat(style.fontSize) * 0.6;
+
+    for (const m of text.matchAll(TOKEN)) {
+      let first = null;
+      let at = -1;
+      for (let i = m.index; i < m.index + m[0].length; i += 1) {
+        if (/\s/.test(text[i])) continue;
+        const top = topOf(node, i);
+        if (top == null) continue;
+        if (first == null) first = top;
+        else if (Math.abs(top - first) > lineStep) { at = i - m.index; break; }
+      }
+      if (at > 0) out.push({ kind: "latin", word: m[0], split: m[0].slice(0, at) + "/" + m[0].slice(at), where: describe(el) });
+    }
+
+    if (!isJa || !(el.closest(JA_TARGETS) || el.textContent.trim().length <= JA_SHORT)) continue;
+    let prevTop = null;
+    let prevIndex = -1;
+    for (let i = 0; i < text.length; i += 1) {
+      if (/\s/.test(text[i])) continue;
+      const top = topOf(node, i);
+      if (top == null) continue;
+      if (prevTop != null && Math.abs(top - prevTop) > lineStep && prevIndex === i - 1) {
+        const a = text[i - 1];
+        const b = text[i];
+        const bothLatin = /[A-Za-z0-9]/.test(a) && /[A-Za-z0-9]/.test(b);
+        if (!bothLatin && !OK_BEFORE.includes(a) && !OK_AFTER.includes(b)) {
+          out.push({ kind: "phrase", word: text.trim().slice(0, 40), split: text.slice(Math.max(0, i - 8), i) + "/" + text.slice(i, i + 8), where: describe(el) });
+        }
+      }
+      prevTop = top;
+      prevIndex = i;
+    }
+  }
+  return out;
+}
+
 (async () => {
   const list = pages(DOCS).sort();
   const browser = await puppeteer.launch({ executablePath: process.env.CHROME || "/usr/bin/google-chrome", headless: "new", args: ["--no-sandbox", "--disable-dev-shm-usage"] });
-  const totals = Object.fromEntries(WIDTHS.map((w) => [w, { pages: 0, overflow: 0, offscreen: 0, clipped: 0, broken: 0 }]));
+  const totals = Object.fromEntries(WIDTHS.map((w) => [w, { pages: 0, overflow: 0, offscreen: 0, clipped: 0, broken: 0, wordBreaks: 0 }]));
   const failures = [];
+  const broken = [];
   const queue = list.flatMap((p) => WIDTHS.map((w) => [p, w]));
   const worker = async () => {
     const page = await browser.newPage();
@@ -72,9 +158,13 @@ function inspect() {
       // Force lazy images to load so that broken ones are detected.
       await page.evaluate(() => { document.querySelectorAll('img[loading="lazy"]').forEach((img) => { img.loading = "eager"; }); });
       await page.evaluate(() => Promise.all([...document.images].map((img) => img.complete ? null : new Promise((res) => { img.onload = img.onerror = res; }))));
+      await page.evaluate(() => document.fonts.ready);
       const r = await page.evaluate(inspect);
+      const words = await page.evaluate(wordBreaks);
       const t = totals[width];
       t.pages += 1;
+      if (words.length) t.wordBreaks += 1;
+      for (const w of words) broken.push({ rel, width, ...w });
       if (r.overflowX > 0) t.overflow += 1;
       if (r.offscreen.length) t.offscreen += 1;
       if (r.clipped.length) t.clipped += 1;
@@ -87,13 +177,37 @@ function inspect() {
   await browser.close();
 
   console.log(`Pages: ${list.length} (${list.filter((p) => p.startsWith("ja/")).length} Japanese), widths: ${WIDTHS.join(", ")}`);
-  console.log("width  pages  overflow  offscreen  clipped  broken-images");
+  console.log("width  pages  overflow  offscreen  clipped  broken-images  pages-with-broken-words");
   for (const w of WIDTHS) {
     const t = totals[w];
-    console.log(`${String(w).padStart(5)}  ${String(t.pages).padStart(5)}  ${String(t.overflow).padStart(8)}  ${String(t.offscreen).padStart(9)}  ${String(t.clipped).padStart(7)}  ${String(t.broken).padStart(13)}`);
+    console.log(`${String(w).padStart(5)}  ${String(t.pages).padStart(5)}  ${String(t.overflow).padStart(8)}  ${String(t.offscreen).padStart(9)}  ${String(t.clipped).padStart(7)}  ${String(t.broken).padStart(13)}  ${String(t.wordBreaks).padStart(23)}`);
   }
   for (const f of failures.slice(0, 40)) console.log(JSON.stringify(f));
   if (failures.length > 40) console.log(`... and ${failures.length - 40} more`);
-  console.log(failures.length ? `FAIL (${failures.length} page/width combinations)` : "PASS");
-  process.exit(failures.length ? 1 : 0);
+
+  if (process.env.WB_JSON) fs.writeFileSync(process.env.WB_JSON, JSON.stringify(broken, null, 1) + "\n");
+  if (broken.length) {
+    // One line per distinct broken word and place, with how many pages and which widths.
+    const groups = new Map();
+    for (const b of broken) {
+      const key = `${b.kind}|${b.word}|${b.where}|${b.rel.startsWith("ja/") ? "ja" : "en"}`;
+      const g = groups.get(key) || { ...b, pages: new Set(), widths: new Set() };
+      g.pages.add(b.rel);
+      g.widths.add(b.width);
+      groups.set(key, g);
+    }
+    const rows = [...groups.values()].sort((a, b) => b.pages.size * b.widths.size - a.pages.size * a.widths.size);
+    const count = (kind) => broken.filter((b) => b.kind === kind).length;
+    console.log(`Broken words: ${broken.length} (Latin word or product name: ${count("latin")}; Japanese phrase: ${count("phrase")}), ${rows.length} distinct`);
+    for (const g of rows.slice(0, 60)) {
+      const ws = [...g.widths].sort((a, b) => a - b);
+      console.log(`  ${g.kind.padEnd(6)} ${g.split}  [${g.where}]  ${g.pages.size} page(s), e.g. ${[...g.pages][0]}; widths ${ws.join(",")}`);
+    }
+    if (rows.length > 60) console.log(`  ... and ${rows.length - 60} more distinct`);
+  } else {
+    console.log("Broken words: 0");
+  }
+  const bad = failures.length + broken.length;
+  console.log(bad ? `FAIL (${failures.length} page/width combinations with layout faults; ${broken.length} broken words)` : "PASS");
+  process.exit(bad ? 1 : 0);
 })();

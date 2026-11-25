@@ -1,0 +1,85 @@
+# 2026-11-25T13:45:17Z  commit 30c9b8a (the build the independent verifier checked), before any fix
+# node improved-src/tools/test-layout.js   (test extended with the broken-word check; site unchanged)
+
+Pages: 82 (41 Japanese), widths: 320, 360, 375, 390, 430, 768, 900, 1000, 1024, 1100, 1180, 1280, 1366, 1440, 1920, 2560
+width  pages  overflow  offscreen  clipped  broken-images  pages-with-broken-words
+  320     82         0          0        0              0                       61
+  360     82         0          0        0              0                       60
+  375     82         0          0        0              0                       59
+  390     82         0          0        0              0                       41
+  430     82         0          0        0              0                       41
+  768     82         0          0        0              0                       41
+  900     82         0          0        0              0                       34
+ 1000     82         0          0        0              0                       69
+ 1024     82         0          0        0              0                       68
+ 1100     82         0          0        0              0                       82
+ 1180     82         0          0        0              0                       50
+ 1280     82         0          0        0              0                       43
+ 1366     82         0          0        0              0                       43
+ 1440     82         0          0        0              0                       43
+ 1920     82         0          0        0              0                       42
+ 2560     82         0          0        0              0                       42
+Broken words: 5578 (Latin word or product name: 410; Japanese phrase: 5168), 364 distinct
+  phrase デジタルトランス/フォーメーション  [a < li < ul]  41 page(s), e.g. ja/404.html; widths 320,360,375,390,430,768,1000,1024,1100,1180,1280,1366,1440,1920,2560
+  phrase 1-40 晴海プ/ライムスクエア1  [a < address < div.footer-contact]  41 page(s), e.g. ja/404.html; widths 360,375,390,430,768,1000,1024,1100,1180,1280,1366,1440,2560
+  phrase ポートについて問/い合わせる  [a < li < ul]  41 page(s), e.g. ja/404.html; widths 320,360,375,390,430,1100,1180,1280,1366,1440,1920
+  phrase べての人のための/PLM  [a < li < ul]  41 page(s), e.g. ja/404.html; widths 320,360,375,390,1100,1180,1280,1366,1440
+  phrase チェンナイ/／バンガロール  [dd < div < dl.facts.facts-compact]  18 page(s), e.g. ja/careers/01-tech-lead-teamcenter.html; widths 320,360,375,390,1000,1024,1100,1180
+  phrase コインバトー/ル  [span.footer-office-name < li < ul.footer-offices]  41 page(s), e.g. ja/404.html; widths 768,1100,1180
+  latin  Bangal/ore  [dd < div < dl.facts.facts-compact]  18 page(s), e.g. careers/01-tech-lead-teamcenter.html; widths 320,360,375,1000,1024
+  phrase 正社員（フ/ルタイム）  [dd < div < dl.facts.facts-compact]  18 page(s), e.g. ja/careers/01-tech-lead-teamcenter.html; widths 320,360,375,1000,1024
+  phrase 作成し、導入作業/やUATを支援し  [li < ul.ticks < div.job-body]  17 page(s), e.g. ja/careers/02-teamcenter-developer.html; widths 320,360,375,390,430
+  phrase 、プロジェクトの/成果に貢献する意  [li < ul.ticks < div.job-body]  17 page(s), e.g. ja/careers/02-teamcenter-developer.html; widths 320,360,375,390,430
+  phrase ュニケーション能/力、問題解決能力  [li < ul.ticks < div.job-body]  17 page(s), e.g. ja/careers/02-teamcenter-developer.html; widths 320,375,390,430
+  phrase やお客様と協働で/きること。  [li < ul.ticks < div.job-body]  17 page(s), e.g. ja/careers/02-teamcenter-developer.html; widths 320,360,375,390
+  phrase アプリケーショ/ン・サポートエン  [dd < div < dl.facts.facts-compact]  4 page(s), e.g. ja/careers/03-support-engineer-capital.html; widths 320,360,375,390,430,1000,1024,1100,1180,1280,1366,1440,1920
+  latin  info@thinkinnovnexgen.co/.jp  [a < p < div.footer-contact]  41 page(s), e.g. 404.html; widths 1100
+  phrase メ/ニュー  [span < a.menu-toggle < div.header-tools]  41 page(s), e.g. ja/404.html; widths 320
+  latin  info@thinkinnovnexgen.co/.jp  [a < p < div.footer-contact]  41 page(s), e.g. ja/404.html; widths 1100
+  phrase exgen.co/.jp  [a < p < div.footer-contact]  41 page(s), e.g. ja/404.html; widths 1100
+  phrase アーキテク/チャ・技術リード  [dd < div < dl.facts.facts-compact]  5 page(s), e.g. ja/careers/01-tech-lead-teamcenter.html; widths 320,360,390,430,1000,1024,1100,1180
+  phrase 求人をメールで共/有する  [a.btn.btn-ghost.btn-block < div.job-actions < aside.job-aside]  18 page(s), e.g. ja/careers/01-tech-lead-teamcenter.html; widths 320,1000
+  phrase エンジニ/アリング  [span.stage-name < li < ol.stage-strip]  5 page(s), e.g. ja/products/capital.html; widths 900,1000,1024,1100,1180,1280
+  phrase  ソリューション/アーキテクト  [span.related-label < a < li]  5 page(s), e.g. ja/careers/01-tech-lead-teamcenter.html; widths 320,360,375,390,768
+  phrase 個人/情報の取り扱い  [a < label < div.field.field-wide.field-check]  2 page(s), e.g. ja/apply.html; widths 320,375,390,430,768,900,1100,1180,1280,1366,1440,1920
+  phrase アーキテクト（デ/ジタル製造）  [span.related-label < a < li]  4 page(s), e.g. ja/careers/01-tech-lead-teamcenter.html; widths 320,360,375,390,768
+  latin  Requireme/nts  [span.stage-name < li < ol.stage-strip]  5 page(s), e.g. products/capital.html; widths 900,1000,1024,1100
+  latin  Manufactur/ing  [span.stage-name < li < ol.stage-strip]  4 page(s), e.g. products/capital.html; widths 900,1000,1024,1100,1180
+  phrase 正社員（フルタ/イム）  [span < p.kicker < div.page-hero-text]  18 page(s), e.g. ja/careers/01-tech-lead-teamcenter.html; widths 320
+  phrase か、ページが削除/された可能性があ  [p.lead < div.page-hero-text < div.page-hero-grid]  1 page(s), e.g. ja/404.html; widths 320,360,375,390,430,768,900,1000,1024,1100,1180,1280,1366,1440,1920,2560
+  phrase ェア開発サービス/企業として、着想  [p.lead < div.page-hero-text < div.page-hero-grid]  1 page(s), e.g. ja/about.html; widths 320,360,375,390,430,768,900,1000,1024,1100,1180,1280,1366,1440,1920,2560
+  phrase ャリア探しは長い/道のりです。私た  [p.lead < div.prose < div.container.split]  1 page(s), e.g. ja/careers.html; widths 320,360,375,390,430,768,900,1000,1024,1100,1180,1280,1366,1440,1920,2560
+  phrase 、デモンストレー/ション、サポート  [p.lead < div.page-hero-text < div.page-hero-grid]  1 page(s), e.g. ja/careers/04-application-engineer-capital.html; widths 320,360,375,390,430,768,900,1000,1024,1100,1180,1280,1366,1440,1920,2560
+  phrase ドのコーディング/経験を生かした、  [p.lead < div.page-hero-text < div.page-hero-grid]  1 page(s), e.g. ja/careers/08-team-lead.html; widths 320,360,375,390,430,768,900,1000,1024,1100,1180,1280,1366,1440,1920,2560
+  phrase イズ、コンフィグ/レーション、開発  [p.lead < div.page-hero-text < div.page-hero-grid]  1 page(s), e.g. ja/careers/11-technical-lead.html; widths 320,360,375,390,430,768,900,1000,1024,1100,1180,1280,1366,1440,1920,2560
+  phrase 術サポートのチー/ムと連携した、担  [p.lead < div.page-hero-text < div.page-hero-grid]  1 page(s), e.g. ja/careers/13-sales-engineer.html; widths 320,360,375,390,430,768,900,1000,1024,1100,1180,1280,1366,1440,1920,2560
+  phrase nは、製品データ/成熟度モデルに基  [p.lead < div.page-hero-text < div.page-hero-grid]  1 page(s), e.g. ja/digital-transformation.html; widths 320,360,375,390,430,768,900,1000,1024,1100,1180,1280,1366,1440,1920,2560
+  phrase nはPLM領域の/知見、技術提供力  [p.lead < div.hero-text < div.container.hero-grid]  1 page(s), e.g. ja/index.html; widths 320,360,375,390,430,768,900,1000,1024,1100,1180,1280,1366,1440,1920,2560
+  phrase 製造装置メーカー/向け Teamc  [span < a < li]  2 page(s), e.g. ja/index.html; widths 320,1100,1180,1280,1366,1440,1920,2560
+  phrase  — クラウド型/SaaS PLM  [span < a < li]  2 page(s), e.g. ja/index.html; widths 320,1100,1180,1280,1366,1440,1920,2560
+  phrase ドプロバイダーを/選択し、自社IT  [p < div < li]  2 page(s), e.g. ja/index.html; widths 320,360,375,390,430,900,1000,1024
+  phrase スタートアップや/零細企業からグロ  [p.lead < div.page-hero-text < div.page-hero-grid]  1 page(s), e.g. ja/plm.html; widths 320,360,375,390,430,768,900,1000,1024,1100,1180,1280,1366,1440,1920,2560
+  phrase ライフサイクル管/理、ローコード開  [p.lead < div.page-hero-text < div.page-hero-grid]  1 page(s), e.g. ja/products.html; widths 320,360,375,390,430,768,900,1000,1024,1100,1180,1280,1366,1440,1920,2560
+  phrase nは、製品設計の/革新、製造効率、  [p.lead < div.page-hero-text < div.page-hero-grid]  1 page(s), e.g. ja/solutions.html; widths 320,360,375,390,430,768,900,1000,1024,1100,1180,1280,1366,1440,1920,2560
+  phrase 人、課題解決アプ/ローチ、デリバリ  [p.lead < div.page-hero-text < div.page-hero-grid]  1 page(s), e.g. ja/behind-the-brand.html; widths 320,360,375,390,768,900,1000,1024,1100,1180,1280,1366,1440,1920,2560
+  phrase プロジェクトの技/術面を、最初から  [p.lead < div.page-hero-text < div.page-hero-grid]  1 page(s), e.g. ja/careers/01-tech-lead-teamcenter.html; widths 320,360,375,430,768,900,1000,1024,1100,1180,1280,1366,1440,1920,2560
+  phrase ー製造装置メーカ/ー向け Team  [h2 < div.industry-text < article.industry]  1 page(s), e.g. ja/industries.html; widths 320,360,375,390,430,900,1000,1024,1100,1180,1280,1366,1440,1920,2560
+  phrase ジニアリングワー/クフローのための  [p.product-text < div.prose < div.container.split]  1 page(s), e.g. ja/products/capital.html; widths 320,360,375,390,430,900,1000,1024,1100,1180,1280,1366,1440,1920,2560
+  phrase サービ/ス・保守  [span.stage-name < li < ol.stage-strip]  5 page(s), e.g. ja/products/capital.html; widths 900,1100,1180
+  phrase 企業まで、最適な/ソフトウェア選定  [p.lead < div.page-hero-text < div.page-hero-grid]  1 page(s), e.g. ja/services.html; widths 320,360,375,390,430,768,900,1000,1100,1180,1280,1366,1440,1920,2560
+  latin  improveme/nt  [span.stage-name < li < ol.stage-strip]  5 page(s), e.g. products/capital.html; widths 900,1000,1024
+  phrase  XC）のサポー/ト。  [p.lead < div.page-hero-text < div.page-hero-grid]  1 page(s), e.g. ja/careers/03-support-engineer-capital.html; widths 320,360,430,768,900,1000,1024,1100,1180,1280,1366,1440,1920,2560
+  phrase ジタルトランスフ/ォーメーション  [h1 < div.page-hero-text < div.page-hero-grid]  1 page(s), e.g. ja/digital-transformation.html; widths 320,360,375,390,430,900,1000,1024,1100,1180,1280,1366,1440,1920
+  phrase 収集・管理すべき/データと情報を定  [p < li.level.level-1 < ol.levels]  1 page(s), e.g. ja/digital-transformation.html; widths 320,360,375,390,430,1000,1024,1100,1180,1280,1366,1440,1920,2560
+  phrase による、構造化さ/れ連携したデータ  [p < li.level.level-2 < ol.levels]  1 page(s), e.g. ja/digital-transformation.html; widths 320,360,375,390,430,1000,1024,1100,1180,1280,1366,1440,1920,2560
+  phrase ノベーションプラ/ットフォーム  [h3 < li.level.level-4 < ol.levels]  1 page(s), e.g. ja/digital-transformation.html; widths 320,360,375,390,430,1000,1024,1100,1180,1280,1366,1440,1920,2560
+  phrase 、製品知識を実用/的なデジタル基盤  [p.lead < div.prose < div.container.split.split-wide-left]  1 page(s), e.g. ja/index.html; widths 320,360,375,390,430,900,1000,1024,1100,1180,1280,1366,1440,1920
+  phrase 評価コンサルティ/ング  [li < ul.inline-list < dd]  1 page(s), e.g. ja/index.html; widths 320,360,375,390,430,768,900,1000,1024,1100,1180,1280,1366,1440
+  phrase ト/レーニングによる  [li < ul.inline-list < dd]  1 page(s), e.g. ja/index.html; widths 320,360,375,390,430,900,1000,1024,1100,1180,1280,1366,1440,1920
+  phrase テク/ニカルアーキテク  [li < ul.inline-list < dd]  1 page(s), e.g. ja/index.html; widths 360,375,390,430,900,1000,1024,1100,1180,1280,1366,1440,1920,2560
+  phrase タル変革を加速す/る、業界別PLM  [p.lead < div.page-hero-text < div.page-hero-grid]  1 page(s), e.g. ja/industries.html; widths 320,360,375,430,900,1000,1024,1100,1180,1280,1366,1440,1920,2560
+  phrase 分野に特化したラ/イフサイクル管理  [p < div.industry-text < article.industry]  1 page(s), e.g. ja/industries.html; widths 320,360,375,390,430,900,1000,1024,1100,1180,1280,1366,1440,1920
+  phrase ッテリー製品の開/発を支援します。  [p < div.industry-text < article.industry]  1 page(s), e.g. ja/industries.html; widths 320,360,375,390,430,900,1000,1024,1100,1180,1280,1366,1440,1920
+  ... and 304 more distinct
+FAIL (0 page/width combinations with layout faults; 5578 broken words)
+# exit code 1
