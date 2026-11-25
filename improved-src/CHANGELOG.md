@@ -2,6 +2,51 @@
 
 Newest first. The first section is the full rebuild; the sections under "Earlier passes" describe work it replaced or built on, and are kept as history.
 
+## Completion against the master brief (25 November 2026, same branch)
+
+The rebuild below stands. This round applies `notes/MASTER_PROMPT.txt` as far as a static site allows, and takes in the official files from the site's developer. Commits `45c5ec1` onwards.
+
+### Pages and content
+
+- Six product pages (`products/nx.html`, `solid-edge.html`, `capital.html`, `teamcenter.html`, `tecnomatix.html`, `mendix.html`), in both languages: what the product is (one neutral sentence from Siemens' own site, logged with its link), where it sits in the lifecycle, how the company works with it, and the related solutions, needs, industries and roles. No feature lists, compatibility, licensing or pricing.
+- Solutions: each of the fifteen shows the business needs it relates to, its lifecycle stage, the Siemens product and related service where the source names one, the other solutions in its group, and a link that opens the contact form with that solution chosen.
+- Digital Transformation: three diagrams drawn in code and a reading guide for management and for engineering. No "Digital Twin"; the source does not use the term.
+- Industries: each of the eleven cards names the Siemens product, the related solutions and business needs, and a link that carries the industry into the contact form.
+- Home: a "Why ThinkInnov-NexGen for PLM" block with the three reasons the source gives.
+- Search page in both languages. The index is written by the build and searched in the browser; nothing is sent to a server.
+- Application form: gender, current and expected CTC and notice period are optional. The privacy notice lists every field.
+- "Ask about support" in every footer.
+
+### From the official package
+
+- Two photographs that the crawl did not have are now photographs 13 and 14 in the About gallery; the second is also in the home page's Global Presence section. Originals in `notes/nexware-official-src/`.
+- The last generated image was removed from the home page and the repository.
+- Partner wording is kept only where the source has it: "Siemens Solution Partner" in the home hero, the Expert Partner sentence on About. It was removed from the footer, the home page description and the social image.
+- `legalName` removed from the structured data. "Production Development" restored as the source has it. "Request a demonstration" became "Product enquiry".
+
+### Checks
+
+- `check-site.py` now fails on fourteen tracker strings, on anything loaded from another host, and on an English page without its Japanese pair (or the reverse).
+- `tools/check-source.py` (new, 87 checks) compares testimonials, logo names and role titles with the original and looks for banned wording, excluded structured data and credentials.
+- `tools/test-interactions.js` grew to 389 checks: product pages, the brief's three example journeys, search, the old addresses through the three stub pages, and that no cookie is set.
+- `tools/test-axe.js` lists the results axe could not decide. `tools/snap.js` writes `index.json` and waits for lazy images.
+
+### Defects fixed
+
+- Product pages overflowed sideways below about 400 pixels (`cbef166`).
+- 90 axe-core findings: landmarks with the same name, a tab-panel role on the wrong element (`43caf0d`).
+- Layout shift on the search page, CLS 0.115 (`43caf0d`).
+- The NX page misdescribed Siemens' trademark list (`fbe9625`). The footer trademark line did not name the owner (`43caf0d`).
+- Japanese fact labels broke one character before the end; a hero label broke inside a word (`12c8dcf`).
+
+### Documents
+
+- New in `notes/`: `ACCEPTANCE.md`, `TRACEABILITY.md`, `TEST-EVIDENCE.md` with `test-output/`, `EXECUTIVE-REVIEW.md`, `PERSONA-MATRIX.md`, `KEYWORD-MAP.md`, `ARCHITECTURE.md`, `DESIGN-SYSTEM.md`, and two more registers written by the build, `CUSTOMER-REGISTER.md` and `ASSET-REGISTER.md`.
+- Rewritten: `REVIEW.md`, `STATUS.md`, `README.md`, `COVERAGE.md`, `docs/README-DEPLOY.md`.
+- `screenshots-after/` retaken from the final build with a machine-readable index.
+
+Some statements in the section below describe the first rebuild and are no longer true: there are now 41 pages per language, products have their own pages, and no generated image remains.
+
 ## Rebuild (branch `cursor/site-polish-bilingual-637e`)
 
 ### Structure
