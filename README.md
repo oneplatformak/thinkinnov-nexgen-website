@@ -55,6 +55,7 @@ NODE_PATH=/path/to/node_modules node improved-src/tools/test-interactions.js  # 
 
 node improved-src/tools/serve.js 8812         # preview with the production headers (gzip, caching, CSP); used for Lighthouse
 NODE_PATH=/path/to/node_modules node improved-src/tools/snap.js <outDir> 390,1440 index.html ja/index.html   # screenshots
+NAMES=final NODE_PATH=/path/to/node_modules node improved-src/tools/snap.js screenshots-after 390,1440 all   # every page, both languages, as in screenshots-after/
 ```
 
 Results of the last run are in `notes/REVIEW.md`.

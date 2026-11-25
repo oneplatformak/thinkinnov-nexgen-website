@@ -360,7 +360,7 @@ The build does not hide gaps: it reports every English string on a Japanese page
 | Smart PLM options for startups, SMBs and global enterprises. | スタートアップ、中堅・中小企業、グローバル企業のためのスマートなPLMの選択肢。 | 404.html, about.html, accessibility.html and 31 more |
 | Testimonials | お客様の声 | index.html |
 | Japan and India | 日本とインド | index.html |
-| ThinkInnov-NexGen KK — A Strategic Partnership in Japan | ThinkInnov-NexGen株式会社 — 日本における戦略的パートナーシップ | about.html, index.html |
+| ThinkInnov-NexGen KK — A Strategic Partnership in Japan | ThinkInnov-NexGen KK — 日本における戦略的パートナーシップ | about.html, index.html |
 | A Siemens Certified "Expert Partner - PLM" synergizing with ThinkInnov-NexGen's extensive project delivery experience in Japan, to deliver high value to customers in Japan. | Siemens認定「Expert Partner - PLM」としての専門性と、ThinkInnov-NexGenが日本で培ってきた豊富なプロジェクト遂行経験を掛け合わせ、日本のお客様に高い価値をお届けします。 | about.html, index.html |
 | Key Value Drivers | 主な提供価値 | about.html, index.html |
 | Onsite | オンサイト | about.html, index.html |
