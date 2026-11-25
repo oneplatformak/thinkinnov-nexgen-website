@@ -11,6 +11,7 @@ Read `notes/REVIEW.md` in the repository first. It lists the questions only the 
 ## 1. Requirements on the host
 
 - Apache with `mod_rewrite`, `mod_headers`, `mod_expires`, `mod_deflate` (standard on cPanel).
+- **Compression must be on.** `.htaccess` asks for it, but inside `<IfModule mod_deflate.c>`: if the host does not have that module, the site still works and is simply sent uncompressed, with no error. The loading times measured for this site were measured with compression on; without it the phone results miss the target. Check it after upload (section 6).
 - PHP 8.0 or newer with the `fileinfo` extension (standard). `mbstring` is used when present and not required.
 - PHP `upload_max_filesize` of at least `5M` and `post_max_size` of at least `8M`, or CVs near the 5 MB limit will be refused before the handler sees them.
 - A working `mail()` (cPanel default) and a sender address on the domain.
@@ -41,34 +42,76 @@ inc/form-lib.php   TIN_RECIPIENT = info@thinkinnovnexgen.co.jp
 | --- | --- | --- |
 | Accepts | Enquiry type, optional topic, name, company, email, phone, message, consent, and the business need, industry and company size carried from the finder, an industry or a business-size link | Role, the fields of the original form, consent, one CV file. Gender, current CTC, expected CTC and notice period are optional and are mailed as "not provided" when left blank |
 | Whitelists | Type, topic, need, industry and size must match `inc/enquiry-options.php` (written by the build from the site's content) | Role must be one of the 18 listed; only the listed fields are read |
-| File | none | PDF, DOC or DOCX, 5 MB or smaller; checked by extension, detected type and file signature; attached under a generated name |
+| File | none | PDF, DOC or DOCX, 5 MB or smaller; checked by extension, detected type and file signature, and a DOCX must also contain the parts every Word file has, so a zip of other files renamed `.docx` is refused; attached under a generated name. The file is not scanned for viruses or macros: open CVs with the same care as any e-mail attachment |
 | Abuse controls | Hidden honeypot field, 3-second minimum, 8 submissions per 10 minutes per sender | Same, 6 per 10 minutes |
 | Storage | None. The rate limit keeps a count per one-way hash of the IP address in the server's temporary folder | Same; the uploaded file is not kept after the mail is handed over |
 
-The page shows “sent” only when the server answers that the mail was handed to the mail system. Any other answer shows an error, and if there is no working handler at all (GitHub Pages) the page offers a pre-filled email link instead. With scripts switched off the forms still work and the server returns a small result page in the visitor's language.
+The page shows “sent” only when the server answers that the mail was handed to the mail system. Any other answer shows an error, with the company's address as an e-mail link where the message asks the visitor to write directly, and if there is no working handler at all (GitHub Pages) the page offers a pre-filled email link instead. With scripts switched off the forms still work and the server returns a small result page in the visitor's language.
 
-**Test after upload** with a real submission of each form, in both languages, and check that the message and the CV arrive. This could not be tested before launch because it needs the real mail system; locally the handlers were tested against a mail program that writes to a file (`improved-src/tools/test-forms.sh`, 58 checks).
+**Test after upload** with a real submission of each form, in both languages, and check that the message and the CV arrive. This could not be tested before launch because it needs the real mail system; locally the handlers were tested against a mail program that writes to a file (`improved-src/tools/test-forms.sh`, 62 checks).
 
 ## 5. What `.htaccess` does
 
 - Forces HTTPS.
 - Sends the old single-page URLs (`page.html?page=…`, `jobdetails.html?id=…`, `application.html?id=…`) to the new pages with 301 redirects. The three stub files do the same with a script on hosts that ignore `.htaccess`.
 - Serves `404.html` for unknown addresses.
-- Refuses direct requests for `inc/` and for dotfiles.
+- Refuses direct requests for `inc/` and for dotfiles, except `/.well-known/`, which certificate renewal uses.
 - Sets security headers, including a Content-Security-Policy that allows only the site's own files. If analytics or any other third-party script is added later, this header must be changed or the script will be blocked.
-- Compresses text and caches CSS, JS and fonts for a year (their URLs change when they change) and images for 30 days.
+- Compresses HTML, CSS, JavaScript, JSON, XML and SVG where `mod_deflate` is present, and caches CSS, JS and fonts for a year (their URLs change when they change) and images for 30 days.
 
-`.htaccess` was written for Apache 2.4 and has **not** been run on a real Apache server here. The redirects and the 404 page should be checked after upload. `Strict-Transport-Security` is deliberately not set; add it once HTTPS is confirmed to be permanent.
+`.htaccess` was written for Apache 2.4 and has **not** been run on a real Apache server here: no Apache was available and no host may be touched before launch. **Every rule in it is untested until the site is uploaded**, the 301 redirects from the old addresses in particular. `Strict-Transport-Security` is deliberately not set; add it once HTTPS is confirmed to be permanent.
 
-## 6. Search
+## 6. Check after upload
+
+None of this could be checked before launch. Replace the domain if it differs.
+
+**Compression.** Performance depends on it.
+
+```bash
+curl -s -o /dev/null -D - -H "Accept-Encoding: gzip, br" https://thinkinnovnexgen.co.jp/ | grep -i "content-encoding"
+curl -s -o /dev/null -D - -H "Accept-Encoding: gzip, br" https://thinkinnovnexgen.co.jp/assets/styles.css | grep -i "content-encoding"
+curl -s -o /dev/null -D - -H "Accept-Encoding: gzip, br" https://thinkinnovnexgen.co.jp/assets/site.js | grep -i "content-encoding"
+```
+
+Each must print `content-encoding: gzip` (or `br`). If a line prints nothing, that file is being sent uncompressed. The same can be seen in a browser: developer tools, Network, select the page, Response Headers. If compression is off, ask the host to enable `mod_deflate` (or Brotli) for the account; some cPanel installations also offer this under Software, “Optimize Website”.
+
+What it changes, measured here with Lighthouse on a local server (laboratory figures, phone preset, not real visitors):
+
+| | Home page HTML | `styles.css` | `site.js` | Largest Contentful Paint, phone preset, five pages |
+| --- | --- | --- | --- | --- |
+| Compression on | 14 KB | 15 KB | 10 KB | see `notes/test-output/lighthouse.txt` |
+| Compression off | 84 KB | 83 KB | 33 KB | see `notes/test-output/lighthouse.txt` |
+
+The independent verifier measured 1.6 to 1.8 s with compression and 2.2 to 2.8 s without, against a target of 2.5 s. The preview on GitHub Pages compresses by itself, so it does not show whether the real host will.
+
+**Redirects from the old addresses.** Each should answer `301` with the new address in `Location`:
+
+```bash
+curl -s -o /dev/null -D - "https://thinkinnovnexgen.co.jp/page.html?page=about" | grep -i -E "^HTTP|^location"
+curl -s -o /dev/null -D - "https://thinkinnovnexgen.co.jp/page.html?page=products" | grep -i -E "^HTTP|^location"
+curl -s -o /dev/null -D - "https://thinkinnovnexgen.co.jp/jobdetails.html?id=1" | grep -i -E "^HTTP|^location"
+curl -s -o /dev/null -D - "https://thinkinnovnexgen.co.jp/application.html?id=1" | grep -i -E "^HTTP|^location"
+```
+
+If they answer `200` instead, the rules are not being applied (`mod_rewrite` off, or `.htaccess` not uploaded or not allowed). The three stub pages then still send visitors on, but only with scripts on: with scripts off, `page.html?page=about` shows a page that links to the home page rather than the About page. That is why the 301 rules matter.
+
+**The rest.**
+
+- `http://` goes to `https://`.
+- An unknown address returns status `404` and shows the site's own page.
+- `https://thinkinnovnexgen.co.jp/inc/form-lib.php` and `/.htaccess` are refused (`403`); a file placed under `/.well-known/` is served.
+- The security headers are present: `curl -s -o /dev/null -D - https://thinkinnovnexgen.co.jp/ | grep -i -E "content-security-policy|x-content-type|referrer-policy|x-frame"`.
+- Both forms, in both languages, with a real submission each (section 4).
+
+## 7. Search
 
 `search.html` reads `assets/search-en.json` or `assets/search-ja.json`, which the build writes. Nothing is sent to the server and there is nothing to configure. If a page is added or renamed, rebuild so that the index follows.
 
-## 7. GitHub Pages preview
+## 8. GitHub Pages preview
 
 Pages serves this folder as static files. `.htaccess` and PHP are ignored there: the forms use the email-link fallback and old URLs are handled by the stub pages (`page.html`, `jobdetails.html`, `application.html`).
 
-## 8. Rebuilding
+## 9. Rebuilding
 
 ```bash
 cd improved-src
