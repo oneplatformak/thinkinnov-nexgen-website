@@ -80,6 +80,7 @@ function accessibility() {
     ["tested", "What was tested",
       p("Before publication the pages were checked in Google Chrome on a desktop computer, in English and Japanese:") +
       list([
+        "An automated scan of every page with axe-core, at a phone width and a desktop width.",
         "Automated accessibility audits with Lighthouse on the home page and representative inner pages.",
         "Scripted keyboard tests of the menus, the lifecycle diagram, the finder, the career filters, the photo viewer, the language switch, the search page and both forms.",
         "Layout checks at ten screen widths from 320 to 2560 pixels.",

@@ -137,5 +137,7 @@ module.exports = {
     "Gender, current and expected CTC and notice period are optional. You can leave them blank and still apply.": "性別、現在の年収と希望年収、退職までに必要な期間は任意項目です。空欄のままでもご応募いただけます。",
     "To carry that selection from page to page, your browser keeps it in session storage for the current tab. It is not sent to us unless you send the contact form, and it is cleared when you remove it, send the form or close the tab.": "選択内容をページ間で引き継ぐため、お使いのブラウザが現在のタブのセッションストレージに保存します。お問い合わせフォームを送信しない限り当社に送信されることはなく、選択内容を削除したとき、フォームを送信したとき、タブを閉じたときに消去されます。",
     "The search page matches what you type against a list of this website's pages inside your browser. What you search for is not sent to us or recorded.": "検索ページでは、入力された語句を、お使いのブラウザ内で当サイトのページ一覧と照合します。検索した語句が当社に送信されたり、記録されたりすることはありません。",
+    // axe scan
+    "An automated scan of every page with axe-core, at a phone width and a desktop width.": "axe-coreによる全ページの自動チェック（スマートフォン幅とデスクトップ幅）。",
   },
 };

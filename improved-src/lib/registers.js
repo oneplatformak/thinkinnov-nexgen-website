@@ -275,7 +275,7 @@ function assetRegister() {
   row(["`assets/img/og-image.jpg`", "Drawn by `improved-src/tools/og-image.js` from the logo and plain text", "No third-party material"]);
   row(["Six product tiles (NX, Se, Ca, Tc, Tx, Mx)", "Drawn in CSS from two letters each; they are not Siemens logos or icons", "Open: the product names are Siemens trademarks. Confirm that lettered tiles are acceptable to Siemens, or replace them with approved partner assets."]);
   out.push("");
-  out.push("No Siemens logo, partner badge or product artwork is published. The original site's `assets/seimens_partner.png` (a hero background that carries Siemens branding) is not used.");
+  out.push("No Siemens logo, partner badge or product artwork is published as a separate asset. The original site has no approved Siemens partner badge: its `assets/seimens_partner.png` is, despite the file name, a generic illustration of a globe and a city with no Siemens mark. The one place a Siemens mark appears is inside industry image 02 (section 3).");
   out.push("");
   out.push(`## 2. Customer logos (${content.customers.length})`);
   out.push("");
@@ -293,7 +293,7 @@ function assetRegister() {
   out.push("What is and is not known about these eleven images:");
   out.push("");
   out.push("- They are on the site because the original site shows them on its Industries page. This build did not create or alter them.");
-  out.push("- Several carry the text “Teamcenter X” and at least one carries a Siemens wordmark inside the picture. The coordinator's notes describe them as Siemens infographics. **This build could not verify who made them**, so the site does not say they are Siemens material and does not say they are the company's own.");
+  out.push("- Several carry the text “Teamcenter X”, and \`infographic-02.webp\` (shown with “Siemens SW PDM to PLM”) has the Siemens wordmark in its top-left corner. The coordinator's notes describe them as Siemens infographics. **This build could not verify who made them**, so the site does not say they are Siemens material and does not say they are the company's own.");
   out.push("- If they are Siemens material, permission to republish is needed. If they were generated or commissioned by the company, the Siemens marks inside them need Siemens' approval. Either way this is a launch question.");
   out.push("- Each image contains text that is not available as text; the page gives a short description beside each (noted on the accessibility page).");
   out.push("");
@@ -328,10 +328,9 @@ function assetRegister() {
   out.push("");
   out.push("| Original file | Why it is not used |");
   out.push("| --- | --- |");
-  row(["`assets/seimens_partner.png`", "Hero background carrying Siemens branding; the right to use it is not confirmed"]);
-  row(["`assets/PLM_bg.png`, `assets/about-digital-engineering.png`, `assets/mendix-image.png`, `assets/hero-collaboration.jpeg`", "Stock-style or generated-looking illustrations used as backgrounds; they show no real person, place or product of the company"]);
+  row(["`assets/seimens_partner.png`, `assets/PLM_bg.png`, `assets/about-digital-engineering.png`, `assets/mendix-image.png`, `assets/hero-collaboration.jpeg`", "Stock-style or generated-looking illustrations that the original site used as backgrounds. They show no real person, place or product of the company, and their origin and licence are unknown."]);
   out.push("");
-  out.push("They remain in `staging-original/` and can be restored if the client confirms the rights.");
+  out.push("They remain in `staging-original/` and can be restored if the client confirms where they came from and that they may be used.");
   out.push("");
   return out.join("\n") + "\n";
 }
