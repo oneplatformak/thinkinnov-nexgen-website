@@ -127,3 +127,14 @@ html[lang="ja"] .search-kind { letter-spacing: 0.06em; }
 .search-text { color: var(--ink-2); font-size: 0.9375rem; }
 .search-results a:hover .search-title { color: var(--accent); }
 @media (min-width: 900px) { .search-layout { grid-template-columns: minmax(0, 8fr) minmax(0, 4fr); gap: clamp(3rem, 6vw, 6rem); align-items: start; } }
+
+/* Home: the three source reasons under "PLM For Everyone" */
+.why { margin-top: var(--s-8); padding-top: var(--s-6); border-top: 1px solid var(--ink); display: grid; gap: var(--s-5); }
+.why-title { font-size: var(--t-lg); }
+.why-list { display: grid; gap: var(--s-5); }
+.why-list h4 { font-size: var(--t-md); }
+.why-list p { margin-top: 0.35rem; color: var(--ink-2); font-size: 0.9375rem; }
+@media (min-width: 900px) {
+  .why { grid-template-columns: minmax(0, 3fr) minmax(0, 9fr); gap: var(--s-7); }
+  .why-list { grid-template-columns: repeat(3, minmax(0, 1fr)); gap: var(--s-6); }
+}

@@ -199,6 +199,10 @@ function plmForEveryone() {
         </div>
         <ul class="deploy-list">${deploy}</ul>
       </div>
+      <div class="why" id="why">
+        <h3 class="why-title">${esc(content.plm.why.title)}</h3>
+        <ul class="why-list">${content.plm.why.cards.map(([title, text]) => `<li><h4>${esc(title)}</h4><p>${esc(text)}</p></li>`).join("")}</ul>
+      </div>
     </div>
   </section>`;
 }
