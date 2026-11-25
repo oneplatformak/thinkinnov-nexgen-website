@@ -80,7 +80,6 @@ module.exports = {
     // Role detail
     "About this role": "この職種について",
     "Employment type": "雇用形態",
-    "Key responsibilities": "主な職務内容",
     "I'm interested": "この職種に応募する",
     "Share job via email": "この求人をメールで共有する",
     "Questions about this role?": "この職種についてのご質問",

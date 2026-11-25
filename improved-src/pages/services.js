@@ -44,7 +44,6 @@ function render() {
     body: [
       c.pageHero({ kicker: intro.kicker, title: "Services", intro: intro.page, crumbs, aside: rail() }),
       `<div class="section"><div class="container">
-        <p class="section-text svc-intro">${esc(intro.home)}</p>
         ${content.services.map(phase).join("")}
       </div></div>`,
       c.ctaBand({

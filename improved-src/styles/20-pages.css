@@ -102,7 +102,6 @@ html[lang="ja"] .tier h3 { font-size: var(--t-lg); }
 .rail-when { font-family: var(--font-display); font-size: var(--t-xs); font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; color: var(--accent); }
 .rail-title { font-family: var(--font-display); font-size: var(--t-lg); font-weight: 700; letter-spacing: -0.02em; }
 .rail a:hover .rail-title { color: var(--accent); }
-.svc-intro { margin-bottom: var(--s-7); }
 .svc { display: grid; gap: var(--s-6); padding-block: var(--s-7); border-top: 1px solid var(--ink); }
 .svc-when { font-family: var(--font-display); font-size: var(--t-xs); font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; color: var(--ink-2); }
 .svc-head h2 { margin-block: 0.6rem var(--s-5); }

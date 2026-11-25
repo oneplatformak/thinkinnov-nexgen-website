@@ -6,6 +6,9 @@
 .onpage { position: sticky; top: var(--header-h); z-index: 5; border-bottom: 1px solid var(--rule); background: var(--paper); }
 .onpage ul { display: flex; gap: 0 var(--s-5); overflow-x: auto; scrollbar-width: none; }
 .onpage ul::-webkit-scrollbar { display: none; }
+/* One line per link: the strip scrolls sideways on a phone. Chrome breaks at <wbr> even under nowrap. */
+.onpage li { flex: none; }
+.onpage wbr { display: none; }
 .onpage a { display: block; padding-block: 0.8rem; white-space: nowrap; text-decoration: none; font-family: var(--font-display); font-size: var(--t-sm); font-weight: 600; color: var(--ink-2); }
 .onpage a:hover { color: var(--accent); }
 .page main section[id] { scroll-margin-top: calc(var(--header-h) + 3rem); }

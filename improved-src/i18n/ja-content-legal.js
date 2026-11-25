@@ -106,7 +106,7 @@ module.exports = {
       "Lighthouseによる自動アクセシビリティ監査（ホームページおよび代表的な下層ページ）。",
     "Scripted keyboard tests of the menus, the lifecycle diagram, the finder, the career filters, the photo viewer, the language switch, the search page and both forms.":
       "メニュー、ライフサイクル図、課題別ファインダー、採用情報の絞り込み、写真ビューアー、言語切り替え、検索ページ、2つのフォームについての、スクリプトによるキーボード操作テスト。",
-    "Layout checks at ten screen widths from 320 to 2560 pixels.": "320〜2560ピクセルの10種類の画面幅でのレイアウト確認。",
+    "Layout checks at sixteen screen widths from 320 to 2560 pixels.": "320〜2560ピクセルの16種類の画面幅でのレイアウト確認。",
     "Contrast of text colours against their backgrounds.": "文字色と背景色のコントラスト。",
     "What was not tested": "確認していない内容",
     "Screen readers such as NVDA, JAWS, VoiceOver or TalkBack.": "NVDA、JAWS、VoiceOver、TalkBackなどのスクリーンリーダー。",

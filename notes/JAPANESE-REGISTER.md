@@ -166,7 +166,7 @@ The build does not hide gaps: it reports every English string on a Japanese page
 | Chennai - India | チェンナイ - インド | about.html, contact.html |
 | We know that finding a meaningful and rewarding career can be a long journey. Our goal is to make that process easy for you and to create a work environment that's enriching, one that you'll look forward to every day. | やりがいのあるキャリア探しは長い道のりです。私たちは、そのプロセスを分かりやすくし、毎日働くことが楽しみになる豊かな環境づくりを目指しています。 | careers.html |
 | From startup to enterprise, ThinkInnov-NexGen guides teams to the right software solution, manages implementation and supports adoption. | スタートアップから大企業まで、最適なソフトウェア選定、導入、トレーニング、継続支援を提供します。 | plm.html, products/capital.html, products/mendix.html and 6 more |
-| Start-up to enterprise — we have the expertise to guide you to the right software solution, manage the implementation, and provide the training and sustenance support so that you will get the best value from your investment. | スタートアップから大企業まで、最適なソフトウェア選定、導入、トレーニング、継続支援を提供します。 | index.html, search.html, services.html, solutions.html |
+| Start-up to enterprise — we have the expertise to guide you to the right software solution, manage the implementation, and provide the training and sustenance support so that you will get the best value from your investment. | スタートアップから大企業まで、最適なソフトウェア選定、導入、トレーニング、継続支援を提供します。 | index.html, search.html, solutions.html |
 | Consulting to Adoption | コンサルティングから定着まで | index.html, services.html, solutions.html |
 | Engineering Outcomes | エンジニアリング成果 | index.html, solutions.html |
 | Industry PLM | 業界別PLM | index.html, industries.html |
@@ -921,7 +921,7 @@ The build does not hide gaps: it reports every English string on a Japanese page
 | Before publication the pages were checked in Google Chrome on a desktop computer, in English and Japanese: | 公開前に、デスクトップコンピューター上のGoogle Chromeで、英語と日本語の各ページについて次の確認を行いました。 | accessibility.html |
 | Automated accessibility audits with Lighthouse on the home page and representative inner pages. | Lighthouseによる自動アクセシビリティ監査（ホームページおよび代表的な下層ページ）。 | accessibility.html |
 | Scripted keyboard tests of the menus, the lifecycle diagram, the finder, the career filters, the photo viewer, the language switch, the search page and both forms. | メニュー、ライフサイクル図、課題別ファインダー、採用情報の絞り込み、写真ビューアー、言語切り替え、検索ページ、2つのフォームについての、スクリプトによるキーボード操作テスト。 | accessibility.html |
-| Layout checks at ten screen widths from 320 to 2560 pixels. | 320〜2560ピクセルの10種類の画面幅でのレイアウト確認。 | accessibility.html |
+| Layout checks at sixteen screen widths from 320 to 2560 pixels. | 320〜2560ピクセルの16種類の画面幅でのレイアウト確認。 | accessibility.html |
 | Contrast of text colours against their backgrounds. | 文字色と背景色のコントラスト。 | accessibility.html |
 | What was not tested | 確認していない内容 | accessibility.html |
 | Screen readers such as NVDA, JAWS, VoiceOver or TalkBack. | NVDA、JAWS、VoiceOver、TalkBackなどのスクリーンリーダー。 | accessibility.html |
