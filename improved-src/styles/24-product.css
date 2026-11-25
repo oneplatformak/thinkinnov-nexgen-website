@@ -62,3 +62,16 @@
 .stage-map td.is-on { background: var(--paper-3); }
 .stage-map tr:last-child th, .stage-map tr:last-child td { border-bottom: 0; }
 .stage-map th:last-child, .stage-map td:last-child { border-right: 0; }
+
+/* Solutions: the fuller entry */
+.solution-text { font-size: var(--t-md); }
+.solution-needs { margin-top: var(--s-4); padding: var(--s-4); background: var(--paper-2); border-left: 2px solid var(--accent-bright); max-width: 40rem; }
+.section-tint .solution-needs { background: var(--paper); }
+.solution-needs h4 { margin-bottom: 0.5rem; font-size: var(--t-xs); font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: var(--ink-3); }
+html[lang="ja"] .solution-needs h4 { letter-spacing: 0.06em; }
+.solution-needs li + li { margin-top: 0.6rem; }
+.solution-needs a { font-family: var(--font-display); font-weight: 700; }
+.solution-need-source { display: block; font-size: var(--t-sm); color: var(--ink-2); }
+.solution-small { display: block; font-size: var(--t-xs); color: var(--ink-3); }
+.stage-map-wide tbody th { white-space: normal; min-width: 13rem; font-weight: 600; }
+.stage-map-wide tbody th a { display: inline; font-size: var(--t-sm); }

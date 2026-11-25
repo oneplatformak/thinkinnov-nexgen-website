@@ -182,5 +182,16 @@ module.exports = {
     "Mendix is listed among the areas of expertise in our Key Value Drivers.": "Mendixは、当社の「主な提供価値」に専門領域として挙げています。",
     "Customization is one of our implementation services.": "カスタマイズは、当社の導入サービスのひとつです。",
     "Cloud transition & upgrades is one of our pre-implementation services.": "クラウド移行とアップグレードは、当社の導入前サービスのひとつです。",
+    // Solutions page
+    "Business needs it relates to": "関連する課題",
+    "In the same group": "同じグループのソリューション",
+    "Industry material": "業界別資料",
+    "Related service or expertise": "関連するサービス・専門領域",
+    "Mendix is listed among our areas of expertise": "Mendixは当社の専門領域のひとつです",
+    "SAP is listed among our areas of expertise": "SAPは当社の専門領域のひとつです",
+    "Solution": "ソリューション",
+    "Solutions by lifecycle stage": "ライフサイクルの段階別のソリューション一覧",
+    "Where each solution sits in the lifecycle": "各ソリューションのライフサイクルにおける位置づけ",
+    "Each placement is this site's reading of the solution descriptions on this page, as a guide to the site.": "各ソリューションの位置づけは、このページの説明に基づく当サイトの整理であり、サイト内のご案内を目的としたものです。",
   },
 };

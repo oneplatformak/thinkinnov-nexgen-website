@@ -21,6 +21,14 @@ const solutionProducts = {
   "digital-factory-enterprise": { product: "tecnomatix", basis: "Staging describes both as digital manufacturing." },
 };
 
+/* ---- Service items or expertise the source ties to a solution by name ---- */
+const solutionServices = {
+  "nx-programming-customization": { href: "services.html#implementation", label: "Customization", small: "Implementation", basis: "Both the solution and the service item are about customization." },
+  "active-integration": { href: "about.html#partnership", label: "Digital thread delivery combining PLM, ERP and MES", small: "Key Value Drivers", basis: "The solution text and the Key Value Driver both name the digital thread with ERP and MES." },
+  "teamcenter-gateway-sap": { href: "about.html#partnership", label: "SAP is listed among our areas of expertise", small: "Key Value Drivers", basis: "Key Value Drivers: “Expertise: … Mendix, SAP, …”" },
+  "mendix-low-code": { href: "about.html#partnership", label: "Mendix is listed among our areas of expertise", small: "Key Value Drivers", basis: "Key Value Drivers: “Expertise: … Teamcenter, Mendix, …”" },
+};
+
 /* ---- Editorial grouping of the 15 solutions (navigation only) ---- */
 const solutionGroups = [
   { key: "data", title: "Product data and reuse", items: ["design-data-management", "3d-shape-search", "simulation-process-data-management"] },
@@ -345,5 +353,5 @@ const enquiryTypes = [
 
 module.exports = {
   solutionProducts, solutionGroups, lifecycle, lifecycleAcross, productStages, productExpertise,
-  needGroups, needs, enquiryTypes, productSupport, industryRelations, cloudCard,
+  needGroups, needs, enquiryTypes, productSupport, industryRelations, cloudCard, solutionServices,
 };
