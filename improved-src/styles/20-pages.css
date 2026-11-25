@@ -5,7 +5,11 @@
 .facts dd { color: var(--ink-2); }
 .facts-lg dt { font-size: var(--t-lg); letter-spacing: -0.02em; }
 .facts-lg div { padding-block: var(--s-5); }
-.facts-compact div { grid-template-columns: 8rem minmax(0, 1fr); padding-block: 0.7rem; font-size: 0.9375rem; }
+/* Label above value in a narrow box; side by side once the box is wide enough
+   for the longest value to stay on whole words. */
+.facts-compact { container-type: inline-size; }
+.facts-compact div { padding-block: 0.7rem; font-size: 0.9375rem; }
+@container (min-width: 21rem) { .facts-compact div { grid-template-columns: 8rem minmax(0, 1fr); } }
 .facts-compact dt { font-weight: 600; color: var(--ink-3); font-family: var(--font-body); }
 .facts-compact dd { color: var(--ink); font-weight: 600; }
 @media (min-width: 640px) { .facts:not(.facts-lg):not(.facts-compact) div { grid-template-columns: 13rem minmax(0, 1fr); } }
@@ -70,6 +74,7 @@ html[lang="ja"] .ticks li::before { top: 1.25em; }
 .tier-scale i:nth-child(3) { height: 100%; }
 .tier-1 .tier-scale i:nth-child(1), .tier-2 .tier-scale i:nth-child(-n + 2), .tier-3 .tier-scale i { background: var(--accent-bright); }
 .tier h3 { font-size: var(--t-xl); }
+html[lang="ja"] .tier h3 { font-size: var(--t-lg); }
 .tier p { color: var(--ink-2); }
 .tier .link-arrow { justify-self: start; margin-top: 0.5rem; }
 @media (min-width: 900px) { .tiers { grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 0; } .tier + .tier { border-left: 0; } .tier { padding: var(--s-6); } }
@@ -104,9 +109,18 @@ html[lang="ja"] .ticks li::before { top: 1.25em; }
 .svc-blocks { display: grid; gap: var(--s-5); }
 .svc-block { padding: var(--s-5); background: var(--paper-2); border-top: 2px solid var(--ink); }
 .svc-block h3 { margin-bottom: 0.6rem; }
+html[lang="ja"] .svc-block { padding-inline: var(--s-4); }
+/* Card titles are sized from the card so that the longest word in them stays whole. */
+@supports (font-size: 1cqi) {
+  .svc-block { container-type: inline-size; }
+  .svc-block h3 { font-size: min(var(--t-lg), 13cqi); }
+  html[lang="ja"] .svc-block h3 { font-size: min(var(--t-lg), 11cqi); }
+}
 @media (min-width: 700px) { .svc-blocks { grid-template-columns: repeat(3, minmax(0, 1fr)); gap: var(--s-4); } }
-@media (min-width: 1000px) {
+@media (min-width: 700px) and (max-width: 899px) { html[lang="ja"] .svc-blocks { grid-template-columns: minmax(0, 1fr); } }
+@media (min-width: 1200px) {
   .svc { grid-template-columns: minmax(0, 4fr) minmax(0, 8fr); gap: clamp(2rem, 5vw, 5rem); }
+  @supports (font-size: 1cqi) { .svc-head { container-type: inline-size; } .svc-head h2 { font-size: min(var(--h2), 12cqi); } }
   .svc-head { position: sticky; top: calc(var(--header-h) + 2rem); align-self: start; }
 }
 
@@ -125,6 +139,7 @@ html[lang="ja"] .ticks li::before { top: 1.25em; }
 .level-4::before { background: var(--accent-bright); }
 .level-tag { font-family: var(--font-display); font-size: var(--t-xs); font-weight: 700; letter-spacing: 0.14em; color: var(--accent); }
 .level h3 { margin-block: 0.4rem 0.6rem; font-size: var(--t-xl); }
+html[lang="ja"] .level h3 { font-size: 1.25rem; }
 .level p { color: var(--ink-2); }
 @media (min-width: 1000px) {
   .levels { grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 0; align-items: end; }
@@ -152,13 +167,18 @@ html[lang="ja"] .ticks li::before { top: 1.25em; }
 .pjump a:hover .pmark { background: var(--ink); color: var(--paper); }
 .pjump a:hover .pjump-name { color: var(--accent); }
 @media (min-width: 700px) { .pjump ul { grid-template-columns: repeat(3, minmax(0, 1fr)); } }
-@media (min-width: 1100px) { .pjump ul { grid-template-columns: repeat(6, minmax(0, 1fr)); } .pjump li + li a { padding-left: 1rem; border-left: 1px solid var(--rule); } }
+@media (max-width: 374px) { .pjump ul { grid-template-columns: minmax(0, 1fr); } }
+@media (min-width: 1240px) { .pjump ul { grid-template-columns: repeat(6, minmax(0, 1fr)); } .pjump li + li a { padding-left: 1rem; border-left: 1px solid var(--rule); } }
 .product { padding-block: clamp(3rem, 2rem + 4vw, 5.5rem); border-bottom: 1px solid var(--rule); }
 .product:nth-of-type(even) { background: var(--paper-2); }
 .product-grid { display: grid; gap: var(--s-6); }
 .product-grid > * { min-width: 0; }
 .product-n { margin-bottom: var(--s-4); font-family: var(--font-display); font-size: var(--t-xs); font-weight: 700; letter-spacing: 0.14em; color: var(--ink-3); }
-.product-head h2 { margin-top: var(--s-4); font-size: var(--t-3xl); letter-spacing: -0.04em; }
+/* A product name is never broken: the heading is sized from the width of its
+   own column (cqi), so the longest name fits on one line at every width. */
+.product-head { container-type: inline-size; }
+.product-head h2 { margin-top: var(--s-4); font-size: var(--t-3xl); letter-spacing: -0.04em; white-space: nowrap; }
+@supports (font-size: 1cqi) { .product-head h2 { font-size: min(var(--t-3xl), 17cqi); } }
 .product-cat { margin-top: 0.35rem; font-family: var(--font-display); font-weight: 700; color: var(--accent); }
 .product-text { font-family: var(--font-display); font-size: var(--t-xl); font-weight: 600; line-height: 1.3; letter-spacing: -0.02em; }
 html[lang="ja"] .product-text { font-size: var(--t-lg); line-height: 1.6; letter-spacing: 0; }
@@ -208,6 +228,7 @@ html[lang="ja"] .solution-meta dt { letter-spacing: 0.06em; }
 .industry:first-child { padding-top: 0; border-top: 0; }
 .industry-n { font-family: var(--font-display); font-size: var(--t-2xl); font-weight: 300; line-height: 1; color: var(--accent); }
 .industry h2 { margin-block: var(--s-4); font-size: var(--t-xl); }
+@supports (font-size: 1cqi) { .industry-text { container-type: inline-size; } html[lang="ja"] .industry h2 { font-size: min(var(--t-xl), 8.4cqi); } }
 .industry-text p:not(.industry-n) { color: var(--ink-2); max-width: 34rem; }
 .industry-text .link-arrow { margin-top: var(--s-5); }
 .industry-figure a { display: block; position: relative; border: 1px solid var(--rule); background: #fff; }

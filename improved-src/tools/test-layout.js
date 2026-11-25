@@ -20,6 +20,7 @@
  * a breakpoint, which is where words broke and no device size happened to be.
  *
  * WB_JSON=<file> writes every broken word found, for diagnosis.
+ * PAGES=<regex> limits the run to matching pages while working on a fix.
  *
  * Usage: NODE_PATH=<dir with puppeteer-core> node improved-src/tools/test-layout.js [widths]
  * Env:   BASE (default http://127.0.0.1:8810/), CHROME (default /usr/bin/google-chrome)
@@ -27,6 +28,7 @@
 const fs = require("fs");
 const path = require("path");
 const puppeteer = require("puppeteer-core");
+const phrase = require("../i18n/phrase");
 
 const BASE = process.env.BASE || "http://127.0.0.1:8810/";
 const DOCS = path.join(__dirname, "..", "..", "docs");
@@ -71,16 +73,17 @@ function inspect() {
 }
 
 /** Words and Japanese phrases broken across lines. Runs in the page. */
-function wordBreaks() {
+function wordBreaks(JA_TARGETS, JA_SHORT) {
   const isJa = document.documentElement.lang === "ja";
-  // Japanese display text that must break at phrase boundaries only.
-  const JA_TARGETS = "h1,h2,h3,h4,th,dt,label,legend,button,summary,address,.btn,.lead,.link-arrow,.chip,.badge,.footer-col a,.contact-lines";
-  const JA_SHORT = 30; // and any element whose whole text is this short
+  // Japanese display text that must break at phrase boundaries only: the
+  // elements and classes the build treats, and any element whose whole text
+  // is short. Both come from i18n/phrase.js so test and build cannot drift.
   const SKIP = "script,style,noscript,svg,[hidden],dialog:not([open]),.visually-hidden,.skip-link,.field-trap,option,textarea";
   const OK_BEFORE = "、。・，．：；！？）］｝」』】〉》/-–—…";
   const OK_AFTER = "（［｛「『【〈《";
-  // Product names of two words, e-mail addresses, then any Latin word or number.
-  const TOKEN = /Solid Edge|Teamcenter X|[\w.+-]+@[\w-]+(?:\.[\w-]+)+|[A-Za-z0-9][A-Za-z0-9'’]*[A-Za-z0-9]/g;
+  // Product names of two words, e-mail addresses, numbers joined by hyphens
+  // (postcode, block number, telephone number), then any Latin word or number.
+  const TOKEN = /Solid[ \u00a0]Edge|Teamcenter[ \u00a0]X|[\w.+-]+@[\w-]+(?:\.[\w-]+)+|\d+(?:-\d+)+|[A-Za-z0-9][A-Za-z0-9'’]*[A-Za-z0-9]/g;
   const describe = (el) => {
     const parts = [];
     for (let e = el, k = 0; e && e !== document.body && k < 3; e = e.parentElement, k += 1) parts.push(e.tagName.toLowerCase() + (typeof e.className === "string" && e.className.trim() ? "." + e.className.trim().split(/\s+/).join(".") : ""));
@@ -116,7 +119,7 @@ function wordBreaks() {
         if (first == null) first = top;
         else if (Math.abs(top - first) > lineStep) { at = i - m.index; break; }
       }
-      if (at > 0) out.push({ kind: "latin", word: m[0], split: m[0].slice(0, at) + "/" + m[0].slice(at), where: describe(el) });
+      if (at > 0) out.push({ kind: "latin", word: m[0], split: m[0].slice(0, at) + "/" + m[0].slice(at), where: describe(el), box: Math.round(el.getBoundingClientRect().width), font: style.fontSize });
     }
 
     if (!isJa || !(el.closest(JA_TARGETS) || el.textContent.trim().length <= JA_SHORT)) continue;
@@ -131,7 +134,7 @@ function wordBreaks() {
         const b = text[i];
         const bothLatin = /[A-Za-z0-9]/.test(a) && /[A-Za-z0-9]/.test(b);
         if (!bothLatin && !OK_BEFORE.includes(a) && !OK_AFTER.includes(b)) {
-          out.push({ kind: "phrase", word: text.trim().slice(0, 40), split: text.slice(Math.max(0, i - 8), i) + "/" + text.slice(i, i + 8), where: describe(el) });
+          out.push({ kind: "phrase", word: text.trim().slice(0, 40), split: text.slice(Math.max(0, i - 8), i) + "/" + text.slice(i, i + 8), where: describe(el), box: Math.round(el.getBoundingClientRect().width), font: style.fontSize });
         }
       }
       prevTop = top;
@@ -142,7 +145,8 @@ function wordBreaks() {
 }
 
 (async () => {
-  const list = pages(DOCS).sort();
+  const only = process.env.PAGES ? new RegExp(process.env.PAGES) : null; // development aid
+  const list = pages(DOCS).sort().filter((rel) => !only || only.test(rel));
   const browser = await puppeteer.launch({ executablePath: process.env.CHROME || "/usr/bin/google-chrome", headless: "new", args: ["--no-sandbox", "--disable-dev-shm-usage"] });
   const totals = Object.fromEntries(WIDTHS.map((w) => [w, { pages: 0, overflow: 0, offscreen: 0, clipped: 0, broken: 0, wordBreaks: 0 }]));
   const failures = [];
@@ -160,7 +164,7 @@ function wordBreaks() {
       await page.evaluate(() => Promise.all([...document.images].map((img) => img.complete ? null : new Promise((res) => { img.onload = img.onerror = res; }))));
       await page.evaluate(() => document.fonts.ready);
       const r = await page.evaluate(inspect);
-      const words = await page.evaluate(wordBreaks);
+      const words = await page.evaluate(wordBreaks, phrase.SELECTOR, phrase.SHORT);
       const t = totals[width];
       t.pages += 1;
       if (words.length) t.wordBreaks += 1;

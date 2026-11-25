@@ -16,7 +16,7 @@ const site = require("./lib/site");
 const seo = require("./lib/seo");
 const assets = require("./lib/assets");
 const { shell, setAssetVersion } = require("./lib/layout");
-const { stripMarkers } = require("./lib/html");
+const { stripMarkers, protectNames } = require("./lib/html");
 const i18n = require("./i18n");
 const content = require("./content");
 const registers = require("./lib/registers");
@@ -55,7 +55,7 @@ function buildPage(route, lang) {
   let html = shell({ ...page, noindex: route.noindex || page.noindex });
   const rel = (lang === "ja" ? "ja/" : "") + (route.path || "index.html");
   if (lang === "ja") html = i18n.apply(html, rel);
-  write(rel, stripMarkers(html));
+  write(rel, protectNames(stripMarkers(html)));
   if (!route.noindex && !page.noindex && route.path !== "search.html") {
     const pick = (re) => (html.match(re) || [, ""])[1].replace(/&amp;/g, "&").replace(/&quot;/g, '"').replace(/&#39;/g, "'");
     indexed[lang].push({ path: route.path, title: pick(/<title>([^<]*)<\/title>/).split(" | ")[0], description: pick(/<meta name="description" content="([^"]*)"/) });

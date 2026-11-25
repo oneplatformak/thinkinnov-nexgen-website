@@ -118,7 +118,7 @@ function apply(html, pageRel) {
     return next == null ? full : `${attr}="${encode(next)}"`;
   });
 
-  out = phrase.headings(out);
+  out = phrase.display(out);
   return out.replace(/%%HELD(\d+)%%/g, (_, i) => held[Number(i)]);
 }
 

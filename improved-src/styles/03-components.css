@@ -7,7 +7,7 @@ html[lang="ja"] .kicker, html[lang="ja"] .marker, html[lang="ja"] .badge { lette
 .badge { display: inline-flex; align-items: center; gap: 0.6rem; padding: 0.45rem 0.8rem; border: 1px solid var(--ink); color: var(--ink); }
 .badge::before { content: ""; width: 0.5rem; height: 0.5rem; background: var(--accent-bright); }
 .lead { font-size: var(--t-md); line-height: 1.6; color: var(--ink-2); max-width: 40rem; }
-.display { font-size: var(--t-2xl); }
+.display { font-size: var(--h2); }
 .prose > * + * { margin-top: var(--s-5); }
 .prose p { max-width: 42rem; color: var(--ink-2); }
 
@@ -62,6 +62,11 @@ html[lang="ja"] .kicker, html[lang="ja"] .marker, html[lang="ja"] .badge { lette
 .page-hero-grid > * { min-width: 0; }
 .page-hero h1 { font-size: clamp(2.25rem, 1.6rem + 3vw, 3.75rem); max-width: 18ch; }
 html[lang="ja"] .page-hero h1 { font-size: clamp(1.875rem, 1.4rem + 2.2vw, 3rem); max-width: 20em; }
+html[lang="ja"] .page-hero h1[data-long] { font-size: min(clamp(1.875rem, 1.4rem + 2.2vw, 3rem), 7.2vw); }
+@supports (font-size: 1cqi) {
+  .page-hero-text { container-type: inline-size; }
+  html[lang="ja"] .page-hero h1[data-long] { font-size: min(clamp(1.875rem, 1.4rem + 2.2vw, 3rem), 8cqi); }
+}
 .page-hero .kicker { margin-bottom: var(--s-4); color: var(--accent); }
 .page-hero .lead { margin-top: var(--s-5); }
 .page-hero .actions { margin-top: var(--s-6); }
@@ -141,10 +146,15 @@ html[lang="ja"] .page-hero h1 { font-size: clamp(1.875rem, 1.4rem + 2.2vw, 3rem)
 /* ---- Closing band ---- */
 .cta-band { background: var(--paper-3); border-top: 1px solid var(--ink); padding-block: clamp(3.5rem, 2.5rem + 4vw, 6rem); }
 .cta-band-grid { display: grid; gap: var(--s-6); align-items: end; }
-.cta-band h2 { font-size: var(--t-2xl); max-width: 20ch; }
+.cta-band h2 { max-width: 20ch; }
 html[lang="ja"] .cta-band h2 { max-width: 20em; }
 .cta-band p { margin-top: var(--s-4); color: var(--ink-2); max-width: 38rem; }
-@media (min-width: 900px) { .cta-band-grid { grid-template-columns: minmax(0, 1fr) auto; } }
+/* The buttons take what they need, up to 45% of the row; the heading keeps the rest. */
+@media (min-width: 900px) { .cta-band-grid { grid-template-columns: minmax(0, 1fr) fit-content(45%); } }
+@supports (font-size: 1cqi) {
+  .cta-band-grid > :first-child { container-type: inline-size; }
+  html[lang="ja"] .cta-band h2[data-long] { font-size: min(var(--h2), 6.8cqi); }
+}
 
 /* ---- Figures drawn in code ---- */
 .fig figcaption { margin-top: var(--s-4); font-size: var(--t-sm); color: var(--ink-3); max-width: 30rem; }

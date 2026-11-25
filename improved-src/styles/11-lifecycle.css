@@ -50,6 +50,7 @@ html[lang="ja"] .lc-block h4, html[lang="ja"] .lc-across h3 { letter-spacing: 0.
   .js .lc-tabs { display: block; position: absolute; inset: 0; border: 0; }
   .js .lc-tabs li { position: absolute; left: var(--x); top: var(--y); border: 0; transform: translate(-50%, -50%); }
   .js .lc-tab { flex-direction: column; gap: 0.1rem; min-width: 5.75rem; min-height: 3.25rem; padding: 0.45rem 0.6rem; background: var(--dark); border: 1px solid var(--dark-rule); text-align: center; line-height: 1.2; }
+  .js .lc-tab-label { white-space: nowrap; }
   .js .lc-tab:hover { border-color: var(--on-dark-2); }
   .js .lc-tab[aria-selected="true"] { background: var(--on-dark); border-color: var(--on-dark); }
   .js .lc-hint { text-align: center; max-width: 26rem; margin-inline: auto; }

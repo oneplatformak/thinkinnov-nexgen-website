@@ -32,6 +32,7 @@ html[lang="ja"] .hero h1 { max-width: 13em; }
 .message .marker::after { display: none; }
 .message h2 { font-size: var(--t-lg); letter-spacing: -0.02em; line-height: 1.25; max-width: 22ch; }
 html[lang="ja"] .message h2 { font-size: 1.25rem; line-height: 1.5; max-width: none; }
+@media (min-width: 900px) and (max-width: 1279px) { html[lang="ja"] .message h2 { font-size: 1.0625rem; } html[lang="ja"] .message { padding-inline: var(--s-5); } }
 .message p:last-child { margin-top: var(--s-4); color: var(--ink-2); font-size: 0.9375rem; }
 @media (min-width: 900px) {
   .messages-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); }
@@ -45,6 +46,7 @@ html[lang="ja"] .message h2 { font-size: 1.25rem; line-height: 1.5; max-width: n
 .strip li { padding: 0.9rem 1rem 1rem; border-right: 1px solid var(--rule); border-bottom: 1px solid var(--rule); }
 .strip-n { display: block; font-family: var(--font-display); font-size: var(--t-xs); font-weight: 700; color: var(--accent); }
 .strip-label { font-family: var(--font-display); font-weight: 700; }
+@media (max-width: 399px) { html[lang="ja"] .strip li { padding-inline: 0.6rem; } html[lang="ja"] .strip-label { font-size: 0.8125rem; } }
 
 /* ---- Problems ---- */
 .problems { display: grid; border-top: 1px solid var(--ink); }
@@ -65,6 +67,8 @@ html[lang="ja"] .message h2 { font-size: 1.25rem; line-height: 1.5; max-width: n
 .phase::before { content: ""; position: absolute; left: -5px; top: 1.9rem; width: 9px; height: 9px; background: var(--accent-bright); }
 .phase-when { font-family: var(--font-display); font-size: var(--t-xs); font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; color: var(--accent); }
 .phase h3 { margin-block: 0.35rem var(--s-5); font-size: var(--t-xl); }
+/* Sized from the column so that "Implementation" stays whole in three columns. */
+@supports (font-size: 1cqi) { .phase { container-type: inline-size; } .phase h3 { font-size: min(var(--t-xl), 12.2cqi); } }
 .phase h3 a { text-decoration: none; }
 .phase h3 a:hover { color: var(--accent); }
 .phase dl div { padding-block: 0.8rem; border-top: 1px solid var(--rule); }
@@ -143,9 +147,10 @@ html[lang="ja"] .inline-list li:not(:last-child)::after { content: "、"; }
 .presence-diagram { display: grid; gap: var(--s-4); }
 .presence-group { border: 1px solid var(--ink); background: var(--paper); }
 .presence-country { padding: 0.6rem 1rem; border-bottom: 1px solid var(--ink); font-family: var(--font-display); font-size: var(--t-xs); font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; }
-.presence-group li { display: flex; align-items: baseline; justify-content: space-between; gap: 1rem; padding: 0.75rem 1rem; }
+.presence-group li { display: flex; flex-wrap: wrap; align-items: baseline; justify-content: space-between; gap: 0.1rem 1rem; padding: 0.75rem 1rem; }
 .presence-group li + li { border-top: 1px solid var(--rule); }
 .presence-city { font-family: var(--font-display); font-size: var(--t-lg); font-weight: 700; letter-spacing: -0.02em; }
+html[lang="ja"] .presence-city { font-size: 1.125rem; letter-spacing: 0; }
 .presence-role { font-size: var(--t-sm); color: var(--ink-3); text-align: right; }
 .presence-link { display: flex; align-items: center; justify-content: center; gap: 0.75rem; font-family: var(--font-display); font-size: var(--t-xs); font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; color: var(--accent); }
 .presence-link i { width: 1px; height: 2rem; background: var(--accent-bright); }
@@ -166,6 +171,8 @@ html[lang="ja"] .inline-list li:not(:last-child)::after { content: "、"; }
 html[lang="ja"] .closing .display { max-width: 16em; }
 .closing .lead { margin-top: var(--s-5); }
 .contact-lines { margin-top: var(--s-6); border-top: 1px solid var(--dark-rule); }
+/* The e-mail address is one line; in a narrow box it is set a little smaller instead of being broken. */
+@supports (font-size: 1cqi) { .contact-lines { container-type: inline-size; } .contact-lines a[href^="mailto:"] { font-size: min(1em, calc((100cqi - 2.4rem) / 14.6)); } }
 .contact-lines li { display: grid; grid-template-columns: 1.5rem minmax(0, 1fr); gap: 0.9rem; align-items: start; padding-block: 0.9rem; border-bottom: 1px solid var(--dark-rule); }
 .contact-lines .icon { margin-top: 0.2rem; color: var(--accent-on-dark); }
 .contact-lines a { text-decoration: none; }
@@ -174,7 +181,7 @@ html[lang="ja"] .closing .display { max-width: 16em; }
 .action-list li { border-bottom: 1px solid var(--dark-rule); }
 .action-list a { display: grid; grid-template-columns: minmax(0, 1fr) auto; gap: 0.2rem 1rem; align-items: center; padding-block: 1.25rem; text-decoration: none; }
 .action-label { font-family: var(--font-display); font-size: var(--t-lg); font-weight: 700; letter-spacing: -0.02em; line-height: 1.25; }
-html[lang="ja"] .action-label { letter-spacing: 0; line-height: 1.5; font-size: 1.1875rem; }
+html[lang="ja"] .action-label { letter-spacing: 0; line-height: 1.5; font-size: clamp(1rem, 5vw, 1.1875rem); }
 .action-text { grid-column: 1; color: var(--on-dark-2); font-size: 0.9375rem; }
 .action-list .icon { grid-column: 2; grid-row: 1 / span 2; width: 1.5rem; height: 1.5rem; color: var(--accent-on-dark); transition: transform 0.18s var(--ease); }
 .action-list a:hover .icon { transform: translateX(4px); }

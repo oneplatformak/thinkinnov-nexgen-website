@@ -150,6 +150,10 @@ def main() -> int:
             problems["H1"].append(f"{rel}: {len(h1_re.findall(text))} H1(s)")
         if f'<html lang="{lang}"' not in text:
             problems["lang attribute"].append(rel)
+        # The file must begin with the doctype and end with the closing tag:
+        # a build step that rewrites the page must not lose either.
+        if not text.startswith("<!DOCTYPE html>") or not text.rstrip().endswith("</html>"):
+            problems["document start and end"].append(rel)
 
         seen = set()
         for value in ids[html]:
@@ -273,7 +277,7 @@ def main() -> int:
     print(f"Language pairs: {len(english_pages)} English pages, {len(japanese_pages)} Japanese pages, {len(STUBS)} redirect stubs without a counterpart ({', '.join(sorted(STUBS))})")
     print(f"Third-party scan: {scanned} text files, {loaders} resource references examined")
     checks = [
-        "H1", "lang attribute", "duplicate ids", "missing files", "missing anchors", "images without alt",
+        "H1", "lang attribute", "document start and end", "duplicate ids", "missing files", "missing anchors", "images without alt",
         "images without dimensions", "title", "meta description", "duplicate titles", "duplicate descriptions",
         "canonical", "hreflang", "language parity", "legacy anchors", "sitemap.xml", "tracker strings", "third-party resources",
     ]

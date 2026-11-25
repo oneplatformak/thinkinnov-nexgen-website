@@ -14,8 +14,8 @@ body {
 img, svg { display: block; max-width: 100%; }
 img { height: auto; }
 h1, h2, h3, h4 { margin: 0; font-family: var(--font-display); font-weight: 700; line-height: 1.15; letter-spacing: -0.02em; text-wrap: balance; }
-h1 { font-size: var(--t-3xl); letter-spacing: -0.035em; line-height: 1.04; }
-h2 { font-size: var(--t-2xl); letter-spacing: -0.03em; line-height: 1.1; }
+h1 { font-size: var(--h1); letter-spacing: -0.035em; line-height: 1.04; }
+h2 { font-size: var(--h2); letter-spacing: -0.03em; line-height: 1.1; }
 h3 { font-size: var(--t-lg); }
 h4 { font-size: var(--t-base); letter-spacing: 0; }
 p, ul, ol, dl, figure, blockquote { margin: 0; }
@@ -44,8 +44,16 @@ main:focus { outline: none; }
 /* Japanese typography: more leading, no negative tracking, phrase-aware breaks. */
 html[lang="ja"] body { line-height: 1.85; font-feature-settings: "palt" 0; line-break: strict; }
 html[lang="ja"] h1, html[lang="ja"] h2, html[lang="ja"] h3, html[lang="ja"] h4 { letter-spacing: 0.01em; line-height: 1.4; font-weight: 700; text-wrap: wrap; }
-html[lang="ja"] h1, html[lang="ja"] h2, html[lang="ja"] h3, html[lang="ja"] [data-phrase] { word-break: keep-all; overflow-wrap: anywhere; }
-html[lang="ja"] h1 { font-size: clamp(1.875rem, 1.3rem + 2.6vw, 3.375rem); line-height: 1.3; }
-html[lang="ja"] h2 { font-size: clamp(1.625rem, 1.3rem + 1.5vw, 2.5rem); line-height: 1.38; }
+/* Display text breaks only at the phrase boundaries the build marks (i18n/phrase.js). */
+html[lang="ja"] h1, html[lang="ja"] h2, html[lang="ja"] h3, html[lang="ja"] h4, html[lang="ja"] [data-phrase] { word-break: keep-all; overflow-wrap: break-word; }
+html[lang="ja"] { --h1: clamp(1.875rem, 1.3rem + 2.6vw, 3.375rem); --h2: clamp(1.625rem, 1.3rem + 1.5vw, 2.5rem); }
+html[lang="ja"] h1 { line-height: 1.3; }
+html[lang="ja"] h2 { line-height: 1.38; }
+/* A heading that contains a very long word (the build marks it data-long) is
+   set smaller on narrow screens so that the word stays whole. */
+html[lang="ja"] h1[data-long] { font-size: min(var(--h1), 7.2vw); }
+html[lang="ja"] h2[data-long] { font-size: min(var(--h2), 7.2vw); }
+/* An e-mail address, a telephone number and a hyphenated number are never broken. */
+a[href^="mailto:"], a[href^="tel:"], .nb { white-space: nowrap; }
 html[lang="ja"] .lead { line-height: 1.9; }
 [lang="en"] { line-break: auto; word-break: normal; }
