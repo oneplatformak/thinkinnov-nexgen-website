@@ -181,7 +181,7 @@ function header(active = "") {
       <div class="header-tools">
         ${langSwitch()}
         <a class="btn btn-primary btn-sm header-cta" href="${site.page("contact.html")}">Contact us</a>
-        <a class="menu-toggle" href="${site.page("sitemap.html")}" role="button" aria-haspopup="dialog" aria-controls="mobile-menu" data-menu-open><span>Menu</span>${icons.menu}</a>
+        <a class="menu-toggle" href="${site.page("sitemap.html")}" data-menu-open><span>Menu</span>${icons.menu}</a>
       </div>
     </div>
   </header>

@@ -60,7 +60,7 @@ html[lang="ja"] .message h2 { font-size: 1.25rem; line-height: 1.5; max-width: n
 }
 
 /* ---- Service phases ---- */
-.phases { display: grid; counter-reset: phase; }
+.phases { display: grid; grid-template-columns: minmax(0, 1fr); counter-reset: phase; }
 .phase { position: relative; padding: var(--s-5) 0 var(--s-6) var(--s-5); border-left: 1px solid var(--ink); }
 .phase::before { content: ""; position: absolute; left: -5px; top: 1.9rem; width: 9px; height: 9px; background: var(--accent-bright); }
 .phase-when { font-family: var(--font-display); font-size: var(--t-xs); font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; color: var(--accent); }

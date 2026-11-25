@@ -36,25 +36,34 @@ triggers.forEach(function (trigger) {
   var panel = panelOf(trigger);
   var item = trigger.parentNode;
   var timer;
+  // "hover" while the pointer opened the panel; the first click then pins it
+  // instead of closing what the visitor has just seen open.
+  var openedBy = "";
 
-  function open() {
+  function open(by) {
     clearTimeout(timer);
     closeAll(trigger);
     trigger.setAttribute("aria-expanded", "true");
     panel.hidden = false;
+    openedBy = by;
   }
   function close() {
+    clearTimeout(timer);
     trigger.setAttribute("aria-expanded", "false");
     panel.hidden = true;
+    openedBy = "";
   }
 
   trigger.addEventListener("click", function () {
-    if (trigger.getAttribute("aria-expanded") === "true") close(); else open();
+    var isOpen = trigger.getAttribute("aria-expanded") === "true";
+    if (isOpen && openedBy !== "hover") close(); else open("click");
   });
   // Hover is a convenience for pointer users; click and keyboard always work.
-  item.addEventListener("pointerenter", function (e) { if (e.pointerType === "mouse") open(); });
+  item.addEventListener("pointerenter", function (e) {
+    if (e.pointerType === "mouse" && trigger.getAttribute("aria-expanded") !== "true") open("hover");
+  });
   item.addEventListener("pointerleave", function (e) {
-    if (e.pointerType !== "mouse") return;
+    if (e.pointerType !== "mouse" || openedBy !== "hover") return;
     timer = setTimeout(close, 180);
   });
   item.addEventListener("focusout", function (e) {
@@ -67,7 +76,7 @@ triggers.forEach(function (trigger) {
     }
     if (e.key === "ArrowDown" && e.target === trigger) {
       e.preventDefault();
-      open();
+      open("key");
       var first = $("a", panel);
       if (first) first.focus();
     }
@@ -82,6 +91,10 @@ document.addEventListener("click", function (e) {
 var menu = $("[data-mobile-menu]");
 var opener = $("[data-menu-open]");
 if (menu && opener && typeof menu.showModal === "function") {
+  // Without scripts this is a plain link to the sitemap; here it becomes a menu button.
+  opener.setAttribute("role", "button");
+  opener.setAttribute("aria-haspopup", "dialog");
+  opener.setAttribute("aria-controls", menu.id);
   opener.setAttribute("aria-expanded", "false");
   opener.addEventListener("click", function (e) {
     e.preventDefault();
@@ -115,7 +128,7 @@ if (menu && opener && typeof menu.showModal === "function") {
 // Language preference: remembered when the visitor switches, offered as a
 // suggestion on later visits. A direct link is never redirected.
 var $ = window.TIN.$, $$ = window.TIN.$$, store = window.TIN.store;
-var KEY = "tin-lang", DISMISS = "tin-lang-dismissed";
+var KEY = "tin-lang";
 var current = window.TIN.lang;
 
 $$("[data-lang-switch] a").forEach(function (a) {
@@ -127,10 +140,7 @@ $$("[data-lang-switch] a").forEach(function (a) {
 var preferred = store.get(KEY);
 if (!preferred && current === "en" && /^ja\b/i.test(navigator.language || "")) preferred = "ja";
 
-var dismissed = false;
-try { dismissed = window.sessionStorage.getItem(DISMISS) === "1"; } catch (e) { /* ignore */ }
-
-if (preferred && preferred !== current && !dismissed) {
+if (preferred && preferred !== current) {
   var link = $('[data-lang-switch] a[data-lang="' + preferred + '"]');
   if (link) {
     var text = preferred === "ja"
@@ -150,9 +160,9 @@ if (preferred && preferred !== current && !dismissed) {
     var btn = bar.querySelector("button");
     btn.textContent = text.close;
     btn.addEventListener("click", function () {
+      // Dismissing means "this language is fine": remember it so the offer is not repeated.
       bar.remove();
       store.set(KEY, current);
-      try { window.sessionStorage.setItem(DISMISS, "1"); } catch (e) { /* ignore */ }
     });
     var header = $("[data-header]");
     header.parentNode.insertBefore(bar, header.nextSibling);

@@ -15,7 +15,6 @@ module.exports = {
     "No specific topic": "特定のトピックなし",
     "Business need": "課題",
     "Name": "お名前",
-    "Company name": "会社名",
     "Phone number": "電話番号",
     "Message": "お問い合わせ内容",
     "I agree that ThinkInnov-NexGen may use these details to respond to my enquiry.":
@@ -74,8 +73,8 @@ module.exports = {
     "Cookies, analytics and tracking": "Cookie、アクセス解析、トラッキング",
     "This website does not use analytics, advertising or tracking cookies, and does not load fonts, scripts or images from other companies.":
       "当ウェブサイトは、アクセス解析、広告、トラッキングのためのCookieを使用しておらず、他社のフォント、スクリプト、画像も読み込みません。",
-    "If you switch language, your choice is saved in your browser's local storage so that the site can offer that language next time. If you dismiss the language suggestion, that is remembered until you close the tab. Neither is sent to us.":
-      "言語を切り替えると、次回もその言語をご案内できるよう、選択内容がお使いのブラウザーのローカルストレージに保存されます。言語のご案内を閉じた場合は、タブを閉じるまでその状態が保持されます。いずれの情報も当社には送信されません。",
+    "If you switch language, or dismiss the language suggestion, your choice is saved in your browser's local storage so that the site can offer that language next time. It is not sent to us.":
+      "言語を切り替えた場合、または言語のご案内を閉じた場合は、次回もその言語をご案内できるよう、選択内容がお使いのブラウザーのローカルストレージに保存されます。この情報は当社には送信されません。",
     "Links to other websites, such as the map link and the links to Siemens product pages, open those websites, which have their own privacy notices.":
       "地図へのリンクやSiemens製品ページへのリンクなど、外部サイトへのリンクを開くと、そのサイトが表示されます。外部サイトには、それぞれの個人情報の取り扱いが適用されます。",
     "Questions and requests": "お問い合わせ・ご請求",

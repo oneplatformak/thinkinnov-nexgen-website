@@ -49,7 +49,7 @@ function privacy() {
       p("To limit abuse of the forms, the server keeps a temporary count of recent submissions for each sender, identified by a one-way hash of the IP address. The forms also contain a hidden field and record the time the form was opened, which are used only to tell people from automated senders.")],
     ["cookies", "Cookies, analytics and tracking",
       p("This website does not use analytics, advertising or tracking cookies, and does not load fonts, scripts or images from other companies.") +
-      p("If you switch language, your choice is saved in your browser's local storage so that the site can offer that language next time. If you dismiss the language suggestion, that is remembered until you close the tab. Neither is sent to us.") +
+      p("If you switch language, or dismiss the language suggestion, your choice is saved in your browser's local storage so that the site can offer that language next time. It is not sent to us.") +
       p("Links to other websites, such as the map link and the links to Siemens product pages, open those websites, which have their own privacy notices.")],
     ["questions", "Questions and requests", p("To ask about the information you have sent us through this website, or to ask us to correct or delete it, contact us:") + contactBlock()],
   ];

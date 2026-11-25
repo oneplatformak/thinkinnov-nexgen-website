@@ -1,7 +1,7 @@
 // Language preference: remembered when the visitor switches, offered as a
 // suggestion on later visits. A direct link is never redirected.
 var $ = window.TIN.$, $$ = window.TIN.$$, store = window.TIN.store;
-var KEY = "tin-lang", DISMISS = "tin-lang-dismissed";
+var KEY = "tin-lang";
 var current = window.TIN.lang;
 
 $$("[data-lang-switch] a").forEach(function (a) {
@@ -13,10 +13,7 @@ $$("[data-lang-switch] a").forEach(function (a) {
 var preferred = store.get(KEY);
 if (!preferred && current === "en" && /^ja\b/i.test(navigator.language || "")) preferred = "ja";
 
-var dismissed = false;
-try { dismissed = window.sessionStorage.getItem(DISMISS) === "1"; } catch (e) { /* ignore */ }
-
-if (preferred && preferred !== current && !dismissed) {
+if (preferred && preferred !== current) {
   var link = $('[data-lang-switch] a[data-lang="' + preferred + '"]');
   if (link) {
     var text = preferred === "ja"
@@ -36,9 +33,9 @@ if (preferred && preferred !== current && !dismissed) {
     var btn = bar.querySelector("button");
     btn.textContent = text.close;
     btn.addEventListener("click", function () {
+      // Dismissing means "this language is fine": remember it so the offer is not repeated.
       bar.remove();
       store.set(KEY, current);
-      try { window.sessionStorage.setItem(DISMISS, "1"); } catch (e) { /* ignore */ }
     });
     var header = $("[data-header]");
     header.parentNode.insertBefore(bar, header.nextSibling);

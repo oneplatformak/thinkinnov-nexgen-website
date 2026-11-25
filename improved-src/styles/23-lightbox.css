@@ -4,8 +4,9 @@
 .lightbox[open] { display: grid; grid-template-rows: auto minmax(0, 1fr) auto; }
 .lightbox::backdrop { background: rgba(16, 21, 26, 0.9); }
 .lightbox-bar { display: flex; align-items: center; justify-content: space-between; gap: 1rem; padding: 0.75rem var(--gutter); font-size: var(--t-sm); }
-.lightbox-stage { display: grid; place-items: center; min-height: 0; padding: 0 var(--gutter); }
-.lightbox-stage img { max-width: 100%; max-height: 100%; width: auto; height: auto; object-fit: contain; background: #fff; }
+.lightbox-stage { display: grid; place-items: center; min-height: 0; padding: 0 var(--gutter); overflow: hidden; }
+/* The bar and the foot take about 8.5rem; the image gets the rest of the window. */
+.lightbox-stage img { max-width: 100%; max-height: calc(100vh - 8.5rem); max-height: calc(100dvh - 8.5rem); width: auto; height: auto; object-fit: contain; background: #fff; }
 .lightbox-foot { display: grid; grid-template-columns: auto minmax(0, 1fr) auto; align-items: center; gap: 1rem; padding: 0.75rem var(--gutter) 1rem; }
 .lightbox-caption { text-align: center; font-size: var(--t-sm); color: var(--on-dark-2); }
 .lightbox button { display: inline-flex; align-items: center; justify-content: center; gap: 0.5rem; min-width: 2.75rem; min-height: 2.75rem; padding: 0.4rem 0.75rem; border: 1px solid var(--dark-rule); background: none; color: var(--on-dark); font-family: var(--font-display); font-size: var(--t-sm); font-weight: 700; }

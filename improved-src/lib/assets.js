@@ -16,12 +16,17 @@ function sources(dir, ext) {
 
 /** Conservative minifier: comments and redundant whitespace only. */
 function minifyCss(css) {
+  // Quoted strings (content values, font names, url("...")) are set aside so
+  // that the whitespace inside them survives.
+  const strings = [];
   return css
     .replace(/\/\*[\s\S]*?\*\//g, "")
+    .replace(/"(?:[^"\\]|\\.)*"|'(?:[^'\\]|\\.)*'/g, (m) => { strings.push(m); return `\u0000${strings.length - 1}\u0000`; })
     .replace(/\s+/g, " ")
     .replace(/\s*([{};])\s*/g, "$1")
     .replace(/,\s+/g, ",")
     .replace(/;}/g, "}")
+    .replace(/\u0000(\d+)\u0000/g, (m, i) => strings[Number(i)])
     .trim();
 }
 
