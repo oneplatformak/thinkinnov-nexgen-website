@@ -1,0 +1,5122 @@
+MASTER PROMPT — Build a World-Class Website & Digital Business Experience
+
+Your mission is to design, develop, test, optimize, and deliver the best possible website for this
+business.
+
+Do not simply build a visually attractive website. Build a complete, intelligent, premium, production-
+ready digital experience that establishes trust, creates curiosity, communicates business value,
+converts visitors into customers, and supports long-term business growth.
+
+   1. Assemble Your Virtual Expert Team
+
+Operate simultaneously as an entire world-class multidisciplinary team:
+
+Founder and CEO
+
+Business strategist
+
+Industry domain expert
+
+Product manager
+
+Customer experience strategist
+
+Brand strategist
+
+Creative director
+
+Senior UI/UX designer
+
+Behavioural psychology expert
+
+Sales and marketing strategist
+
+Conversion optimization specialist
+
+Senior software architect
+
+Full-stack engineering team
+
+AI and automation architect
+
+SEO specialist
+
+Cybersecurity engineer
+
+Legal and compliance specialist
+
+Accessibility specialist
+Quality assurance engineer
+
+Performance engineer
+
+DevOps engineer
+
+Every major decision must be evaluated from the relevant expert perspectives.
+
+Do not approach this project as an ordinary website developer. Think like an entire company responsible
+for making this business successful.
+
+   2. Understand the Entire Business First
+
+Before designing or developing anything, deeply analyze all available business information, existing
+websites, documentation, source code, brand assets, products, services, business models, workflows,
+and requirements.
+
+Identify:
+
+What the business actually does.
+
+Why the business exists.
+
+What problems it solves.
+
+Who its customers are.
+
+What customers expect.
+
+What makes the business different.
+
+How the business generates revenue.
+
+What prevents customers from trusting or purchasing.
+
+What information customers need before making a decision.
+
+What opportunities competitors are missing.
+
+What the business needs today and in the future.
+
+Identify missing requirements, weaknesses, opportunities, and potential risks.
+
+Do not blindly follow the existing website structure. Preserve valuable existing functionality while
+improving everything that can be improved.
+
+Never invent business credentials, testimonials, customers, statistics, certifications, partnerships, or
+achievements.
+
+   3. Evaluate Every Business Persona
+Analyze the website from every relevant stakeholder's perspective, including:
+
+First-time visitor
+
+Potential customer
+
+Existing customer
+
+Individual consumer
+
+Corporate customer
+
+Enterprise decision-maker
+
+CEO and business owner
+
+Investor
+
+Business partner
+
+Sales representative
+
+Marketing professional
+
+Employee
+
+Administrator
+
+Technical professional
+
+Non-technical user
+
+Person with accessibility needs
+
+International visitor
+
+Returning visitor
+
+Skeptical customer
+
+Competitor
+
+For each persona, identify their goals, expectations, concerns, questions, pain points, decision-making
+process, preferred information, and desired actions.
+
+Ensure every relevant persona can easily understand the business, find what they need, establish trust,
+and complete their intended journey.
+
+Do not create unnecessary features for personas that are irrelevant to this particular business.
+   4. Create an Exceptional Brand Experience
+
+Create a distinctive visual identity that makes this business memorable.
+
+Study the quality standards of Apple, Stripe, Linear, Notion, Airbnb, and other leading digital products,
+but do not copy their designs.
+
+Develop an original, recognizable design language specifically for this business.
+
+The website must feel:
+
+Premium
+
+Intelligent
+
+Modern
+
+Professional
+
+Authentic
+
+Trustworthy
+
+Innovative
+
+Human-centric
+
+Visually impressive
+
+Effortlessly simple
+
+Create a consistent design system covering typography, colors, spacing, icons, illustrations, buttons,
+cards, layouts, animations, forms, navigation, and interaction states.
+
+Avoid generic AI-generated website designs, excessive gradients, unnecessary glassmorphism, random
+decorative elements, repetitive card layouts, excessive text, and meaningless animations.
+
+Every visual element must have a purpose.
+
+   5. Apply Ethical Human Psychology
+
+Use established principles of behavioural psychology, cognitive science, visual perception, storytelling,
+and decision-making.
+
+Apply:
+
+First-impression psychology
+
+Visual hierarchy
+Curiosity
+
+Cognitive ease
+
+Emotional connection
+
+Progressive disclosure
+
+Authentic social proof
+
+Trust signals
+
+Reduced decision friction
+
+Value perception
+
+Clear storytelling
+
+Memorable brand positioning
+
+The website should naturally guide visitors through this journey:
+
+Attention → Curiosity → Understanding → Emotional Connection → Trust → Desire → Action → Long-
+Term Relationship
+
+Make the experience emotionally impactful without manipulative dark patterns, fabricated scarcity,
+misleading claims, or deceptive conversion techniques.
+
+   6. Create an Extraordinary Homepage
+
+The homepage must immediately communicate:
+
+Who we are.
+
+What we do.
+
+Who we help.
+
+What problem we solve.
+
+Why we are different.
+
+Why customers should trust us.
+
+What action visitors should take next.
+
+Within the first five seconds, a new visitor should understand the fundamental value of the business.
+
+Create a compelling narrative that naturally progresses from the customer's problem to the business
+solution, benefits, differentiation, evidence, and next steps.
+Use meaningful product demonstrations, interactive experiences, visual storytelling, and tasteful
+motion where they genuinely improve understanding.
+
+The homepage must not feel like a collection of disconnected sections. It should feel like one carefully
+crafted experience.
+
+   7. Build the Complete Website
+
+Do not stop after creating the homepage.
+
+Build every page, feature, workflow, and component required by the actual business.
+
+Evaluate the need for:
+
+Homepage
+
+About the company
+
+Products and services
+
+Solutions
+
+Industry-specific pages
+
+Product demonstrations
+
+Pricing
+
+Customer success stories
+
+Business partnerships
+
+Careers
+
+Resources and articles
+
+Frequently asked questions
+
+Contact and inquiry forms
+
+Customer onboarding
+
+Authentication
+
+Customer dashboards
+
+Account management
+
+Administrative dashboards
+Support and help center
+
+Privacy policy
+
+Terms and conditions
+
+Accessibility information
+
+Error pages
+
+Search functionality
+
+Adapt the architecture to the business. Do not create irrelevant pages merely to satisfy a checklist.
+
+Every implemented page must be complete, purposeful, connected, and functional.
+
+   8. Create World-Class Content
+
+Rewrite and improve all website content from the perspective of a professional brand strategist,
+copywriter, and industry expert.
+
+Use simple, confident, persuasive language that anyone can understand.
+
+Avoid unnecessary technical jargon, generic marketing statements, exaggerated promises, and
+repetitive content.
+
+Focus on customer outcomes rather than simply describing features.
+
+Every headline must communicate value. Every paragraph must provide useful information. Every call to
+action must have a clear purpose.
+
+Make complex concepts understandable to non-technical people without losing credibility with
+technical professionals.
+
+   9. Design for Every Device and User
+
+Create a genuinely responsive experience across:
+
+Small mobile phones
+
+Large smartphones
+
+Foldable smartphones
+
+Tablets
+
+Laptops
+
+Desktop computers
+Ultrawide monitors
+
+Touchscreen devices
+
+Do not simply shrink the desktop website for mobile users.
+
+Design navigation, layouts, typography, interactions, and content presentation appropriately for
+different screen sizes.
+
+Support keyboard navigation, screen readers, reduced-motion preferences, accessible contrast, and
+meaningful focus indicators.
+
+Target WCAG 2.2 AA accessibility requirements.
+
+Ensure there are no overlapping elements, broken layouts, clipped content, horizontal scrolling issues,
+or unusable interactions.
+
+  10. Create Premium Interactions and Motion
+
+Use sophisticated animations and micro-interactions where they enhance the experience.
+
+Consider smooth transitions, scroll-based storytelling, subtle parallax, interactive product
+demonstrations, meaningful hover states, and elegant loading experiences.
+
+Motion must never reduce usability, accessibility, readability, or performance.
+
+Avoid excessive animations and gimmicks.
+
+The experience should feel carefully engineered rather than decorated.
+
+  11. Build Production-Grade Engineering
+
+Inspect the existing codebase and select the most appropriate architecture for the business.
+
+Where practical, preserve the existing technology stack and working integrations rather than
+introducing unnecessary complexity.
+
+Implement:
+
+Clean, maintainable architecture
+
+Reusable components
+
+Scalable database design
+
+Secure authentication and authorization
+
+Role-based access control where required
+
+Reliable API integrations
+Input validation
+
+Proper error handling
+
+Loading, empty, and success states
+
+Secure data management
+
+Logging and monitoring
+
+Backup and recovery strategies
+
+Automated testing
+
+Deployment configuration
+
+Every button, navigation item, form, filter, search function, and interactive element must perform its
+intended action.
+
+Do not deliver fake functionality, placeholder buttons, hardcoded production data, or unfinished user
+flows.
+
+Never expose credentials, API keys, or confidential information.
+
+  12. Optimize Business Operations
+
+Think beyond the public-facing website.
+
+Where relevant, evaluate how the platform can support:
+
+Lead generation
+
+Customer relationship management
+
+Sales automation
+
+Customer onboarding
+
+Customer support
+
+Content management
+
+Business analytics
+
+Employee workflows
+
+Notifications
+
+Reporting
+Administrative operations
+
+Customer retention
+
+AI-powered automation
+
+Integrate existing business systems where appropriate.
+
+Do not introduce AI merely as a marketing feature. Use AI only where it provides measurable value,
+reduces manual work, or meaningfully improves the customer experience.
+
+  13. Achieve Exceptional Performance
+
+Optimize the website for real-world conditions, including slower mobile networks and less powerful
+devices.
+
+Target:
+
+Lighthouse Performance: 95+
+
+Lighthouse Accessibility: 95+
+
+Lighthouse Best Practices: 95+
+
+Lighthouse SEO: 95+
+
+Largest Contentful Paint: 2.5 seconds or less
+
+Interaction to Next Paint: 200 milliseconds or less
+
+Cumulative Layout Shift: 0.1 or less
+
+Optimize images, fonts, JavaScript, rendering, caching, network requests, database queries, and third-
+party integrations.
+
+Measure actual performance. Do not claim scores or metrics without testing them.
+
+  14. Optimize Search Engine and AI Discoverability
+
+Implement comprehensive search engine optimization and AI-search discoverability.
+
+Include relevant semantic HTML, metadata, canonical URLs, XML sitemaps, robots.txt, structured data,
+Open Graph previews, descriptive URLs, internal linking, and appropriate multilingual support.
+
+Create well-structured, authoritative, factual content that search engines and AI-powered discovery
+systems can understand.
+
+Do not use keyword stuffing, hidden content, or other deceptive optimization techniques.
+
+  15. Security, Privacy and Compliance
+Evaluate the business and website from the perspective of cybersecurity, privacy, legal, and governance
+professionals.
+
+Consider applicable requirements for personal information protection, consent, cookies,
+authentication, payments, data retention, audit logs, permissions, and secure integrations.
+
+Prevent common vulnerabilities, including injection attacks, XSS, CSRF, broken access control,
+insecure file uploads, and unauthorized data exposure.
+
+Identify requirements that need professional legal or regulatory verification rather than inventing
+compliance guarantees.
+
+Do not perform destructive database operations or irreversible production changes without appropriate
+authorization.
+
+  16. Establish a Complete Quality Assurance Process
+
+Test the website from every relevant persona's perspective.
+
+Perform functional testing, visual testing, responsive testing, accessibility testing, security testing,
+integration testing, performance testing, cross-browser testing, and end-to-end user journey testing.
+
+Cover both successful and unsuccessful scenarios.
+
+Verify:
+
+Every page
+
+Every link
+
+Every button
+
+Every form
+
+Every navigation path
+
+Every relevant permission
+
+Every integration
+
+Every supported screen size
+
+Every important business workflow
+
+Use actual browser rendering and screenshots wherever possible.
+
+Do not assume the implementation works simply because the code compiles.
+
+Identify defects, fix them, retest, and repeat.
+  17. Conduct Multiple Independent Expert Reviews
+
+After implementation, review the entire website separately as:
+
+A CEO evaluating business value.
+
+A customer evaluating trust and usability.
+
+An investor evaluating business credibility.
+
+A designer evaluating visual excellence.
+
+A sales expert evaluating conversion potential.
+
+A psychologist evaluating the user experience.
+
+A software architect evaluating scalability.
+
+A cybersecurity expert evaluating risks.
+
+An accessibility expert evaluating inclusivity.
+
+A QA engineer attempting to break the platform.
+
+A competitor evaluating weaknesses.
+
+A first-time non-technical visitor evaluating clarity.
+
+Challenge your own decisions.
+
+Identify every possible weakness, inconsistency, missing feature, unnecessary complexity, and
+improvement opportunity.
+
+Implement meaningful improvements and conduct another review.
+
+Do not settle for the first acceptable result.
+
+  18. Execution Instructions
+
+Take complete ownership of this project from A to Z.
+
+Follow this execution sequence:
+
+Business Discovery → Research → Persona Analysis → Business Strategy → Information Architecture
+→ Design System → Content Strategy → UI/UX Design → Architecture → Development → Integration
+→ Testing → Expert Review → Optimization → Deployment Readiness
+
+Do not stop at planning, recommendations, mockups, or conceptual designs.
+
+Actually implement the complete website using the available development tools.
+Make reasonable, reversible decisions independently. Ask questions only when essential business
+information is unavailable or an action requires explicit authorization.
+
+Do not remove existing working features unnecessarily.
+
+Maintain a record of implementation progress, discovered issues, completed tests, assumptions,
+limitations, and unresolved dependencies.
+
+  19. Final Acceptance Criteria
+
+The website is considered complete only when:
+
+Every relevant business requirement is addressed.
+
+Every relevant stakeholder journey is supported.
+
+The brand identity is distinctive and consistent.
+
+The website is visually exceptional.
+
+The content is clear and persuasive.
+
+All implemented features are functional.
+
+Mobile and desktop experiences are excellent.
+
+Security and privacy controls are implemented.
+
+Critical user journeys are tested.
+
+Accessibility and performance are measured.
+
+No known critical defects remain.
+
+The codebase is maintainable and scalable.
+
+The platform is ready for its intended production environment.
+
+Provide a final report containing completed features, test results, actual performance metrics,
+outstanding limitations, deployment status, and recommended future improvements.
+
+Never claim that a requirement is complete if it has not been implemented or verified.
+
+FINAL MISSION
+
+Do not build just another website.
+
+Build the digital identity of this business.
+Build an experience that customers remember, competitors respect, employees appreciate, partners
+trust, and investors recognize as credible.
+
+Make every pixel intentional.
+Make every interaction meaningful.
+Make every feature useful.
+Make every customer journey effortless.
+Make every technical decision sustainable.
+
+Think from every perspective. Challenge every assumption. Eliminate unnecessary complexity.
+Continuously improve every detail.
+
+Aim for international design excellence, exceptional engineering quality, outstanding customer
+experience, and measurable business impact.
+
+Start by analyzing everything available in the existing project, then execute the complete
+transformation from A to Z.THINKINNOV-NEXGEN
+
+MASTER PROMPT — Complete World-Class Website Transformation
+
+   1. Your Mission
+
+Transform the existing ThinkInnov-NexGen website into an exceptional, internationally competitive
+enterprise digital experience.
+
+Existing website:
+https://www.nexware-global.com/thinkinnov-nexgen/
+
+Do not simply redesign the existing pages.
+
+Completely rethink the company's digital positioning, brand experience, information architecture,
+customer journeys, content, visual storytelling, business conversion strategy and technical
+implementation.
+
+Build a website that can confidently represent ThinkInnov-NexGen in front of Japanese multinational
+corporations, global manufacturing companies, automotive leaders, aerospace companies, Siemens
+executives, enterprise technology decision-makers and international business partners.
+
+The website must communicate engineering excellence, innovation, reliability, intelligence, technical
+capability and long-term partnership.
+
+The final website should make visitors think:
+
+"This is a company we can trust with the future of our engineering and manufacturing operations."
+
+   2. Operate as an Entire World-Class Expert Team
+Do not work merely as a website developer.
+
+Simultaneously assume the responsibilities of:
+
+Business and Leadership
+
+Chief Executive Officer
+
+Chief Technology Officer
+
+Chief Marketing Officer
+
+Chief Digital Officer
+
+Global business strategist
+
+Japanese market business consultant
+
+Enterprise sales director
+
+Corporate branding strategist
+
+Business development director
+
+Engineering and Industry
+
+Siemens solutions specialist
+
+PLM enterprise architect
+
+Digital manufacturing consultant
+
+Automotive engineering expert
+
+Aerospace engineering expert
+
+Industrial automation specialist
+
+CAD/CAM/CAE specialist
+
+Digital twin architect
+
+Industry 4.0 consultant
+
+Manufacturing operations expert
+
+Enterprise integration architect
+
+Design and Customer Experience
+
+Award-winning creative director
+Senior UI/UX architect
+
+Japanese corporate design specialist
+
+Human psychology specialist
+
+Behavioural science researcher
+
+Customer experience strategist
+
+Enterprise conversion specialist
+
+Professional motion designer
+
+3D visualization specialist
+
+Bilingual corporate copywriter
+
+Engineering and Governance
+
+Senior frontend architect
+
+Senior backend architect
+
+Cybersecurity specialist
+
+SEO and AI-search specialist
+
+Accessibility specialist
+
+Performance engineer
+
+Quality assurance lead
+
+DevOps engineer
+
+Legal and compliance specialist
+
+Every major decision must be evaluated from the relevant perspectives.
+
+Challenge your own decisions repeatedly. Do not settle for the first acceptable implementation.
+
+   3. Understand ThinkInnov-NexGen Completely
+
+Before changing anything, perform an extensive audit of the existing website and available project
+resources.
+
+Analyze:
+
+Company history and identity.
+Existing brand guidelines.
+
+ThinkInnov and NEXGEN relationship.
+
+Siemens partnership and its verified scope.
+
+Products and solutions.
+
+Engineering capabilities.
+
+Service delivery methodology.
+
+Industry expertise.
+
+Customer portfolio.
+
+Customer testimonials.
+
+Existing marketing materials.
+
+Leadership profiles.
+
+Japanese and international business presence.
+
+Contact information.
+
+Existing technology stack.
+
+Website source code.
+
+Existing images, videos and other digital assets.
+
+Sales and customer acquisition processes.
+
+Inspect every existing page, navigation item, link, image, animation, form and responsive layout.
+
+Create a verified content inventory before redesigning.
+
+Preserve accurate and valuable existing business information. Improve the way it is presented.
+
+Never invent customer relationships, certifications, partnership classifications, employee numbers,
+financial figures, project outcomes, performance metrics or business achievements.
+
+Do not mix the identities, credentials or capabilities of ThinkInnov, NEXGEN, Nexware and Siemens
+unless their relationship and attribution are explicitly verified.
+
+   4. Establish Premium Global Brand Positioning
+
+Position ThinkInnov-NexGen as a strategic engineering and digital transformation partner.
+The company should not appear to be simply:
+
+A software reseller.
+
+A staffing company.
+
+A conventional IT outsourcing business.
+
+A generic consulting company.
+
+A company displaying a catalogue of Siemens products.
+
+Instead, establish its verified capabilities in:
+
+Product innovation.
+
+Product Lifecycle Management.
+
+Digital engineering.
+
+Digital transformation.
+
+Connected manufacturing.
+
+Engineering knowledge management.
+
+Enterprise systems integration.
+
+Lifecycle optimization.
+
+Industrial software implementation.
+
+Long-term engineering and technology support.
+
+The website must communicate the business outcomes customers can achieve, not merely the
+software products they can purchase.
+
+Develop a distinctive brand narrative based on this principle:
+
+Connecting People, Products, Processes and Technology Across the Entire Product Lifecycle.
+
+Treat this as a proposed positioning statement. Refine it using verified business information and
+existing brand requirements.
+
+   5. Analyze Every Business Persona
+
+Create a comprehensive stakeholder and persona matrix before designing the website.
+
+For every persona, identify their responsibilities, pain points, fears, motivations, purchasing criteria,
+technical knowledge, information requirements and preferred next action.
+Enterprise Leadership
+
+CEO / Managing Director
+
+Wants business growth, competitive advantage, innovation, operational efficiency and reliable strategic
+partnerships.
+
+CFO
+
+Wants investment justification, total cost of ownership, measurable business value and reduced
+financial risk.
+
+CTO / CIO / CDO
+
+Wants modern architecture, enterprise integration, scalability, security and long-term technology
+readiness.
+
+Engineering and Manufacturing
+
+Engineering Director
+
+Wants faster product development, improved collaboration and reliable engineering processes.
+
+R&D Head
+
+Wants better innovation management, engineering knowledge reuse and shorter development cycles.
+
+Design Engineer
+
+Wants efficient CAD workflows, reliable design data, version control and fewer repetitive tasks.
+
+Manufacturing Director
+
+Wants connected production systems, fewer errors, improved production planning and operational
+visibility.
+
+Quality Manager
+
+Wants traceability, quality control, compliance support and effective issue resolution.
+
+PLM Administrator
+
+Wants reliable implementation, configuration, migration, integration, upgrades and technical support.
+
+IT Manager
+
+Wants security, controlled access, system stability and manageable infrastructure.
+
+Commercial Stakeholders
+Procurement Manager
+
+Wants vendor credibility, clear service scope, delivery reliability, procurement transparency and
+manageable risk.
+
+Project Manager
+
+Wants predictable execution, accountability, clear milestones and dependable support.
+
+Siemens Representative
+
+Wants professional brand representation, accurate product information and strong solution delivery
+capability.
+
+Business Partner
+
+Wants collaboration opportunities, complementary expertise and long-term commercial relationships.
+
+Japanese Enterprise Customers
+
+Evaluate the experience from the perspectives of Japanese executives, engineering managers,
+procurement teams, system integrators and manufacturing leaders.
+
+Pay special attention to:
+
+Reliability.
+
+Quality assurance.
+
+Technical accuracy.
+
+Long-term commitment.
+
+Clear communication.
+
+Professional Japanese language.
+
+Organizational transparency.
+
+Implementation responsibility.
+
+Post-implementation support.
+
+Information security.
+
+Risk reduction.
+
+Other Important Personas
+
+Startup founder.
+SME manufacturing business owner.
+
+Global enterprise customer.
+
+Existing customer requiring support.
+
+Non-technical visitor.
+
+Technical specialist.
+
+Potential employee.
+
+Experienced PLM engineer.
+
+Graduate engineering candidate.
+
+International business partner.
+
+Mobile visitor.
+
+Visitor with accessibility requirements.
+
+Every relevant persona must be able to find the right information and complete their intended journey
+without unnecessary friction.
+
+   6. Understand the Real Problems Customers Face
+
+Do not begin the website narrative by listing software products.
+
+Begin by understanding the challenges engineering and manufacturing businesses experience.
+
+Explore pain points such as:
+
+Engineering data scattered across disconnected systems.
+
+Employees working with outdated product information.
+
+Difficulty managing design revisions.
+
+Duplicate engineering effort.
+
+Loss of valuable engineering knowledge.
+
+Poor coordination between design and manufacturing.
+
+Slow product development.
+
+Manual approval processes.
+
+Lack of product traceability.
+Difficulty managing complex product requirements.
+
+Expensive engineering changes.
+
+Inconsistent quality management.
+
+Disconnected ERP, MES, CAD and PLM systems.
+
+Legacy technology limitations.
+
+Inefficient supplier collaboration.
+
+Difficulty scaling engineering operations.
+
+Complex digital transformation initiatives.
+
+High implementation risks.
+
+Difficulty adopting new technologies.
+
+For every relevant pain point, connect it to an actual ThinkInnov-NexGen capability, business outcome
+and customer action.
+
+Make visitors recognize their own challenges while exploring the website.
+
+The experience should naturally communicate:
+
+We understand your challenges. We have the relevant expertise. We can help you solve them. We can
+support you throughout the journey.
+
+   7. Create an Original World-Class Design Language
+
+Study the quality standards of:
+
+Siemens Digital Industries Software
+
+Dassault Systèmes
+
+PTC
+
+Autodesk
+
+Accenture
+
+IBM Consulting
+
+Hitachi
+
+Mitsubishi Electric
+Apple
+
+Stripe
+
+NVIDIA
+
+Leading international industrial technology companies
+
+Relevant award-winning enterprise websites
+
+Study their strengths, weaknesses, content structures, storytelling techniques, typography,
+interactions and enterprise conversion strategies.
+
+Do not copy their designs.
+
+Create an original ThinkInnov-NexGen visual identity combining:
+
+Japanese corporate precision.
+
+International enterprise credibility.
+
+Industrial engineering sophistication.
+
+Modern digital product design.
+
+Premium editorial typography.
+
+Cinematic visual storytelling.
+
+Clear and accessible information presentation.
+
+Preserve the official company logo, brand identity and authorized Siemens partner assets.
+
+Develop a comprehensive design system for:
+
+Typography and Japanese fonts.
+
+Brand colors.
+
+Spacing.
+
+Responsive layouts.
+
+Navigation.
+
+Buttons.
+
+Icons.
+
+Photography.
+Technical illustrations.
+
+Interactive diagrams.
+
+Data visualization.
+
+Animations.
+
+Forms.
+
+Component states.
+
+Use a balanced combination of clean, spacious light sections and carefully selected cinematic industrial
+sections.
+
+Avoid making the entire website dark merely to appear technologically advanced.
+
+Do not create a generic AI startup website.
+
+Avoid excessive gradients, glowing effects, floating cards, random geometric shapes, meaningless
+particles, repetitive layouts and unnecessary glassmorphism.
+
+Every pixel must contribute to clarity, credibility or visual excellence.
+
+   8. Create an Extraordinary Cinematic Homepage
+
+The homepage must function as a carefully crafted business presentation rather than a collection of
+unrelated sections.
+
+Design a continuous visual narrative from the beginning to the end.
+
+Section 01 — Hero: Engineering the Future
+
+Create an immediately impressive hero experience.
+
+Proposed headline:
+
+Engineering Innovation. Accelerating Transformation.
+
+Proposed supporting message:
+
+Connect engineering knowledge, product development and manufacturing through intelligent digital
+solutions.
+
+Primary call to action:
+
+Explore Our Solutions
+
+Secondary call to action:
+Talk to Our Experts
+
+Present the verified Siemens partnership professionally using approved brand assets.
+
+Create a cinematic industrial visual experience that could include:
+
+Precision-engineered components.
+
+Automotive product design.
+
+Aerospace engineering.
+
+Digital product models.
+
+Manufacturing environments.
+
+Connected engineering systems.
+
+Digital twin visualization.
+
+The imagery must look authentic, technically credible and sophisticated.
+
+Avoid generic AI-generated futuristic imagery, fake interfaces, random robots and meaningless digital
+effects.
+
+The hero must immediately answer:
+
+Who is ThinkInnov-NexGen? What does it do? Who does it help? Why should visitors continue exploring?
+
+Section 02 — The Engineering Challenge
+
+Visually explain what happens when product development, engineering data, manufacturing systems
+and people operate independently.
+
+Show disconnected processes, information loss, repeated work and delayed decisions.
+
+Then transition into the connected engineering ecosystem enabled by relevant ThinkInnov-NexGen
+solutions.
+
+Do not overwhelm visitors with technical terminology.
+
+Make the business problem understandable even to a non-technical executive.
+
+Section 03 — The Connected Product Lifecycle
+
+Create a signature interactive visualization explaining the complete product lifecycle:
+
+Idea → Requirements → Design → Engineering → Validation → Manufacturing → Quality → Service →
+Continuous Improvement
+Show how information flows between these stages.
+
+Demonstrate how PLM can provide a connected foundation for product information, collaboration and
+decision-making.
+
+Allow visitors to select each stage and understand:
+
+What happens at that stage.
+
+Common business challenges.
+
+Relevant capabilities.
+
+Applicable software products.
+
+Potential business benefits.
+
+Make this a memorable flagship interaction.
+
+Use accessible SVG, motion graphics or optimized 3D visualization depending on the technical
+requirements and performance.
+
+Provide an accessible static alternative.
+
+Section 04 — What We Do
+
+Present the company's core business capabilities through visually distinct sections.
+
+Include verified offerings relating to:
+
+PLM consulting and implementation.
+
+Digital transformation.
+
+Digital engineering.
+
+Manufacturing solutions.
+
+Enterprise integration.
+
+Low-code application development.
+
+Engineering process optimization.
+
+Technical support and lifecycle services.
+
+Each capability must explain the customer's problem, the company's approach and the expected
+business value.
+
+Section 05 — Siemens Product Ecosystem
+Create a beautiful, informative presentation of the verified Siemens product portfolio.
+
+Include:
+
+Siemens NX
+
+Advanced product design, engineering and manufacturing capabilities.
+
+Solid Edge
+
+3D mechanical design and related engineering workflows.
+
+Capital
+
+Electrical and electronic systems engineering.
+
+Teamcenter
+
+Product information and lifecycle management.
+
+Tecnomatix
+
+Digital manufacturing and production process planning.
+
+Mendix
+
+Low-code enterprise application development.
+
+Validate all product descriptions and available offerings against current authorized information.
+
+Explain how the products complement each other across the product lifecycle.
+
+Visitors must be able to explore products individually or discover relevant products based on their
+business requirements.
+
+Do not misrepresent Siemens intellectual property, product availability, partnership status or licensing
+arrangements.
+
+Section 06 — Solutions That Solve Real Problems
+
+Present the existing solution portfolio through customer-focused use cases.
+
+Include:
+
+Design Data Management.
+
+3D Shape Search.
+
+Quality Management.
+Quality Issue Management.
+
+Design Verification Management.
+
+Engineering Change Management.
+
+Requirements Management.
+
+Active Integration.
+
+Digital Factory and Digital Enterprise.
+
+For each solution, communicate:
+
+Business challenge → Solution approach → Relevant technology → Business benefits → Next action.
+
+Use engineering diagrams, realistic workflow examples and technically accurate illustrations.
+
+Section 07 — Industry Expertise
+
+Create a premium industry experience allowing visitors to explore relevant solutions for their sector.
+
+Potential industries include:
+
+Automotive.
+
+Aerospace and defence.
+
+Industrial machinery.
+
+Electrical and electronics.
+
+Energy.
+
+Electric vehicles.
+
+General manufacturing.
+
+Other verified industry segments.
+
+Only publish industries supported by actual company capabilities.
+
+Each industry should have its own narrative, challenges, relevant products, solutions, services and
+verified customer evidence.
+
+Avoid using the same generic text for every industry.
+
+Section 08 — PLM for Every Business
+Clearly explain how PLM requirements differ depending on the organization's size, complexity and
+engineering maturity.
+
+Create distinct journeys for:
+
+Startups
+
+Establish organized engineering processes and scalable product information management.
+
+Small and Medium Businesses
+
+Improve collaboration, reduce operational complexity and support business expansion.
+
+Large Enterprises
+
+Connect complex engineering ecosystems, manage enterprise-wide information and support large-
+scale transformation.
+
+Provide a helpful solution discovery experience based on business needs rather than forcing visitors to
+understand software products first.
+
+Section 09 — Your Transformation Journey
+
+Show how ThinkInnov-NexGen supports customers before, during and after implementation.
+
+Create a clear interactive roadmap:
+
+Discover → Assess → Design → Validate → Implement → Integrate → Train → Support → Optimize
+
+Explain the actual delivery methodology using verified service capabilities.
+
+Make the process transparent enough to build confidence among procurement teams, executives and
+technical stakeholders.
+
+Section 10 — Trusted by Industry Leaders
+
+Present existing approved customer logos and testimonials through a clean, credible enterprise
+showcase.
+
+Verify the right to display each customer logo and testimonial and the correct company attribution.
+
+Do not use fictional testimonials or unverified claims.
+
+Where approved evidence is available, create detailed customer success stories covering:
+
+Customer background.
+
+Business challenges.
+
+Solution approach.
+Technologies used.
+
+Implementation journey.
+
+Business outcomes.
+
+Lessons learned.
+
+Only publish measurable results when supported by approved evidence.
+
+Section 11 — Why ThinkInnov-NexGen
+
+Present genuine differentiators such as verified engineering expertise, technology capabilities, industry
+knowledge, consulting approach, implementation experience, international collaboration and ongoing
+support.
+
+Do not rely on empty marketing phrases such as world-leading, number one, best-in-class or
+guaranteed results.
+
+Demonstrate credibility through evidence and clear explanations.
+
+Section 12 — Japan and Global Collaboration
+
+Communicate the verified international capabilities and Japanese business presence.
+
+Create a sophisticated visual representation of relevant locations and collaboration between teams.
+
+Use accurate office information and approved company relationship details.
+
+Communicate the ability to work across different cultures, business environments and engineering
+requirements where supported.
+
+Section 13 — Knowledge and Insights
+
+Create an industry knowledge section containing useful educational resources.
+
+Potential topics:
+
+What is PLM?
+
+PLM for manufacturing companies.
+
+Digital twin fundamentals.
+
+Connecting ERP, MES and PLM.
+
+Engineering change management.
+
+Digital manufacturing.
+Siemens product selection.
+
+Moving from legacy engineering systems.
+
+Building a digital thread.
+
+Low-code applications for manufacturing.
+
+Make complex engineering topics understandable to business leaders and useful to technical
+professionals.
+
+Section 14 — Final Conversion Experience
+
+End with a powerful, elegant invitation.
+
+Proposed headline:
+
+Let's Build the Future of Your Engineering.
+
+Supporting message:
+
+Discover how the right engineering technology and digital strategy can help transform your product
+development and manufacturing operations.
+
+Provide clear actions:
+
+Discuss Your Business Challenges.
+
+Request a Product Demonstration.
+
+Speak to a PLM Specialist.
+
+Contact Our Japan Team.
+
+Make the final experience feel like the beginning of a professional business relationship.
+
+   9. Build Complete Website Architecture
+
+Do not stop after completing the homepage.
+
+Create a complete, connected website with dedicated pages where justified.
+
+Company
+
+About Us.
+
+Company Overview.
+
+Vision, Mission and Values.
+Leadership.
+
+Behind the Brand.
+
+Company History.
+
+Global Presence.
+
+Partnerships.
+
+Gallery and Media.
+
+Products
+
+Product Overview.
+
+Siemens NX.
+
+Solid Edge.
+
+Capital.
+
+Teamcenter.
+
+Tecnomatix.
+
+Mendix.
+
+Solutions
+
+Solutions Overview.
+
+Design Data Management.
+
+3D Shape Search.
+
+Quality Management.
+
+Quality Issue Management.
+
+Design Verification Management.
+
+Engineering Change Management.
+
+Requirements Management.
+
+Active Integration.
+
+Digital Factory and Enterprise.
+
+Services
+Strategic Business Consulting.
+
+Business Process Assessment.
+
+Solution Evaluation.
+
+Solution Mapping.
+
+Proof of Concept.
+
+Solution Architecture.
+
+Technical Architecture.
+
+Implementation.
+
+Customization and Configuration.
+
+Systems Integration.
+
+Performance Optimization.
+
+Training and Adoption.
+
+Technical Support.
+
+Lifecycle Support.
+
+Digital Transformation
+
+Digital Transformation Overview.
+
+Connected Product Lifecycle.
+
+Digital Thread.
+
+Digital Twin.
+
+Digital Manufacturing.
+
+Enterprise Integration.
+
+Engineering Process Transformation.
+
+Publish only the pages and capabilities supported by verified business information.
+
+Industries
+
+Create dedicated pages for each approved industry segment.
+
+PLM for Everyone
+PLM Overview.
+
+PLM for Startups.
+
+PLM for SMEs.
+
+PLM for Enterprises.
+
+PLM Benefits.
+
+New Product Development Process.
+
+Deployment Options.
+
+Customer Success
+
+Customer Portfolio.
+
+Testimonials.
+
+Approved Case Studies.
+
+Resources
+
+Articles.
+
+Technical Insights.
+
+Product Guides.
+
+Frequently Asked Questions.
+
+Approved Downloadable Resources.
+
+Careers
+
+Career Opportunities.
+
+Company Culture.
+
+Verified Job Listings.
+
+Candidate Application Experience.
+
+Contact
+
+Business Inquiries.
+
+Product Demonstration Requests.
+
+Technical Consultation.
+Partnership Inquiries.
+
+Customer Support.
+
+Japan Office and other verified locations.
+
+Governance
+
+Privacy Policy.
+
+Terms of Use.
+
+Cookie Preferences where required.
+
+Accessibility Information.
+
+Sitemap.
+
+Custom 404 Page.
+
+Create an information architecture that makes large amounts of enterprise content easy to navigate.
+
+Every page must have a distinct purpose.
+
+  10. Build Intelligent Product and Solution Discovery
+
+Create an advanced solution discovery experience that allows visitors to begin with their actual
+business challenges.
+
+For example:
+
+A visitor selects their industry, company size and current engineering challenge.
+
+The website then presents relevant verified products, solutions and services.
+
+Example journey:
+
+Automotive → Enterprise → Engineering Change Management → Relevant Teamcenter Capabilities →
+Implementation Services → Request Consultation.
+
+Another example:
+
+Manufacturing Startup → Managing Design Data → Relevant PLM or CAD Solutions → Speak to an
+Expert.
+
+Support discovery through:
+
+Industry.
+
+Business challenge.
+Company size.
+
+Engineering department.
+
+Product lifecycle stage.
+
+Siemens product.
+
+Deployment preference.
+
+Digital transformation maturity.
+
+Implement this using reliable, maintainable content relationships and business rules.
+
+Do not generate unsupported recommendations.
+
+The visitor should not need to know which Siemens product they require before contacting ThinkInnov-
+NexGen.
+
+  11. Create Professional Product Detail Pages
+
+Every Siemens product page should explain:
+
+What the product is.
+
+Who it is intended for.
+
+What business challenges it addresses.
+
+Its verified key capabilities.
+
+How it fits into engineering workflows.
+
+How it relates to other enterprise systems.
+
+Relevant industry applications.
+
+Potential business benefits.
+
+Available ThinkInnov-NexGen services.
+
+Relevant resources.
+
+Frequently asked questions.
+
+Product demonstration and consultation options.
+
+Provide layered content suitable for both executive decision-makers and technical specialists.
+
+Start with a simple business explanation. Allow technical visitors to explore more detailed information.
+Use official product imagery only when authorized.
+
+Do not reproduce proprietary Siemens material without permission.
+
+  12. Build a Japanese-First International Experience
+
+The website must support professional Japanese and international English experiences.
+
+Do not simply translate English sentences word for word.
+
+Create culturally appropriate content for Japanese business audiences.
+
+Japanese copy must be:
+
+Natural.
+
+Professional.
+
+Respectful.
+
+Technically accurate.
+
+Appropriate for enterprise communication.
+
+Easy to understand.
+
+Consistent with Japanese corporate expectations.
+
+Use professional Japanese business terminology and appropriate keigo where necessary.
+
+Ensure the Japanese experience receives the same design quality as the English experience.
+
+Implement:
+
+Persistent language preferences.
+
+Language-specific URLs.
+
+Correct hreflang configuration.
+
+Localized page titles and metadata.
+
+Japanese typography.
+
+Appropriate Japanese line-breaking rules.
+
+Localized contact forms.
+
+Language-specific validation messages.
+
+Localized navigation.
+Complete translation coverage.
+
+When users switch languages, preserve the current page wherever possible.
+
+There must be no untranslated buttons, broken layouts, mixed-language placeholders or awkward
+Japanese typography.
+
+  13. Build a Premium Enterprise Navigation System
+
+Create an elegant and intuitive mega menu that handles the full enterprise website architecture.
+
+Visitors should be able to navigate by:
+
+Products.
+
+Solutions.
+
+Industries.
+
+Services.
+
+Business needs.
+
+Company information.
+
+Resources.
+
+Include intelligent cross-links between related content.
+
+Provide:
+
+Clear desktop mega menus.
+
+Excellent mobile navigation.
+
+Keyboard accessibility.
+
+Search functionality.
+
+Breadcrumb navigation on detailed pages.
+
+Contextual next steps.
+
+A clear language switcher.
+
+Prominent contact options.
+
+Avoid overcrowding the header with too many competing elements.
+
+Enterprise content can be complex. The navigation must make it feel simple.
+  14. Apply Ethical Psychology and Enterprise Sales Strategy
+
+Use established design and behavioural principles to increase understanding, trust and qualified
+business inquiries.
+
+Apply:
+
+Visual hierarchy.
+
+Cognitive ease.
+
+Progressive disclosure.
+
+Information scent.
+
+Authentic social proof.
+
+Recognition over recall.
+
+Reduction of perceived risk.
+
+Clear value communication.
+
+Evidence-based trust.
+
+Reduced decision friction.
+
+Consistent interaction patterns.
+
+Customer-focused storytelling.
+
+Design the complete journey:
+
+Attention → Recognition of Business Challenges → Curiosity → Understanding → Confidence → Trust
+→ Consultation → Business Relationship
+
+Understand that enterprise technology decisions are rarely impulsive.
+
+Different stakeholders need different information before approving a major investment.
+
+Support evaluation and internal decision-making through clear product information, implementation
+methodology, approved case studies, technical resources and consultation options.
+
+Do not use manipulative countdowns, fake scarcity, exaggerated results or misleading claims.
+
+  15. Make Visual Storytelling Exceptional
+
+Create meaningful visuals explaining engineering concepts that are otherwise difficult to understand.
+
+Potential signature experiences:
+Interactive product lifecycle.
+
+Connected digital thread.
+
+Engineering data flowing between departments.
+
+Exploded engineering component diagrams.
+
+CAD-to-manufacturing workflows.
+
+Digital factory visualization.
+
+Product revision history.
+
+Engineering change impact visualization.
+
+Connected Siemens product ecosystem.
+
+Before-and-after transformation workflows.
+
+ERP, MES and PLM integration diagrams.
+
+Use tasteful scroll-based storytelling, subtle parallax, progressive animation, interactive technical
+illustrations and premium transitions.
+
+Make the website feel like an interactive engineering exhibition.
+
+However, preserve usability, accessibility and loading performance.
+
+Do not force visitors to watch animations before accessing important content.
+
+Every animation must communicate something useful or improve the experience.
+
+  16. Create a High-Quality Lead Generation System
+
+Turn the website into a professional enterprise sales channel.
+
+Implement relevant inquiry types:
+
+General business inquiry.
+
+Request product demonstration.
+
+PLM consultation.
+
+Digital transformation consultation.
+
+Implementation inquiry.
+
+Technical support.
+Partnership opportunity.
+
+Career application.
+
+Use context-aware forms.
+
+If a visitor is exploring Teamcenter, carry that product context into their inquiry.
+
+If a visitor is exploring an automotive solution, carry relevant industry context.
+
+Collect only the information necessary to handle the inquiry.
+
+Implement:
+
+Accessible form validation.
+
+Spam protection.
+
+Secure server-side processing.
+
+Confirmation messages.
+
+Reliable inquiry routing.
+
+Error recovery.
+
+Privacy consent where required.
+
+Approved CRM integration.
+
+Source and campaign attribution.
+
+Appropriate email notifications.
+
+Never display a successful inquiry confirmation unless the submission has actually been accepted.
+
+If an existing approved CRM or internal business platform is available, investigate appropriate
+integration.
+
+Do not expose internal business systems directly to the public internet.
+
+  17. Build a Professional Content Management System
+
+Where justified by the business requirements, provide authorized administrators with the ability to
+manage website content.
+
+Support management of:
+
+Products.
+Services.
+
+Solutions.
+
+Industries.
+
+News.
+
+Articles.
+
+Customer case studies.
+
+Testimonials.
+
+Career opportunities.
+
+Media gallery.
+
+Contact information.
+
+English and Japanese translations.
+
+SEO metadata.
+
+Implement appropriate permissions, preview functionality, publishing workflows and audit history.
+
+Choose the simplest maintainable architecture that satisfies the actual operational requirements.
+
+Avoid unnecessary enterprise complexity when a simpler existing content management solution is
+sufficient.
+
+  18. Build for Every Device
+
+The website must be exceptional across:
+
+Small smartphones.
+
+Large smartphones.
+
+Foldable smartphones.
+
+Tablets.
+
+Laptops.
+
+Desktop computers.
+
+Ultrawide monitors.
+
+Large presentation displays.
+Test at representative widths including 320, 375, 390, 768, 1024, 1440, 1920 and 2560 pixels.
+
+Do not simply shrink desktop layouts for mobile.
+
+Create device-appropriate navigation, typography, spacing, imagery and interaction patterns.
+
+Ensure the experience is excellent when a Japanese executive opens the website on a mobile phone,
+when an engineer explores it on a workstation and when a salesperson presents it on a large meeting
+room display.
+
+Eliminate all layout problems, text clipping, horizontal overflow, awkward spacing and inaccessible
+interactions.
+
+  19. Engineer Exceptional Performance
+
+The website must feel fast and responsive despite its premium visual design.
+
+Target:
+
+Lighthouse Performance: 95+
+
+Lighthouse Accessibility: 95+
+
+Lighthouse Best Practices: 95+
+
+Lighthouse SEO: 95+
+
+LCP: 2.5 seconds or less.
+
+INP: 200 milliseconds or less.
+
+CLS: 0.1 or less.
+
+Use:
+
+Responsive image optimization.
+
+Modern image formats.
+
+Efficient asset loading.
+
+Lazy loading where appropriate.
+
+Optimized Japanese font loading.
+
+Code splitting.
+
+Efficient caching.
+
+Minimal unnecessary JavaScript.
+GPU-efficient animations.
+
+Progressive enhancement.
+
+Reduced-motion support.
+
+Test real performance rather than claiming unverified optimization scores.
+
+Prioritize speed and usability over decorative visual effects.
+
+  20. Dominate Relevant Search and AI Discoverability
+
+Implement comprehensive technical SEO and content discoverability for both Japanese and English
+markets.
+
+Research relevant search intent around:
+
+PLM solutions Japan.
+
+Siemens PLM consulting.
+
+Teamcenter implementation Japan.
+
+Digital manufacturing solutions.
+
+Siemens NX solutions.
+
+Engineering digital transformation.
+
+Product lifecycle management.
+
+Mendix development Japan.
+
+PLM導入支援.
+
+製品ライフサイクル管理.
+
+製造業DX.
+
+Teamcenter導入.
+
+デジタルマニュファクチャリング.
+
+Validate keyword relevance and business offerings before using them.
+
+Implement:
+
+Semantic HTML.
+
+Page-specific metadata.
+Structured data.
+
+Canonical URLs.
+
+XML sitemap.
+
+Robots configuration.
+
+Open Graph metadata.
+
+Internal linking.
+
+Multilingual SEO.
+
+Descriptive URLs.
+
+Image alternative text.
+
+Breadcrumb structured data.
+
+Redirects for changed URLs.
+
+Indexation controls.
+
+Create factual, authoritative content that traditional search engines and AI-powered search systems
+can understand.
+
+Do not use keyword stuffing or misleading search optimization techniques.
+
+  21. Security, Legal and Enterprise Governance
+
+Treat this as an enterprise corporate website.
+
+Implement appropriate security controls covering:
+
+Input validation.
+
+Cross-site scripting prevention.
+
+CSRF protection where applicable.
+
+Secure authentication.
+
+Authorization.
+
+Rate limiting.
+
+Secure file uploads.
+
+Secret management.
+Secure HTTP headers.
+
+Dependency security.
+
+Logging.
+
+Backup and recovery.
+
+Personal data protection.
+
+Evaluate applicable Japanese APPI requirements and other relevant privacy regulations.
+
+Pay particular attention to customer information, inquiry data, job applications and international data
+handling.
+
+Review all Siemens trademarks, product logos, partnership references, customer logos and
+testimonials for correct usage and authorization.
+
+Never invent regulatory compliance or certification claims.
+
+Flag matters that require approval from legal, management or brand owners.
+
+Do not perform irreversible production changes without appropriate authorization.
+
+  22. Complete A-to-Z Quality Assurance
+
+Perform actual browser-based testing.
+
+Test all pages, forms, navigation systems, language versions and user journeys.
+
+Cover:
+
+Functional testing.
+
+Responsive testing.
+
+Visual regression testing.
+
+Cross-browser testing.
+
+Japanese language testing.
+
+Accessibility testing.
+
+Performance testing.
+
+Security testing.
+
+Integration testing.
+SEO validation.
+
+Error handling.
+
+End-to-end customer journey testing.
+
+Test Chrome, Safari, Edge and Firefox where available.
+
+Capture screenshots of major pages at representative desktop and mobile resolutions.
+
+Inspect every screenshot for design inconsistencies, alignment issues, broken layouts, poor
+typography, unnecessary visual clutter and incorrect asset usage.
+
+Fix issues and repeat the tests.
+
+Do not claim that functionality works merely because the source code compiles.
+
+  23. Conduct a Virtual Executive Review
+
+After implementing the website, independently review it from each relevant stakeholder's perspective.
+
+CEO Review
+
+Does the website communicate a compelling business identity and establish corporate credibility?
+
+Japanese Customer Review
+
+Would a Japanese manufacturing executive find the company trustworthy and professionally
+represented?
+
+Siemens Representative Review
+
+Are Siemens products, trademarks and partnership details represented accurately and professionally?
+
+Engineering Director Review
+
+Are the engineering solutions meaningful, technically accurate and relevant?
+
+CFO Review
+
+Can the visitor understand the potential business value and evaluate an investment discussion?
+
+Procurement Review
+
+Is there enough information to assess the company as a potential vendor?
+
+Sales Director Review
+
+Does the website generate relevant, actionable business inquiries?
+Customer Review
+
+Is it easy to understand the offerings, find relevant information and contact the right team?
+
+Design Director Review
+
+Does the website demonstrate distinctive, internationally competitive visual quality?
+
+Technical Architect Review
+
+Is the implementation secure, maintainable and scalable?
+
+Quality Assurance Review
+
+Are there broken flows, missing pages, inconsistent components or incomplete functionality?
+
+Competitor Review
+
+Where does the website remain weaker than competing enterprise technology companies?
+
+Record identified weaknesses and improve the implementation.
+
+Repeat the review until no known critical issues remain and all acceptance criteria have been evaluated.
+
+  24. Execution Strategy
+
+Take complete ownership of the project.
+
+Execute in the following sequence:
+
+Existing website audit.
+
+Business and brand research.
+
+Competitor analysis.
+
+Verified content inventory.
+
+Stakeholder and persona analysis.
+
+Customer journey mapping.
+
+Information architecture.
+
+Brand positioning.
+
+Design system creation.
+
+English and Japanese content development.
+
+Homepage implementation.
+Internal page implementation.
+
+Interactive engineering visualizations.
+
+Forms and integration development.
+
+Responsive optimization.
+
+Security implementation.
+
+SEO optimization.
+
+Accessibility implementation.
+
+Browser-based quality assurance.
+
+Stakeholder review.
+
+Defect resolution.
+
+Final deployment-readiness validation.
+
+Do not stop at planning, mockups or design recommendations.
+
+Actually implement the complete website using available development tools.
+
+Inspect the existing project before selecting technologies. Preserve working functionality and
+infrastructure where appropriate.
+
+Use a modern, maintainable, production-ready architecture.
+
+Do not introduce unnecessary frameworks, dependencies, subscriptions or external services.
+
+Maintain the existing website until the replacement is verified and approved for deployment.
+
+Keep a record of assumptions, changes, dependencies, discovered defects and completed tests.
+
+  25. Non-Negotiable Requirements
+
+No generic AI-generated website appearance.
+
+No fake testimonials.
+
+No fabricated customer relationships.
+
+No incorrect Siemens partnership claims.
+
+No placeholder content in production.
+
+No unfinished pages.
+No broken links.
+
+No non-functional buttons.
+
+No fake contact form submissions.
+
+No broken Japanese translations.
+
+No inconsistent layouts.
+
+No unnecessary visual clutter.
+
+No inaccessible essential functionality.
+
+No unverified business claims.
+
+No exposed credentials.
+
+No unnecessary paid dependencies.
+
+No accidental loss of existing business content.
+
+No unsupported claims of successful testing.
+
+No unauthorized production deployment.
+
+Every important design and engineering decision must have a clear business justification.
+
+  26. Final Deliverables
+
+Deliver:
+
+Complete production-ready website source code.
+
+Fully responsive English website.
+
+Fully responsive Japanese website.
+
+Complete reusable design system.
+
+All approved business pages.
+
+Interactive engineering and lifecycle experiences.
+
+Product and solution discovery functionality.
+
+Functional business inquiry workflows.
+
+Appropriate content management functionality.
+
+Technical SEO implementation.
+Security controls.
+
+Browser testing results.
+
+Accessibility testing results.
+
+Actual performance measurements.
+
+Deployment instructions.
+
+Maintenance documentation.
+
+Verified content and asset inventory.
+
+Outstanding approval and dependency list.
+
+Provide a final implementation report clearly distinguishing:
+
+Implemented | Tested | Verified | Requires Business Approval | Requires External Integration | Not
+Implemented
+
+Never conceal limitations or claim completion without evidence.
+
+FINAL DIRECTIVE
+
+Do not create another corporate website.
+
+Create the digital representation of ThinkInnov-NexGen's engineering intelligence, technology
+expertise, business values and future ambitions.
+
+When a Japanese CEO opens the website, establish confidence.
+
+When an engineer explores it, demonstrate technical credibility.
+
+When a procurement manager evaluates it, communicate reliability.
+
+When a Siemens representative reviews it, demonstrate professional representation.
+
+When a potential customer discovers it, make the next step clear.
+
+When an employee shares it, make them proud of the company.
+
+When a competitor sees it, demonstrate a distinctive and credible market position.
+
+Make complex engineering simple to understand.
+
+Make technology visually extraordinary.
+
+Make every interaction purposeful.
+Make every page contribute to business value.
+
+Combine the precision of Japanese engineering, the sophistication of international enterprise design
+and the clarity of the world's best digital products.
+
+Do not settle for average.
+
+Do not merely improve the existing website.
+
+Transform ThinkInnov-NexGen into an exceptional global digital brand experience.
+
+Begin by thoroughly analyzing the existing website and codebase, then execute the complete
+transformation from A to Z.THINKINNOV-NEXGEN
+
+COMPLETE WEBSITE REINVENTION — AUTONOMOUS A-TO-Z EXECUTION
+
+   1. Primary Mission
+
+Transform the complete ThinkInnov-NexGen website into an internationally competitive, visually
+extraordinary, technically excellent and commercially effective enterprise website.
+
+Existing website:
+
+https://www.nexware-global.com/thinkinnov-nexgen/
+
+This is not a homepage redesign.
+
+This is a complete transformation of every page, every section, every interaction, every customer
+journey, every piece of content and every relevant technical component.
+
+ThinkInnov-NexGen must be positioned as a credible enterprise engineering, PLM and industrial digital
+transformation partner.
+
+The website must be suitable for presenting to Japanese multinational corporations, Siemens
+executives, automotive manufacturers, aerospace companies, industrial enterprises, engineering
+leaders and international business partners.
+
+Build an experience that combines:
+
+Siemens-level industrial credibility.
+
+Apple-level visual clarity.
+
+Stripe-level digital craftsmanship.
+
+Japanese corporate precision.
+
+Enterprise-grade engineering.
+Exceptional customer experience.
+
+Use these companies as quality benchmarks, not design templates.
+
+      2. Assume Every Relevant Professional Persona
+
+Operate as an entire multidisciplinary organization rather than an individual developer.
+
+Executive and Business Team
+
+CEO
+
+CTO
+
+CIO
+
+CFO
+
+CMO
+
+Chief Digital Officer
+
+Business strategist
+
+Enterprise sales director
+
+Japanese market specialist
+
+Corporate governance director
+
+Business development manager
+
+Customer success director
+
+Engineering and Industry Team
+
+Siemens solutions specialist
+
+PLM architect
+
+CAD/CAM/CAE engineer
+
+Mechanical design engineer
+
+Digital twin architect
+
+Manufacturing consultant
+
+Industrial automation specialist
+
+Automotive engineer
+Aerospace engineer
+
+Product development manager
+
+Quality management specialist
+
+Enterprise integration architect
+
+Digital transformation consultant
+
+Creative and Experience Team
+
+Award-winning creative director
+
+Brand strategist
+
+Senior UI/UX designer
+
+Interaction designer
+
+Motion graphics designer
+
+Industrial visualization expert
+
+Japanese graphic designer
+
+Behavioural psychology specialist
+
+Customer journey strategist
+
+Conversion optimization expert
+
+English corporate copywriter
+
+Native-level Japanese business copywriter
+
+Technology and Governance Team
+
+Senior software architect
+
+Full-stack engineer
+
+Frontend performance specialist
+
+Backend engineer
+
+Database architect
+
+Cybersecurity engineer
+
+Accessibility expert
+SEO specialist
+
+AI-search discoverability specialist
+
+Legal and privacy specialist
+
+Quality assurance engineer
+
+DevOps engineer
+
+Evaluate every major decision from the relevant perspectives.
+
+Do not merely simulate professional titles. Apply their actual responsibilities, review criteria and quality
+standards.
+
+    3. Mandatory Complete Existing Website Audit
+
+Before implementing anything, thoroughly inspect the current live website and its source code.
+
+Crawl every route and follow every navigation link, submenu, button, anchor, footer link and relevant
+internal destination.
+
+Inspect both the raw HTML and JavaScript-rendered browser experience.
+
+Review desktop, mobile, tablet, Japanese and English versions.
+
+Existing routes that must be audited
+
+Homepage
+
+/
+
+About Us
+
+page.html?page=about
+
+PLM For Everyone
+
+page.html?page=plm
+
+Services
+
+page.html?page=services
+
+Digital Transformation
+
+page.html?page=digital-transformation
+
+Products
+page.html?page=products
+
+Solutions
+
+page.html?page=solutions
+
+Industries
+
+page.html?page=industries
+
+Behind the Brand
+
+page.html?page=behind-the-brand
+
+Careers
+
+page.html?page=careers
+
+Contact Us
+
+Existing homepage contact section and related navigation.
+
+Also discover every existing submenu, hidden route, dynamically rendered section, product detail,
+downloadable resource and asset.
+
+Known technical findings requiring investigation
+
+The public HTML extraction of the nine internal pages currently exposes primarily the navigation and
+footer.
+
+Investigate:
+
+Client-side rendering dependencies.
+
+Dynamic page-content loading.
+
+JavaScript execution errors.
+
+Missing server-rendered content.
+
+Page-specific metadata.
+
+Deep-link functionality.
+
+Search engine crawlability.
+
+Browser refresh behaviour.
+
+Direct URL access.
+Loading and error handling.
+
+Do not assume that a route works simply because it returns HTTP 200.
+
+Audit every aspect
+
+For each page, document:
+
+Existing purpose.
+
+Existing content.
+
+Business value.
+
+Intended audience.
+
+Visual weaknesses.
+
+Content weaknesses.
+
+Navigation problems.
+
+Functional defects.
+
+Responsive layout problems.
+
+Accessibility issues.
+
+SEO issues.
+
+Performance issues.
+
+Translation problems.
+
+Security concerns.
+
+Missing customer journeys.
+
+Recommended improvements.
+
+Create a complete route and content inventory.
+
+Preserve all valuable existing business information and authorized assets.
+
+Do not lose content during the redesign.
+
+   4. Understand the Company's Complete Business Ecosystem
+
+Understand the relationship between ThinkInnov, NEXGEN, Nexware and Siemens using verified
+company documentation.
+Identify:
+
+Legal company identity.
+
+Brand identity.
+
+Company history.
+
+Founders and leadership.
+
+Corporate mission.
+
+Siemens partnership scope.
+
+Product portfolio.
+
+Engineering capabilities.
+
+Consulting services.
+
+Implementation capabilities.
+
+Post-implementation support.
+
+Geographic operations.
+
+Japanese business presence.
+
+Customer relationships.
+
+Industry experience.
+
+Revenue-generating services.
+
+Customer acquisition processes.
+
+Recruitment requirements.
+
+Create a business capability map.
+
+Determine how products, services, industries, solutions, customer challenges and delivery
+methodologies connect.
+
+The new website must communicate these connections naturally.
+
+Never combine different companies' credentials, history, clients or achievements without verified
+authorization.
+
+   5. Establish the New Brand Positioning
+The company must not appear to be merely a catalogue of Siemens software.
+
+Communicate ThinkInnov-NexGen as a strategic partner helping engineering and manufacturing
+organizations connect their product development processes, information, technology and people.
+
+Proposed central brand narrative:
+
+Connecting Engineering. Transforming Industry.
+
+Proposed supporting narrative:
+
+From the first idea to the complete product lifecycle, we help businesses connect engineering
+knowledge, accelerate innovation and transform manufacturing through intelligent digital solutions.
+
+Refine these proposed statements using the company's verified capabilities and approved brand
+guidelines.
+
+The website should establish five core perceptions:
+
+Technical excellence.
+
+Business understanding.
+
+Engineering intelligence.
+
+Delivery reliability.
+
+Long-term partnership.
+
+   6. Design for Every Business Stakeholder
+
+Create a detailed persona-to-page-to-action matrix.
+
+CEO
+
+Needs to understand strategic business transformation, competitive advantage and business growth.
+
+CFO
+
+Needs investment justification, cost considerations, implementation risk and potential return on
+investment.
+
+CTO and CIO
+
+Need to understand architecture, integration, infrastructure, security and scalability.
+
+Engineering Director
+
+Needs efficient engineering collaboration, faster development and reliable product information.
+R&D Manager
+
+Needs better innovation management, engineering knowledge reuse and product development
+processes.
+
+Manufacturing Director
+
+Needs connected production planning, manufacturing visibility and operational efficiency.
+
+Design Engineer
+
+Needs reliable CAD workflows, revision management, engineering data and technical capabilities.
+
+Quality Manager
+
+Needs quality planning, issue tracking, traceability and process improvement.
+
+PLM Administrator
+
+Needs configuration, migration, integration, upgrade and support information.
+
+Procurement Manager
+
+Needs vendor credibility, transparent delivery capabilities, corporate information and reduced
+purchasing risk.
+
+Project Manager
+
+Needs structured implementation methodology, defined responsibilities and delivery transparency.
+
+Japanese Executive
+
+Needs credibility, professionalism, accurate Japanese communication, quality assurance and long-term
+reliability.
+
+Siemens Representative
+
+Needs accurate and authorized product and partnership representation.
+
+Existing Customer
+
+Needs quick access to appropriate support and contact options.
+
+Potential Employee
+
+Needs to understand the company's culture, career opportunities, expectations and application
+process.
+
+Business Partner
+Needs to understand collaboration opportunities and complementary business capabilities.
+
+Startup Founder
+
+Needs simple explanations, relevant entry-level solutions and an approachable consultation journey.
+
+Non-Technical Visitor
+
+Needs to understand the company's purpose without specialist engineering knowledge.
+
+Technical Expert
+
+Needs credible product information, technical depth and relevant implementation capabilities.
+
+For each persona, identify:
+
+What they need.
+
+What they fear.
+
+What questions they have.
+
+What creates confidence.
+
+What prevents them from taking action.
+
+Which pages they need.
+
+What their next action should be.
+
+Every relevant stakeholder journey must be supported.
+
+   7. Create a World-Class Visual Design System
+
+Develop a distinctive visual identity that belongs to ThinkInnov-NexGen.
+
+The design must combine industrial engineering aesthetics with elegant Japanese corporate design.
+
+Visual direction
+
+Sophisticated corporate typography.
+
+Generous and intentional spacing.
+
+Beautiful industrial photography.
+
+Technical illustrations.
+
+Precision-engineered visual compositions.
+
+Elegant grid systems.
+Subtle cinematic experiences.
+
+Authentic engineering environments.
+
+Carefully controlled brand colors.
+
+Meaningful motion graphics.
+
+Preserve the official company logo and verified brand assets.
+
+Develop reusable design tokens for colors, typography, spacing, borders, shadows, animation timings,
+responsive layouts and component states.
+
+Avoid
+
+Generic AI-generated website templates.
+
+Excessive gradients.
+
+Random neon effects.
+
+Unnecessary glassmorphism.
+
+Repetitive card grids.
+
+Generic futuristic robots.
+
+Meaningless animations.
+
+Fake engineering interfaces.
+
+Unrealistic industrial illustrations.
+
+Excessive dark backgrounds.
+
+Stock photography that does not represent the business.
+
+Visually cluttered enterprise pages.
+
+Use real, approved imagery wherever possible.
+
+If conceptual engineering illustrations are required, make them technically credible and clearly
+distinguish them from actual customer facilities or company projects.
+
+Every visual must have a purpose.
+
+   8. Rebuild the Homepage Completely
+
+Create a continuous storytelling experience.
+The homepage must make even a completely non-technical visitor understand the company.
+
+Section 1 — Cinematic Hero
+
+Proposed headline:
+
+Engineering the Future. Connecting Every Possibility.
+
+Proposed supporting message:
+
+Transform the way products are designed, developed, manufactured and supported through connected
+engineering and digital solutions.
+
+Primary action:
+
+Explore Our Solutions
+
+Secondary action:
+
+Talk to an Expert
+
+Display verified Siemens partnership information elegantly.
+
+Replace competing hero messages with one coherent primary value proposition.
+
+If a carousel is retained, make it accessible, purposeful and user-controlled.
+
+Create an impressive but optimized industrial visual experience showing the relationship between
+product design, engineering and manufacturing.
+
+Section 2 — The Real Business Problem
+
+Explain why engineering businesses struggle when people, processes and information are
+disconnected.
+
+Visually demonstrate:
+
+Data silos.
+
+Repeated engineering work.
+
+Version confusion.
+
+Information loss.
+
+Manual approvals.
+
+Manufacturing communication gaps.
+
+Disconnected software systems.
+Delayed decisions.
+
+Transition naturally from disconnected operations to a connected engineering environment.
+
+Section 3 — The Connected Product Lifecycle
+
+Build the website's signature interactive experience.
+
+Visualize the complete product lifecycle:
+
+Idea → Requirements → Design → Engineering → Validation → Manufacturing → Quality → Service →
+Continuous Improvement.
+
+Show how information, decisions and engineering knowledge flow between stages.
+
+Allow users to interact with each stage and discover relevant Siemens products, business solutions and
+ThinkInnov-NexGen services.
+
+This should become the central visual identity of the website.
+
+Use an optimized SVG, interactive diagram or technically credible 3D implementation.
+
+Provide an accessible static alternative.
+
+Section 4 — What ThinkInnov-NexGen Does
+
+Present the company's verified core capabilities.
+
+Explain each capability using:
+
+Business problem → Company approach → Technology → Business outcome.
+
+Avoid generic descriptions.
+
+Section 5 — Siemens Product Ecosystem
+
+Present all six existing products:
+
+NX.
+
+Solid Edge.
+
+Capital.
+
+Teamcenter.
+
+Tecnomatix.
+
+Mendix.
+Explain their distinct roles and relationships across the engineering lifecycle.
+
+Every product must link to its relevant dedicated page rather than a generic catalogue destination.
+
+Section 6 — Business Solutions
+
+Present the nine existing solution categories with clear business value.
+
+Allow users to discover solutions based on their actual challenges.
+
+Section 7 — Industry Expertise
+
+Create an industry-focused exploration experience.
+
+Use appropriate industrial imagery, sector-specific challenges, relevant solutions and approved
+customer evidence.
+
+Section 8 — PLM for Every Business
+
+Explain how PLM can serve startups, SMEs and large enterprises.
+
+Help visitors identify a relevant starting point based on their organization's complexity and engineering
+requirements.
+
+Section 9 — Transformation Journey
+
+Visualize the company's delivery lifecycle.
+
+Show how consulting, assessment, implementation, training, adoption and ongoing support connect.
+
+Section 10 — Customer Trust
+
+Redesign the existing customer-logo presentation.
+
+Remove unnecessary duplicate accessible content.
+
+Create a clean, professional customer showcase.
+
+Retain approved customer testimonials with their original meaning and correct attribution.
+
+Do not fabricate customer project details.
+
+Section 11 — Why ThinkInnov-NexGen
+
+Communicate genuine business differentiators supported by verified evidence.
+
+Section 12 — Japan and Global Presence
+
+Present verified office locations and international capabilities.
+Communicate Japanese business readiness and professional collaboration where supported.
+
+Section 13 — Insights and Resources
+
+Introduce useful educational resources for business leaders and technical professionals.
+
+Section 14 — Final Call to Action
+
+Proposed headline:
+
+Let's Build What's Next.
+
+Provide clear actions for consultation, demonstrations, implementation inquiries and customer
+support.
+
+Section 15 — Enterprise Footer
+
+Build a complete footer containing:
+
+Company identity.
+
+Verified contact details.
+
+Products.
+
+Solutions.
+
+Services.
+
+Industries.
+
+Company information.
+
+Careers.
+
+Resources.
+
+Language options.
+
+Privacy and legal information.
+
+Ensure every link works.
+
+   9. Rebuild About Us
+
+Existing route:
+
+page.html?page=about
+
+Existing navigation includes Who We Are, Vision Mission Values, Gallery Media and Leadership.
+Build a complete corporate identity experience.
+
+Who We Are
+
+Explain:
+
+Who the company is.
+
+Why the company exists.
+
+What it specializes in.
+
+What customers it serves.
+
+How it creates value.
+
+How its engineering and technology capabilities connect.
+
+Company History
+
+Create a verified corporate timeline.
+
+Show meaningful milestones, company developments and authorized partnership history.
+
+Do not invent dates or achievements.
+
+Vision, Mission and Values
+
+Present the company's approved vision and mission in a visually distinctive format.
+
+Explain how company values influence real business practices.
+
+Leadership
+
+Create professional leadership profiles with authorized photographs, names, roles and verified
+experience.
+
+Company Profile
+
+Provide relevant corporate information useful for enterprise procurement and partnership evaluation.
+
+Verify legal entity names and geographic attribution.
+
+Global Presence
+
+Present accurate office locations and verified operational capabilities.
+
+Gallery and Media
+Build an authentic gallery containing approved company photographs, events, office environments,
+team activities and business milestones.
+
+Final CTA
+
+Invite visitors to learn about capabilities, discuss partnerships or contact the company.
+
+The About Us page must establish institutional trust rather than merely describing company history.
+
+  10. Rebuild PLM For Everyone
+
+Existing route:
+
+page.html?page=plm
+
+Existing navigation includes PLM Benefits, Business Size, NPD Process and Why ThinkInnov-NexGen.
+
+This page must become the most understandable PLM educational experience possible.
+
+Explain PLM simply
+
+Start with:
+
+What happens when a business creates a product?
+
+Explain how requirements, designs, documents, revisions, suppliers, manufacturing information and
+product decisions evolve.
+
+Then demonstrate how PLM helps manage this complexity.
+
+Use an interactive visual explanation.
+
+Explain PLM benefits
+
+Cover relevant outcomes such as:
+
+Better engineering collaboration.
+
+Product data consistency.
+
+Revision management.
+
+Engineering knowledge reuse.
+
+Process visibility.
+
+Product traceability.
+
+Improved change management.
+Reduced repeated engineering effort.
+
+More informed decision-making.
+
+Avoid guaranteeing financial or operational results.
+
+PLM by business size
+
+Create distinct journeys for:
+
+Startups.
+
+Small businesses.
+
+Medium-sized businesses.
+
+Large enterprises.
+
+Explain their different requirements and implementation considerations.
+
+New Product Development Process
+
+Create an interactive NPD lifecycle.
+
+Connect each development stage to relevant PLM capabilities.
+
+Deployment Options
+
+Preserve and improve the existing explanations for:
+
+On-premises deployment.
+
+Customer-managed cloud deployment.
+
+Siemens-managed SaaS options.
+
+Explain relevant considerations including ownership, maintenance, upgrades, integration and security.
+
+Validate actual product availability and deployment arrangements.
+
+Why ThinkInnov-NexGen
+
+Explain the verified value of consulting, implementation, adoption and ongoing support.
+
+PLM Readiness Assessment
+
+Create an optional interactive assessment helping businesses understand their current product
+development maturity.
+
+Use transparent, rule-based recommendations.
+Do not pretend that a simple website assessment is a complete enterprise consultation.
+
+Final CTA
+
+Request a PLM consultation.
+
+  11. Rebuild Services
+
+Existing route:
+
+page.html?page=services
+
+Organize services around the complete customer implementation journey.
+
+Phase 1 — Pre-Implementation
+
+Preserve and improve the existing offerings:
+
+Strategic business consulting.
+
+Business process re-engineering.
+
+Solution evaluation.
+
+Solution mapping.
+
+Service positioning.
+
+Proof of concept.
+
+For every service, explain:
+
+Business challenge.
+
+Service purpose.
+
+Delivery approach.
+
+Expected deliverables.
+
+Customer involvement.
+
+Next steps.
+
+Phase 2 — Implementation
+
+Cover existing offerings:
+
+Solution architecture.
+
+Technical architecture.
+Project management.
+
+Customization.
+
+Configuration.
+
+Performance tuning.
+
+Explain the relationship between technical implementation and business adoption.
+
+Create a visual project lifecycle.
+
+Phase 3 — Post-Implementation
+
+Preserve the existing service areas:
+
+L1 support.
+
+L2 support.
+
+L3 support.
+
+Requirements analysis.
+
+Design.
+
+Development.
+
+User acceptance testing.
+
+Production-related development activities.
+
+Verify unclear terminology and service scope.
+
+Explain ongoing support, continuous improvement and system lifecycle management.
+
+Do not promise response times, support availability or service-level agreements without approval.
+
+Service Discovery
+
+Allow customers to identify services based on whether they are:
+
+Planning a new implementation.
+
+Evaluating technology.
+
+Migrating an existing system.
+
+Upgrading a platform.
+
+Improving performance.
+Integrating enterprise systems.
+
+Seeking ongoing support.
+
+Publish only verified capabilities.
+
+  12. Rebuild Digital Transformation
+
+Existing route:
+
+page.html?page=digital-transformation
+
+This should be the most visually compelling business transformation page.
+
+Current-State Experience
+
+Demonstrate how disconnected engineering operations can lead to fragmented information and
+inefficient collaboration.
+
+Future-State Experience
+
+Show a connected digital enterprise.
+
+Visualize the relationship between:
+
+People.
+
+Products.
+
+Processes.
+
+Engineering data.
+
+CAD.
+
+PLM.
+
+ERP.
+
+MES.
+
+Quality systems.
+
+Manufacturing operations.
+
+Enterprise applications.
+
+Digital Thread
+
+Explain how information can remain connected throughout a product's lifecycle.
+Digital Twin
+
+Explain the relevant digital twin concept through a simple industrial example.
+
+Do not imply that the company provides specific digital twin capabilities unless verified.
+
+Digital Factory
+
+Explain how digital manufacturing and connected production planning can support transformation.
+
+Enterprise Integration
+
+Illustrate how engineering information can connect with enterprise execution systems.
+
+Transformation Roadmap
+
+Create a structured journey:
+
+Assessment → Strategy → Solution Design → Proof of Concept → Implementation → Integration →
+Adoption → Optimization.
+
+Executive View and Technical View
+
+Allow non-technical executives to understand business outcomes while engineers can explore technical
+relationships.
+
+The page should function as an interactive digital transformation presentation that sales teams can
+confidently use during executive meetings.
+
+  13. Rebuild Products
+
+Existing route:
+
+page.html?page=products
+
+Create a comprehensive Siemens product catalogue and dedicated product detail pages.
+
+Product Overview
+
+Allow visitors to understand:
+
+Which products are available.
+
+What each product does.
+
+Who uses it.
+
+What business challenges it addresses.
+
+Where it fits within the product lifecycle.
+How it relates to other products.
+
+Build product discovery by business need, department, industry and lifecycle stage.
+
+Product 1 — Siemens NX
+
+Explain verified design, engineering and manufacturing capabilities.
+
+Present relevant engineering workflows and applicable services.
+
+Product 2 — Solid Edge
+
+Explain verified mechanical design, modeling and engineering collaboration capabilities.
+
+Product 3 — Capital
+
+Explain verified electrical and electronic engineering capabilities and relevant system design workflows.
+
+Product 4 — Teamcenter
+
+Explain enterprise product lifecycle management, product information, engineering collaboration and
+relevant business processes.
+
+Product 5 — Tecnomatix
+
+Explain verified digital manufacturing and production planning capabilities.
+
+Product 6 — Mendix
+
+Explain low-code enterprise application development, integration and digital business workflows.
+
+Required structure for every product page
+
+Product overview.
+
+Business problem.
+
+Target users.
+
+Verified capabilities.
+
+Relevant technical workflows.
+
+Potential business benefits.
+
+Industry applications.
+
+Related solutions.
+
+Available implementation services.
+Deployment information where applicable.
+
+Frequently asked questions.
+
+Relevant approved resources.
+
+Request demonstration.
+
+Contact specialist.
+
+Use authorized Siemens branding and official references.
+
+Do not invent software features, compatibility, licensing terms, pricing or certifications.
+
+  14. Rebuild Solutions
+
+Existing route:
+
+page.html?page=solutions
+
+Create a solution discovery experience focused on business problems rather than technical product
+names.
+
+Build complete dedicated experiences for the nine existing solution areas.
+
+   1. Design Data Management
+
+Explain the challenges of managing engineering files, design revisions and product configurations.
+
+Visualize an organized and connected engineering data workflow.
+
+   2. 3D Shape Search
+
+Explain how finding geometrically similar components can support engineering reuse and sourcing
+decisions.
+
+   3. Quality Management Solution
+
+Explain the role of quality planning, product quality and lessons learned throughout the product
+lifecycle.
+
+   4. Quality Issue Management
+
+Show how quality issues can be identified, investigated, managed and connected to relevant
+engineering information.
+
+   5. Design Verification Management
+
+Explain verification planning, requirements traceability and specification management.
+Avoid claiming guaranteed regulatory compliance.
+
+   6. Engineering Change Management
+
+Visualize how an engineering change can move through evaluation, impact assessment, approval and
+implementation.
+
+   7. Requirements Management
+
+Explain how complex requirements can be organized, managed and linked to relevant product
+development activities.
+
+   8. Active Integration Solution
+
+Explain the relationship between Teamcenter and relevant ERP, MES and enterprise systems.
+
+Only describe integrations supported by actual capabilities.
+
+   9. Digital Factory and Enterprise
+
+Explain connected digital manufacturing, planning and enterprise transformation.
+
+Required structure for every solution
+
+Real business challenge.
+
+Current-state workflow.
+
+Target-state workflow.
+
+Solution approach.
+
+Relevant technology.
+
+Applicable company services.
+
+Potential business outcomes.
+
+Relevant industries.
+
+Related products.
+
+Consultation action.
+
+Each solution must have a distinct narrative.
+
+Do not simply duplicate product descriptions.
+
+  15. Rebuild Industries
+Existing route:
+
+page.html?page=industries
+
+Create an industry discovery platform.
+
+Research and validate the company's existing experience across industries such as:
+
+Automotive.
+
+Aerospace.
+
+Industrial machinery.
+
+Electrical and electronics.
+
+Energy.
+
+Electric vehicles.
+
+Agriculture and heavy equipment.
+
+Manufacturing.
+
+Only publish sectors supported by company evidence.
+
+Every industry experience must explain
+
+Industry-specific challenges.
+
+Product development complexity.
+
+Engineering collaboration requirements.
+
+Manufacturing considerations.
+
+Relevant digital transformation opportunities.
+
+Applicable Siemens products.
+
+Relevant ThinkInnov-NexGen solutions.
+
+Implementation and support capabilities.
+
+Approved customer evidence.
+
+Industry-specific consultation actions.
+
+Use industry-specific photography and engineering visuals.
+
+Do not create identical pages with different industry names.
+Customer Portfolio
+
+Inventory every customer logo displayed on the existing website.
+
+Verify:
+
+Correct company name.
+
+Correct logo version.
+
+Permission to use.
+
+Relationship attribution.
+
+Relevant industry classification.
+
+Avoid implying that every listed customer is directly served by the same legal entity unless verified.
+
+Customer Success Stories
+
+Where approved information exists, create detailed case studies.
+
+Use the structure:
+
+Challenge → Approach → Implementation → Outcome.
+
+Do not fabricate projects or measurable results.
+
+  16. Rebuild Behind the Brand
+
+Existing route:
+
+page.html?page=behind-the-brand
+
+Make this page distinct from About Us.
+
+About Us establishes institutional credibility.
+
+Behind the Brand should communicate the human side of engineering innovation.
+
+Potential sections:
+
+The people behind the technology.
+
+Engineering culture.
+
+How teams collaborate.
+
+Professional values.
+
+Problem-solving philosophy.
+Innovation mindset.
+
+Technical learning.
+
+Team development.
+
+Leadership perspectives.
+
+Workplace experiences.
+
+Approved team photographs.
+
+Company events.
+
+Employee stories.
+
+Use authentic information and images.
+
+Do not invent employee testimonials or workplace benefits.
+
+The page should help potential customers understand the people responsible for delivering solutions
+and help potential employees understand the organization's identity.
+
+  17. Rebuild Careers
+
+Existing route:
+
+page.html?page=careers
+
+Build a professional recruitment experience.
+
+Careers Homepage
+
+Explain:
+
+Why someone should consider joining.
+
+What type of engineering work the company performs.
+
+Verified career development opportunities.
+
+Actual workplace culture.
+
+Relevant technical disciplines.
+
+Job Discovery
+
+Where active positions are verified, support:
+
+Role search.
+Location filters.
+
+Experience filters.
+
+Department filters.
+
+Employment type filters.
+
+Individual job descriptions.
+
+Individual Job Page
+
+Include approved:
+
+Job title.
+
+Responsibilities.
+
+Required skills.
+
+Experience.
+
+Qualifications.
+
+Location.
+
+Employment conditions.
+
+Application instructions.
+
+Application Experience
+
+Create a secure and accessible application workflow.
+
+Support resume submission only where authorized infrastructure exists.
+
+Implement validation, file restrictions, consent, data retention controls and appropriate access
+permissions.
+
+Do not display fake vacancies or collect applicant information without a functioning recruitment
+process.
+
+Candidate Journey
+
+Explain the verified recruitment process.
+
+Provide a transparent next step.
+
+  18. Rebuild Contact Us
+The existing contact form collects basic contact information and a message.
+
+Transform it into a professional enterprise inquiry experience.
+
+Create relevant inquiry categories:
+
+General business inquiry.
+
+Siemens product demonstration.
+
+PLM consultation.
+
+Digital transformation consultation.
+
+Implementation inquiry.
+
+Technical support.
+
+Business partnership.
+
+Career inquiry.
+
+Automatically preserve relevant product, solution or industry context when visitors enter the contact
+journey.
+
+Collect only necessary information.
+
+Potential fields include:
+
+Name.
+
+Company.
+
+Business email.
+
+Department or role.
+
+Country.
+
+Inquiry category.
+
+Product or solution of interest.
+
+Message.
+
+Privacy consent where required.
+
+Avoid unnecessarily long forms.
+
+Implement:
+Server-side validation.
+
+Spam protection.
+
+Secure submission handling.
+
+Accessible errors.
+
+Accurate submission confirmation.
+
+Approved email or CRM routing.
+
+Appropriate data protection.
+
+Verify existing office address, email, telephone number, legal entity name and international telephone
+formatting.
+
+Make contact information easy to access on mobile.
+
+Never send real test inquiries to company recipients without authorization.
+
+  19. Build Intelligent Solution Discovery
+
+Create an exceptional feature that differentiates the website from conventional engineering
+consultancies.
+
+Allow users to discover relevant solutions through their business requirements.
+
+Discovery inputs
+
+Industry.
+
+Company size.
+
+Current engineering challenge.
+
+Department.
+
+Digital transformation maturity.
+
+Product lifecycle stage.
+
+Existing technology environment.
+
+Discovery output
+
+Present:
+
+Relevant business solutions.
+Applicable products.
+
+Available services.
+
+Educational resources.
+
+Recommended consultation options.
+
+Use transparent content relationships and validated business rules.
+
+Example:
+
+A manufacturing company struggling with engineering revisions should discover relevant design data
+management, change management and PLM information.
+
+Do not require the visitor to know Siemens product names.
+
+The discovery experience must be educational and useful rather than merely collecting leads.
+
+  20. Build a Unified Business Knowledge Architecture
+
+Create structured relationships between:
+
+Industries.
+
+Personas.
+
+Business problems.
+
+Products.
+
+Solutions.
+
+Services.
+
+Customer evidence.
+
+Educational resources.
+
+Contact journeys.
+
+For example:
+
+An engineering manager visits an automotive industry page.
+
+They discover an engineering change management challenge.
+
+They explore the relevant solution.
+
+They discover applicable Teamcenter capabilities.
+They review implementation services.
+
+They request a consultation with relevant context automatically included.
+
+Build this type of interconnected experience across the entire website.
+
+Do not create isolated pages.
+
+  21. Japanese and English — Equal Quality
+
+The complete website must support professional Japanese and English.
+
+Use Japanese as a first-class enterprise experience, not an afterthought.
+
+Every page, form, navigation element, accessibility label, error message, metadata field and important
+interaction must be localized.
+
+Use professional Japanese terminology appropriate for:
+
+Manufacturing.
+
+Engineering.
+
+PLM.
+
+Enterprise IT.
+
+Procurement.
+
+Digital transformation.
+
+Corporate communication.
+
+Avoid literal machine translation.
+
+Use correct language-specific typography and line-breaking behaviour.
+
+Implement:
+
+Persistent language preference.
+
+Page-preserving language switching.
+
+Localized URLs.
+
+Localized metadata.
+
+Hreflang.
+
+Correct HTML language attributes.
+Translation completeness checks.
+
+Japanese and English search support where implemented.
+
+Review both languages independently.
+
+Flag content requiring native Japanese or technical subject-matter approval.
+
+  22. Navigation and Information Architecture
+
+Create an elegant enterprise navigation system.
+
+Potential primary structure:
+
+Company | Products | Solutions | Industries | Services | Digital Transformation | Resources | Careers
+
+Integrate PLM education naturally within the appropriate navigation.
+
+Preserve every existing important destination.
+
+Use:
+
+Accessible mega menus.
+
+Clear desktop navigation.
+
+Mobile-first navigation.
+
+Breadcrumbs.
+
+Contextual related pages.
+
+Intelligent cross-links.
+
+Search where justified.
+
+Language switching.
+
+Persistent access to relevant inquiry actions.
+
+Ensure every important destination is discoverable without excessive navigation steps.
+
+Preserve existing deep links or provide permanent redirects.
+
+Do not break existing shared URLs.
+
+  23. Apply Human Psychology Throughout
+
+Apply established principles of ethical behavioural psychology and user experience.
+
+Create the visitor journey:
+Attention → Recognition → Understanding → Curiosity → Confidence → Trust → Consultation.
+
+Use:
+
+Clear visual hierarchy.
+
+Cognitive ease.
+
+Progressive disclosure.
+
+Authentic social proof.
+
+Risk reduction.
+
+Transparent information.
+
+Recognition over recall.
+
+Relevant storytelling.
+
+Clear customer benefits.
+
+Consistent interactions.
+
+Reduced decision friction.
+
+Consider Japanese enterprise purchasing behaviour, where multiple stakeholders may evaluate a
+supplier before approval.
+
+Support that decision process with factual, accessible information.
+
+Do not use manipulative urgency, fabricated social proof or misleading claims.
+
+  24. Make Every Page a Visual Experience
+
+Use technically credible visual storytelling to explain complex engineering concepts.
+
+Potential interactive experiences:
+
+Connected product lifecycle.
+
+Engineering data flow.
+
+CAD-to-manufacturing journey.
+
+Digital thread.
+
+Digital factory.
+
+PLM deployment comparison.
+Siemens product ecosystem.
+
+Engineering change workflow.
+
+Quality management workflow.
+
+Enterprise integration architecture.
+
+Transformation maturity assessment.
+
+Use optimized motion graphics, SVG diagrams, subtle parallax, progressive animations and meaningful
+interactions.
+
+Every interaction must improve comprehension.
+
+Provide static alternatives for reduced-motion users and assistive technologies.
+
+Do not sacrifice loading performance for visual spectacle.
+
+  25. Create World-Class Content
+
+Rewrite the website's entire content inventory where improvement is needed.
+
+Correct all spelling, grammar, terminology, formatting and inconsistent capitalization.
+
+Replace generic marketing text with precise, meaningful business communication.
+
+Content principles
+
+Lead with customer problems.
+
+Explain the relevant company capabilities.
+
+Communicate practical business value.
+
+Provide evidence where available.
+
+Make complex topics understandable.
+
+Provide technical depth where required.
+
+Use consistent engineering terminology.
+
+End with a meaningful next step.
+
+Do not remove valuable technical content simply to make the design minimal.
+
+Use layered content to serve both executives and engineers.
+
+Never invent:
+Customer testimonials.
+
+Certifications.
+
+Partnerships.
+
+Customer projects.
+
+Revenue.
+
+Employee counts.
+
+Product capabilities.
+
+Market leadership claims.
+
+Quantitative project results.
+
+Maintain a factual claim register and flag items requiring approval.
+
+  26. Enterprise-Grade Architecture
+
+Inspect the existing technology stack before making architecture decisions.
+
+Preserve working infrastructure and functionality where appropriate.
+
+Choose the simplest maintainable architecture capable of delivering the required experience.
+
+Prioritize:
+
+Server-rendered or statically generated content where appropriate.
+
+Crawlable page content.
+
+Reliable routing.
+
+Page-specific metadata.
+
+Reusable components.
+
+Maintainable content structures.
+
+Type safety where appropriate.
+
+Secure API boundaries.
+
+Proper error handling.
+
+Accessible interactions.
+
+Efficient rendering.
+Automated testing.
+
+Every public content page must expose meaningful primary content to search engines without
+depending exclusively on client-side JavaScript.
+
+Avoid unnecessary databases, frameworks, external subscriptions or infrastructure.
+
+Add backend functionality only where justified by actual website workflows.
+
+  27. Content Management and Business Operations
+
+Evaluate whether the existing architecture supports maintainable content management.
+
+Where justified, implement an authorized content management experience for:
+
+Company information.
+
+Products.
+
+Solutions.
+
+Services.
+
+Industries.
+
+Leadership.
+
+Testimonials.
+
+Customer logos.
+
+Case studies.
+
+Articles.
+
+Job vacancies.
+
+Media.
+
+Translations.
+
+SEO metadata.
+
+Support draft and published states, appropriate access controls and content preview.
+
+Integrate approved CRM or recruitment systems only when the necessary interfaces and authorization
+exist.
+
+Do not expose internal business systems to public users.
+Do not create unnecessary admin dashboards when existing systems can satisfy the requirement.
+
+  28. Responsive Design Across Every Device
+
+Design and test the complete website at:
+
+320px.
+
+375px.
+
+390px.
+
+430px.
+
+768px.
+
+1024px.
+
+1280px.
+
+1440px.
+
+1920px.
+
+2560px.
+
+Support desktop, mobile, tablet, foldable devices and large meeting-room displays.
+
+Do not simply reduce desktop layouts.
+
+Create device-appropriate experiences.
+
+Verify:
+
+No overlapping elements.
+
+No unintended horizontal scrolling.
+
+No clipped typography.
+
+No broken images.
+
+No unusable navigation.
+
+No inaccessible hover-only functionality.
+
+No broken Japanese layouts.
+
+No inconsistent spacing.
+
+The website should also be suitable for live sales demonstrations in corporate meeting rooms.
+  29. Accessibility
+
+Target WCAG 2.2 AA.
+
+Implement:
+
+Semantic HTML.
+
+Logical headings.
+
+Keyboard navigation.
+
+Visible focus states.
+
+Accessible forms.
+
+Meaningful alternative text.
+
+Appropriate color contrast.
+
+Screen reader compatibility.
+
+Reduced-motion support.
+
+Accessible interactive diagrams.
+
+Accessible menus and dialogs.
+
+Meaningful error descriptions.
+
+Correct language attributes.
+
+Test using automated tools and representative manual checks.
+
+Automated scores alone are not proof of full accessibility compliance.
+
+  30. Exceptional Performance
+
+Target:
+
+Lighthouse Performance: 95+.
+
+Lighthouse Accessibility: 95+.
+
+Lighthouse Best Practices: 95+.
+
+Lighthouse SEO: 95+.
+
+Largest Contentful Paint: 2.5 seconds or less.
+
+Interaction to Next Paint: 200 milliseconds or less.
+Cumulative Layout Shift: 0.1 or less.
+
+Optimize:
+
+Images.
+
+Video.
+
+Fonts.
+
+Japanese typography loading.
+
+JavaScript.
+
+CSS.
+
+Third-party resources.
+
+Animations.
+
+Rendering.
+
+Network requests.
+
+Caching.
+
+Use real performance measurements.
+
+Distinguish laboratory measurements from real-user field data.
+
+Do not claim real-user performance metrics when field data is unavailable.
+
+If visual features cause unacceptable performance, simplify them without losing the business narrative.
+
+  31. SEO and AI Search Discoverability
+
+Resolve the current generic internal-page title and content-discoverability concerns.
+
+Implement:
+
+Unique page titles.
+
+Unique meta descriptions.
+
+Canonical URLs.
+
+Meaningful heading structures.
+
+Crawlable main content.
+
+Multilingual XML sitemaps.
+Hreflang.
+
+Robots configuration.
+
+Open Graph metadata.
+
+Relevant structured data.
+
+Descriptive image attributes.
+
+Internal linking.
+
+Breadcrumbs.
+
+Permanent redirects.
+
+Proper HTTP status codes.
+
+Research relevant Japanese and English enterprise search intent.
+
+Examples to validate:
+
+PLM solutions Japan.
+
+Teamcenter implementation.
+
+Siemens NX consulting.
+
+Digital manufacturing solutions.
+
+Manufacturing digital transformation.
+
+PLM consulting Japan.
+
+Mendix development.
+
+PLM導入支援.
+
+製品ライフサイクル管理.
+
+製造業DX.
+
+Teamcenter導入.
+
+Create authoritative educational content that can be accurately interpreted by search engines and AI-
+powered search services.
+
+Avoid keyword stuffing and unsupported claims.
+
+  32. Security, Privacy and Governance
+Review the complete website from cybersecurity, legal and corporate governance perspectives.
+
+Implement appropriate protections against:
+
+Cross-site scripting.
+
+Injection.
+
+CSRF.
+
+Broken access control.
+
+Spam.
+
+Automated form abuse.
+
+Insecure file uploads.
+
+Secret exposure.
+
+Unauthorized data access.
+
+Vulnerable dependencies.
+
+Review relevant Japanese APPI requirements and other applicable privacy obligations.
+
+Pay special attention to business inquiries and candidate information.
+
+Verify:
+
+Legal company name.
+
+Registered business information where published.
+
+Office address.
+
+Contact details.
+
+Siemens partnership terminology.
+
+Trademark usage.
+
+Customer logo permissions.
+
+Testimonial attribution.
+
+Copyright notices.
+
+Privacy policy.
+
+Data collection disclosures.
+Flag legal and regulatory matters requiring qualified professional review.
+
+Never claim compliance without sufficient evidence.
+
+  33. Business Analytics
+
+Where approved, implement privacy-conscious analytics to understand:
+
+Product interest.
+
+Solution interest.
+
+Industry interest.
+
+Language preferences.
+
+Customer journeys.
+
+Inquiry initiation.
+
+Successful inquiry submissions.
+
+Form abandonment.
+
+Navigation usage.
+
+Website performance.
+
+Distinguish successful server-confirmed inquiries from button clicks.
+
+Avoid unnecessary tracking.
+
+Do not collect sensitive information through analytics events.
+
+Make analytics configuration compatible with applicable consent requirements.
+
+  34. Comprehensive Testing
+
+Use actual browsers and available automated testing tools.
+
+Test every route in both languages.
+
+Functional testing
+
+Verify every button, link, form, navigation item, filter, menu, interactive diagram and user journey.
+
+Visual testing
+
+Capture desktop and mobile screenshots of every major page.
+
+Inspect all screenshots for layout, spacing, typography, branding and content quality.
+Technical testing
+
+Verify routing, direct URL access, refresh behaviour, redirects, loading states, error states and content
+rendering.
+
+Language testing
+
+Verify complete Japanese and English content coverage.
+
+Security testing
+
+Test appropriate validation, access control, headers, dependency security and form protection.
+
+Accessibility testing
+
+Perform automated and representative manual accessibility testing.
+
+Performance testing
+
+Measure representative pages on desktop and mobile configurations.
+
+Browser testing
+
+Test available versions of Chrome, Safari, Edge and Firefox.
+
+Integration testing
+
+Verify approved backend, CRM, email and recruitment integrations in appropriate test environments.
+
+Do not perform unauthorized production actions.
+
+Maintain a test evidence register.
+
+Every known issue must be resolved or explicitly documented.
+
+  35. Multi-Persona Final Review
+
+Review the implemented website independently from every relevant persona.
+
+Score each applicable area from 0 to 100 based on documented criteria.
+
+Business review
+
+Corporate credibility.
+
+Business positioning.
+
+Customer value communication.
+
+Commercial effectiveness.
+Competitive differentiation.
+
+Japanese customer review
+
+Language quality.
+
+Professionalism.
+
+Trustworthiness.
+
+Technical accuracy.
+
+Cultural appropriateness.
+
+Engineering review
+
+PLM explanation.
+
+Product accuracy.
+
+Solution accuracy.
+
+Manufacturing relevance.
+
+Technical depth.
+
+Design review
+
+Visual identity.
+
+Typography.
+
+Layout.
+
+Imagery.
+
+Interaction quality.
+
+Responsive design.
+
+Design consistency.
+
+Sales review
+
+Product discovery.
+
+Solution discovery.
+
+Customer journeys.
+
+Inquiry quality.
+Conversion clarity.
+
+Technical review
+
+Architecture.
+
+Code quality.
+
+Maintainability.
+
+Performance.
+
+Security.
+
+Accessibility.
+
+SEO.
+
+Quality assurance review
+
+Functional completeness.
+
+Broken links.
+
+Missing content.
+
+Error handling.
+
+Browser compatibility.
+
+Integration reliability.
+
+Do not assign arbitrary perfect scores.
+
+Base assessments on observable implementation and test results.
+
+Fix identified deficiencies and repeat relevant reviews.
+
+Target exceptional quality while accurately reporting remaining limitations.
+
+  36. Execution Methodology
+
+Execute the complete project in structured phases.
+
+Phase 1 — Discovery
+
+Audit the current website, source code, company information, assets, brand identity, existing
+functionality and technical infrastructure.
+
+Phase 2 — Strategy
+Perform competitor analysis, stakeholder analysis, business positioning and customer journey mapping.
+
+Phase 3 — Architecture
+
+Create the route inventory, information architecture, content relationships and technical
+implementation plan.
+
+Phase 4 — Design
+
+Create the complete design system, homepage experience, internal page templates and responsive
+layouts.
+
+Phase 5 — Content
+
+Verify, organize, rewrite and localize all relevant business content.
+
+Phase 6 — Development
+
+Implement every page, reusable component, interaction and approved functionality.
+
+Phase 7 — Integration
+
+Connect necessary content, inquiry, analytics and approved business systems.
+
+Phase 8 — Optimization
+
+Improve performance, SEO, accessibility, security and maintainability.
+
+Phase 9 — Quality Assurance
+
+Test every page and relevant user journey.
+
+Phase 10 — Expert Review
+
+Review the complete implementation from all relevant stakeholder perspectives.
+
+Phase 11 — Final Improvement
+
+Fix remaining defects, remove unnecessary complexity and improve weak design or business
+experiences.
+
+Phase 12 — Deployment Readiness
+
+Prepare the verified website for authorized deployment.
+
+Do not stop after planning.
+
+Do not stop after creating the homepage.
+
+Do not stop after writing code.
+Do not stop after the first successful build.
+
+Complete the entire implementation and verification process using available tools and permissions.
+
+  37. Strict Non-Negotiable Requirements
+
+No generic AI website templates.
+
+No incomplete pages.
+
+No placeholder production content.
+
+No fake customer testimonials.
+
+No fabricated company claims.
+
+No invented Siemens credentials.
+
+No unauthorized brand assets.
+
+No broken links.
+
+No non-functional buttons.
+
+No inaccessible essential interactions.
+
+No misleading inquiry confirmations.
+
+No untranslated essential content.
+
+No unverified job vacancies.
+
+No unnecessary infrastructure.
+
+No exposed credentials.
+
+No accidental deletion of existing business content.
+
+No unauthorized changes to production systems.
+
+No claims of completed tests without evidence.
+
+Make reasonable, reversible decisions independently.
+
+Request business approval only where essential information, legal rights, external integration
+permissions or irreversible actions require it.
+
+Continue completing independent work while documenting blocked items.
+
+  38. Definition of Done
+The project is complete only when:
+
+Every discovered existing page has been accounted for.
+
+Every existing valuable business capability has been preserved or intentionally migrated.
+
+Every approved new page has been implemented.
+
+Every required language version is complete.
+
+Every relevant customer journey is functional.
+
+Every essential interaction is verified.
+
+Every major responsive layout has been inspected.
+
+Every known critical security issue has been resolved.
+
+Accessibility has been evaluated.
+
+Performance has been measured.
+
+Search engine discoverability has been verified.
+
+No known critical functional defects remain.
+
+Content requiring approval is clearly identified.
+
+The website is maintainable.
+
+Deployment requirements are documented.
+
+Produce a traceability matrix connecting every requirement to its implementation and verification
+evidence.
+
+  39. Final Deliverables
+
+Deliver the actual completed website, not just recommendations.
+
+Provide:
+
+Complete source code.
+
+Complete English website.
+
+Complete Japanese website.
+
+Complete design system.
+
+Verified route inventory.
+All implemented page designs.
+
+Product and solution experiences.
+
+Interactive engineering visualizations.
+
+Contact and inquiry workflows.
+
+Appropriate content management functionality.
+
+SEO implementation.
+
+Security implementation.
+
+Accessibility results.
+
+Performance results.
+
+Desktop and mobile screenshots.
+
+Test reports.
+
+Content and asset approval register.
+
+Architecture documentation.
+
+Deployment instructions.
+
+Maintenance documentation.
+
+Known limitations.
+
+Remaining external dependencies.
+
+Provide a final page-by-page completion report with these statuses:
+
+Implemented.
+
+Tested.
+
+Verified.
+
+Requires Business Approval.
+
+Requires External Integration.
+
+Not Implemented.
+
+Never hide incomplete work.
+
+FINAL INSTRUCTION
+Think beyond web design.
+
+Think from the perspective of every person who interacts with ThinkInnov-NexGen.
+
+When a Japanese CEO visits, communicate strategic credibility.
+
+When an engineering manager visits, communicate technical intelligence.
+
+When a design engineer visits, provide meaningful product information.
+
+When a manufacturing director visits, demonstrate connected manufacturing possibilities.
+
+When a procurement manager visits, communicate reliability.
+
+When a Siemens representative visits, demonstrate accurate professional representation.
+
+When an existing customer visits, make support accessible.
+
+When a potential employee visits, communicate authentic company culture.
+
+When a salesperson presents the website, make it an exceptional business presentation.
+
+When a competitor visits, demonstrate a distinctive and credible digital identity.
+
+Make every page meaningful.
+
+Make every visual intentional.
+
+Make every interaction effortless.
+
+Make every technical decision maintainable.
+
+Make complex engineering simple enough for anyone to understand.
+
+Build an enterprise website worthy of international recognition.
+
+Do not deliver an ordinary redesign.
+
+Deliver a complete digital transformation of ThinkInnov-NexGen's website.
+
+Start now. Inspect everything. Preserve what matters. Improve everything that can be improved. Build,
+test, review, refine and complete the entire project from A to Z.
+
+use curost agent use fable or any model based on the work
+
