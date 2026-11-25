@@ -1,4 +1,4 @@
-# 2026-11-25T15:09:48Z  commit d0fcd00
+# 2026-11-25T15:52:40Z  commit 201c2a5
 # node improved-src/tools/test-layout.js
 
 Pages: 82 (41 Japanese), widths: 320, 360, 375, 390, 430, 768, 900, 1000, 1024, 1100, 1180, 1280, 1366, 1440, 1920, 2560

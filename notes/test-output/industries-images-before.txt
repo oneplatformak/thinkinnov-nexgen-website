@@ -1,0 +1,17 @@
+# 2026-11-25T15:53:44Z  the build at commit 4ec3c0f (before the two industry images were removed), checked with check-source.py as of commit b0cb123
+# python3 improved-src/tools/check-source.py   (run in a separate checkout of 4ec3c0f; only the lines of the new industry-image checks and the result are kept)
+
+PASS  the original has eleven industry images, I1 to I11, and all eleven are kept in staging-original/ — [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11]
+FAIL  docs/ holds exactly the nine industry images that are published (the original's eleven less the two approved removals) — infographic-01.webp, infographic-02.webp, infographic-03.webp, infographic-04.webp, infographic-05.webp, infographic-06.webp, infographic-07.webp, infographic-08.webp, infographic-09.webp, infographic-10.webp, infographic-11.webp
+FAIL  eleven industry entries on industries.html: entry n shows the original's image n, and entries 2 and 11 show none — [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1]
+FAIL  the two entries without an image on industries.html have no figure, caption, alt text or enlarge control left
+PASS  the two entries without an image on industries.html keep their title, relations and contact link
+FAIL  eleven industry entries on ja/industries.html: entry n shows the original's image n, and entries 2 and 11 show none — [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1]
+FAIL  the two entries without an image on ja/industries.html have no figure, caption, alt text or enlarge control left
+PASS  the two entries without an image on ja/industries.html keep their title, relations and contact link
+PASS  eleven distinct industry titles on industries.html — 11
+FAIL  neither removed image (infographic-02, infographic-11) is present or referenced anywhere in docs/ — assets/img/industries/infographic-02.webp (the file itself) | assets/img/industries/infographic-11.webp (the file itself) | industries.html: infographic-02.webp | industries.html: infographic-11.webp | ja/industries.html: infographic-02.webp | ja/industries.html: infographic-11.webp
+PASS  none of the five figures printed in the removed image appears in any page
+85 HTML files read. 103 checks passed, 6 failed.
+RESULT: FAIL
+# exit code 1

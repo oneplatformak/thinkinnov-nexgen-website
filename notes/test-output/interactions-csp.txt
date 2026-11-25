@@ -1,4 +1,4 @@
-# 2026-11-25T15:11:15Z  commit d0fcd00
+# 2026-11-25T15:54:08Z  commit 201c2a5
 # STATIC=http://127.0.0.1:8812/ node improved-src/tools/test-interactions.js
 
 PASS  desktop menu (en): first Tab stop is the skip link
@@ -167,6 +167,15 @@ PASS  photo viewer (en): focus stays inside the viewer
 PASS  photo viewer (en): the viewer fits the window
 PASS  photo viewer (en): Escape closes it and returns focus to the photo
 PASS  photo viewer (en): an industry infographic opens in the viewer
+PASS  photo viewer (en): eleven industries, nine with an image
+PASS  photo viewer (en): the two without an image are entries 2 and 11
+PASS  photo viewer (en): an entry without an image has no figure, caption or enlarge control
+PASS  photo viewer (en): every entry keeps its title, text, relations and both links
+PASS  photo viewer (en): the index lists all eleven
+PASS  photo viewer (en): at 1440 an entry without an image fills its card: 2 columns, relations in the image column, no empty band
+PASS  photo viewer (en): at 1024 an entry without an image fills its card: 2 columns, relations in the image column, no empty band
+PASS  photo viewer (en): at 768 an entry without an image fills its card: 1 column, no empty band
+PASS  photo viewer (en): at 390 an entry without an image fills its card: 1 column, no empty band
 PASS  photo viewer (en): no script errors
 PASS  contact form (en): empty submit marks name, email, message and consent
 PASS  contact form (en): focus moves to the first field with an error
@@ -366,6 +375,15 @@ PASS  photo viewer (ja): focus stays inside the viewer
 PASS  photo viewer (ja): the viewer fits the window
 PASS  photo viewer (ja): Escape closes it and returns focus to the photo
 PASS  photo viewer (ja): an industry infographic opens in the viewer
+PASS  photo viewer (ja): eleven industries, nine with an image
+PASS  photo viewer (ja): the two without an image are entries 2 and 11
+PASS  photo viewer (ja): an entry without an image has no figure, caption or enlarge control
+PASS  photo viewer (ja): every entry keeps its title, text, relations and both links
+PASS  photo viewer (ja): the index lists all eleven
+PASS  photo viewer (ja): at 1440 an entry without an image fills its card: 2 columns, relations in the image column, no empty band
+PASS  photo viewer (ja): at 1024 an entry without an image fills its card: 2 columns, relations in the image column, no empty band
+PASS  photo viewer (ja): at 768 an entry without an image fills its card: 1 column, no empty band
+PASS  photo viewer (ja): at 390 an entry without an image fills its card: 1 column, no empty band
 PASS  photo viewer (ja): no script errors
 PASS  contact form (ja): empty submit marks name, email, message and consent
 PASS  contact form (ja): focus moves to the first field with an error
@@ -429,5 +447,5 @@ PASS  old addresses: application.html?id=5 opens the application form with that 
 PASS  old addresses: application.html without a number opens the application form
 PASS  old addresses: with scripts off the old address still leads somewhere: the home page, or a page with a link to it
 
-Passed: 427  Failed: 0
+Passed: 445  Failed: 0
 # exit code 0

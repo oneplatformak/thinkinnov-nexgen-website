@@ -1,4 +1,4 @@
-# 2026-11-25T15:09:45Z  commit d0fcd00
+# 2026-11-25T15:52:36Z  commit 201c2a5
 # python3 improved-src/tools/check-source.py
 
 PASS  staging has four testimonials — 4
@@ -43,6 +43,17 @@ PASS  job title unchanged on careers/16-plm-analyst.html — PLM Analyst
 PASS  job title unchanged on careers/17-catia-support-engineer.html — CATIA Support Engineer
 PASS  job title unchanged on careers/18-mendix-developer.html — Mendix Developer
 PASS  no JobPosting structured data
+PASS  the original has eleven industry images, I1 to I11, and all eleven are kept in staging-original/ — [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11]
+PASS  docs/ holds exactly the nine industry images that are published (the original's eleven less the two approved removals) — infographic-01.webp, infographic-03.webp, infographic-04.webp, infographic-05.webp, infographic-06.webp, infographic-07.webp, infographic-08.webp, infographic-09.webp, infographic-10.webp
+PASS  eleven industry entries on industries.html: entry n shows the original's image n, and entries 2 and 11 show none — [1, 0, 1, 1, 1, 1, 1, 1, 1, 1, 0]
+PASS  the two entries without an image on industries.html have no figure, caption, alt text or enlarge control left
+PASS  the two entries without an image on industries.html keep their title, relations and contact link
+PASS  eleven industry entries on ja/industries.html: entry n shows the original's image n, and entries 2 and 11 show none — [1, 0, 1, 1, 1, 1, 1, 1, 1, 1, 0]
+PASS  the two entries without an image on ja/industries.html have no figure, caption, alt text or enlarge control left
+PASS  the two entries without an image on ja/industries.html keep their title, relations and contact link
+PASS  eleven distinct industry titles on industries.html — 11
+PASS  neither removed image (infographic-02, infographic-11) is present or referenced anywhere in docs/
+PASS  none of the five figures printed in the removed image appears in any page
 PASS  all 242 English sentences of the original are on the site with the same words in the same order (12 listed exceptions)
 PASS  every listed exception is still needed
 PASS  each corrected sentence is shown in its corrected form
@@ -98,9 +109,9 @@ PASS  no "review" property in structured data
 PASS  no "foundingDate" property in structured data
 PASS  no "numberOfEmployees" property in structured data
 INFO  structured data types: BreadcrumbList ×78, EntryPoint ×2, ListItem ×206, Organization ×82, PostalAddress ×82, SearchAction ×2, WebSite ×2
-PASS  no credentials in 239 tracked text files
+PASS  no credentials in 240 tracked text files
 PASS  no .env, .pem or key files tracked
 
-85 HTML files read. 98 checks passed, 0 failed.
+85 HTML files read. 109 checks passed, 0 failed.
 RESULT: PASS
 # exit code 0
