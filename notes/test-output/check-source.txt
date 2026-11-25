@@ -1,4 +1,4 @@
-# 2026-11-25T15:52:36Z  commit 201c2a5
+# 2026-11-25T16:40:04Z  commit 8d3d57e
 # python3 improved-src/tools/check-source.py
 
 PASS  staging has four testimonials — 4
@@ -109,7 +109,7 @@ PASS  no "review" property in structured data
 PASS  no "foundingDate" property in structured data
 PASS  no "numberOfEmployees" property in structured data
 INFO  structured data types: BreadcrumbList ×78, EntryPoint ×2, ListItem ×206, Organization ×82, PostalAddress ×82, SearchAction ×2, WebSite ×2
-PASS  no credentials in 240 tracked text files
+PASS  no credentials in 241 tracked text files
 PASS  no .env, .pem or key files tracked
 
 85 HTML files read. 109 checks passed, 0 failed.
