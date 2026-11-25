@@ -53,7 +53,7 @@ function product(p, i) {
           <p class="product-claim">${esc(claim.text)} <a class="product-source" href="${claim.url}" target="_blank" rel="noopener external">Source<span class="visually-hidden"> (opens in a new tab)</span>${icons.arrowUpRight}</a></p>
           <dl class="product-facts">${rows.join("")}</dl>
           <div class="actions">
-            ${c.button(c.contactHref({ type: "demo", topic: `product-${p.key}` }), "Request a demonstration")}
+            ${c.button(c.contactHref({ type: "product", topic: `product-${p.key}` }), "Enquire about this product")}
             ${c.button(c.contactHref({ type: "consultation", topic: `product-${p.key}` }), "Ask a question", "ghost")}
           </div>
         </div>
@@ -86,9 +86,9 @@ function render() {
         <p class="note note-wide">Product names are trademarks of their respective owners. Sentences beginning “Siemens describes” or “Mendix … describes” summarise the owner's own public description and link to it; all other text describes ThinkInnov-NexGen's work with the product.</p>
       </div></section>`,
       c.ctaBand({
-        title: "Request a product demonstration",
+        title: "Ask about a product",
         text: content.heroMessages.partner.text,
-        actions: [[c.contactHref({ type: "demo" }), "Request a demonstration"], [site.page("solutions.html"), "Solutions", "ghost"]],
+        actions: [[c.contactHref({ type: "product" }), "Product enquiry"], [site.page("solutions.html"), "Solutions", "ghost"]],
       }),
     ].join("\n"),
   };

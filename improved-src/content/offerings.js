@@ -81,9 +81,9 @@ const services = [
     blocks: [
       ["Sustaining service", []],
       ["Support", ["L1 support", "L2 support", "L3 support"]],
-      // Staging prints "Production Development"; the previous pass read it as
-      // a typo for deployment. Listed as an open client question.
-      ["Enhancements", ["Requirement analysis", "Design", "Development", "UAT", "Production deployment"]],
+      // "Production Development" is the staging wording, kept as printed. Whether
+      // "Production deployment" was meant is an open client question.
+      ["Enhancements", ["Requirement analysis", "Design", "Development", "UAT", "Production Development"]],
     ],
   },
 ];

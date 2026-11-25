@@ -17,7 +17,7 @@ module.exports = {
     "System setup": "システムセットアップ",
     "Configuration": "コンフィグレーション",
     "Customization": "カスタマイズ",
-    "Production deployment": "本番環境への展開",
+    "Production Development": "プロダクション開発",
     "User enablement by training": "トレーニングによるユーザー定着支援",
     "Project management": "プロジェクトマネジメント",
     "L1 support": "L1サポート",
@@ -154,5 +154,9 @@ module.exports = {
     "Delivery Manager": "デリバリーマネージャー",
     "Solution Architect": "ソリューションアーキテクト",
     "Technical Architect": "テクニカルアーキテクト",
+    // Photographs from the official package
+    "People standing on both sides of a corridor behind a red ribbon tied with a bow": "廊下の両側に並び、リボン飾りの付いた赤いテープの後ろに立つ人々",
+    "Two people walking along an office corridor": "オフィスの廊下を歩く2人",
+    "Photo gallery": "フォトギャラリー",
   },
 };

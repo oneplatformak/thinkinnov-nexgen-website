@@ -55,7 +55,7 @@ post() { # post <port> <path> <json|html> <curl form args...>  -> sets STATUS an
 }
 
 OLD=$(( ($(date +%s) - 60) * 1000 ))
-GOOD=(--data-urlencode "type=demo" --data-urlencode "topic=product-teamcenter" --data-urlencode "need=quality"
+GOOD=(--data-urlencode "type=product" --data-urlencode "topic=product-teamcenter" --data-urlencode "need=quality"
   --data-urlencode "name=Test Person" --data-urlencode "email=test.person@example.com"
   --data-urlencode "message=Hello from the local test." --data-urlencode "consent=1"
   --data-urlencode "form_started=$OLD" --data-urlencode "lang=en")
@@ -81,21 +81,21 @@ assert "recipient cannot be overridden" bash -c "! grep -qi 'attacker@example.co
 assert "unknown fields are not mailed" bash -c "! grep -q 'ignored' '$OUT'/*.eml"
 
 reset
-post $PORT_OK contact.php json --data-urlencode "type=demo" --data-urlencode $'name=Eve\r\nBcc: victim@example.com' --data-urlencode "email=eve@example.com" --data-urlencode $'message=line one\r\nBcc: victim@example.com' --data-urlencode "consent=1" --data-urlencode "form_started=$OLD"
+post $PORT_OK contact.php json --data-urlencode "type=product" --data-urlencode $'name=Eve\r\nBcc: victim@example.com' --data-urlencode "email=eve@example.com" --data-urlencode $'message=line one\r\nBcc: victim@example.com' --data-urlencode "consent=1" --data-urlencode "form_started=$OLD"
 check "name with CR/LF is accepted as one line" 200 '"ok":true' "$STATUS" "$BODY"
 assert "no injected header reaches the mail headers" bash -c "! sed '/^\r\{0,1\}\$/q' '$OUT'/*.eml | grep -qi '^Bcc:'"
 
 reset
-post $PORT_OK contact.php json --data-urlencode "type=demo" --data-urlencode "name=Eve" --data-urlencode $'email=eve@example.com\r\nBcc: victim@example.com' --data-urlencode "message=x" --data-urlencode "consent=1" --data-urlencode "form_started=$OLD"
+post $PORT_OK contact.php json --data-urlencode "type=product" --data-urlencode "name=Eve" --data-urlencode $'email=eve@example.com\r\nBcc: victim@example.com' --data-urlencode "message=x" --data-urlencode "consent=1" --data-urlencode "form_started=$OLD"
 check "email with CR/LF is rejected" 400 '"code":"email"' "$STATUS" "$BODY"
 assert "rejected email sends no mail" test "$(mails)" = 0
 
 reset
-post $PORT_OK contact.php json --data-urlencode "type=demo" --data-urlencode "email=a@example.com" --data-urlencode "message=x" --data-urlencode "consent=1" --data-urlencode "form_started=$OLD"
+post $PORT_OK contact.php json --data-urlencode "type=product" --data-urlencode "email=a@example.com" --data-urlencode "message=x" --data-urlencode "consent=1" --data-urlencode "form_started=$OLD"
 check "missing name is rejected" 400 '"code":"invalid"' "$STATUS" "$BODY"
-post $PORT_OK contact.php json --data-urlencode "type=demo" --data-urlencode "name=A" --data-urlencode "email=not-an-email" --data-urlencode "message=x" --data-urlencode "consent=1" --data-urlencode "form_started=$OLD"
+post $PORT_OK contact.php json --data-urlencode "type=product" --data-urlencode "name=A" --data-urlencode "email=not-an-email" --data-urlencode "message=x" --data-urlencode "consent=1" --data-urlencode "form_started=$OLD"
 check "invalid email is rejected" 400 '"code":"email"' "$STATUS" "$BODY"
-post $PORT_OK contact.php json --data-urlencode "type=demo" --data-urlencode "name=A" --data-urlencode "email=a@example.com" --data-urlencode "message=x" --data-urlencode "form_started=$OLD"
+post $PORT_OK contact.php json --data-urlencode "type=product" --data-urlencode "name=A" --data-urlencode "email=a@example.com" --data-urlencode "message=x" --data-urlencode "form_started=$OLD"
 check "missing consent is rejected" 400 '"code":"consent"' "$STATUS" "$BODY"
 post $PORT_OK contact.php json --data-urlencode "type=not-a-type" --data-urlencode "name=A" --data-urlencode "email=a@example.com" --data-urlencode "message=x" --data-urlencode "consent=1" --data-urlencode "form_started=$OLD"
 check "unknown enquiry type is rejected" 400 '"code":"invalid"' "$STATUS" "$BODY"
@@ -103,7 +103,7 @@ post $PORT_OK contact.php json "${GOOD[@]}" --data-urlencode "phone=<script>aler
 check "malformed phone is rejected" 400 '"code":"invalid"' "$STATUS" "$BODY"
 post $PORT_OK contact.php json "${GOOD[@]}" --data-urlencode "website=http://spam.example"
 check "filled honeypot is rejected, not reported as sent" 400 '"ok":false' "$STATUS" "$BODY"
-post $PORT_OK contact.php json --data-urlencode "type=demo" --data-urlencode "name=A" --data-urlencode "email=a@example.com" --data-urlencode "message=x" --data-urlencode "consent=1" --data-urlencode "form_started=$(( $(date +%s) * 1000 ))"
+post $PORT_OK contact.php json --data-urlencode "type=product" --data-urlencode "name=A" --data-urlencode "email=a@example.com" --data-urlencode "message=x" --data-urlencode "consent=1" --data-urlencode "form_started=$(( $(date +%s) * 1000 ))"
 check "submission inside 3 seconds is rejected" 400 '"code":"too_fast"' "$STATUS" "$BODY"
 assert "none of the rejected requests sent mail" test "$(mails)" = 0
 
@@ -128,7 +128,7 @@ assert "rate-limited request sent no mail" test "$(mails)" = 8
 reset
 post $PORT_OK contact.php html "${GOOD[@]}"
 check "without scripts: success is an HTML page" 200 'Your enquiry has been sent' "$STATUS" "$BODY"
-post $PORT_OK contact.php html --data-urlencode "type=demo" --data-urlencode "lang=ja" --data-urlencode "name=" --data-urlencode "email=a@example.com" --data-urlencode "message=x" --data-urlencode "consent=1"
+post $PORT_OK contact.php html --data-urlencode "type=product" --data-urlencode "lang=ja" --data-urlencode "name=" --data-urlencode "email=a@example.com" --data-urlencode "message=x" --data-urlencode "consent=1"
 check "without scripts: Japanese error page" 400 '入力内容に不足または誤りがあります' "$STATUS" "$BODY"
 assert "error page links back to the Japanese form" grep -q 'href="ja/contact.html"' <(printf '%s' "$BODY")
 post $PORT_OK contact.php html "${GOOD[@]}" --data-urlencode "lang=<script>"

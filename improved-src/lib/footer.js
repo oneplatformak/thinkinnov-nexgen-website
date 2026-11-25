@@ -25,7 +25,6 @@ function footer() {
             <img src="${site.asset(config.logoPath)}" width="171" height="64" alt="${esc(config.siteName)}" loading="lazy">
           </a>
           <p class="footer-tagline">${esc(config.tagline)}</p>
-          <p class="footer-badge">Siemens Solution Partner</p>
         </div>
         <div class="footer-contact">
           <h2 class="footer-title">Head office</h2>

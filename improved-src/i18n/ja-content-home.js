@@ -5,8 +5,8 @@ module.exports = {
   entries: {
     // Title and hero
     "PLM consulting, implementation and support in Japan": "日本におけるPLMコンサルティング・導入・サポート",
-    "ThinkInnov-NexGen, a Siemens Solution Partner in Tokyo, provides PLM consulting, implementation and support around NX, Solid Edge, Capital, Teamcenter, Tecnomatix and Mendix.":
-      "東京に本社を置くSiemens Solution Partner、ThinkInnov-NexGenは、NX、Solid Edge、Capital、Teamcenter、Tecnomatix、Mendixを中心に、PLMのコンサルティング、導入、サポートをご提供します。",
+    "ThinkInnov-NexGen in Tokyo provides PLM consulting, implementation and support around the Siemens products NX, Solid Edge, Capital, Teamcenter, Tecnomatix and Mendix.":
+      "東京に本社を置くThinkInnov-NexGenは、Siemens製品であるNX、Solid Edge、Capital、Teamcenter、Tecnomatix、Mendixを中心に、PLMのコンサルティング、導入、サポートをご提供します。",
     "Connect your product lifecycle.": "製品ライフサイクルをつなぐ。",
     "Innovate more, and faster.": "より多く、より速いイノベーションを。",
     "Harumi, Tokyo": "東京・晴海",
@@ -154,7 +154,6 @@ module.exports = {
     "Offshore": "オフショア",
 
     // Closing
-    "See a Siemens product with our team.": "当社チームがSiemens製品をご紹介します。",
     "Talk through your product data and processes.": "製品データと業務プロセスについてご相談いただけます。",
     "Start from the Product Data Maturity Model.": "製品データ成熟度モデル（PDMM）を起点にご相談いただけます。",
     "L1, L2 and L3 support and enhancements.": "L1・L2・L3サポートおよび機能拡張。",

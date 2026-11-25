@@ -61,7 +61,7 @@ function structure() {
           title: "Work with us",
           links: [
             { href: "careers.html", label: "Careers", text: "Current opportunity areas and how to apply.", active: "careers" },
-            { href: "contact.html", label: "Contact", text: "Enquiries, demonstrations and consultations.", active: "contact" },
+            { href: "contact.html", label: "Contact", text: "Product enquiries, consultations and support.", active: "contact" },
           ],
         },
       ],

@@ -45,7 +45,7 @@ module.exports = {
     "Profile, mission, values, gallery, leadership and company profile.": "プロフィール、ミッション、価値観、ギャラリー、経営陣、会社概要。",
     "The problems we solve and the team that solves them.": "私たちが解決する課題と、それに取り組むチーム。",
     "Current opportunity areas and how to apply.": "募集中の職種と応募方法。",
-    "Enquiries, demonstrations and consultations.": "お問い合わせ、デモンストレーション、ご相談。",
+    "Product enquiries, consultations and support.": "製品に関するお問い合わせ、ご相談、サポート。",
     "All products": "製品一覧",
     "Siemens portfolio": "Siemens製品ポートフォリオ",
     "Email us": "メールでのお問い合わせ",
@@ -73,8 +73,8 @@ module.exports = {
 
     // Shared calls to action
     "Book a PLM consultation": "PLMのご相談を予約する",
-    "Request a product demonstration": "製品デモンストレーションを依頼する",
-    "Request a demonstration": "デモンストレーションを依頼する",
+    "Ask about a product": "製品について問い合わせる",
+    "NX, Solid Edge, Capital, Teamcenter, Tecnomatix or Mendix.": "NX、Solid Edge、Capital、Teamcenter、Tecnomatix、Mendix。",
     "Discuss digital transformation": "デジタルトランスフォーメーションについて相談する",
     "Ask about support": "サポートについて問い合わせる",
     "Ask a question": "質問する",
@@ -107,5 +107,6 @@ module.exports = {
     // Lightbox and misc aria
     "Customers": "お客様",
     "Enlarge infographic": "インフォグラフィックを拡大",
+    "Enquire about this product": "この製品について問い合わせる",
   },
 };

@@ -4,11 +4,11 @@ module.exports = {
   keep: [],
   entries: {
     // Contact
-    "Contact ThinkInnov-NexGen in Tokyo for a product demonstration, a PLM consultation, digital transformation, implementation, support or partnership enquiries.":
-      "製品デモンストレーション、PLMのご相談、デジタルトランスフォーメーション、導入、サポート、パートナーシップに関するお問い合わせは、東京のThinkInnov-NexGenまでご連絡ください。",
+    "Contact ThinkInnov-NexGen in Tokyo for a product enquiry, a PLM consultation, digital transformation, implementation, support or partnership enquiries.":
+      "製品に関するお問い合わせ、PLMのご相談、デジタルトランスフォーメーション、導入、サポート、パートナーシップに関するお問い合わせは、東京のThinkInnov-NexGenまでご連絡ください。",
     "Enquiry type": "お問い合わせ種別",
     "General enquiry": "一般的なお問い合わせ",
-    "Product demonstration": "製品デモンストレーション",
+    "Product enquiry": "製品に関するお問い合わせ",
     "PLM consultation": "PLMのご相談",
     "Digital transformation": "デジタルトランスフォーメーション",
     "Topic": "トピック",

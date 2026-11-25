@@ -12,7 +12,6 @@ function organization() {
     "@type": "Organization",
     "@id": config.baseUrl + "/#organization",
     name: config.siteName,
-    legalName: config.legalName,
     url: config.baseUrl + "/",
     logo: `${config.baseUrl}/${config.logoPath}`,
     email: config.email,

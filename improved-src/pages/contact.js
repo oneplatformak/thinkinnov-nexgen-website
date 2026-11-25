@@ -46,7 +46,7 @@ function render() {
   const intro = content.contactIntro;
   return {
     title: "Contact | ThinkInnov-NexGen",
-    description: "Contact ThinkInnov-NexGen in Tokyo for a product demonstration, a PLM consultation, digital transformation, implementation, support or partnership enquiries.",
+    description: "Contact ThinkInnov-NexGen in Tokyo for a product enquiry, a PLM consultation, digital transformation, implementation, support or partnership enquiries.",
     active: "contact",
     crumbs,
     body: `${c.pageHero({ kicker: "Contact", title: intro.title, intro: intro.text, crumbs })}

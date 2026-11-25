@@ -193,7 +193,7 @@ async function testFinder(browser, base, labels) {
   await page.goto(base + labels.prefix + "products.html", { waitUntil: "load" });
   const demo = await page.$eval('#teamcenter a[href*="contact.html"]', (a) => a.href);
   await page.goto(demo, { waitUntil: "load" });
-  ok("a product's demonstration link preselects type and topic", await page.evaluate(() => { const f = document.querySelector("form[data-form]"); return f.elements.type.value === "demo" && f.elements.topic.value === "product-teamcenter"; }), demo);
+  ok("a product's enquiry link preselects type and topic", await page.evaluate(() => { const f = document.querySelector("form[data-form]"); return f.elements.type.value === "product" && f.elements.topic.value === "product-teamcenter"; }), demo);
   await page.goto(base + labels.prefix + "solutions.html#need-quality", { waitUntil: "load" });
   ok("a direct link to a need shows it", (await visible()).join() === "quality");
   ok("no script errors", page.errors.length === 0, page.errors.join(" | "));
@@ -295,7 +295,7 @@ async function testLanguage(browser, base) {
 }
 
 async function fillContact(page) {
-  await page.select('[name="type"]', "demo");
+  await page.select('[name="type"]', "product");
   await page.type('[name="name"]', "Test Person");
   await page.type('[name="email"]', "test.person@example.com");
   await page.type('[name="message"]', "Local test message.");
@@ -328,7 +328,7 @@ async function testContactForm(browser, labels) {
   await done(page);
 
   clearRate();
-  page = await open(browser, PHP_OK + labels.prefix + "contact.html?type=demo&topic=product-nx");
+  page = await open(browser, PHP_OK + labels.prefix + "contact.html?type=product&topic=product-nx");
   const before = mails();
   await page.type('[name="name"]', "Test Person");
   await page.type('[name="email"]', "test.person@example.com");
@@ -343,7 +343,7 @@ async function testContactForm(browser, labels) {
   ok("with a working server the success message appears", (await status(page)) === labels.sentContact, await status(page));
   ok("exactly one message was handed to the mail system", mails() === before + 1);
   const mail = fs.readFileSync(path.join(MAILDIR, fs.readdirSync(MAILDIR).sort().pop()), "utf8");
-  ok("it carries the type and topic from the address", mail.includes("Enquiry type: Product demonstration") && mail.includes("Topic: NX") && mail.startsWith("To: info@thinkinnovnexgen.co.jp"));
+  ok("it carries the type and topic from the address", mail.includes("Enquiry type: Product enquiry") && mail.includes("Topic: NX") && mail.startsWith("To: info@thinkinnovnexgen.co.jp"));
   ok("the form is cleared after sending", await page.$eval('[name="message"]', (m) => m.value === ""));
   await done(page);
 
