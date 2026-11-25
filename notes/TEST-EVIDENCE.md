@@ -163,3 +163,19 @@ Every issue found is either fixed (section 6) or listed here.
 | No unit tests for the generator; it is tested through its output | Accepted |
 | Long pages: the home page is about 13,900 px tall at 1440 wide | Accepted |
 | Screenshot tooling only: when Chrome captures beyond the visible window while "reduce motion" is emulated, the picture shows some paddings and borders in their small-screen state (the home page's three key messages lose their left padding). The page itself is not in that state: the measured positions are correct before and after the capture. `tools/snap.js` avoids it by growing the window to the page height and capturing only what is inside it, so the committed screenshots are not affected. Found at 12:40 UTC while preparing the pull-request images, and checked with a real window resize under "reduce motion": the layout is normal | Not a defect of the site. Noted so that nobody reads such a capture as one |
+
+## 9. After the owner's change of 25 November (commit `6b55de6`)
+
+The owner asked for one change after everything above was run: the photograph in the home page's Global Presence section. It altered `docs/index.html`, `docs/ja/index.html` and added two image files, so the statement in section 2 that no site file changed after `45dbdd6` holds only up to commit `3e5aa09`. Re-run on the changed build, between 12:59 and 13:04 UTC, output not saved to `test-output/`:
+
+| Check | Result |
+| --- | --- |
+| `node build.js --strict`, twice | 82 pages, 0 untranslated strings, second build changes nothing |
+| `python3 improved-src/check-site.py` | PASS, 0 in every category |
+| `python3 improved-src/tools/check-source.py` | 87 passed, 0 failed |
+| `node improved-src/tools/test-layout.js` | 82 pages × 10 widths: all zeros |
+| `node improved-src/tools/test-interactions.js` | 389 passed, 0 failed |
+| Lighthouse, mobile, `index.html` and `ja/index.html` | 100 / 100 / 100 / 100 on both; LCP 1.8 s and 1.7 s; CLS 0 |
+| `snap.js` for the two home pages at 390 and 1440 | The four home-page files in `screenshots-after/` were retaken; page heights are unchanged, so `index.json` is unchanged |
+
+Not re-run: axe-core, the interaction tests under the production Content-Security-Policy, the PHP form tests, and Lighthouse on the other pages. The saved files in `test-output/` are from before this change. The section was looked at in Chrome at 1440 and 390 pixels in both languages: all five people in the photograph are in frame from head to foot.
