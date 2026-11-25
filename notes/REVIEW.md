@@ -29,7 +29,7 @@ The governing brief is `notes/MASTER_PROMPT.txt`. Every part of it that fits a s
 
 ## 2. Test results
 
-All from Chrome 157 (headless) on one Linux machine. Every suite, Lighthouse and the screenshots were run again after the industry images were removed (commit `b0cb123`, the last that changes a page). The suites were then run once more at `201c2a5`, which changes only the figures in the deploy notes, and those are the outputs saved. Commits after `201c2a5` change documents, test outputs and screenshots, nothing that is served. Laboratory results, not field data. Commands, times and output files: `notes/TEST-EVIDENCE.md`.
+All from Chrome 157 (headless) on one Linux machine. Every suite, Lighthouse and the screenshots were run again after the industry images were removed (commit `b0cb123`, the last that changes a page). The suites were then run twice more, at `201c2a5`, which changes only the figures in the deploy notes, and at `8d3d57e`, which changes one sentence of the asset register; the outputs saved are those of the last run. The other commits after `b0cb123` change documents, test outputs and screenshots, or are empty; none changes a page. Laboratory results, not field data. Commands, times and output files: `notes/TEST-EVIDENCE.md`.
 
 | Test | Result | Output |
 | --- | --- | --- |
