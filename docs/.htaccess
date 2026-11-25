@@ -8,6 +8,10 @@ RewriteCond %{HTTPS} !=on
 RewriteCond %{HTTP:X-Forwarded-Proto} !=https
 RewriteRule ^ https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
 
+# Server-side includes and dotfiles are not web pages
+RewriteRule ^inc/ - [F,L]
+RewriteRule (^|/)\. - [F,L]
+
 # Custom 404
 ErrorDocument 404 /404.html
 
@@ -113,6 +117,9 @@ RewriteRule ^application\.html$ /apply.html [L,R=301]
   Header always set Referrer-Policy "strict-origin-when-cross-origin"
   Header always set X-Frame-Options "SAMEORIGIN"
   Header always set Permissions-Policy "geolocation=(), microphone=(), camera=()"
+  # The site loads nothing from other origins. Inline scripts are limited to the
+  # two small ones the build writes into each page (script class and JSON-LD).
+  Header always set Content-Security-Policy "default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline'; img-src 'self' data:; font-src 'self'; connect-src 'self'; object-src 'none'; base-uri 'self'; form-action 'self'; frame-ancestors 'self'"
 </IfModule>
 
 # Compression
@@ -121,23 +128,29 @@ RewriteRule ^application\.html$ /apply.html [L,R=301]
   AddOutputFilterByType DEFLATE application/javascript application/json application/xml image/svg+xml
 </IfModule>
 
-# Long cache for hashed/static assets
+# Caching. styles.css and site.js are requested with a content hash (?v=...),
+# and font files never change, so they can be cached for a year. Images keep
+# their file names when replaced, so they are cached for 30 days only.
 <IfModule mod_expires.c>
   ExpiresActive On
   ExpiresByType text/css "access plus 1 year"
   ExpiresByType application/javascript "access plus 1 year"
-  ExpiresByType image/webp "access plus 1 year"
-  ExpiresByType image/jpeg "access plus 1 year"
-  ExpiresByType image/png "access plus 1 year"
-  ExpiresByType image/svg+xml "access plus 1 year"
-  ExpiresByType image/x-icon "access plus 1 year"
+  ExpiresByType text/javascript "access plus 1 year"
   ExpiresByType font/woff2 "access plus 1 year"
+  ExpiresByType image/webp "access plus 30 days"
+  ExpiresByType image/jpeg "access plus 30 days"
+  ExpiresByType image/png "access plus 30 days"
+  ExpiresByType image/svg+xml "access plus 30 days"
+  ExpiresByType image/x-icon "access plus 30 days"
   ExpiresByType text/html "access plus 0 seconds"
 </IfModule>
 
 <IfModule mod_headers.c>
-  <FilesMatch "\.(css|js|webp|jpg|jpeg|png|svg|ico|woff2)$">
+  <FilesMatch "\.(css|js|woff2)$">
     Header set Cache-Control "public, max-age=31536000, immutable"
+  </FilesMatch>
+  <FilesMatch "\.(webp|jpg|jpeg|png|svg|ico)$">
+    Header set Cache-Control "public, max-age=2592000"
   </FilesMatch>
   <FilesMatch "\.(html|php)$">
     Header set Cache-Control "no-cache"

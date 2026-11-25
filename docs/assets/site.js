@@ -469,6 +469,8 @@ $$("form[data-form]").forEach(function (form) {
   var button = $('button[type="submit"]', form);
   var controls = $$("input, select, textarea", form).filter(function (el) { return el.closest("[data-field]"); });
   form.elements.form_started.value = String(Date.now());
+  // Without scripts the browser's own validation applies; with them, ours does.
+  form.setAttribute("novalidate", "");
 
   var say = function (kind, text, link) {
     status.className = "form-status" + (kind ? " is-" + kind : "");

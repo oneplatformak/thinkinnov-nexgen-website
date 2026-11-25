@@ -89,7 +89,7 @@ function traps() {
  * progress; success is only ever shown after the server answers ok.
  */
 function form({ kind, action, fields, submit, multipart = false, messages }) {
-  return `<form class="form" action="${site.asset(action)}" method="post"${multipart ? ' enctype="multipart/form-data"' : ""} novalidate data-form="${kind}"${attrs({
+  return `<form class="form" action="${site.asset(action)}" method="post"${multipart ? ' enctype="multipart/form-data"' : ""} data-form="${kind}"${attrs({
     "data-l10n-sending": messages.sending,
     "data-l10n-success": messages.success,
     "data-l10n-failed": messages.failed,

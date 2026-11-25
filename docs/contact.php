@@ -1,106 +1,65 @@
 <?php
 /**
- * Contact form handler for cPanel / Apache + PHP.
- * Change RECIPIENT if needed — keep in sync with site email.
+ * Contact form handler for cPanel / Apache + PHP 8.
+ *
+ * Accepts only the fields the form has. Enquiry type, topic, business need,
+ * industry and company size must match the lists the site itself publishes
+ * (inc/enquiry-options.php, written by the build); anything else is dropped.
+ * The recipient is fixed in inc/form-lib.php.
  */
 declare(strict_types=1);
 
-const RECIPIENT = 'info@thinkinnovnexgen.co.jp';
-const FROM_ADDRESS = 'noreply@thinkinnovnexgen.co.jp';
-const RATE_WINDOW = 600; // seconds
-const RATE_MAX = 8;
-const MIN_SECONDS = 3;
+require __DIR__ . '/inc/form-lib.php';
 
-header('Content-Type: application/json; charset=utf-8');
-header('X-Content-Type-Options: nosniff');
+const FORM_PAGE = 'contact.html';
 
-if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
-    http_response_code(405);
-    echo json_encode(['ok' => false, 'error' => 'Method not allowed']);
-    exit;
+tin_guard('contact', 8, FORM_PAGE);
+
+$options = tin_options();
+$type = tin_choice('type', $options['types']);
+$topic = tin_choice('topic', $options['topics']);
+$need = tin_choice('need', $options['needs']);
+$industry = tin_choice('industry', $options['industries']);
+$size = tin_choice('size', $options['sizes']);
+$name = tin_line('name', 100);
+$company = tin_line('company', 150);
+$phone = tin_line('phone', 40);
+$message = tin_text('message', 5000);
+$emailRaw = tin_line('email', 254);
+$email = tin_email('email');
+
+if ($type === '' || $name === '' || $message === '' || $emailRaw === '') {
+    tin_respond(400, 'invalid', FORM_PAGE);
+}
+if ($email === '') {
+    tin_respond(400, 'email', FORM_PAGE);
+}
+if ($phone !== '' && !preg_match('/^[0-9+().\-\s]{5,40}$/', $phone)) {
+    tin_respond(400, 'invalid', FORM_PAGE);
+}
+if (empty($_POST['consent'])) {
+    tin_respond(400, 'consent', FORM_PAGE);
 }
 
-function client_ip(): string {
-    return $_SERVER['REMOTE_ADDR'] ?? 'unknown';
-}
-
-function rate_limited(): bool {
-    $dir = sys_get_temp_dir() . '/tin_contact_rl';
-    if (!is_dir($dir)) {
-        @mkdir($dir, 0700, true);
-    }
-    $file = $dir . '/' . hash('sha256', client_ip()) . '.json';
-    $now = time();
-    $hits = [];
-    if (is_file($file)) {
-        $hits = json_decode((string) file_get_contents($file), true) ?: [];
-    }
-    $hits = array_values(array_filter($hits, static fn($t) => ($now - (int) $t) < RATE_WINDOW));
-    if (count($hits) >= RATE_MAX) {
-        return true;
-    }
-    $hits[] = $now;
-    file_put_contents($file, json_encode($hits), LOCK_EX);
-    return false;
-}
-
-// Honeypot
-if (!empty($_POST['website'])) {
-    echo json_encode(['ok' => true, 'message' => 'Thank you — your message was sent.']);
-    exit;
-}
-
-if (rate_limited()) {
-    http_response_code(429);
-    echo json_encode(['ok' => false, 'error' => 'Too many requests. Please try again later.']);
-    exit;
-}
-
-$started = (int) ($_POST['form_started'] ?? 0);
-if ($started > 0 && (int) (microtime(true) * 1000) - $started < MIN_SECONDS * 1000) {
-    http_response_code(400);
-    echo json_encode(['ok' => false, 'error' => 'Please wait a moment and try again.']);
-    exit;
-}
-
-function header_safe(string $value): string {
-    return trim(str_replace(["\r", "\n", "%0a", "%0d", "%0A", "%0D"], '', $value));
-}
-
-$name = header_safe((string) ($_POST['name'] ?? ''));
-$email = header_safe((string) ($_POST['email'] ?? ''));
-$company = trim((string) ($_POST['company'] ?? ''));
-$phone = trim((string) ($_POST['phone'] ?? ''));
-$message = trim((string) ($_POST['message'] ?? ''));
-$consent = !empty($_POST['consent']);
-
-if ($name === '' || $email === '' || $message === '' || !$consent) {
-    http_response_code(400);
-    echo json_encode(['ok' => false, 'error' => 'Missing required fields.']);
-    exit;
-}
-
-if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
-    http_response_code(400);
-    echo json_encode(['ok' => false, 'error' => 'Invalid email address.']);
-    exit;
-}
-
-$subject = 'Website contact from ' . $name;
-$body = "Name: {$name}\nEmail: {$email}\nCompany: {$company}\nPhone: {$phone}\n\nMessage:\n{$message}\n";
-$headers = [
-    'From: ThinkInnov-NexGen Website <' . FROM_ADDRESS . '>',
-    'Reply-To: ' . $name . ' <' . $email . '>',
-    'MIME-Version: 1.0',
-    'Content-Type: text/plain; charset=UTF-8',
+$lines = [
+    'Enquiry type: ' . $options['types'][$type],
+    'Topic: ' . ($topic !== '' ? $options['topics'][$topic] : '-'),
+    'Business need: ' . ($need !== '' ? $options['needs'][$need] : '-'),
+    'Industry: ' . ($industry !== '' ? $options['industries'][$industry] : '-'),
+    'Company size: ' . ($size !== '' ? $options['sizes'][$size] : '-'),
+    'Page language: ' . tin_lang(),
+    '',
+    'Name: ' . $name,
+    'Email: ' . $email,
+    'Company: ' . ($company !== '' ? $company : '-'),
+    'Phone: ' . ($phone !== '' ? $phone : '-'),
+    '',
+    'Message:',
+    $message,
+    '',
 ];
 
-$sent = @mail(RECIPIENT, '=?UTF-8?B?' . base64_encode($subject) . '?=', $body, implode("\r\n", $headers));
+$subject = 'Website enquiry: ' . $options['types'][$type] . ' - ' . $name;
+$sent = tin_send('ThinkInnov-NexGen Website', $subject, implode("\n", $lines), $email, 'text/plain; charset=UTF-8');
 
-if (!$sent) {
-    http_response_code(500);
-    echo json_encode(['ok' => false, 'error' => 'Mail could not be sent.']);
-    exit;
-}
-
-echo json_encode(['ok' => true, 'message' => 'Thank you — your message was sent.']);
+tin_respond($sent ? 200 : 500, $sent ? 'sent_contact' : 'mail_failed', FORM_PAGE);
