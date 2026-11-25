@@ -125,4 +125,65 @@ function stageStrip(onKeys) {
   return `<ol class="stage-strip" aria-label="Lifecycle stages">${items}</ol>`;
 }
 
-module.exports = { heroLoop, approachStrip, maturitySteps, presenceLine, stageStrip, cornerMarks, polar };
+/** Wraps a conceptual diagram with its label and caption. */
+function conceptualFigure(id, svg, caption) {
+  return `<figure class="fig fig-concept">
+      ${svg.replace("<svg ", `<svg role="img" aria-labelledby="${id}-caption" focusable="false" `)}
+      <figcaption id="${id}-caption"><span class="fig-no">Conceptual diagram</span> ${esc(caption)}</figcaption>
+    </figure>`;
+}
+
+const arrowHead = (id) => `<defs><marker id="${id}" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0L10 5L0 10z"/></marker></defs>`;
+
+/**
+ * "Closed-loop analytics from development to manufacturing to real-world
+ * feedback and then back to design" (home page PLM text), drawn as a loop.
+ */
+function closedLoop() {
+  const box = (x, y, w, label, cls = "") => `<g><rect class="fig-box${cls}" x="${x}" y="${y}" width="${w}" height="44"/><text class="fig-box-label" x="${x + w / 2}" y="${y + 28}" text-anchor="middle">${esc(label)}</text></g>`;
+  const svg = `<svg viewBox="0 0 400 360">
+        ${arrowHead("loop-arrow")}
+        <g class="fig-corners">${cornerMarks(400, 360, 4, 12)}</g>
+        <g class="fig-flow" marker-end="url(#loop-arrow)">
+          <path d="M276 42Q326 46 326 152"/>
+          <path d="M326 204Q326 314 292 318"/>
+          <path d="M108 318Q74 314 74 206"/>
+          <path d="M74 156Q74 46 122 42"/>
+        </g>
+        ${box(125, 20, 150, "Development")}
+        ${box(261, 158, 130, "Manufacturing")}
+        ${box(110, 296, 180, "Real-world feedback")}
+        ${box(9, 158, 130, "Design", " fig-box-accent")}
+        <text class="fig-centre" x="200" y="176" text-anchor="middle">Closed-loop</text>
+        <text class="fig-centre" x="200" y="196" text-anchor="middle">analytics</text>
+      </svg>`;
+  return conceptualFigure("fig-loop", svg, "Development, manufacturing and real-world feedback connected back to design.");
+}
+
+/**
+ * "Realize your digital threads with ERP, MES and enterprise applications by
+ * using the Teamcenter connection platform" (Active Integration Solution),
+ * with the two gateways the solutions list names.
+ */
+function integrationMap() {
+  const box = (x, y, w, h, label, sub) => `<g><rect class="fig-box" x="${x}" y="${y}" width="${w}" height="${h}"/><text class="fig-box-label" x="${x + w / 2}" y="${y + (sub ? 24 : h / 2 + 5)}" text-anchor="middle">${esc(label)}</text>${sub ? `<text class="fig-box-sub" x="${x + w / 2}" y="${y + 42}" text-anchor="middle">${esc(sub)}</text>` : ""}</g>`;
+  const svg = `<svg viewBox="0 0 400 330">
+        ${arrowHead("map-arrow")}
+        <g class="fig-corners">${cornerMarks(400, 330, 4, 12)}</g>
+        ${box(110, 18, 180, 56, "Teamcenter", "PLM")}
+        <g class="fig-flow" marker-end="url(#map-arrow)" marker-start="url(#map-arrow)">
+          <path d="M200 80V118"/>
+          <path d="M66 164V214"/><path d="M200 164V214"/><path d="M334 164V214"/>
+        </g>
+        <rect class="fig-bus" x="10" y="122" width="380" height="38"/>
+        <text class="fig-bus-label" x="200" y="146" text-anchor="middle">Teamcenter connection platform</text>
+        ${box(10, 220, 112, 56, "ERP")}
+        ${box(144, 220, 112, 56, "MES")}
+        <g><rect class="fig-box" x="278" y="220" width="112" height="56"/><text class="fig-box-label fig-box-label-sm" x="334" y="244" text-anchor="middle">Enterprise</text><text class="fig-box-label fig-box-label-sm" x="334" y="262" text-anchor="middle">applications</text></g>
+        <text class="fig-box-sub" x="66" y="298" text-anchor="middle">SAP</text>
+        <text class="fig-box-sub" x="66" y="316" text-anchor="middle">Oracle</text>
+      </svg>`;
+  return conceptualFigure("fig-map", svg, "Teamcenter connected to ERP, MES and enterprise applications through the Teamcenter connection platform.");
+}
+
+module.exports = { heroLoop, approachStrip, maturitySteps, presenceLine, stageStrip, closedLoop, integrationMap, cornerMarks, polar };

@@ -13,9 +13,13 @@ if (type) {
   if (params.get("type") && has(type, params.get("type"))) type.value = params.get("type");
   if (params.get("topic") && has(topic, params.get("topic"))) topic.value = params.get("topic");
 
+  // Context comes from the link that was followed; a link without any falls
+  // back to what was chosen earlier in this tab.
+  var context = window.TIN.context;
+  var saved = context.get();
   var any = false;
   ["need", "industry", "size"].forEach(function (kind) {
-    var value = params.get(kind);
+    var value = params.get(kind) || saved[kind];
     if (!value) return;
     var item = $$("[data-context-item]", box).filter(function (li) { return li.getAttribute("data-context-item") === kind + ":" + value; })[0];
     if (!item) return;
@@ -26,6 +30,7 @@ if (type) {
   box.hidden = !any;
 
   var clear = function () {
+    context.clear();
     ["need", "industry", "size"].forEach(function (kind) { form.elements[kind].value = ""; });
     $$("[data-context-item]", box).forEach(function (li) { li.hidden = true; });
     box.hidden = true;

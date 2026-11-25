@@ -68,8 +68,6 @@ module.exports = {
     "Tell us where you are in your PLM journey": "PLMへの取り組みの現在地をお聞かせください",
 
     // Digital transformation
-    "Digital transformation with the Product Data Maturity Model (PDMM): four maturity levels from system definition to innovation platform, and the digital outcomes they support.":
-      "製品データ成熟度モデル（PDMM）によるデジタルトランスフォーメーション：システム定義からイノベーションプラットフォームまでの4つの成熟度レベルと、それらが支えるデジタル成果。",
     "ThinkInnov-NexGen enables digital transformation with Product Data Maturity Model strategy, roadmap thinking and connected product data platforms.":
       "ThinkInnov-NexGenは、製品データ成熟度モデルに基づく戦略、ロードマップの考え方、連携した製品データプラットフォームによって、デジタルトランスフォーメーションを実現します。",
     "PDMM defines the maturity of product data managed by a company and helps create the PLM strategy and roadmap.":
@@ -158,5 +156,31 @@ module.exports = {
     "People standing on both sides of a corridor behind a red ribbon tied with a bow": "廊下の両側に並び、リボン飾りの付いた赤いテープの後ろに立つ人々",
     "Two people walking along an office corridor": "オフィスの廊下を歩く2人",
     "Photo gallery": "フォトギャラリー",
+    // Digital Transformation and Industries, second pass
+    "Digital transformation with the Product Data Maturity Model (PDMM): four maturity levels, the digital thread across PLM, ERP and MES, the digital factory and the digital outcomes they support.": "製品データ成熟度モデル（PDMM）によるデジタルトランスフォーメーション。4つの成熟度レベル、PLM・ERP・MESをつなぐデジタルスレッド、デジタルファクトリー、そしてそれらが支えるデジタル成果をご紹介します。",
+    "Where companies start": "出発点となる課題",
+    "Strategy and roadmap": "戦略とロードマップ",
+    "Discuss where your product data stands": "自社の製品データの現状について相談する",
+    "Digital thread": "デジタルスレッド",
+    "Digital factory": "デジタルファクトリー",
+    "PLM connected to ERP and MES": "ERP・MESとつながるPLM",
+    "Conceptual diagram": "概念図",
+    "Closed-loop": "クローズドループ",
+    "analytics": "分析",
+    "Real-world feedback": "実環境フィードバック",
+    "Enterprise": "業務",
+    "applications": "アプリケーション",
+    "Teamcenter connection platform": "Teamcenter接続プラットフォーム",
+    "Development, manufacturing and real-world feedback connected back to design.": "開発、製造、実環境からのフィードバックが設計へとつながる流れ。",
+    "Teamcenter connected to ERP, MES and enterprise applications through the Teamcenter connection platform.": "Teamcenter接続プラットフォームを介して、TeamcenterがERP、MES、業務アプリケーションとつながる構成。",
+    "Reading guide": "読み方のご案内",
+    "Two ways to read this": "立場に応じた2つの読み方",
+    "For management": "経営層の方へ",
+    "For engineering and IT": "設計・開発部門、IT部門の方へ",
+    "Start from maturity, benefits and the fit for your company size.": "成熟度、導入効果、企業規模に合った進め方からご覧ください。",
+    "Start from integration, deployment and where each product sits.": "システム連携、導入形態、各製品の位置づけからご覧ください。",
+    "Each card is reading material for one kind of manufacturer, shown with the related products, solutions and business needs on this site. The cards are not a list of customer projects.": "各カードは、製造業の業種ごとの参考資料です。当サイト内の関連製品、ソリューション、課題とあわせてご紹介しています。お客様の導入実績を示すものではありません。",
+    "Related business needs": "関連する課題",
+    "Siemens product named": "関連するSiemens製品",
   },
 };

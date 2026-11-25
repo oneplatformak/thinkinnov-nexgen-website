@@ -1,7 +1,7 @@
 /** New Japanese for Products, Solutions, the finder and Industries. Awaiting native review. */
 module.exports = {
   area: "Products, solutions, finder and industries",
-  keep: [],
+  keep: ["Oracle"],
   entries: {
     // Products
     "The Siemens products ThinkInnov-NexGen works with: NX, Solid Edge, Capital, Teamcenter, Tecnomatix and Mendix, with related solutions and where each sits in the product lifecycle.":

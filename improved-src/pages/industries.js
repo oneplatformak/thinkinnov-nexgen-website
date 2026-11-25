@@ -5,6 +5,28 @@ const { esc, pad2 } = require("../lib/html");
 const c = require("../lib/components");
 const content = require("../content");
 
+function relations(ind) {
+  const rel = content.industryRelations[ind.key];
+  const groups = [];
+  if (rel.products.length) {
+    groups.push(["Siemens product named", `<ul class="chips">${rel.products
+      .map((key) => {
+        const p = content.productByKey[key];
+        return `<li><a class="chip chip-product" href="${site.page(content.productPath(p.key))}">${c.productMark(p, "sm")}<span><span class="chip-label">${esc(p.name)}</span><span class="chip-small">${esc(p.category)}</span></span></a></li>`;
+      })
+      .join("")}</ul>`]);
+  }
+  if (rel.solutions.length) {
+    groups.push(["Related solutions", `<ul class="plain-list">${rel.solutions.map((key) => `<li><a href="${site.page(`solutions.html#${key}`)}">${esc(content.solutionByKey[key].title)}</a></li>`).join("")}</ul>`]);
+  }
+  // Following a need from here opens the finder with this industry as context.
+  const needs = rel.needs.map((key) => `<li><a href="${site.page(`solutions.html?industry=${ind.key}#need-${key}`)}">${esc(content.needByKey[key].title)}</a></li>`);
+  const links = (rel.links || []).map(([href, label]) => `<li><a href="${site.page(href)}">${esc(label)}</a></li>`);
+  if (needs.length) groups.push(["Related business needs", `<ul class="plain-list">${needs.join("")}</ul>`]);
+  if (links.length) groups.push(["Related on this site", `<ul class="plain-list">${links.join("")}</ul>`]);
+  return `<dl class="industry-rel">${groups.map(([title, html]) => `<div><dt>${esc(title)}</dt><dd>${html}</dd></div>`).join("")}</dl>`;
+}
+
 function industry(ind) {
   const file = `assets/img/industries/infographic-${pad2(ind.n)}.webp`;
   return `<article class="industry" id="${ind.key}">
@@ -12,7 +34,11 @@ function industry(ind) {
           <p class="industry-n">${pad2(ind.n)}</p>
           <h2>${esc(ind.title)}</h2>
           <p>${esc(ind.text)}</p>
-          ${c.linkArrow(c.contactHref({ type: "consultation", topic: `industry-${ind.key}` }), "Discuss PLM for this industry")}
+          ${relations(ind)}
+          <p class="industry-actions">
+            ${c.linkArrow(c.contactHref({ type: "consultation", topic: `industry-${ind.key}`, industry: ind.key }), "Discuss PLM for this industry")}
+            ${c.linkArrow(site.page(`solutions.html?industry=${ind.key}#finder`), "Find by business need")}
+          </p>
         </div>
         <figure class="industry-figure">
           <a href="${site.asset(file)}" data-lightbox data-width="1600" data-height="900" data-caption="Infographic: ${esc(ind.title)}">
@@ -41,6 +67,7 @@ function render() {
     crumbs,
     body: [
       c.pageHero({ kicker: intro.kicker, title: "Industries", intro: intro.page, crumbs }),
+      `<div class="page-note"><div class="container"><p class="note note-wide">Each card is reading material for one kind of manufacturer, shown with the related products, solutions and business needs on this site. The cards are not a list of customer projects.</p></div></div>`,
       `<section class="section">
         <div class="container industries-layout">
           <aside class="industries-aside">
@@ -52,7 +79,7 @@ function render() {
       </section>`,
       c.ctaBand({
         title: "Talk to us about PLM in your industry",
-        text: content.customersIntro.text,
+        text: content.contactIntro.text,
         actions: [[c.contactHref({ type: "consultation" }), "Book a PLM consultation"], [site.page("solutions.html#finder"), "Find by business need", "ghost"]],
       }),
     ].join("\n"),

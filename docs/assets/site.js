@@ -15,6 +15,77 @@ TIN.store = {
 TIN.$$("[data-js-only]").forEach(function (el) { el.hidden = false; });
 })();
 
+/* 05-context.js */
+(function () {
+"use strict";
+// Journey context: the industry, company size and business need a visitor
+// picks are kept for this browser tab only (sessionStorage) and added to
+// links that lead to the contact form, so an enquiry can say where it came
+// from. Nothing is sent anywhere until the visitor submits the form.
+var TIN = window.TIN;
+var KEY = "tin-context";
+var KINDS = ["industry", "size", "need"];
+var valid = function (v) { return typeof v === "string" && /^[a-z0-9-]{1,60}$/.test(v); };
+var read = function () {
+  try {
+    var data = JSON.parse(window.sessionStorage.getItem(KEY) || "{}");
+    var out = {};
+    KINDS.forEach(function (k) { if (valid(data[k])) out[k] = data[k]; });
+    return out;
+  } catch (e) { return {}; }
+};
+var write = function (data) {
+  try {
+    if (Object.keys(data).length) window.sessionStorage.setItem(KEY, JSON.stringify(data));
+    else window.sessionStorage.removeItem(KEY);
+  } catch (e) { /* storage unavailable: links still carry their own parameters */ }
+};
+
+var decorate = function () {
+  var data = read();
+  TIN.$$('a[href*="contact.html"]').forEach(function (a) {
+    var url;
+    try { url = new URL(a.href); } catch (e) { return; }
+    if (!a.hasAttribute("data-context-own")) {
+      // Remember which parameters the link was built with, so they are never overwritten.
+      a.setAttribute("data-context-own", KINDS.filter(function (k) { return url.searchParams.has(k); }).join(","));
+    }
+    var own = a.getAttribute("data-context-own").split(",");
+    KINDS.forEach(function (k) {
+      if (own.indexOf(k) >= 0) return;
+      if (data[k]) url.searchParams.set(k, data[k]);
+      else url.searchParams.delete(k);
+    });
+    a.href = url.toString();
+  });
+};
+
+TIN.context = {
+  get: read,
+  set: function (kind, value) {
+    var data = read();
+    if (valid(value)) data[kind] = value;
+    else delete data[kind];
+    write(data);
+    decorate();
+  },
+  clear: function () { write({}); decorate(); },
+};
+
+// A link such as solutions.html?industry=automotive#finder starts a journey.
+var params = new URLSearchParams(location.search);
+var onContact = !!TIN.$("[data-enquiry-type]");
+if (!onContact) {
+  var incoming = read();
+  var changed = false;
+  KINDS.forEach(function (k) {
+    if (valid(params.get(k))) { incoming[k] = params.get(k); changed = true; }
+  });
+  if (changed) write(incoming);
+}
+decorate();
+})();
+
 /* 10-nav.js */
 (function () {
 "use strict";
@@ -263,11 +334,13 @@ if (root) {
     return true;
   };
 
+  var context = window.TIN.context;
   links.forEach(function (link) {
     link.addEventListener("click", function (e) {
       e.preventDefault();
       var key = link.getAttribute("data-need-link");
       show(key, true);
+      context.set("need", key);
       history.replaceState(null, "", "#need-" + key);
     });
   });
@@ -284,12 +357,20 @@ if (root) {
       a.href = url.toString();
     });
   };
-  industry.addEventListener("change", updateContext);
-  size.addEventListener("change", updateContext);
+  // Context chosen earlier in this tab, or passed in the address, is shown here.
+  var has = function (select, value) { return Array.prototype.some.call(select.options, function (o) { return o.value === value; }); };
+  var saved = context.get();
+  if (saved.industry && has(industry, saved.industry)) industry.value = saved.industry;
+  if (saved.size && has(size, saved.size)) size.value = saved.size;
+  updateContext();
+  industry.addEventListener("change", function () { context.set("industry", industry.value); updateContext(); });
+  size.addEventListener("change", function () { context.set("size", size.value); updateContext(); });
 
   var fromHash = function (focus) {
     var m = location.hash.match(/^#need-(.+)$/);
-    return m ? show(m[1], focus) : false;
+    if (!m || !show(m[1], focus)) return false;
+    context.set("need", m[1]);
+    return true;
   };
   if (!fromHash(false)) show(panels[0].getAttribute("data-need-panel"), false);
   window.addEventListener("hashchange", function () { fromHash(true); });
@@ -298,6 +379,7 @@ if (root) {
     var a = e.target.closest('a[href^="#need-"]');
     if (!a || root.contains(a)) return;
     if (show(a.getAttribute("href").slice(6), false)) {
+      context.set("need", a.getAttribute("href").slice(6));
       // let the browser scroll to the finder section instead of a hidden panel
       e.preventDefault();
       history.replaceState(null, "", a.getAttribute("href"));
@@ -571,9 +653,13 @@ if (type) {
   if (params.get("type") && has(type, params.get("type"))) type.value = params.get("type");
   if (params.get("topic") && has(topic, params.get("topic"))) topic.value = params.get("topic");
 
+  // Context comes from the link that was followed; a link without any falls
+  // back to what was chosen earlier in this tab.
+  var context = window.TIN.context;
+  var saved = context.get();
   var any = false;
   ["need", "industry", "size"].forEach(function (kind) {
-    var value = params.get(kind);
+    var value = params.get(kind) || saved[kind];
     if (!value) return;
     var item = $$("[data-context-item]", box).filter(function (li) { return li.getAttribute("data-context-item") === kind + ":" + value; })[0];
     if (!item) return;
@@ -584,6 +670,7 @@ if (type) {
   box.hidden = !any;
 
   var clear = function () {
+    context.clear();
     ["need", "industry", "size"].forEach(function (kind) { form.elements[kind].value = ""; });
     $$("[data-context-item]", box).forEach(function (li) { li.hidden = true; });
     box.hidden = true;
