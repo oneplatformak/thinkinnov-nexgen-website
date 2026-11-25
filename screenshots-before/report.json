@@ -1,0 +1,146 @@
+[
+ {
+  "p": "index.html",
+  "tag": "mobile",
+  "overflowX": 0,
+  "errs": []
+ },
+ {
+  "p": "page.html?page=about",
+  "tag": "mobile",
+  "overflowX": 0,
+  "errs": []
+ },
+ {
+  "p": "page.html?page=plm",
+  "tag": "mobile",
+  "overflowX": 0,
+  "errs": []
+ },
+ {
+  "p": "page.html?page=services",
+  "tag": "mobile",
+  "overflowX": 0,
+  "errs": []
+ },
+ {
+  "p": "page.html?page=digital-transformation",
+  "tag": "mobile",
+  "overflowX": 0,
+  "errs": []
+ },
+ {
+  "p": "page.html?page=products",
+  "tag": "mobile",
+  "overflowX": 0,
+  "errs": []
+ },
+ {
+  "p": "page.html?page=solutions",
+  "tag": "mobile",
+  "overflowX": 0,
+  "errs": []
+ },
+ {
+  "p": "page.html?page=industries",
+  "tag": "mobile",
+  "overflowX": 0,
+  "errs": []
+ },
+ {
+  "p": "page.html?page=behind-the-brand",
+  "tag": "mobile",
+  "overflowX": 0,
+  "errs": []
+ },
+ {
+  "p": "page.html?page=careers",
+  "tag": "mobile",
+  "overflowX": 0,
+  "errs": []
+ },
+ {
+  "p": "application.html",
+  "tag": "mobile",
+  "overflowX": 520,
+  "errs": []
+ },
+ {
+  "p": "jobdetails.html?id=1",
+  "tag": "mobile",
+  "overflowX": 0,
+  "errs": []
+ },
+ {
+  "p": "index.html",
+  "tag": "desktop",
+  "overflowX": 0,
+  "errs": []
+ },
+ {
+  "p": "page.html?page=about",
+  "tag": "desktop",
+  "overflowX": 0,
+  "errs": []
+ },
+ {
+  "p": "page.html?page=plm",
+  "tag": "desktop",
+  "overflowX": 0,
+  "errs": []
+ },
+ {
+  "p": "page.html?page=services",
+  "tag": "desktop",
+  "overflowX": 0,
+  "errs": []
+ },
+ {
+  "p": "page.html?page=digital-transformation",
+  "tag": "desktop",
+  "overflowX": 0,
+  "errs": []
+ },
+ {
+  "p": "page.html?page=products",
+  "tag": "desktop",
+  "overflowX": 0,
+  "errs": []
+ },
+ {
+  "p": "page.html?page=solutions",
+  "tag": "desktop",
+  "overflowX": 0,
+  "errs": []
+ },
+ {
+  "p": "page.html?page=industries",
+  "tag": "desktop",
+  "overflowX": 0,
+  "errs": []
+ },
+ {
+  "p": "page.html?page=behind-the-brand",
+  "tag": "desktop",
+  "overflowX": 0,
+  "errs": []
+ },
+ {
+  "p": "page.html?page=careers",
+  "tag": "desktop",
+  "overflowX": 0,
+  "errs": []
+ },
+ {
+  "p": "application.html",
+  "tag": "desktop",
+  "overflowX": 0,
+  "errs": []
+ },
+ {
+  "p": "jobdetails.html?id=1",
+  "tag": "desktop",
+  "overflowX": 0,
+  "errs": []
+ }
+]

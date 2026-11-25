@@ -1,0 +1,145 @@
+# ThinkInnov-NexGen — cPanel / Apache
+Options -Indexes
+ServerSignature Off
+
+# Force HTTPS
+RewriteEngine On
+RewriteCond %{HTTPS} !=on
+RewriteCond %{HTTP:X-Forwarded-Proto} !=https
+RewriteRule ^ https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
+
+# Custom 404
+ErrorDocument 404 /404.html
+
+# Old SPA-style URLs → real pages
+RewriteCond %{QUERY_STRING} (^|&)page=about(&|$)
+RewriteRule ^page\.html$ /about.html? [L,R=301]
+RewriteCond %{QUERY_STRING} (^|&)page=plm(&|$)
+RewriteRule ^page\.html$ /plm.html? [L,R=301]
+RewriteCond %{QUERY_STRING} (^|&)page=services(&|$)
+RewriteRule ^page\.html$ /services.html? [L,R=301]
+RewriteCond %{QUERY_STRING} (^|&)page=digital-transformation(&|$)
+RewriteRule ^page\.html$ /digital-transformation.html? [L,R=301]
+RewriteCond %{QUERY_STRING} (^|&)page=products(&|$)
+RewriteRule ^page\.html$ /products.html? [L,R=301]
+RewriteCond %{QUERY_STRING} (^|&)page=solutions(&|$)
+RewriteRule ^page\.html$ /solutions.html? [L,R=301]
+RewriteCond %{QUERY_STRING} (^|&)page=industries(&|$)
+RewriteRule ^page\.html$ /industries.html? [L,R=301]
+RewriteCond %{QUERY_STRING} (^|&)page=behind-the-brand(&|$)
+RewriteRule ^page\.html$ /behind-the-brand.html? [L,R=301]
+RewriteCond %{QUERY_STRING} (^|&)page=careers(&|$)
+RewriteRule ^page\.html$ /careers.html? [L,R=301]
+
+# Legacy job / application URLs (numeric id → careers list; JS stubs handle slug mapping on GH Pages)
+RewriteCond %{QUERY_STRING} (^|&)id=1(&|$)
+RewriteRule ^jobdetails\.html$ /careers/01-tech-lead-teamcenter.html? [L,R=301]
+RewriteCond %{QUERY_STRING} (^|&)id=1(&|$)
+RewriteRule ^application\.html$ /apply.html?job=01-tech-lead-teamcenter [L,R=301]
+RewriteCond %{QUERY_STRING} (^|&)id=2(&|$)
+RewriteRule ^jobdetails\.html$ /careers/02-teamcenter-developer.html? [L,R=301]
+RewriteCond %{QUERY_STRING} (^|&)id=2(&|$)
+RewriteRule ^application\.html$ /apply.html?job=02-teamcenter-developer [L,R=301]
+RewriteCond %{QUERY_STRING} (^|&)id=3(&|$)
+RewriteRule ^jobdetails\.html$ /careers/03-support-engineer-capital.html? [L,R=301]
+RewriteCond %{QUERY_STRING} (^|&)id=3(&|$)
+RewriteRule ^application\.html$ /apply.html?job=03-support-engineer-capital [L,R=301]
+RewriteCond %{QUERY_STRING} (^|&)id=4(&|$)
+RewriteRule ^jobdetails\.html$ /careers/04-application-engineer-capital.html? [L,R=301]
+RewriteCond %{QUERY_STRING} (^|&)id=4(&|$)
+RewriteRule ^application\.html$ /apply.html?job=04-application-engineer-capital [L,R=301]
+RewriteCond %{QUERY_STRING} (^|&)id=5(&|$)
+RewriteRule ^jobdetails\.html$ /careers/05-project-manager.html? [L,R=301]
+RewriteCond %{QUERY_STRING} (^|&)id=5(&|$)
+RewriteRule ^application\.html$ /apply.html?job=05-project-manager [L,R=301]
+RewriteCond %{QUERY_STRING} (^|&)id=6(&|$)
+RewriteRule ^jobdetails\.html$ /careers/06-plm-teamcenter-developer.html? [L,R=301]
+RewriteCond %{QUERY_STRING} (^|&)id=6(&|$)
+RewriteRule ^application\.html$ /apply.html?job=06-plm-teamcenter-developer [L,R=301]
+RewriteCond %{QUERY_STRING} (^|&)id=7(&|$)
+RewriteRule ^jobdetails\.html$ /careers/07-teamcenter-plm-solution-architect.html? [L,R=301]
+RewriteCond %{QUERY_STRING} (^|&)id=7(&|$)
+RewriteRule ^application\.html$ /apply.html?job=07-teamcenter-plm-solution-architect [L,R=301]
+RewriteCond %{QUERY_STRING} (^|&)id=8(&|$)
+RewriteRule ^jobdetails\.html$ /careers/08-team-lead.html? [L,R=301]
+RewriteCond %{QUERY_STRING} (^|&)id=8(&|$)
+RewriteRule ^application\.html$ /apply.html?job=08-team-lead [L,R=301]
+RewriteCond %{QUERY_STRING} (^|&)id=9(&|$)
+RewriteRule ^jobdetails\.html$ /careers/09-plm-teamcenter-developer.html? [L,R=301]
+RewriteCond %{QUERY_STRING} (^|&)id=9(&|$)
+RewriteRule ^application\.html$ /apply.html?job=09-plm-teamcenter-developer [L,R=301]
+RewriteCond %{QUERY_STRING} (^|&)id=10(&|$)
+RewriteRule ^jobdetails\.html$ /careers/10-plm-teamcenter-administrator.html? [L,R=301]
+RewriteCond %{QUERY_STRING} (^|&)id=10(&|$)
+RewriteRule ^application\.html$ /apply.html?job=10-plm-teamcenter-administrator [L,R=301]
+RewriteCond %{QUERY_STRING} (^|&)id=11(&|$)
+RewriteRule ^jobdetails\.html$ /careers/11-technical-lead.html? [L,R=301]
+RewriteCond %{QUERY_STRING} (^|&)id=11(&|$)
+RewriteRule ^application\.html$ /apply.html?job=11-technical-lead [L,R=301]
+RewriteCond %{QUERY_STRING} (^|&)id=12(&|$)
+RewriteRule ^jobdetails\.html$ /careers/12-solution-architect-digital-manufacturing.html? [L,R=301]
+RewriteCond %{QUERY_STRING} (^|&)id=12(&|$)
+RewriteRule ^application\.html$ /apply.html?job=12-solution-architect-digital-manufacturing [L,R=301]
+RewriteCond %{QUERY_STRING} (^|&)id=13(&|$)
+RewriteRule ^jobdetails\.html$ /careers/13-sales-engineer.html? [L,R=301]
+RewriteCond %{QUERY_STRING} (^|&)id=13(&|$)
+RewriteRule ^application\.html$ /apply.html?job=13-sales-engineer [L,R=301]
+RewriteCond %{QUERY_STRING} (^|&)id=14(&|$)
+RewriteRule ^jobdetails\.html$ /careers/14-inside-sales-specialist.html? [L,R=301]
+RewriteCond %{QUERY_STRING} (^|&)id=14(&|$)
+RewriteRule ^application\.html$ /apply.html?job=14-inside-sales-specialist [L,R=301]
+RewriteCond %{QUERY_STRING} (^|&)id=15(&|$)
+RewriteRule ^jobdetails\.html$ /careers/15-nx-application-engineer.html? [L,R=301]
+RewriteCond %{QUERY_STRING} (^|&)id=15(&|$)
+RewriteRule ^application\.html$ /apply.html?job=15-nx-application-engineer [L,R=301]
+RewriteCond %{QUERY_STRING} (^|&)id=16(&|$)
+RewriteRule ^jobdetails\.html$ /careers/16-plm-analyst.html? [L,R=301]
+RewriteCond %{QUERY_STRING} (^|&)id=16(&|$)
+RewriteRule ^application\.html$ /apply.html?job=16-plm-analyst [L,R=301]
+RewriteCond %{QUERY_STRING} (^|&)id=17(&|$)
+RewriteRule ^jobdetails\.html$ /careers/17-catia-support-engineer.html? [L,R=301]
+RewriteCond %{QUERY_STRING} (^|&)id=17(&|$)
+RewriteRule ^application\.html$ /apply.html?job=17-catia-support-engineer [L,R=301]
+RewriteCond %{QUERY_STRING} (^|&)id=18(&|$)
+RewriteRule ^jobdetails\.html$ /careers/18-mendix-developer.html? [L,R=301]
+RewriteCond %{QUERY_STRING} (^|&)id=18(&|$)
+RewriteRule ^application\.html$ /apply.html?job=18-mendix-developer [L,R=301]
+RewriteRule ^jobdetails\.html$ /careers.html [L,R=301]
+RewriteRule ^application\.html$ /apply.html [L,R=301]
+
+# Security headers
+<IfModule mod_headers.c>
+  Header always set X-Content-Type-Options "nosniff"
+  Header always set Referrer-Policy "strict-origin-when-cross-origin"
+  Header always set X-Frame-Options "SAMEORIGIN"
+  Header always set Permissions-Policy "geolocation=(), microphone=(), camera=()"
+</IfModule>
+
+# Compression
+<IfModule mod_deflate.c>
+  AddOutputFilterByType DEFLATE text/html text/plain text/xml text/css
+  AddOutputFilterByType DEFLATE application/javascript application/json application/xml image/svg+xml
+</IfModule>
+
+# Long cache for hashed/static assets
+<IfModule mod_expires.c>
+  ExpiresActive On
+  ExpiresByType text/css "access plus 1 year"
+  ExpiresByType application/javascript "access plus 1 year"
+  ExpiresByType image/webp "access plus 1 year"
+  ExpiresByType image/jpeg "access plus 1 year"
+  ExpiresByType image/png "access plus 1 year"
+  ExpiresByType image/svg+xml "access plus 1 year"
+  ExpiresByType image/x-icon "access plus 1 year"
+  ExpiresByType font/woff2 "access plus 1 year"
+  ExpiresByType text/html "access plus 0 seconds"
+</IfModule>
+
+<IfModule mod_headers.c>
+  <FilesMatch "\.(css|js|webp|jpg|jpeg|png|svg|ico|woff2)$">
+    Header set Cache-Control "public, max-age=31536000, immutable"
+  </FilesMatch>
+  <FilesMatch "\.(html|php)$">
+    Header set Cache-Control "no-cache"
+  </FilesMatch>
+</IfModule>

@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://thinkinnovnexgen.co.jp/sitemap.xml
