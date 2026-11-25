@@ -1,88 +1,97 @@
 # Status of every page and feature
 
-What each label means here:
+The six labels are the brief's (`notes/MASTER_PROMPT.txt`, L2497–2500 and L5061–5073). What each means here:
 
 | Label | Meaning |
-|---|---|
-| **Implemented** | Built and in the repo. No test in this repo exercises it. |
-| **Tested** | Implemented, and covered by an automated test that was run locally and passed (which test is named). |
-| **Verified** | Tested, and also looked at by the author in Chrome screenshots at 390px and 1440px in both languages. |
-| **Requires Business Approval** | Works technically, but the content or wording needs a decision from the owner, the client or a lawyer before launch. The question number refers to `notes/REVIEW.md`. |
-| **Requires External Integration** | Cannot be finished or confirmed without a system this work was not allowed to touch (production host, mailbox, DNS). |
+| --- | --- |
+| **Implemented** | Built and in the repository. No test exercises it, or it is a document. |
+| **Tested** | Implemented, and covered by an automated test that ran on the final build and passed. The test is named; its output is in `notes/test-output/`. |
+| **Verified** | Tested, and the author also looked at it in the final Chrome screenshots (which pages, and how much of each, is in `notes/TEST-EVIDENCE.md` §5). |
+| **Requires Business Approval** | Works, but the content needs a decision or confirmation from the client or a lawyer. "Q" numbers are the questions in `notes/REVIEW.md` §9. |
+| **Requires External Integration** | Cannot be finished or proven without a system this work may not touch: the production host, a mailbox. |
 | **Not Implemented** | Not built. The reason is given. |
 
-An item can carry more than one label. "Verified" never means approved by the client, tested in a browser other than Chrome, or reviewed by a native Japanese speaker.
+An item can carry more than one label. "Verified" never means approved by the client, tested in a browser other than Chrome, or read by a native Japanese speaker. Nobody other than the author has checked anything.
 
-Tests referred to: **links** = `improved-src/check-site.py`; **layout** = `tools/test-layout.js` (10 widths); **interactions** = `tools/test-interactions.js`; **forms** = `tools/test-forms.sh`; **Lighthouse** = Lighthouse 12, local.
+Tests named below: **site** = `improved-src/check-site.py`; **source** = `tools/check-source.py`; **layout** = `tools/test-layout.js` (ten widths); **interactions** = `tools/test-interactions.js` (389 checks); **forms** = `tools/test-forms.sh` (58 checks); **axe** = `tools/test-axe.js`; **Lighthouse** = Lighthouse 12, 44 local runs. Every page in the table passes site, layout and axe, so those three are not repeated on each row.
 
-## Pages (each exists in English and at the same path under `/ja/`)
+## Pages
+
+Each exists in English and at the same path under `/ja/`: 41 pages per language.
 
 | Page | Status | Notes |
-|---|---|---|
-| Home `index.html` | Verified (links, layout, interactions, Lighthouse) · Requires Business Approval | Q3 partner wording, Q9 "joint venture" wording absent, Q13 one conceptual image |
-| About `about.html` | Verified (links, layout, interactions for the photo viewer, Lighthouse) · Requires Business Approval | Q1 legal name, Q3, Q4 positioning, Q5 titles, Q6 years |
-| PLM For Everyone `plm.html` | Verified (links, layout) | Not run through Lighthouse |
-| Services `services.html` | Verified (links, layout) · Requires Business Approval | Q10 "Production deployment"; not run through Lighthouse |
-| Digital Transformation `digital-transformation.html` | Verified (links, layout) | Not run through Lighthouse |
-| Products `products.html` | Verified (links, layout, Lighthouse) · Requires Business Approval | Six Siemens-sourced sentences (claim register), Q11 Designcenter naming, Q14 lifecycle placement |
-| Solutions `solutions.html` | Verified (links, layout, interactions for the finder, Lighthouse) · Requires Business Approval | Q14 relationships shown by the finder |
-| Industries `industries.html` | Verified (links, layout, interactions for the photo viewer, Lighthouse) | Infographics are images containing text (known limitation) |
-| Behind the Brand `behind-the-brand.html` | Verified (links, layout) | Not run through Lighthouse |
-| Careers `careers.html` | Verified (links, layout, interactions for the filters, Lighthouse) · Requires Business Approval | Q12 whether the 18 roles are open |
-| 18 job pages `careers/*.html` | Tested (links, layout) · Requires Business Approval | Looked at in screenshots: role 01 (English, desktop) and role 07 (Japanese, desktop and mobile); all 18 share one template. One run through Lighthouse. Q12 |
-| Apply `apply.html` | Verified (links, layout, interactions, forms) · Requires External Integration | Real delivery of the email and attachment is untested |
-| Contact `contact.html` | Verified (links, layout, interactions, forms, Lighthouse) · Requires External Integration | Real delivery untested; Q2 mailbox |
-| Privacy notice `privacy.html` | Verified (links, layout) · Requires Business Approval | Q16 legal review. Not legal advice |
-| Accessibility statement `accessibility.html` | Verified (links, layout) · Requires Business Approval | Lists only what was tested; owner should confirm before publishing |
-| HTML sitemap `sitemap.html` | Verified (links, layout) | |
-| 404 `404.html` | Verified (links, layout) · Requires External Integration | Shown by the local preview server; Apache `ErrorDocument` untested |
-| Redirect stubs `page.html`, `jobdetails.html`, `application.html` | Tested (links) | Client-side redirects for GitHub Pages; `.htaccess` 301s are the production path and are untested |
-| Terms of use | Not Implemented | Needs a lawyer (Q17) |
+| --- | --- | --- |
+| Home `index.html` | Verified (interactions: menus, lifecycle; Lighthouse) · Requires Business Approval | Q3 logos and quotes, Q7 partner wording, Q9 Ohmium and Lectrix |
+| About `about.html` | Verified (interactions: photo viewer; Lighthouse) · Requires Business Approval | Q1 legal name, Q8 titles, Q10 the year 2014, Q12 positioning, Q13 profile facts, Q20 consent for photographs |
+| PLM For Everyone `plm.html` | Tested | Not in the Lighthouse set; not read in the final screenshots |
+| Services `services.html` | Tested · Requires Business Approval | Q14 "Production Development", Q16 support. Not in the Lighthouse set |
+| Digital Transformation `digital-transformation.html` | Verified (Lighthouse) | Three diagrams drawn in code. No Digital Twin section (`REVIEW.md` §8) |
+| Products `products.html` | Verified (interactions: product pages; Lighthouse) · Requires Business Approval | Q17 product naming, Q18 lifecycle placement, Q20 product tiles |
+| Teamcenter `products/teamcenter.html` | Verified (interactions: product pages, journey 1; Lighthouse) · Requires Business Approval | Q17, Q18. One sentence from Siemens' site, logged in `CLAIM-REGISTER.md` §1 |
+| NX, Solid Edge, Capital, Tecnomatix, Mendix `products/*.html` | Tested (interactions: product pages) · Requires Business Approval | Same template as Teamcenter. Solid Edge and Mendix were looked at one build earlier. Q17, Q18 |
+| Solutions `solutions.html` | Verified (interactions: finder, journeys; Lighthouse) · Requires Business Approval | Fifteen solutions and the finder. Q18 |
+| Industries `industries.html` | Verified (interactions: photo viewer, journeys; Lighthouse) · Requires Business Approval | Q19 origin of the eleven images; they contain untranslated English text |
+| Behind the Brand `behind-the-brand.html` | Tested · Requires Business Approval | Q20. Not in the Lighthouse set |
+| Careers `careers.html` | Tested (interactions: career filters; Lighthouse) · Requires Business Approval | Q4 whether the roles are open |
+| 18 role pages `careers/*.html` | Tested (source: titles match the original; Lighthouse on one) · Requires Business Approval | One template. Q4 |
+| Apply `apply.html` | Verified (interactions: application form; forms) · Requires External Integration · Requires Business Approval | Delivery of the email and CV is unproven. Q2 mailbox, Q21 optional fields |
+| Contact `contact.html` | Verified (interactions: contact form, journeys; forms; Lighthouse) · Requires External Integration | Delivery unproven. Q2 mailbox |
+| Search `search.html` | Tested (interactions: search; Lighthouse) | Looked at one build earlier |
+| Privacy notice `privacy.html` | Tested · Requires Business Approval | Q5 legal review. States no retention period, legal basis or compliance |
+| Accessibility `accessibility.html` | Tested · Requires Business Approval | Q26. Says what was tested and what was not; claims no conformance |
+| Sitemap `sitemap.html` | Tested | |
+| 404 `404.html` | Tested · Requires External Integration | Apache's `ErrorDocument` is untested |
+| Stub pages `page.html`, `jobdetails.html`, `application.html` (English only) | Tested (interactions: old addresses, 18 checks) · Requires External Integration | They forward the original site's addresses in the browser. The 301 versions in `.htaccess` are untested |
+| Terms of use | Not Implemented | Legal text. Q25 |
+| Company history | Not Implemented | The source has one year and no milestones. Q10 |
+| Case studies, customer success pages | Not Implemented | No approved project outcomes exist |
+| Resources, articles, FAQ | Not Implemented | No such material in the source. Phase 2 (`REVIEW.md` §7) |
+| A page per service, per solution, per digital-transformation topic | Not Implemented | A sentence or two each in the source. Each has an anchor on its overview page |
+| PLM readiness assessment | Not Implemented | Optional in the brief. The finder gives direction without scoring the visitor |
 
 ## Features
 
 | Feature | Status | Notes |
-|---|---|---|
-| Static generator, CSS and JS built from `improved-src/` | Tested | Build runs clean; every test below runs against its output |
-| Design system (type, colour, spacing, icons, diagrams) | Verified | Japanese text was seen only in the Noto CJK font on Linux; Hiragino, Yu Gothic and Meiryo rendering is unverified |
-| Mega menu (hover, click, keyboard, Escape) | Verified (interactions: 15 checks per language) | |
-| Mobile menu (focus trap, Escape, link fallback without scripts) | Verified (interactions: 10 per language) | |
-| Breadcrumbs with `BreadcrumbList` data | Tested (links) | Structured data not validated with Google's tool |
-| Language switch to the same page; remembered preference; no redirect of direct links | Verified (interactions: 10) | |
-| Footer | Verified (links, layout) | |
-| Lifecycle diagram (nine stages, tabs, arrow keys, text fallback) | Verified (interactions: 14 per language at 390px and 1440px) · Requires Business Approval | Q14 |
-| Finder by business need (16 needs, hand-off to contact form) | Verified (interactions: 16 per language) · Requires Business Approval | Q14 |
-| Career filters (discipline, experience, keyword; full list without scripts) | Verified (interactions: 11 per language) | |
-| Photo viewer for gallery and infographics | Verified (interactions: 11 per language) | |
+| --- | --- | --- |
+| Static generator; CSS and JS built from `improved-src/` | Tested (two builds in a row change no file) | |
+| Design system | Verified | `notes/DESIGN-SYSTEM.md`. Japanese seen in one font only |
+| Desktop menus (hover, click, keyboard, Escape) | Tested (interactions: 15 per language) | |
+| Mobile menu (focus held inside, Escape, plain link without scripts) | Tested (interactions: 10 per language) | |
+| Breadcrumbs with `BreadcrumbList` data | Tested (site; source: JSON-LD parses) | Not checked in an external validator |
+| Language switch to the same page; remembered choice; no redirect of direct links | Tested (interactions: 11) | |
+| No cookie set | Tested (interactions: language switch) | |
+| Lifecycle diagram: nine stages, tabs, arrow keys, text alternative | Verified (interactions: 14 per language at each of two widths) · Requires Business Approval | Q18 |
+| Finder by business need: sixteen needs, hand-over to the contact form | Verified (interactions: 16 per language) · Requires Business Approval | Q18 |
+| The brief's three example journeys, from industry or need to an enquiry with context | Tested (interactions: 9, 6 and 6 per language) | |
+| Product pages: lifecycle position, related solutions, needs, industries and roles | Tested (interactions: 28 per language) | |
+| Search in both languages, built at build time, run in the browser | Tested (interactions: 9 per language) | Nothing is sent to a server |
+| Career filters (discipline, experience, keyword) | Tested (interactions: 11 per language) | |
+| Photo viewer for gallery and industry images | Tested (interactions: 11 per language) | |
 | Pages with scripts turned off | Tested (interactions: 10 per language) | |
-| Contact form in the browser (validation messages, context from URL, success only on server confirmation, email fallback on Pages) | Verified (interactions: 14 per language) | |
-| Application form in the browser | Verified (interactions: 6 per language) | |
-| `contact.php` | Tested (forms: 37 checks) · Requires External Integration | Run with PHP's built-in server and a fake `sendmail`. Not run on Apache, no real email sent |
-| `apply.php` with CV upload | Tested (forms: 17 checks) · Requires External Integration | Same |
-| `.htaccess` (HTTPS, 301s, headers, CSP, caching, blocked folders) | Implemented · Requires External Integration | Never run on Apache. The same headers were served by `tools/serve.js` and all 252 interaction checks passed under that CSP |
-| Japanese on every page | Tested (build reports 0 untranslated strings) · Requires Business Approval | Q7 native review. 650 strings are new and unreviewed |
-| Japanese phrase-aware line breaking | Verified | In Chrome only |
-| Titles, descriptions, canonical, `hreflang`, XML sitemap, robots | Tested (links; Lighthouse SEO 100 on the pages run) | Not validated with Search Console |
-| `Organization`, `WebSite`, `BreadcrumbList` structured data | Implemented | Present and parsed as JSON by the build; not validated with an external tool |
-| Open Graph tags and image | Implemented | Not checked in a social preview tool |
-| Reduced motion | Tested (interactions) | |
-| Layout without overflow at 320–2560px | Tested (layout: 68 pages × 10 widths) | |
-| Performance, accessibility, best practice and SEO audits | Tested (Lighthouse on 8 pages × 2 languages × 2 form factors) | Local lab numbers. See `notes/REVIEW.md` |
-| Claim register | Implemented · Requires Business Approval | Generated by the build |
-| Japanese translation register | Implemented · Requires Business Approval | Generated by the build |
-| Real photography in place of the remaining generated visual | Requires Business Approval | Q13 |
-| Screen-reader testing | Not Implemented | No screen reader was available in this environment |
-| Testing in Safari, Firefox, Edge, and on physical phones | Not Implemented | Only Chrome on Linux was available |
-| CMS or admin interface | Not Implemented | Out of scope in the brief; content is edited in `improved-src/content/` |
-| Authentication, customer dashboards | Not Implemented | Out of scope in the brief |
-| CRM integration | Not Implemented | Out of scope; would need an external system |
-| Analytics | Not Implemented | Out of scope; would also change the privacy notice |
-| Pricing | Not Implemented | No pricing exists in the source |
-| Case studies | Not Implemented | No project outcomes exist in the source and none may be invented |
-| Company history timeline | Not Implemented | The source gives one year (2014) and it is an open question (Q6) |
-| Employee stories | Not Implemented | None in the source |
-| AI features | Not Implemented | Out of scope in the brief |
-| FAQ and "What is PLM" explainer | Not Implemented | Optional in the brief. Answers would be new company statements with no source |
-| Articles / news | Not Implemented | Optional. No articles exist in the source |
-| Site search | Not Implemented | Optional. The HTML sitemap, the finder and the career filters cover finding things on a site of 34 pages |
-| Individual product detail pages | Not Implemented | Each product has its own section and anchor on `products.html`. The source has one tagline and one category per product, which is not enough for a page each without inventing content |
+| Contact form in the browser: messages tied to fields, context from links, success only on the server's confirmation, email fallback on a static host | Verified (interactions: 14 per language) | |
+| Application form in the browser, with gender, current and expected CTC and notice period optional | Verified (interactions: 7 per language) · Requires Business Approval | Q21 |
+| `contact.php` | Tested (forms) · Requires External Integration | PHP's built-in server and a stand-in for `sendmail`. No real email |
+| `apply.php` with CV upload | Tested (forms) · Requires External Integration | Same |
+| `.htaccess`: HTTPS, 301s, headers, Content-Security-Policy, caching, blocked folders, 404 | Implemented · Requires External Integration | Never run on Apache. The same headers were served locally and all 389 interaction checks pass under them |
+| Japanese on every page | Tested (build: 0 untranslated; site: language pairs) · Requires Business Approval | Q24 native review |
+| Japanese line breaking at phrase boundaries | Verified | Chrome, one font |
+| Titles, descriptions, canonical, `hreflang`, XML sitemap, robots | Tested (site; Lighthouse SEO 100 on the pages run) | Not checked in Search Console |
+| `Organization`, `WebSite`, `BreadcrumbList` structured data; no `legalName`, no `JobPosting`, no review or rating markup | Tested (source) | Not checked in an external validator |
+| Open Graph tags and image | Implemented | Not checked in a preview tool |
+| Reduced motion | Tested (interactions: lifecycle) | |
+| Layout at ten widths from 320 to 2560 | Tested (layout: 82 pages × 10) | Emulated |
+| Automated accessibility scan | Tested (axe: 0 violations on 164 scans; 36 colour-contrast results undecided) | Not a conformance claim |
+| Performance, accessibility, best-practice and SEO audits | Tested (Lighthouse: 11 pages × 2 languages × 2 presets) | Lab numbers |
+| No tracker, nothing loaded from another host | Tested (site: 0 and 0; interactions under the production CSP) | |
+| Testimonials, logos and role titles identical to the original; partner wording only where the source has it | Tested (source: 87 checks) · Requires Business Approval | Q3, Q7 |
+| Claim, customer, asset and Japanese registers | Implemented · Requires Business Approval | Written by the build |
+| Acceptance mapping, traceability, test evidence, executive review | Implemented | `notes/` |
+| Interaction to Next Paint | Requires External Integration | Field data only |
+| Screen-reader testing | Not Implemented | None available here |
+| Safari, Firefox, Edge, physical phones | Not Implemented | Only Chrome on Linux was available |
+| Content management, authentication, dashboards | Not Implemented | Phase 2. Content is edited in `improved-src/content/` and rebuilt |
+| CRM integration, analytics, campaign attribution | Not Implemented | Phase 2 |
+| Acknowledgement email to the sender | Not Implemented | Phase 2: needs a confirmed sending domain |
+| `JobPosting` data | Not Implemented | Excluded; vacancy status and dates are unknown |
+| Pricing | Not Implemented | None in the source |
+| Competitor analysis document | Not Implemented | Not done |
