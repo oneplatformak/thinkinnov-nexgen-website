@@ -10,10 +10,12 @@ The brief (`notes/MASTER_PROMPT.txt`) contains 157 acceptance and definition-of-
 | --- | --- |
 | Implemented | Built or written. Either no test can settle it (it is a judgement or a document), or none was run. |
 | Tested | A test or scan was run on the final build and passed. The output file is named. |
-| Verified | Tested, and the author also looked at the result in the final screenshots (the pages read are listed in `TEST-EVIDENCE.md` §5). It never means approved by the client, checked in a browser other than Chrome, or read by a native Japanese speaker. |
+| Verified | Tested, and the author also looked at the result in the final screenshots (the pages read are listed in `TEST-EVIDENCE.md` §5). It never means approved by the client, checked in a browser other than Chrome, or read by a native Japanese speaker. After the independent verification, four rows that had this status were moved to Tested, because the test behind them had not been able to see the faults that were there. |
 | Requires Business Approval | Built, but whether the criterion is met depends on a fact, permission or review only the client can give. |
 | Requires External Integration | Cannot be finished or proven without a system this work may not touch: the production host, a mailbox, real visitors. |
 | Not Implemented | Not built, or not applicable. The reason is given. |
+
+**Independent verification.** A verifier who did not build the site checked it at commit `30c9b8a` on 25 November 2026, including 41 of the 84 rows then marked Tested or Verified. It found the evidence held for 34 and that 7 were overstated: AC-N04 and AC-S06 (partner wording), AC-R03, AC-N11 and AC-L02 (layout), AC-P01 and AC-P05 (performance); it also noted AC-R07. Each has been set to what the evidence supports after the fixes, and its note says what changed. `REVIEW.md` §12 has the whole account.
 
 **Met?** says whether the criterion itself is satisfied: Yes, In part, No, or n/a. A row can be Tested and still only met in part, when the test covers less than the criterion asks. The note says what is missing.
 
@@ -24,12 +26,12 @@ The brief (`notes/MASTER_PROMPT.txt`) contains 157 acceptance and definition-of-
 | T-build | `build.txt` | Two builds in a row, then `git status` |
 | T-site | `check-site.txt` | Links, anchors, headings, ids, titles, descriptions, canonical, hreflang, sitemap, language pairs, trackers, third-party resources |
 | T-src | `check-source.txt` | Comparison with the original site; banned wording; excluded markup; credentials |
-| T-forms | `forms.txt` | 58 checks of the two PHP handlers |
-| T-layout | `layout.txt` | Every page at ten widths |
-| T-int | `interactions.txt` | 389 interaction checks in Chrome |
-| T-csp | `interactions-csp.txt` | The same 389 under the production Content-Security-Policy |
+| T-forms | `forms.txt` | 62 checks of the two PHP handlers |
+| T-layout | `layout.txt` | Every page at sixteen widths: overflow, off-screen content, clipped text, broken images, controls under 24 px, words broken across lines |
+| T-int | `interactions.txt` | 427 interaction checks in Chrome |
+| T-csp | `interactions-csp.txt` | The same 427 under the production Content-Security-Policy |
 | T-axe | `axe.txt` | axe-core on every page at two widths |
-| T-lh | `lighthouse.txt` | Lighthouse 12, 44 runs |
+| T-lh | `lighthouse.txt` | Lighthouse 12: 44 runs with compression on, 10 phone-preset runs with it off |
 | T-audit | `npm-audit.txt` | Dependency audit |
 | T-shots | `screenshots-after/index.json` | 164 full-page screenshots with overflow, H1 count and unloaded images |
 
@@ -38,8 +40,8 @@ The brief (`notes/MASTER_PROMPT.txt`) contains 157 acceptance and definition-of-
 | Status | Criteria |
 | --- | --- |
 | Implemented | 49 |
-| Tested | 73 |
-| Verified | 11 |
+| Tested | 77 |
+| Verified | 7 |
 | Requires Business Approval | 14 |
 | Requires External Integration | 8 |
 | Not Implemented | 2 |
@@ -47,8 +49,8 @@ The brief (`notes/MASTER_PROMPT.txt`) contains 157 acceptance and definition-of-
 
 | Met? | Criteria |
 | --- | --- |
-| Yes | 106 |
-| In part | 45 |
+| Yes | 103 |
+| In part | 48 |
 | No | 5 |
 | n/a | 1 |
 
@@ -61,10 +63,10 @@ The criteria not met in full, each with its reason, are listed together in `note
 | AC-A01 | L605 | "Every relevant business requirement is addressed." | Implemented | In part | `TRACEABILITY.md`: all 255 requirement rows have a location or a reason | Requirements that need a backend or a client decision are recorded in `TRACEABILITY.md` and in `REVIEW.md` §7 and §9, and are not built. |
 | AC-A02 | L607 | "Every relevant stakeholder journey is supported." | Tested | Yes | `PERSONA-MATRIX.md`; T-int (`journey 1`, `journey 2`, `journey 3`, `finder`, `product pages`) | Each persona has a page and a working action. What a persona cannot find (pricing, case studies, certifications) is listed in the matrix. |
 | AC-A03 | L609 | "The brand identity is distinctive and consistent." | Implemented | Yes | `DESIGN-SYSTEM.md`; `screenshots-after/` | One token set, one template per component. The builder's judgement; no brand guideline exists to check against. |
-| AC-A04 | L611 | "The website is visually exceptional." | Implemented | In part | `EXECUTIVE-REVIEW.md` design scores 62–90 | "Exceptional" is not claimed. Imagery scores 62: one event photographed, eleven inherited images in another style. |
+| AC-A04 | L611 | "The website is visually exceptional." | Implemented | In part | `EXECUTIVE-REVIEW.md` design scores 55–84 after the independent verification (§7 there) | "Exceptional" is not claimed. Imagery scores 55: one event photographed, eleven inherited images in another style, two of which carry a Siemens wordmark and unsourced figures. |
 | AC-A05 | L613 | "The content is clear and persuasive." | Implemented | In part | `CLAIM-REGISTER.md`; T-src | English is the source's wording, tidied. Persuasion by evidence is limited to what the source has. Japanese awaits native review. |
-| AC-A06 | L615 | "All implemented features are functional." | Tested | Yes | T-int 389/389; T-forms 58/58; T-site | In Chrome. |
-| AC-A07 | L617 | "Mobile and desktop experiences are excellent." | Tested | In part | T-layout: 82 pages × 10 widths, 0 failures; T-shots | Emulated widths in Chrome, not physical devices. "Excellent" is a judgement (responsive design scored 90). |
+| AC-A06 | L615 | "All implemented features are functional." | Tested | Yes | T-int 427/427; T-forms 62/62; T-site | In Chrome. |
+| AC-A07 | L617 | "Mobile and desktop experiences are excellent." | Tested | In part | T-layout: 82 pages × 16 widths, 0 failures, including words broken across lines and controls under 24 px; T-int `finder result panel` at three desktop sizes; T-shots | Emulated widths in Chrome, not physical devices. "Excellent" is a judgement (responsive design scored 84 after the faults the independent verifier found were fixed). |
 | AC-A08 | L619 | "Security and privacy controls are implemented." | Requires External Integration | In part | T-forms; T-src (credentials); `docs/.htaccess`; `privacy.html` | Handlers tested locally. Headers, the blocked `inc/` folder and HTTPS need the Apache host. Privacy notice needs legal review. |
 | AC-A09 | L621 | "Critical user journeys are tested." | Tested | Yes | T-int: `journey 1` (enquiry sent and the email read back), `journey 2`, `journey 3`, `contact form`, `application form`, `language switch` |  |
 | AC-A10 | L623 | "Accessibility and performance are measured." | Tested | Yes | T-axe; T-lh | Lab measurements. |
@@ -84,7 +86,7 @@ The criteria not met in full, each with its reason, are listed together in `note
 | AC-D04 | L4985 | "Every required language version is complete." | Tested | In part | T-build (`0` untranslated); T-site (`language parity: 0`); `JAPANESE-REGISTER.md` | Complete by machine check. Not reviewed by a native reader. |
 | AC-D05 | L4987 | "Every relevant customer journey is functional." | Tested | Yes | As AC-A09 |  |
 | AC-D06 | L4989 | "Every essential interaction is verified." | Tested | Yes | T-int, including keyboard-only paths through menus, lifecycle, finder, viewer and forms |  |
-| AC-D07 | L4991 | "Every major responsive layout has been inspected." | Tested | In part | T-layout; T-shots (164 files) | Every page was measured at ten widths. By eye, the author read the pages listed in `TEST-EVIDENCE.md` §5, not all 164 images. |
+| AC-D07 | L4991 | "Every major responsive layout has been inspected." | Tested | In part | T-layout; T-shots (164 files) | Every page was measured at sixteen widths. By eye, the author read the pages listed in `TEST-EVIDENCE.md` §5, not all 164 images. |
 | AC-D08 | L4993 | "Every known critical security issue has been resolved." | Tested | In part | T-forms; T-src; T-audit (0 vulnerabilities) | No critical issue is known. Anything that depends on host configuration is unproven. |
 | AC-D09 | L4995 | "Accessibility has been evaluated." | Tested | In part | T-axe (0 violations; 36 colour-contrast results it could not decide); T-int keyboard and reduced-motion checks | No screen reader was used. |
 | AC-D10 | L4997 | "Performance has been measured." | Tested | Yes | T-lh |  |
@@ -102,17 +104,17 @@ The criteria not met in full, each with its reason, are listed together in `note
 | AC-N01 | L2419 | "No generic AI-generated website appearance." | Implemented | Yes | `DESIGN-SYSTEM.md`; `screenshots-after/` | No gradients, glow, glass, floating cards or particles, and nothing generated for this rebuild. The eleven inherited industry images are in another style. A judgement. |
 | AC-N02 | L2421 | "No fake testimonials." | Tested | Yes | T-src: four quotes and attributions word for word, both languages | Whether each customer agreed to be quoted is a client question. |
 | AC-N03 | L2423 | "No fabricated customer relationships." | Requires Business Approval | In part | T-src: the same 21 logos as the original; `CUSTOMER-REGISTER.md` | Nothing was added. Permission, the customer's correct name for four logos, and which entity holds each relationship are unconfirmed. |
-| AC-N04 | L2425 | "No incorrect Siemens partnership claims." | Tested | Yes | T-src: "Siemens Solution Partner" on the home page only, "Expert Partner - PLM" on About only, none in head, footer or structured data | Both wordings are in the company's official site package, in these two places. Siemens itself has not been asked. |
+| AC-N04 | L2425 | "No incorrect Siemens partnership claims." | Tested | Yes | T-src: "Siemens Solution Partner" exactly once on each home page, in the hero, and nowhere else; "Expert Partner - PLM" on About only; none in head, footer or structured data | At commit `30c9b8a` the phrase was printed twice on each home page, where the source has it once; the independent verifier found it. The second was removed (`6260296`) and the check now counts occurrences. Both wordings are in the company's official site package, in these two places. Siemens itself has not been asked. The Siemens wordmark inside inherited industry image 02 is AC-S07. |
 | AC-N05 | L2427 | "No placeholder content in production." | Tested | Yes | T-src: placeholder phrases absent; no empty headings |  |
 | AC-N06 | L2429 | "No unfinished pages." | Verified | Yes | T-site: every page has one H1, a title and a description; T-shots |  |
 | AC-N07 | L2430 | "No broken links." | Tested | Yes | T-site: 4,095 internal links and assets, 984 with a fragment, 0 missing | Outbound links are not fetched by the checker. |
 | AC-N08 | L2432 | "No non-functional buttons." | Tested | Yes | T-int |  |
 | AC-N09 | L2434 | "No fake contact form submissions." | Tested | Yes | T-forms (`mail failure is reported as failure (500)`); T-int `contact form` (success only on the server's confirmation; error and email fallback otherwise) |  |
 | AC-N10 | L2436 | "No broken Japanese translations." | Requires Business Approval | In part | T-build; T-site | Nothing is untranslated or mixed. Whether the Japanese reads well needs a native reviewer. |
-| AC-N11 | L2438 | "No inconsistent layouts." | Verified | Yes | T-layout; T-shots; shared templates in `improved-src/lib/` |  |
+| AC-N11 | L2438 | "No inconsistent layouts." | Tested | In part | T-layout; T-int `career filters` (every role row laid out the same way at 1440, 1280 and 1024) and `finder result panel`; shared templates in `improved-src/lib/` | The inconsistencies the independent verifier found at tested widths are fixed and now tested: job facts wrapping differently from row to row, the finder panel, headings that broke inside a word. Not changed, and noted by the verifier: gallery columns that end unevenly at 1440, and sections on four product pages that hold one link beside a large empty area. |
 | AC-N12 | L2440 | "No unnecessary visual clutter." | Implemented | Yes | `screenshots-after/` | A judgement. |
 | AC-N13 | L2442 | "No inaccessible essential functionality." | Tested | In part | T-int keyboard paths; T-axe | No assistive technology was used. |
-| AC-N14 | L2444 | "No unverified business claims." | Requires Business Approval | In part | `CLAIM-REGISTER.md`: every statement has a source | Sourced is not the same as confirmed. The claims inherited from the original are listed for the client in register §5. |
+| AC-N14 | L2444 | "No unverified business claims." | Requires Business Approval | In part | `CLAIM-REGISTER.md`: every statement in the site's text has a source | Sourced is not the same as confirmed. The claims inherited from the original are listed for the client in register §5. Inside the inherited industry images there are statements with no source at all, five of them figures about Teamcenter X (register §6). |
 | AC-N15 | L2446 | "No exposed credentials." | Tested | Yes | T-src: 0 credential patterns in tracked text files; no key or `.env` files |  |
 | AC-N16 | L2448 | "No unnecessary paid dependencies." | Tested | Yes | T-audit: one direct build-time package, BudouX (Apache-2.0), with its own dependencies; nothing at run time; 0 known vulnerabilities | Test tools are free and installed outside the repository. |
 | AC-N17 | L2450 | "No accidental loss of existing business content." | Tested | Yes | As AC-D02 |  |
@@ -130,7 +132,7 @@ The criteria not met in full, each with its reason, are listed together in `note
 | AC-S04 | L4939 | "No fake customer testimonials." | Tested | Yes | As AC-N02 |  |
 | AC-S05 | L4941 | "No fabricated company claims." | Tested | In part | `CLAIM-REGISTER.md`; T-src (banned wording absent; no rating, award or certification wording) | Nothing was invented by this build. Claims the original makes are unconfirmed (AC-N14). |
 | AC-S06 | L4943 | "No invented Siemens credentials." | Tested | Yes | As AC-N04 |  |
-| AC-S07 | L4945 | "No unauthorized brand assets." | Requires Business Approval | No | `ASSET-REGISTER.md` | No brand asset was added. Inherited and unconfirmed: 21 customer logos, eleven industry images (one with a Siemens wordmark in it), photographs of identifiable people. |
+| AC-S07 | L4945 | "No unauthorized brand assets." | Requires Business Approval | No | `ASSET-REGISTER.md` §3; `CLAIM-REGISTER.md` §6 | No brand asset was added. Inherited and unconfirmed: 21 customer logos, photographs of identifiable people, and eleven industry images of unknown origin, one with the Siemens wordmark in it and one printing unsourced figures about a Siemens product. The owner has decided to leave the images as they are for now (`REVIEW.md` §9, first question). |
 | AC-S08 | L4947 | "No broken links." | Tested | Yes | As AC-N07 |  |
 | AC-S09 | L4949 | "No non-functional buttons." | Tested | Yes | As AC-N08 |  |
 | AC-S10 | L4951 | "No inaccessible essential interactions." | Tested | In part | As AC-N13 | No assistive technology was used. |
@@ -147,12 +149,12 @@ The criteria not met in full, each with its reason, are listed together in `note
 
 | ID | Brief | Criterion | Status | Met? | Evidence | Note |
 | --- | --- | --- | --- | --- | --- | --- |
-| AC-P01 | L462, L2100, L4512 | "Lighthouse Performance: 95+" | Tested | Yes | T-lh: 44 runs, lowest 99 (4 runs below 100) | Lab, local server. |
+| AC-P01 | L462, L2100, L4512 | "Lighthouse Performance: 95+" | Tested | In part | T-lh: with compression on, 44 runs, lowest 99 (4 runs below 100). With compression off, 10 phone-preset runs, lowest 92 | Met in the laboratory with compression on. Whether the real host compresses is not known: `.htaccess` asks for it, but only where the module exists. `docs/README-DEPLOY.md` §6 says how to check after upload. |
 | AC-P02 | L464, L2102, L4514 | "Lighthouse Accessibility: 95+" | Tested | Yes | T-lh: lowest 100 | Covers only what Lighthouse can check automatically. |
 | AC-P03 | L466, L2104, L4516 | "Lighthouse Best Practices: 95+" | Tested | Yes | T-lh: lowest 100 |  |
 | AC-P04 | L468, L2106, L4518 | "Lighthouse SEO: 95+" | Tested | Yes | T-lh: lowest 100 |  |
-| AC-P05 | L470, L2108, L4520 | "Largest Contentful Paint: 2.5 seconds or less" | Tested | Yes | T-lh: highest LCP 2.1 s (mobile preset, simulated throttling) | Lab. The real host's response time will add to it. |
-| AC-P06 | L472, L2110, L4522 | "Interaction to Next Paint: 200 milliseconds or less" | Requires External Integration | No | T-lh: Total Blocking Time, highest 106 ms | INP is measured from real visitors. There are none yet, and no analytics. Total Blocking Time is the lab stand-in and is not INP. |
+| AC-P05 | L470, L2108, L4520 | "Largest Contentful Paint: 2.5 seconds or less" | Tested | In part | T-lh, phone preset, simulated throttling: with compression on, LCP 1.7 to 2.1 s on 22 runs. With compression off, 2.4 to 3.2 s on 10 runs, 8 of them over 2.5 s | Met in the laboratory only with compression on; the independent verifier measured the same. The real host is unconfirmed, and its response time will add to either figure. |
+| AC-P06 | L472, L2110, L4522 | "Interaction to Next Paint: 200 milliseconds or less" | Requires External Integration | No | T-lh: Total Blocking Time, highest 100 ms | INP is measured from real visitors. There are none yet, and no analytics. Total Blocking Time is the lab stand-in and is not INP. |
 | AC-P07 | L474, L2112, L4523 | "Cumulative Layout Shift: 0.1 or less" | Tested | Yes | T-lh: highest CLS 0.000 |  |
 | AC-P08 | L479, L2137, L4549–4553 | "Measure actual performance. Do not claim scores or metrics without testing them." "Distinguish laboratory measurements from real-user field data." | Tested | Yes | `test-output/lighthouse.txt` is headed "lab"; no field figure appears anywhere |  |
 | AC-P09 | L357, L4474 | "Target WCAG 2.2 AA." | Tested | In part | T-axe: rules tagged WCAG 2.0 and 2.1 A and AA, WCAG 2.2 AA, and best practice; 0 violations on 164 scans | A target, not a conformance claim. 36 colour-contrast results need a person, and no assistive technology was used. |
@@ -163,22 +165,22 @@ The criteria not met in full, each with its reason, are listed together in `note
 | ID | Brief | Criterion | Status | Met? | Evidence | Note |
 | --- | --- | --- | --- | --- | --- | --- |
 | AC-R01 | L4455 | "No overlapping elements." | Implemented | In part | T-shots; pages read by eye listed in `TEST-EVIDENCE.md` §5 | No script tests for overlap. None was seen in the screenshots read. |
-| AC-R02 | L4457 | "No unintended horizontal scrolling." | Verified | Yes | T-layout: `overflow` 0 at all ten widths; T-shots `horizontalOverflow: no` on 164 |  |
-| AC-R03 | L4459 | "No clipped typography." | Verified | Yes | T-layout: `clipped` 0; T-shots |  |
+| AC-R02 | L4457 | "No unintended horizontal scrolling." | Verified | Yes | T-layout: `overflow` 0 at all sixteen widths; T-shots `horizontalOverflow: no` on 164 |  |
+| AC-R03 | L4459 | "No clipped typography." | Tested | Yes | T-layout: `clipped` 0 and `pages-with-broken-words` 0 on 82 pages at sixteen widths, with every finder result and lifecycle tab opened (`test-output/layout.txt`; the same check on the earlier build, `layout-wordbreak-before.txt`, failed) | Until this round the test measured only text cut off by its box, and words were being split across lines in headings, labels and buttons at several widths; the independent verifier found them. The test now also fails on a word or a short Japanese phrase split across lines. Its limits: one machine's fonts, and Japanese paragraphs of more than 30 characters are left to the browser's normal line breaking. Changed pages were looked at in Chrome at 390, 1024, 1366 and 1440; not every page at every width. |
 | AC-R04 | L4461 | "No broken images." | Verified | Yes | T-layout: `broken-images` 0; T-shots `imagesNotLoaded: 0` |  |
 | AC-R05 | L4463 | "No unusable navigation." | Tested | Yes | T-int `desktop menu`, `mobile menu` | Tested at 1440 and 390; keyboard and pointer. |
 | AC-R06 | L4465 | "No inaccessible hover-only functionality." | Tested | Yes | T-int: menus open by click and by keyboard as well as hover |  |
-| AC-R07 | L4467 | "No broken Japanese layouts." | Verified | In part | T-layout (41 Japanese pages); T-shots; Japanese pages read in `TEST-EVIDENCE.md` §5 | One Japanese font on one system. Two awkward breaks found and fixed in review round 2 and seen fixed. |
+| AC-R07 | L4467 | "No broken Japanese layouts." | Tested | In part | T-layout (41 Japanese pages, phrase breaks checked in headings, labels, buttons and other text of up to 30 characters); Japanese pages read in `TEST-EVIDENCE.md` §5 | One Japanese font on one system. The independent verifier found more breaks inside words than the two fixed earlier (page headings, a lead paragraph, the address, footer links, a job title); those are fixed and the test now covers them. Longer Japanese paragraphs break wherever the browser breaks them, which a native reader may still find awkward in places. |
 | AC-R08 | L4469 | "No inconsistent spacing." | Implemented | Yes | `DESIGN-SYSTEM.md` tokens | A judgement. |
 | AC-R09 | L4471, L2087–2089 | "Suitable for live sales demonstrations in corporate meeting rooms." | Tested | In part | T-layout at 1920 and 2560 | Measured, not looked at on a meeting-room display. The final screenshot set is 390 and 1440 only. |
 | AC-R10 | L1836–1837 | "There must be no untranslated buttons, broken layouts, mixed-language placeholders or awkward Japanese typography." | Requires Business Approval | In part | T-build; T-site | "Awkward" needs a native reader. |
-| AC-R11 | L2081, L4427–4445 | Tested at 320, 375, 390, 430, 768, 1024, 1280, 1440, 1920 and 2560 px. | Tested | Yes | T-layout names all ten widths |  |
+| AC-R11 | L2081, L4427–4445 | Tested at 320, 375, 390, 430, 768, 1024, 1280, 1440, 1920 and 2560 px. | Tested | Yes | T-layout names the ten widths of the brief and six more (360, 900, 1000, 1100, 1180, 1366) |  |
 
 ## 7. QA "verify every" lists (A §16 L518–542; C §34 L4711–4759)
 
 | ID | Brief | Criterion | Status | Met? | Evidence | Note |
 | --- | --- | --- | --- | --- | --- | --- |
-| AC-Q01 | L520, L4715 | Verify "Every page"; "Test every route in both languages." | Tested | Yes | T-site (85 files); T-layout (every page loaded at ten widths); T-shots (H1 count 1 on 164) |  |
+| AC-Q01 | L520, L4715 | Verify "Every page"; "Test every route in both languages." | Tested | Yes | T-site (85 files); T-layout (every page loaded at sixteen widths); T-shots (H1 count 1 on 164) |  |
 | AC-Q02 | L522 | Verify "Every link". | Tested | Yes | As AC-N07 |  |
 | AC-Q03 | L524 | Verify "Every button". | Tested | Yes | As AC-N08 |  |
 | AC-Q04 | L526 | Verify "Every form". | Tested | Yes | T-forms; T-int `contact form`, `application form`, both languages |  |
@@ -212,7 +214,7 @@ The criteria not met in full, each with its reason, are listed together in `note
 | AC-O03 | L5086 | "When a design engineer visits, provide meaningful product information." | Requires Business Approval | In part | Six product pages | Each says what the product is and how the company works with it. Depth needs content approved by the client or Siemens. |
 | AC-O04 | L5088 | "When a manufacturing director visits, demonstrate connected manufacturing possibilities." | Implemented | In part | `digital-transformation.html#digital-factory`, `#integration`; `products/tecnomatix.html` | As far as the source goes on manufacturing. |
 | AC-O05 | L2515, L5090 | "When a procurement manager evaluates it, communicate reliability." | Requires Business Approval | In part | `about.html#profile`; `services.html`; `privacy.html` | Legal name, establishment details and certifications are not available. |
-| AC-O06 | L2517, L5092 | "When a Siemens representative reviews it, demonstrate professional representation." / "accurate professional representation." | Requires Business Approval | In part | T-src; `CLAIM-REGISTER.md` §1 | Accurate as far as this build can check. Siemens has not reviewed it; one inherited image carries a Siemens wordmark. |
+| AC-O06 | L2517, L5092 | "When a Siemens representative reviews it, demonstrate professional representation." / "accurate professional representation." | Requires Business Approval | In part | T-src; `CLAIM-REGISTER.md` §1 and §6 | The text is accurate as far as this build can check. Siemens has not reviewed it. One inherited image carries a Siemens wordmark and another prints unsourced figures about Teamcenter X. |
 | AC-O07 | L2519 | "When a potential customer discovers it, make the next step clear." | Tested | Yes | T-site (no dead ends); T-int journeys |  |
 | AC-O08 | L5094 | "When an existing customer visits, make support accessible." | Implemented | In part | "Ask about support" in the footer of every page and on the home page | The route exists. The support service behind it (hours, contact, response) is the client's to define. |
 | AC-O09 | L2521, L5096 | "When an employee shares it, make them proud of the company." / potential employee: "communicate authentic company culture." | Requires Business Approval | In part | `behind-the-brand.html`; `careers.html` | Four named team members with photographs and the problems the team solves; the values and fourteen event photographs are on About. More needs real stories. |
@@ -236,7 +238,7 @@ The criteria not met in full, each with its reason, are listed together in `note
 | ID | Brief | Criterion | Status | Met? | Evidence | Note |
 | --- | --- | --- | --- | --- | --- | --- |
 | AC-L01 | L2462, L5018 | "Complete production-ready website source code." | Verified | In part | T-build; `improved-src/`, `docs/` | Complete and deterministic. "Production-ready" is not claimed until it has run on the host. |
-| AC-L02 | L2464, L5020 | "Fully responsive English website." | Verified | Yes | T-layout; T-site |  |
+| AC-L02 | L2464, L5020 | "Fully responsive English website." | Tested | Yes | T-layout (41 English pages × 16 widths: overflow, off-screen, clipped text, broken words, broken images and small controls all 0); T-int `finder result panel`, `mobile menu`; T-site | The earlier "Verified" rested on a test that could not see words broken across lines or a button hidden inside a scrolling panel; both are fixed and tested. Emulated widths in Chrome, not devices (AC-A07). |
 | AC-L03 | L2466, L5022 | "Fully responsive Japanese website." | Requires Business Approval | In part | T-layout; T-build | Complete and responsive. Awaits native review. |
 | AC-L04 | L2468, L5024 | "Complete reusable design system." | Implemented | Yes | `DESIGN-SYSTEM.md`; `improved-src/styles/` |  |
 | AC-L05 | L5026 | "Verified route inventory." | Tested | Yes | `COVERAGE.md` §Routes; `docs/sitemap.xml`; T-site |  |
@@ -268,7 +270,7 @@ The criteria not met in full, each with its reason, are listed together in `note
 | Who we are | Title and hero: "ThinkInnov-NexGen combines PLM domain expertise, technical delivery and a consultative approach…"; head office and branches in the hero facts |
 | What we do | Hero headline "Connect your product lifecycle. Innovate more, and faster."; section 01 "End-to-end PLM solutions for consulting, mapping, implementation and adoption"; section 04 services by phase |
 | Who we help | Section 08, "PLM should be accessible to businesses of every size", with Startups, SMBs and Enterprises; section 07 industries |
-| What problem we solve | Section 02, "We help companies effectively address the critical business issues of new product development", four problems |
+| What problem we solve | Section 02, "We help companies to effectively address the critical business issues of new product development", four problems |
 | Why we are different | Section 08, "Why ThinkInnov-NexGen for PLM", three reasons from the original; these are the company's statements, not evidence |
 | Why customers should trust us | Section 09 "Our key customers" (21 logos); section 10 "What our clients say" (four quotes); section 11 offices |
 | What to do next | Hero: "Book a PLM consultation" and "Find by business need"; section 12: four enquiry routes |

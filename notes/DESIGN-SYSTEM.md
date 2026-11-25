@@ -25,8 +25,9 @@ Paper and ink. A warm off-white page, near-black text, hairline rules, square co
 
 - **Display**: Manrope (self-hosted variable WOFF2), used at weights 600–800 for headings, buttons, kickers and labels.
 - **Body**: Inter (self-hosted variable WOFF2).
-- **Japanese**: no web font is downloaded. The stack is Hiragino Sans, Yu Gothic UI, Yu Gothic, Meiryo, Noto Sans JP. Line breaks follow phrase boundaries (BudouX at build time), so a heading does not break inside a word. Letter-spacing on uppercase labels is reduced for Japanese.
+- **Japanese**: no web font is downloaded. The stack is Hiragino Sans, Yu Gothic UI, Yu Gothic, Meiryo, Noto Sans JP. Headings, labels, buttons, captions, the address and other short text are split into phrases at build time (BudouX, plus breaks between known katakana words) and may break only there (`word-break: keep-all`), so they do not break inside a word; longer paragraphs break as the browser breaks them. Letter-spacing on uppercase labels is reduced for Japanese.
 - Headings use tight tracking and `text-wrap: balance`; body lines are held to a readable measure.
+- No word is broken across lines. Where a column can be narrower than its longest word (product names, service headings, the stage strip), the type is sized from the column or the layout changes at a width where the word fits. `tools/test-layout.js` fails the build of a page that breaks one.
 
 ## Components (`03-components.css`, `20-pages.css`, `24-product.css`)
 
@@ -40,11 +41,11 @@ Paper and ink. A warm off-white page, near-black text, hairline rules, square co
 | Facts | `dl.facts` | Label and value rows: product facts, company profile |
 | Product tile | `.pmark` | Two or three letters in a square. Not a Siemens logo |
 | Note | `.note`, `.page-note` | Left-ruled aside for sources and caveats |
-| Figure | `.fig`, `.fig-concept` | SVG diagram with a caption; conceptual diagrams carry the label "Conceptual diagram" |
+| Figure | `.fig`, `.fig-concept` | SVG diagram with a caption. Every diagram is conceptual and its caption begins "Conceptual diagram" (概念図); none has an axis, a scale or a trend line |
 | Stage strip and stage table | `.stage-strip`, `.stage-map` in `.table-scroll` | Nine lifecycle stages; tables scroll inside their own box on phones |
 | Page hero | `.page-hero` with breadcrumbs and optional aside | Every inner page |
 | CTA band | `.cta-band` | Closing invitation |
-| Forms | `.field`, `.field-label`, `.field-req` / `.field-opt`, `.field-error`, `.form-status` | Every field is marked Required or Optional in words |
+| Forms | `.field`, `.field-label`, `.field-req` / `.field-opt`, `.field-error`, `.form-status` | Every field is marked Required or Optional in words. Labels, checkboxes and links inside labels are at least 24 px high |
 | Photo viewer | `dialog.lightbox` | Gallery and industry images |
 
 ## Layout rules

@@ -218,7 +218,7 @@ Still imperfect in the build itself, and left: long pages; the visual clash of t
 
 ## 7. After the independent verification
 
-An independent verifier checked the whole site at commit `30c9b8a` on 25 November 2026: every page at eight widths in both languages, the interactions, the owner's rules, the build, the tests and these documents. Its report is summarised in `REVIEW.md` §12. It agreed with most of the scores above and put six at least ten points lower. Each of those is taken in turn here. The scores in the last column were set after the fixes, against the same scale and caps as before; none was simply put back.
+An independent verifier checked the whole site at commit `30c9b8a` on 25 November 2026: every page in both languages at 390 and 1440, with sideways overflow at eight widths, the interactions, the owner's rules, the build, the tests and these documents. Its report is summarised in `REVIEW.md` §12. It agreed with most of the scores above and put six at least ten points lower. Each of those is taken in turn here. The scores in the last column were set after the fixes, against the same scale and caps as before; none was simply put back.
 
 | Area | Round 2 | Verifier | What the verifier found | What was done | Score now | Why not higher |
 | --- | --- | --- | --- | --- | --- | --- |

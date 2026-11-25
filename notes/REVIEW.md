@@ -9,10 +9,13 @@ Branch `cursor/site-polish-bilingual-637e`, 25 November 2026. This file is the f
 | Each of its 255 requirements | `notes/TRACEABILITY.md` |
 | Every test run, with command and output file | `notes/TEST-EVIDENCE.md`, `notes/test-output/` |
 | The executive review, with scores | `notes/EXECUTIVE-REVIEW.md` |
+| What the independent verifier found, and what was done about it | §12 below |
 | What text and which assets come from where | `notes/CLAIM-REGISTER.md`, `CUSTOMER-REGISTER.md`, `ASSET-REGISTER.md`, `JAPANESE-REGISTER.md` |
 | Where each part of the original site went | `improved-src/COVERAGE.md` |
 
 Three kinds of statement are kept apart throughout: **measured** (a test was run and its output is saved), **seen** (the author looked at it in a Chrome screenshot), and **not known** (could not be tested here, or only the client can say).
+
+An independent verifier checked the site at commit `30c9b8a`. It found faults this report had not: a partner phrase printed twice, words broken in the middle at many widths, a button out of reach in the finder, unsourced figures inside inherited images, and several statements in these documents that were wrong or overstated. §12 gives the account. Everything below is the state after the fixes.
 
 ## 1. What this is, and what was not done
 
@@ -20,24 +23,27 @@ The site is static HTML, CSS and JavaScript with two PHP mail handlers, generate
 
 The governing brief is `notes/MASTER_PROMPT.txt`. Every part of it that fits a static site on cPanel was applied. What needs a backend, a CMS or an outside system is in §7 as phase 2, and is not imitated on the pages: there is no stub interface and no button that does nothing. The brief's own rule, never to invent credentials, testimonials, customers, statistics, certifications or partnerships, was applied to the brief itself: where it names something the company's own material does not contain, that thing is not on the site and is a question in §9.
 
-**Deployment status: not deployed.** Nothing was merged, published or uploaded. No production host, DNS record, hosting account or mailbox was touched. No real email was sent and nothing was submitted to any outside service. The branch is pushed to GitHub and nothing else.
+**Deployment status: not deployed to production.** Nothing was merged or uploaded to any host. No production host, DNS record, hosting account or mailbox was touched. No real email was sent and nothing was submitted to any outside service. The branch is pushed to GitHub, where GitHub Pages serves its `docs/` folder as a preview at `https://oneplatformak.github.io/thinkinnov-nexgen-website/`; this work did not set that up and changed no Pages setting, and what is pushed to the branch is what the preview shows.
 
 ## 2. Test results
 
-All from Chrome 157 (headless) on one Linux machine, on the final pages. Laboratory results, not field data. Commands, times and output files: `notes/TEST-EVIDENCE.md`.
+All from Chrome 157 (headless) on one Linux machine. Every suite was run again on the build at commit `d0fcd00`, which contains every page change of this round; Lighthouse ran on the same pages a few minutes earlier (commit `a590595`; the one commit between them changes documents only). Commits after `d0fcd00` change documents, test outputs and screenshots, not pages. Laboratory results, not field data. Commands, times and output files: `notes/TEST-EVIDENCE.md`.
 
 | Test | Result | Output |
 | --- | --- | --- |
 | Build, twice | 82 pages; 0 Japanese strings without a translation; second build changes no file | `test-output/build.txt` |
 | Links, structure, metadata, language pairs, trackers | 85 HTML files; 4,095 internal links and assets resolved (984 with a fragment); 0 failures in 18 categories | `test-output/check-site.txt` |
-| Comparison with the original, banned wording, excluded markup, credentials | 87 checks passed, 0 failed | `test-output/check-source.txt` |
-| PHP handlers | 58 passed, 0 failed | `test-output/forms.txt` |
-| Layout | 82 pages × 10 widths from 320 to 2560: overflow 0, off-screen 0, clipped text 0, broken images 0 | `test-output/layout.txt` |
-| Interactions | 389 passed, 0 failed; and again under the production Content-Security-Policy, 389 passed, 0 failed | `test-output/interactions.txt`, `interactions-csp.txt` |
+| Comparison with the original, banned wording, excluded markup, credentials | 98 checks passed, 0 failed. New in this round: the partner phrase exactly once per home page; every drawn diagram captioned as conceptual in both languages; all 242 English sentences of the original present with the same words in the same order, apart from 12 listed exceptions | `test-output/check-source.txt` |
+| PHP handlers | 62 passed, 0 failed | `test-output/forms.txt` |
+| Layout | 82 pages × 16 widths from 320 to 2560: overflow 0, off-screen 0, text cut off by its box 0, broken images 0, links and controls under 24 px 0, pages with a word broken across lines 0. The last two checks are new; the broken-word check failed on the build the verifier saw (5,578 breaks, 364 distinct) | `test-output/layout.txt`, `layout-wordbreak-before.txt` |
+| Interactions | 427 passed, 0 failed; and again under the production Content-Security-Policy, 427 passed, 0 failed. New in this round: the finder's button within reach for all 16 needs at 1280×720, 1366×768 and 1440×900, both languages (18 of 30 of those checks failed before the fix); every careers row laid out alike; the address as a link in the mail-failure message | `test-output/interactions.txt`, `interactions-csp.txt`, `finder-panel-before.txt` |
 | axe-core 4.14.1 | 164 scans; 0 violations; 36 colour-contrast results it could not decide | `test-output/axe.txt` |
-| Lighthouse 12.8.2, 44 runs | Performance 99 to 100 (4 runs at 99); accessibility, best practices and SEO 100 on all; LCP at most 2.1 s (mobile), 0.4 s (desktop); CLS 0; Total Blocking Time at most 106 ms | `test-output/lighthouse.txt` |
+| Lighthouse 12.8.2, compression on, 44 runs | Performance 99 to 100 (4 runs at 99); accessibility, best practices and SEO 100 on all; LCP 1.7 to 2.1 s (mobile), 0.4 s (desktop); CLS 0; Total Blocking Time at most 100 ms | `test-output/lighthouse.txt` |
+| Lighthouse, compression off, 10 mobile runs | Performance 92 to 98; LCP 2.4 to 3.2 s, over the 2.5 s target on 8 of 10. **The performance targets are met only if the host compresses**, which is not known (`docs/README-DEPLOY.md` §6) | `test-output/lighthouse.txt` |
 | Dependency audit | 0 known vulnerabilities | `test-output/npm-audit.txt` |
-| Screenshots | 164 (82 pages × 390 and 1440): no horizontal overflow, one H1, no unloaded image on any | `screenshots-after/index.json` |
+| Screenshots | 164 (82 pages × 390 and 1440), retaken on the final build: no horizontal overflow, one H1, no unloaded image on any | `screenshots-after/index.json` |
+
+"Text cut off by its box 0" is what earlier versions of this report called "clipped text 0". It never said anything about words split across lines, and should not have been read as a statement about typography; the broken-word check is what measures that.
 
 Interaction to Next Paint was not measured; it cannot be in a laboratory. Total Blocking Time is reported in its place and is not the same thing.
 
@@ -48,45 +54,59 @@ Interaction to Next Paint was not measured; it cannot be in a laboratory. Total 
 | Status | Criteria |
 | --- | --- |
 | Implemented | 49 |
-| Tested | 73 |
-| Verified | 11 |
+| Tested | 77 |
+| Verified | 7 |
 | Requires Business Approval | 14 |
 | Requires External Integration | 8 |
 | Not Implemented | 2 |
 | Total | 157 |
 
-"Tested" means a test ran on the final build and its output is saved. "Verified" means that and also that the author looked at the result in the final screenshots. "Implemented" covers documents and matters of judgement, where no test can settle the point. Nothing has been checked by anyone other than the author.
+"Tested" means a test ran on the final build and its output is saved. "Verified" means that and also that the author looked at the result in the final screenshots. "Implemented" covers documents and matters of judgement, where no test can settle the point.
 
-Met in full: 106. Met in part: 45. Not met: 5. Not applicable: 1.
+Met in full: 103. Met in part: 48. Not met: 5. Not applicable: 1.
+
+Before the independent verification the tally was Implemented 49, Tested 73, Verified 11, and met in full 106, in part 45. The verifier checked 41 of the 84 rows then marked Tested or Verified, found the evidence held for 34 and that 7 were overstated, and noted an eighth. What changed:
+
+| Row | Was | Is | Why |
+| --- | --- | --- | --- |
+| AC-N04, AC-S06 (no unsupported Siemens partner claims) | Tested, Yes | Tested, Yes | The phrase was on each home page twice; the source has it once. Fixed, and the check now counts. The status is the same but it is now true |
+| AC-R03 (no clipped typography) | Verified, Yes | Tested, Yes | The test could not see broken words. It can now, and finds none. "Verified" withdrawn: not every page was looked at at every width |
+| AC-N11 (no inconsistent layouts) | Verified, Yes | Tested, In part | The inconsistencies found are fixed and tested. Uneven gallery columns and near-empty sections on four product pages remain |
+| AC-L02 (fully responsive English website) | Verified, Yes | Tested, Yes | As AC-R03 |
+| AC-R07 (no broken Japanese layouts) | Verified, In part | Tested, In part | More breaks existed than the two fixed earlier. Fixed in headings and short text; long paragraphs are left to the browser |
+| AC-P01, AC-P05 (performance 95+, LCP 2.5 s or less) | Tested, Yes | Tested, In part | True only with compression on at the host, which is unconfirmed |
 
 ### Every criterion not met in full
 
 | ID | Criterion | Status | Met? | Why |
 | --- | --- | --- | --- | --- |
 | AC-A01 | "Every relevant business requirement is addressed." | Implemented | In part | Requirements that need a backend or a client decision are recorded in `TRACEABILITY.md` and in `REVIEW.md` §7 and §9, and are not built. |
-| AC-A04 | "The website is visually exceptional." | Implemented | In part | "Exceptional" is not claimed. Imagery scores 62: one event photographed, eleven inherited images in another style. |
+| AC-A04 | "The website is visually exceptional." | Implemented | In part | "Exceptional" is not claimed. Imagery scores 55: one event photographed, eleven inherited images in another style, two of which carry a Siemens wordmark and unsourced figures. |
 | AC-A05 | "The content is clear and persuasive." | Implemented | In part | English is the source's wording, tidied. Persuasion by evidence is limited to what the source has. Japanese awaits native review. |
-| AC-A07 | "Mobile and desktop experiences are excellent." | Tested | In part | Emulated widths in Chrome, not physical devices. "Excellent" is a judgement (responsive design scored 90). |
+| AC-A07 | "Mobile and desktop experiences are excellent." | Tested | In part | Emulated widths in Chrome, not physical devices. "Excellent" is a judgement (responsive design scored 84 after the faults the independent verifier found were fixed). |
 | AC-A08 | "Security and privacy controls are implemented." | Requires External Integration | In part | Handlers tested locally. Headers, the blocked `inc/` folder and HTTPS need the Apache host. Privacy notice needs legal review. |
 | AC-A13 | "The platform is ready for its intended production environment." | Requires External Integration | No | Never run on Apache or with real mail. Needs a test upload by someone with access to the host. |
 | AC-D03 | "Every approved new page has been implemented." | Requires Business Approval | In part | Nobody has approved a page list. Built: everything the source supports, including six product pages and search. Not built for want of content: history, case studies, resources/FAQ, terms of use. |
 | AC-D04 | "Every required language version is complete." | Tested | In part | Complete by machine check. Not reviewed by a native reader. |
-| AC-D07 | "Every major responsive layout has been inspected." | Tested | In part | Every page was measured at ten widths. By eye, the author read the pages listed in `TEST-EVIDENCE.md` §5, not all 164 images. |
+| AC-D07 | "Every major responsive layout has been inspected." | Tested | In part | Every page was measured at sixteen widths. By eye, the author read the pages listed in `TEST-EVIDENCE.md` §5, not all 164 images. |
 | AC-D08 | "Every known critical security issue has been resolved." | Tested | In part | No critical issue is known. Anything that depends on host configuration is unproven. |
 | AC-D09 | "Accessibility has been evaluated." | Tested | In part | No screen reader was used. |
 | AC-D11 | "Search engine discoverability has been verified." | Tested | In part | Not checked in Google Search Console or a structured-data validator. |
 | AC-N03 | "No fabricated customer relationships." | Requires Business Approval | In part | Nothing was added. Permission, the customer's correct name for four logos, and which entity holds each relationship are unconfirmed. |
 | AC-N10 | "No broken Japanese translations." | Requires Business Approval | In part | Nothing is untranslated or mixed. Whether the Japanese reads well needs a native reviewer. |
+| AC-N11 | "No inconsistent layouts." | Tested | In part | The inconsistencies the independent verifier found at tested widths are fixed and now tested: job facts wrapping differently from row to row, the finder panel, headings that broke inside a word. Not changed, and noted by the verifier: gallery columns that end unevenly at 1440, and sections on four product pages that hold one link beside a large empty area. |
 | AC-N13 | "No inaccessible essential functionality." | Tested | In part | No assistive technology was used. |
-| AC-N14 | "No unverified business claims." | Requires Business Approval | In part | Sourced is not the same as confirmed. The claims inherited from the original are listed for the client in register §5. |
+| AC-N14 | "No unverified business claims." | Requires Business Approval | In part | Sourced is not the same as confirmed. The claims inherited from the original are listed for the client in register §5. Inside the inherited industry images there are statements with no source at all, five of them figures about Teamcenter X (register §6). |
 | AC-S05 | "No fabricated company claims." | Tested | In part | Nothing was invented by this build. Claims the original makes are unconfirmed (AC-N14). |
-| AC-S07 | "No unauthorized brand assets." | Requires Business Approval | No | No brand asset was added. Inherited and unconfirmed: 21 customer logos, eleven industry images (one with a Siemens wordmark in it), photographs of identifiable people. |
+| AC-S07 | "No unauthorized brand assets." | Requires Business Approval | No | No brand asset was added. Inherited and unconfirmed: 21 customer logos, photographs of identifiable people, and eleven industry images of unknown origin, one with the Siemens wordmark in it and one printing unsourced figures about a Siemens product. The owner has decided to leave the images as they are for now (`REVIEW.md` §9, first question). |
 | AC-S10 | "No inaccessible essential interactions." | Tested | In part | No assistive technology was used. |
 | AC-S13 | "No unverified job vacancies." | Requires Business Approval | No | Whether any role is open today is unknown. |
+| AC-P01 | "Lighthouse Performance: 95+" | Tested | In part | Met in the laboratory with compression on. Whether the real host compresses is not known: `.htaccess` asks for it, but only where the module exists. `docs/README-DEPLOY.md` §6 says how to check after upload. |
+| AC-P05 | "Largest Contentful Paint: 2.5 seconds or less" | Tested | In part | Met in the laboratory only with compression on; the independent verifier measured the same. The real host is unconfirmed, and its response time will add to either figure. |
 | AC-P06 | "Interaction to Next Paint: 200 milliseconds or less" | Requires External Integration | No | INP is measured from real visitors. There are none yet, and no analytics. Total Blocking Time is the lab stand-in and is not INP. |
 | AC-P09 | "Target WCAG 2.2 AA." | Tested | In part | A target, not a conformance claim. 36 colour-contrast results need a person, and no assistive technology was used. |
 | AC-R01 | "No overlapping elements." | Implemented | In part | No script tests for overlap. None was seen in the screenshots read. |
-| AC-R07 | "No broken Japanese layouts." | Verified | In part | One Japanese font on one system. Two awkward breaks found and fixed in review round 2 and seen fixed. |
+| AC-R07 | "No broken Japanese layouts." | Tested | In part | One Japanese font on one system. The independent verifier found more breaks inside words than the two fixed earlier (page headings, a lead paragraph, the address, footer links, a job title); those are fixed and the test now covers them. Longer Japanese paragraphs break wherever the browser breaks them, which a native reader may still find awkward in places. |
 | AC-R09 | "Suitable for live sales demonstrations in corporate meeting rooms." | Tested | In part | Measured, not looked at on a meeting-room display. The final screenshot set is 390 and 1440 only. |
 | AC-R10 | "There must be no untranslated buttons, broken layouts, mixed-language placeholders or awkward Japanese … | Requires Business Approval | In part | "Awkward" needs a native reader. |
 | AC-Q06 | Verify "Every relevant permission". | Not Implemented | n/a | Not applicable: the site has no accounts, roles or protected areas. |
@@ -101,7 +121,7 @@ Met in full: 106. Met in part: 45. Not met: 5. Not applicable: 1.
 | AC-O03 | "When a design engineer visits, provide meaningful product information." | Requires Business Approval | In part | Each says what the product is and how the company works with it. Depth needs content approved by the client or Siemens. |
 | AC-O04 | "When a manufacturing director visits, demonstrate connected manufacturing possibilities." | Implemented | In part | As far as the source goes on manufacturing. |
 | AC-O05 | "When a procurement manager evaluates it, communicate reliability." | Requires Business Approval | In part | Legal name, establishment details and certifications are not available. |
-| AC-O06 | "When a Siemens representative reviews it, demonstrate professional representation." / "accurate professional … | Requires Business Approval | In part | Accurate as far as this build can check. Siemens has not reviewed it; one inherited image carries a Siemens wordmark. |
+| AC-O06 | "When a Siemens representative reviews it, demonstrate professional representation." / "accurate professional … | Requires Business Approval | In part | The text is accurate as far as this build can check. Siemens has not reviewed it. One inherited image carries a Siemens wordmark and another prints unsourced figures about Teamcenter X. |
 | AC-O08 | "When an existing customer visits, make support accessible." | Implemented | In part | The route exists. The support service behind it (hours, contact, response) is the client's to define. |
 | AC-O09 | "When an employee shares it, make them proud of the company." / potential employee: "communicate authentic … | Requires Business Approval | In part | Four named team members with photographs and the problems the team solves; the values and fourteen event photographs are on About. More needs real stories. |
 | AC-O10 | "When a salesperson presents the website, make it an exceptional business presentation." | Implemented | In part | Not tried in a meeting. |
@@ -115,13 +135,14 @@ Met in full: 106. Met in part: 45. Not met: 5. Not applicable: 1.
 | AC-L12 | "Security controls." / "Security implementation." | Requires External Integration | In part | Headers and the blocked folder are unproven on Apache. |
 | AC-L13 | "Browser testing results." | Tested | In part | Chrome only. |
 
-The reasons fall into five groups: the client has to confirm something (name, titles, permissions, vacancies, wording); the new Japanese has not been read by a native speaker; the real host and mailbox could not be used; only Chrome was available, with no devices and no screen reader; and the source has no material for the depth the brief wants (case studies, history, product detail).
+The reasons fall into five groups: the client has to confirm something (name, titles, permissions, vacancies, wording, the inherited images); the new Japanese has not been read by a native speaker; the real host and mailbox could not be used, which now includes whether the host compresses; only Chrome was available, with no devices and no screen reader; and the source has no material for the depth the brief wants (case studies, history, product detail).
 
 ## 4. What could not be tested
 
 Full table in `notes/TEST-EVIDENCE.md` §7. In short:
 
-- **Apache.** `.htaccess` has never run: the HTTPS redirect, the 301s from old addresses, the security headers, caching, the blocked `inc/` folder and the 404 status are unproven. The same headers were served by a local server and the tests pass under them.
+- **Apache.** `.htaccess` has never run: the HTTPS redirect, the 301s from old addresses, the security headers, compression, caching, the blocked `inc/` folder, the exception for `/.well-known/` and the 404 status are unproven. The same headers were served by a local server and the tests pass under them. `docs/README-DEPLOY.md` §6 lists what to check after upload, with the commands.
+- **Compression on the host.** The loading-time targets are met in the laboratory only with it on.
 - **Real email.** Messages were handed to a stand-in that writes a file. Whether the host delivers them, and to a mailbox that exists, is not known.
 - **Browsers and devices.** Chrome only. No Safari, Edge or Firefox, no phone or tablet.
 - **Assistive technology.** No screen reader.
@@ -131,7 +152,7 @@ Full table in `notes/TEST-EVIDENCE.md` §7. In short:
 
 ## 5. Defects found and fixed
 
-In this round (retests in `notes/TEST-EVIDENCE.md` §6):
+In the two review rounds before the independent verification (retests in `notes/TEST-EVIDENCE.md` §6):
 
 1. Product pages overflowed at small widths: hidden labels in the stage tables still took up width. Fixed (`cbef166`); layout test passes.
 2. axe-core reported 90 findings: landmarks with the same name, and a tab-panel role on the wrong element. Fixed (`43caf0d`); rescan 0.
@@ -142,6 +163,17 @@ In this round (retests in `notes/TEST-EVIDENCE.md` §6):
 7. Japanese fact labels broke one character before the end, and a hero label broke inside a word. Fixed (`12c8dcf`).
 8. Screenshots showed two grey gallery tiles. The pages were right; the screenshot tool was early. Tool fixed (`45dbdd6`).
 9. From the earlier state of this branch: partner wording had spread to the footer and the page description, a legal name was fixed in the structured data, and "Production Development" had been changed. All three were put back as the source has them (`45c5ec1`). One generated image was still on the home page; removed (`0b958fe`).
+
+Found by the independent verifier at `30c9b8a` and fixed in this round (the full account is §12):
+
+10. "Siemens Solution Partner" was printed twice on each home page; the source has it once. The second removed (`6260296`).
+11. Words broke in the middle, in English (product names, service headings, the stage strip, job titles) and in Japanese (page headings, a lead paragraph, the address, footer links). Fixed (`fbe79e0`), with a check that fails if it returns (`6af4466`).
+12. The finder's result panel scrolled inside itself and hid its button on common laptop screens. The panel now grows with its content (`fab54ab`).
+13. On Careers at 1440 the employment type wrapped onto a line of its own for most roles. Rows now have a fixed arrangement (`d7fb578`).
+14. Diagram captions were labelled three different ways, and the maturity steps on Digital Transformation looked like a chart of measurements. All four diagrams are captioned "Conceptual diagram" / 概念図; the steps carry no axis or trend line (`5ebf692`).
+15. Wording had drifted from the original in small ways. Every sentence of the original is restored word for word, with twelve listed exceptions, and a check compares all 242 (`bc47030`).
+16. Form labels, the consent box and its privacy link, and three kinds of footer link were under 24 px. The mail-failure message named no address. `.htaccess` would have refused `/.well-known/`. A zip renamed `.docx` passed the upload check. All four fixed (`c5a68ea`).
+17. Found by the author while checking those fixes: the Japanese Services page showed the same sentence twice in a row, and links in the product page strip wrapped on Japanese phones (`a590595`).
 
 Defects fixed in the first rebuild are in `improved-src/CHANGELOG.md`.
 
@@ -165,7 +197,7 @@ Totals: Applied 51, Partly applied 54, Phase 2 4, Not applied 2, of 111 sections
 | A6 | Extraordinary homepage | Applied | The seven things it must say are mapped in `ACCEPTANCE.md`. |
 | A7 | Build the complete website | Partly applied | Every page the source supports. Pricing, accounts and dashboards evaluated and not needed; terms of use need a lawyer. |
 | A8 | World-class content | Partly applied | Source wording tidied, nothing exaggerated. New Japanese unreviewed. |
-| A9 | Every device and user | Partly applied | Ten widths measured; keyboard and reduced motion tested. No devices, no screen reader. |
+| A9 | Every device and user | Partly applied | Sixteen widths measured; keyboard and reduced motion tested. No devices, no screen reader. |
 | A10 | Premium interactions and motion | Applied | Short fades only, off under reduced motion. |
 | A11 | Production-grade engineering | Partly applied | Static build, validated forms, error states. Database, authentication and roles are not needed without a CMS. |
 | A12 | Optimize business operations | Phase 2 | CRM, automation, CMS and analytics evaluated in §7; none built. |
@@ -211,7 +243,7 @@ Totals: Applied 51, Partly applied 54, Phase 2 4, Not applied 2, of 111 sections
 | B15 | Visual storytelling | Partly applied | Five diagrams drawn in code, not all eleven suggested visuals. |
 | B16 | Lead generation system | Partly applied | Seven enquiry types, context, validation, honest confirmation. CRM and campaign attribution are phase 2. |
 | B17 | Content management system | Phase 2 | §7. |
-| B18 | Build for every device | Partly applied | Ten widths, emulated. |
+| B18 | Build for every device | Partly applied | Sixteen widths, emulated. |
 | B19 | Exceptional performance | Partly applied | As A13. |
 | B20 | Search and AI discoverability | Partly applied | Technical items done. `KEYWORD-MAP.md` has no search-volume data. |
 | B21 | Security, legal and governance | Partly applied | As A15. Trademark, logo and testimonial authorisation are client questions. |
@@ -268,7 +300,7 @@ The Final Directive (L2504–2542) is seven outcome tests; they are AC-O01 to AC
 | C25 | World-class content | Applied | Claim register; the nine never-invent rules are kept. |
 | C26 | Enterprise-grade architecture | Applied | `ARCHITECTURE.md`. |
 | C27 | Content management and operations | Phase 2 | §7. |
-| C28 | Responsive design across every device | Applied | Ten widths. Not tried on a meeting-room display. |
+| C28 | Responsive design across every device | Partly applied | Sixteen widths, emulated, with no word broken across lines and no control under 24 px. Not tried on a device or a meeting-room display. |
 | C29 | Accessibility | Partly applied | Automated scan and scripted keyboard checks. No assistive technology. |
 | C30 | Exceptional performance | Partly applied | As A13. |
 | C31 | SEO and AI search discoverability | Applied | Generic titles fixed; `KEYWORD-MAP.md`. |
@@ -316,7 +348,7 @@ Where the brief was not followed, and why:
 2. **Fifteen solutions, not nine.** The brief names nine. The source has fifteen, and dropping six would lose content.
 3. **No Digital Twin section.** The term is not in the source, and the brief itself says not to imply a capability the company has not stated.
 4. **No extra industries** (electric vehicles, agriculture, energy as a sector). The eleven of the source are kept, under the source's title "PLM industry focus".
-5. **None of the brief's proposed headlines or button labels are used.** The hero headline, "Connect your product lifecycle. Innovate more, and faster.", is made from the source's own phrases ("We enable Customers to Innovate More and Faster…"). The proposals are in §9, question 22.
+5. **None of the brief's proposed headlines or button labels are used.** The hero headline, "Connect your product lifecycle. Innovate more, and faster.", is made from the source's own phrases ("We enable Customers to Innovate More and Faster…"). It is this site's text, not the original's, and is listed as such in `COVERAGE.md`. The proposals are in §9, question 22.
 6. **"Request a demonstration" became "Product enquiry".** Nothing says demonstrations are offered.
 7. **Four menu groups, not eight top-level items.** Eight do not fit at 1024 pixels, and Resources would lead nowhere.
 8. **One page for all services, one for all solutions, one for digital transformation.** The source has a sentence or two for each item; separate pages would be nearly empty. Each has its own anchor, and each product does have its own page.
@@ -332,18 +364,35 @@ Other decisions:
 15. **The email address** on the site and in both handlers is `info@thinkinnovnexgen.co.jp`, as first instructed. The official package has only the `.com` address. It was not changed. If the `.co.jp` mailbox does not exist, enquiries and applications go nowhere.
 16. **"Production Development"** is published as the source has it.
 17. **Five-star symbols** beside the testimonials were not carried over; they read as a rating.
-18. **Nothing generated for this rebuild is on the site.** The last such image was removed. Diagrams are drawn in code and captioned as diagrams. The eleven industry images come from the original site; who made them is not known (question 19).
+18. **Nothing generated for this rebuild is on the site.** The last such image was removed. The four diagrams are drawn in code and each is captioned "Conceptual diagram" (概念図) in both languages. The eleven industry images come from the original site; who made them is not known, and they look machine-made (§9, first question).
 19. **Original images that are not published:** the stock-style hero and section backgrounds of the old site, including the file named `seimens_partner.png`. They are listed in `ASSET-REGISTER.md` §7.
 20. **`Strict-Transport-Security` is not set** in `.htaccess`; it is hard to undo and should wait until HTTPS is confirmed permanent.
 21. **Japanese** uses the original's Japanese wherever it exists. The rest is new, written to say the same thing naturally, not word for word, and all of it is flagged for native review.
+
+Decisions taken after the independent verification:
+
+22. **The eleven industry images stay as they are.** The owner's decision. Two of them carry things this site would not otherwise publish: the Siemens wordmark, and unsourced figures about a Siemens product. Recorded in the claim and asset registers and put to the client as the first question in §9.
+23. **The logo is not recoloured or redrawn for the dark footer.** It is a brand asset. It keeps its light plate, tidied, and the header logo is larger from 1000 px up. A version of the logo for dark backgrounds is a request to the client (§9, question 27).
+24. **Old addresses with scripts switched off** still land on the home page (or the careers list, or the blank application form) rather than the exact page. Left as it is, because the 301 rules in `.htaccess` send them to the exact page on Apache. Those rules are untested until the site is uploaded; `docs/README-DEPLOY.md` §6 gives the commands.
+25. **English wording is the original's, word for word**, wherever the original has a sentence for it. Kept different on purpose, each with its reason in `COVERAGE.md`: two spelling corrections; the telephone number written "+81 3-3525-8197" where the original has "+03-3525-8197", which is not a diallable form; sentence-case headings; the word "Infographic" moved from each industry title to its caption; and the company name the original prints above the footer address ("ThinkInnov-NexGen Technologies Pvt Ltd"), left out because which name is the registered one is an open question.
+26. **"Discipline" on Careers is this site's own grouping** of the role titles, as are the experience ranges in the filter. They were asked for so that the list can be filtered, and they are not in the original job descriptions. The page now says so under the list, and the label is no longer among the facts on each job page.
 
 ## 9. Open questions for the client
 
 For each: what the official package from the site's developer shows, what the crawl of the staging site shows, and what the rebuilt site does meanwhile. The two sources have identical data files, so they agree unless stated.
 
+**For the owner to decide first**
+
+0. **The eleven industry infographics.** Stated plainly: **unsourced figures about a Siemens product, and a Siemens wordmark, are published on this site inside inherited images whose origin and rights are unknown.** The images came from the original site's Industries page and were carried over unaltered. Image 02 ("Siemens SW PDM to PLM") has the SIEMENS wordmark in its corner. Image 11 ("The Business Value of Cloud-based SaaS PLM", about Teamcenter X) prints "20–30% faster time to market", "15–25% lower IT & infrastructure costs", "30–50% improvement in team productivity", "20–40% reduction in change cycle time" and "99.9%+ cloud reliability and availability", and says the product is "built on a secure, compliant cloud platform". Neither the image nor the original site names a source for any of it. Most of the others carry a Teamcenter X emblem. All eleven look machine-made, though that cannot be proved, and none is labelled as an illustration. The site's own text makes none of these statements; the checks in this repository read text and cannot read a picture, which is how this went unreported until the independent verifier looked. **By the owner's decision all eleven are left as they are for now.** The options:
+   - **Keep** all eleven. Nothing changes. The figures and the wordmark stay published under the company's name, and the questions of source and permission stay open.
+   - **Remove images 02 and 11.** The two entries keep their titles and descriptions and lose their pictures. The other nine, with their Teamcenter X emblems and unknown origin, remain.
+   - **Replace all eleven with redrawn neutral diagrams** in the site's own line style, captioned as conceptual, saying only what the original's text for each industry says. This removes every open point about these images and the clash of styles. It needs the owner's go-ahead because the original's pictures would no longer be shown.
+
+   Whichever is chosen: who made the images, and may they be published? The figures are in `notes/CLAIM-REGISTER.md` §6 and both images are noted in `notes/ASSET-REGISTER.md` §3.
+
 **Launch-blocking**
 
-1. **Legal name.** Official package and crawl both use three forms: "ThinkInnov-NexGen Corporation" (company profile, `assets/page-data.js` line 40, and the copyright line, `index.html` line 237), "ThinkInnov-NexGen Technologies Pvt Ltd" (footer, `index.html` line 235) and "ThinkInnov-NexGen KK - A Strategic Partnership in Japan" (`page-data.js` line 28). The site shows the first in the profile table and the third as the partnership heading, where the source has them; the footer says only "ThinkInnov-NexGen"; the structured data has no `legalName`. Which is the registered name, and how is it written in Japanese?
+1. **Legal name.** Official package and crawl both use three forms: "ThinkInnov-NexGen Corporation" (company profile, `assets/page-data.js` line 40, and the copyright line, `index.html` line 237), "ThinkInnov-NexGen Technologies Pvt Ltd" (footer, `index.html` line 235) and "ThinkInnov-NexGen KK - A Strategic Partnership in Japan" (`page-data.js` line 28). The site shows the first in the profile table and in the copyright line, and the third as the partnership heading, where the source has them; it leaves the second out of the footer address; the structured data has no `legalName`. Which is the registered name, and how is it written in Japanese?
 2. **Email domain.** Official package and crawl: only `info@thinkinnovnexgen.com` (`index.html` line 235). The site and both handlers use `info@thinkinnovnexgen.co.jp`, on the original instruction that the new business cards carry it. Not changed. **If that mailbox does not exist, every enquiry and application is lost.** The package's `sitemap.xml` also names a third domain, `thinkinnovsolution.com`. Which domain and mailbox are right?
 3. **Customer logos and quotes.** 21 logos, the same files in both sources. Four are labelled only "BR", "STS", "SUV" and "ADA"; those are file labels, not confirmed company names. For each logo: the customer's correct name, permission to show it, and which company holds the relationship. For the four quotes: permission to publish. `CUSTOMER-REGISTER.md` has a row for each.
 4. **Whether the 18 roles are open**, who receives applications, and what the recruitment process is. The heading "Current Opportunity Areas" is the source's. All roles say "Chennai/Bangalore"; Bangalore is not a listed office.
@@ -352,10 +401,10 @@ For each: what the official package from the site's developer shows, what the cr
 
 **Wording and facts**
 
-7. **Partner wording.** Confirmed from the official source; placement kept as in source. "Siemens Solution Partner" is on the home page hero only (`index.html` line 48) and Siemens Certified "Expert Partner - PLM" on About only (`page-data.js` line 29). Neither appears in the footer, page descriptions or structured data. Still worth asking Siemens: which designation is current, and is there an approved partner mark?
+7. **Partner wording.** Confirmed from the official source; placement kept as in source. "Siemens Solution Partner" is printed once on each home page, above the hero headline, where the source has it (`index.html` line 48), and Siemens Certified "Expert Partner - PLM" on About only (`page-data.js` line 29). Neither appears in the footer, page descriptions or structured data. (Until this round the first was also printed a second time on each home page, as the label of a key message; the independent verifier found it, it was removed, and `check-source.py` now counts.) Still worth asking Siemens: which designation is current, and is there an approved partner mark?
 8. **Two CEO titles.** Both sources: leadership cards say "CEO & Founder" (Rajeshkumar Sankarlingam) and "Director - CEO" (Bala Sabari D) (`page-data.js` lines 21 to 25); the company profile says "President/CEO" and "Director - CEO" (lines 41 to 44), in Japanese 代表取締役CEO and 取締役 CEO. The site shows both sets where the source has them. Please confirm, the Japanese titles above all, since they are legal terms.
 9. **Ohmium and Lectrix.** Both sources: Ohmium appears only as the attribution of one quote, Lectrix only as "CEO - LECTRIX" under another; there is no logo file for either. The site keeps the quotes word for word, including "Thinkin(g) No(w)", and adds no logo.
-10. **2014.** "Serving customers since 2014" and 2014年創業. Which company does the year belong to? The source's copyright line read "© 2014 - 2026 ThinkInnov-NexGen Corporation"; the site's reads "© 2026 ThinkInnov-NexGen".
+10. **2014.** "A software development service provider since 2014" (Home and About), "serving customers since 2014" (About), 2014年創業, and the copyright line "© 2014 - 2026 ThinkInnov-NexGen Corporation" on every page, as in the source. Which company does the year belong to?
 11. **The relationship between ThinkInnov, NEXGEN and Siemens.** Neither source says "joint venture" or names NEXGEN or Nexware as a company. The site says nothing about it. If it should, in what words?
 12. **About versus home.** About describes a next-generation IT services company (cloud, IoT, AI); the home page leads with PLM. Both are the source's. Which should lead?
 13. **Company profile for Japanese procurement.** Date of establishment, capital, business description, corporate number: none is in the source.
@@ -367,7 +416,7 @@ For each: what the official package from the site's developer shows, what the cr
 
 **Assets**
 
-19. **The eleven industry images.** Origin and rights unknown. One contains a Siemens wordmark. They hold English text that is not translated.
+19. **The eleven industry images.** See the first question above. They also hold English text that is not translated on the Japanese pages.
 20. **The six product tiles**, and **consent of the people** in the leadership, team and event photographs.
 21. **Application form.** Should gender, current and expected CTC and notice period be asked at all?
 
@@ -378,6 +427,7 @@ For each: what the official package from the site's developer shows, what the cr
 24. **Native review of the Japanese**, and whether the Japanese pages go live before it (`notes/JAPANESE-REGISTER.md`).
 25. **Terms of use.** Not written. Needed? Who drafts it?
 26. **Accessibility page.** Publish as written? Who receives feedback?
+27. **A reversed version of the logo for dark backgrounds.** The logo's lettering is dark and the footer is dark, so the logo sits there on a light plate. The logo is a brand asset and was not recoloured or redrawn. Please supply a version made for dark backgrounds, or say that the plate is acceptable.
 
 ## 10. The official package
 
@@ -398,11 +448,68 @@ The site's developer supplied the official files (75, against 71 in the crawl). 
 
 `notes/EXECUTIVE-REVIEW.md` has the twelve reviewers' answers, five further viewpoints, the scale and caps fixed beforehand, and forty scored areas with the criterion and evidence for each. Two rounds, with nine fixes between them and two more found in round 2.
 
-It is the author reading the site as each of those people would. None of them took part.
+It is the author reading the site as each of those people would. None of them took part. The independent verifier then scored six areas at least ten points lower, with reason, and found one score above the document's own cap. Nine scores were changed as a result (section 7 of that file):
 
-- Highest: broken links 95, performance 93, responsive design 90, architecture 88, functional completeness 88.
-- Lowest: browser compatibility 40, technical depth 48, integration reliability 50, competitive differentiation 55.
-- Moved between rounds: accessibility 78 to 84, maintainability 78 to 84, product accuracy 74 to 78, technical accuracy 72 to 75, and seven others by one or two points. Twenty-nine did not move, because what they lack is information the company has not published.
+| Area | Was | Verifier | Now |
+| --- | --- | --- | --- |
+| Responsive design | 90 | 72 | 84 |
+| Typography | 86 | 68 | 80 |
+| Layout | 84 | 72 | 78 |
+| Product accuracy | 78 | 62 | 62 |
+| Professionalism (Japanese) | 80, above the cap of 75 | 68 | 72 |
+| Design consistency | 86 | 76 | 79 |
+| Interaction quality | 86 | 80 | 84 |
+| Imagery | 62 | 55 | 55 |
+| Performance | 93 | not rescored | 80 (the cap for anything that needs the real host) |
+
+- Highest now: broken links 95, architecture 88, functional completeness 88, SEO 86, error handling 86.
+- Lowest: browser compatibility 40, technical depth 48, integration reliability 50, competitive differentiation 55, imagery 55.
 - No area is scored 100.
 
-What remains is for the client or a third party: confirm the facts in §9; have the Japanese read; have a specialist sign the relations; supply material for depth; run it on the real host; test in other browsers, on phones and with a screen reader.
+What remains is for the client or a third party: decide the industry images; confirm the facts in §9; have the Japanese read; have a specialist sign the relations; supply material for depth; run it on the real host and check compression there; test in other browsers, on phones and with a screen reader.
+
+## 12. Independent verification
+
+**What was checked.** A verifier who did not build the site examined it at commit `30c9b8a` on 25 November 2026. Its report is `VERIFICATION.md` in the coordinator's store (it is not in this repository), with its scripts, screenshots and crops. It loaded all 85 files at 390 and 1440 with its own script and measured console errors, requests, headings, titles and language pairs, and checked for sideways overflow at eight widths; ran its own interaction script; looked at 104 of its 170 screenshots as a designer would, with extra captures at widths in between; checked the owner's rules (nothing invented, nothing dropped, testimonials word for word, no added Siemens logo, no secrets, handlers, privacy notice); rebuilt the site and re-ran every suite; ran Lighthouse with and without compression; and read these documents against what it found, including 41 acceptance rows.
+
+**What it confirmed.** All files load with no console error, no failed or external request and no horizontal overflow; one H1 each, unique titles and descriptions, matching language pairs; the build reproduces `docs/` byte for byte; every suite reproduces its stated totals; the forms never show success without the server's confirmation; content matches the source (21 logos, 4 testimonials word for word, 15 solutions, 11 industries, 6 products, 18 jobs with 240 of 240 list items identical, 14 photographs); no tracker, no secret, no Siemens logo file.
+
+**What it found, and what was done.**
+
+| # | Finding | Done | Evidence |
+| --- | --- | --- | --- |
+| 1 | "Siemens Solution Partner" twice on each home page; the source has it once; the registers said "hero only" | The second removed. Registers and this report corrected | `check-source`: "exactly once on each home page"; commit `6260296` |
+| 2 | English words broken in the middle: product names on Products at every desktop width; service headings, the stage strip, job titles and a Digital Transformation heading between 900 and 1180 px | Type and columns sized to the words: product names are sized from their own column and never wrap; Services goes to two columns at 1200 px, not 1000; the stage strip stays three by three until each cell holds its longest name (1280 px); `overflow-wrap: anywhere` removed from the stage strip | Layout test, 16 widths: 0 pages with a broken word; `fbe79e0` |
+| 3 | Japanese headings and labels broken inside words: page headings, a lead paragraph, the address, footer links, a job title | Phrase-aware breaking applied to headings, labels, buttons, the address and other short text | Same test; `fbe79e0` |
+| 4 | The layout test could not see any of this | The test now fails on a word split across lines, at sixteen widths, with every finder result and lifecycle tab opened | Before, on the verified build: 5,578 breaks (410 Latin, 5,168 Japanese phrase), 364 distinct, on 34 to 82 pages per width. After: 0. `layout-wordbreak-before.txt`, `layout.txt`; `6af4466` |
+| 5 | The finder's result panel scrolled inside itself and hid its button on laptop screens | The panel grows with its content; a tall result moves with the page until its button is in view | Interaction test at 1280×720, 1366×768, 1440×900, all 16 needs, both languages: 18 of 30 checks failed before, 0 after; `fab54ab` |
+| 6 | Careers at 1440: the employment type alone on a second line for most roles | A fixed arrangement of the four facts at each width | Interaction test over all 18 rows at 1440, 1280 and 1024; `d7fb578` |
+| 7 | Diagram captions labelled three ways; one diagram read as measured data | All four captioned "Conceptual diagram" / 概念図; the maturity steps have no axis or trend line | `check-source`: every figure captioned, no axis or trend element; `5ebf692` |
+| 8 | Wording that departs from the source ("clearer reading", a solution word, six job summaries, the copyright line, added "Discipline" labels); English left in Japanese text | The original's sentences restored. Going through all of them found more than the verifier listed: the home services sentence, the first key message, three problem statements, the footer statement, the second copyright line, an About sentence, a form label, and the finder's "what our site says" lines, which had been paraphrases. "SMBs", "UAT", a job title and an industry title translated. Kept on purpose, with reasons: §8, decisions 25 and 26 | `check-source`: 242 of 242 original sentences present, 12 listed exceptions; `bc47030` |
+| 9 | Form tap targets under 24 px; no address link in the mail-failure message; `.htaccess` would refuse `/.well-known/`; a zip renamed `.docx` accepted | All four fixed. Footer links that were also under 24 px fixed too | Layout test: 0 small targets at 16 widths. Interaction test: the address is a `mailto:` link. Form tests: renamed zip refused, real `.docx` accepted (62 checks). The `.htaccess` change is untested, like the rest of that file; `c5a68ea` |
+| 10 | Mobile loading time meets the target only with compression on | Stated in the deploy notes with the commands to check it; measured both ways here; performance rows qualified | `lighthouse.txt`: 1.7 to 2.1 s with, 2.4 to 3.2 s without; `234bc77` |
+| 11 | Documents wrong or overstated: where "since 2014" appears; a file cited that does not exist; "on the final pages"; seven acceptance rows; a score above its own cap | Each corrected: claim register, `TRACEABILITY.md` SEC-05, §2 and §3 here, `ACCEPTANCE.md`, `EXECUTIVE-REVIEW.md` | This commit |
+
+**What was recorded, not changed, by the owner's decision.**
+
+- The eleven industry images (§9, first question; §8, decision 22).
+- The footer logo plate, and a request for a reversed logo (§9, question 27; §8, decision 23).
+- Old addresses with scripts off (§8, decision 24).
+
+**The verifier's recommendations that were not acted on in this round.** They stand as recommendations for the owner:
+
+1. Shorten the home page. It is about 14,000 px tall at 1440 and about 20,000 px on a phone, in twelve numbered sections, with almost no photograph before the customer logos. Bring the real photograph and the logos higher.
+2. Drop the "Key messages" block under the hero, which repeats what the hero says. (Its repeated partner phrase is already gone.)
+3. Show "Problems we solve" once. It is on Home, Behind the Brand and Digital Transformation.
+4. Rework the About gallery grid: the columns end unevenly at 1440. The "who we are" photograph on About is also the same shot as the new home photograph.
+5. Thin product pages. NX, Solid Edge, Capital and Tecnomatix have the same "How we work with it" paragraph as the other two, the same stage sentence on three, and sections that hold one link beside a large empty area at 1440. They can only be filled with content the client or Siemens approves.
+6. The Solutions page is very long on a phone, with the "business needs it relates to" block under each of 15 solutions.
+7. The search page at 1440 has an empty column beside "Browse instead".
+8. Decide the industries images (the first question in §9).
+9. A reversed logo for the footer (question 27).
+
+**Where this report disagrees with the verifier.** Nowhere on a finding of fact: each one checked out. Three points of judgement are recorded in §8: the telephone number stays in international form (decision 25), "Discipline" stays as a filter with a note saying it is this site's grouping (decision 26), and sentence-case headings and the moved word "Infographic" stay as typographic conventions (decision 25).
+
+**What the verifier could not check either.** Apache, real mail, other browsers and devices, screen readers, the naturalness of the Japanese, the origin of the industry images, the partner designations with Siemens, rights to logos, quotes and photographs, and field performance. These remain as in §4 and §9.
+
+**What has not been checked by anyone but the author.** The fixes in this round. The verifier saw `30c9b8a`. The tests written for its findings were run first on that build, where they failed, and then on the fixed build, where they pass; that is evidence, and it is still the author's.

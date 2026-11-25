@@ -56,7 +56,7 @@ The brief (Part B §5, Part C §6) asks for each kind of visitor to have a path 
 | Technical specialist | Product pages; `solutions.html#stage-map`; `products.html#stage-map` | Product enquiry | Product pages test |
 | Potential employee, experienced PLM engineer, graduate | `careers.html#roles` (filters) → role page → `apply.html?job=<role>` | Application form | Career filters and application form tests |
 | International business partner | English pages; About; Contact type "Partnership" | `contact.html?type=partnership` | No |
-| Mobile visitor | Every page at 320–430 px; full-screen menu; `tel:` and `mailto:` links | Any | Mobile menu test; layout test at ten widths |
+| Mobile visitor | Every page at 320–430 px; full-screen menu; `tel:` and `mailto:` links | Any | Mobile menu test; layout test at sixteen widths |
 | Visitor with accessibility needs | Keyboard operation, visible focus, skip link, text alternatives, `accessibility.html` | Any | Interaction tests are keyboard-driven; axe-core on every page |
 
 ## The three journeys the brief works through

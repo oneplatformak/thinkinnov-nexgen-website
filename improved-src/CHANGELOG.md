@@ -2,6 +2,35 @@
 
 Newest first. The first section is the full rebuild; the sections under "Earlier passes" describe work it replaced or built on, and are kept as history.
 
+## After the independent verification (25 November 2026, same branch)
+
+A verifier who did not build the site checked it at commit `30c9b8a`. Commits `6af4466` to `a590595` fix what it found; `notes/REVIEW.md` §12 has the account, finding by finding.
+
+### Pages
+
+- Home: "Siemens Solution Partner" is printed once, above the hero headline, as in the source. It had also been the label of the first key message (`6260296`).
+- No word is broken across lines at any tested width. English: product names sized from their column, Services in two columns from 1200 px, the stage strip three by three until 1280 px, job facts stacked until there is room. Japanese: headings, labels, buttons, the address and other short text break only between phrases (`fbe79e0`).
+- Solutions finder: the result grows with its content and no longer scrolls inside itself; a tall result moves with the page until its button is in view (`fab54ab`).
+- Careers: the four facts of each role sit in a fixed arrangement at every width (`d7fb578`).
+- Diagrams: all four are captioned "Conceptual diagram" / 概念図; the maturity steps on Digital Transformation have no axis or trend line (`5ebf692`).
+- Wording: every English sentence of the original is back word for word. This undoes rewordings made in earlier passes, including some recorded further down this file as fixes ("Sustenance support" had become "ongoing support (sustenance)"; job summaries, problem statements, the footer statement and the copyright line had been tidied). Twelve exceptions are listed with their reasons in `COVERAGE.md`. "Discipline" is no longer among the facts on a job page, and Careers says that the discipline and experience filters are this site's grouping. "SMBs", "UAT", a job title and an industry title are translated on Japanese pages (`bc47030`).
+- Forms: labels, the consent box, its privacy link and three kinds of footer link are at least 24 px. The mail-failure message carries the address as a link. `apply.php` refuses a zip renamed `.docx`. `.htaccess` no longer refuses `/.well-known/` (`c5a68ea`).
+- Logo: larger in the header from 1000 px up; the footer plate tidied. Not recoloured (`a72b0b8`).
+- Services no longer prints the home page's services sentence under its own introduction; the product page strip keeps each link on one line (`a590595`).
+
+### Checks
+
+- `tools/test-layout.js`: sixteen widths; fails on a word split across lines and on links and controls under 24 px; opens every finder result and lifecycle tab.
+- `tools/test-interactions.js`: 427 checks. New: the finder result panel at three desktop sizes, careers rows, the address link in the failure message.
+- `tools/check-source.py`: 98 checks. New: the partner phrase exactly once per home page; every figure captioned as conceptual; all 242 sentences of the original present; the careers summaries character for character.
+- `tools/test-forms.sh`: 62 checks. New: a renamed zip refused, a real `.docx` accepted.
+
+### Documents
+
+- `docs/README-DEPLOY.md`: compression must be on at the host, how to check it, and the checks to make after upload; every `.htaccess` rule is untested until then.
+- Claim and asset registers: where "since 2014" appears; the figures and the Siemens wordmark inside two inherited industry images, recorded as inherited and unsourced. The images are unchanged by the owner's decision.
+- `ACCEPTANCE.md`, `REVIEW.md`, `EXECUTIVE-REVIEW.md`, `TRACEABILITY.md`, `STATUS.md`, `TEST-EVIDENCE.md` corrected where the verifier found them wrong or overstated.
+
 ## Completion against the master brief (25 November 2026, same branch)
 
 The rebuild below stands. This round applies `notes/MASTER_PROMPT.txt` as far as a static site allows, and takes in the official files from the site's developer. Commits `45c5ec1` onwards.

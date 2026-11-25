@@ -93,18 +93,20 @@ All tests run locally. None of them sends email or touches an external service.
 # No browser needed
 python3 improved-src/check-site.py             # links, anchors, one H1, ids, titles, descriptions, canonical, hreflang,
                                                # sitemap, English/Japanese page pairs, trackers and third-party resources
-python3 improved-src/tools/check-source.py     # testimonials, logos and roles match the original; banned wording;
-                                               # excluded structured data; credentials
-bash improved-src/tools/test-forms.sh          # 58 checks of contact.php and apply.php, including failure paths (needs PHP 8)
+python3 improved-src/tools/check-source.py     # testimonials, logos, roles and every English sentence match the
+                                               # original; partner wording once; diagrams captioned as conceptual;
+                                               # banned wording; excluded structured data; credentials
+bash improved-src/tools/test-forms.sh          # 62 checks of contact.php and apply.php, including failure paths (needs PHP 8)
 
 # These need Chrome and two npm packages installed anywhere outside the repository:
 #   mkdir -p /tmp/shot && cd /tmp/shot && npm i puppeteer-core axe-core
 # CHROME=/path/to/chrome if it is not /usr/bin/google-chrome
 export NODE_PATH=/tmp/shot/node_modules
 python3 -m http.server 8810 --directory docs &   # the tests read http://127.0.0.1:8810/ by default
-node improved-src/tools/test-layout.js           # every page, both languages, ten widths from 320 to 2560px
-node improved-src/tools/test-interactions.js     # menus, lifecycle, finder, filters, viewer, language, product pages,
-                                                 # the three journeys, search, forms (starts its own PHP servers)
+node improved-src/tools/test-layout.js           # every page, both languages, sixteen widths from 320 to 2560px; fails on overflow, clipped text, small controls and words broken across lines
+node improved-src/tools/test-interactions.js     # menus, lifecycle, finder and its result panel at three desktop sizes,
+                                                 # filters, viewer, language, product pages, the three journeys, search,
+                                                 # forms (starts its own PHP servers)
 node improved-src/tools/test-axe.js              # axe-core on every page at 390 and 1440px
 
 # Screenshots of every page in both languages, with index.json
@@ -126,8 +128,9 @@ Three files exist in English only: `page.html`, `jobdetails.html` and `applicati
 
 ## Rules this site is built under
 
-- Every factual statement about the company traces to `staging-original/`. Every statement and its source is in `notes/CLAIM-REGISTER.md`.
+- Every factual statement about the company in the site's text traces to `staging-original/`, and the original's English sentences are kept word for word (`improved-src/COVERAGE.md` lists the exceptions). Every statement and its source is in `notes/CLAIM-REGISTER.md`.
 - Where the original contradicts itself the current text is kept and the question is listed in `notes/REVIEW.md`.
-- This rebuild adds no generated or stock image. The eleven industry images come from the original site and their origin is unknown (`notes/ASSET-REGISTER.md` §3). Diagrams are drawn in SVG from wording in the original and the two on the Digital Transformation page are labelled “Conceptual diagram”.
+- This rebuild adds no generated or stock image. The eleven industry images come from the original site and their origin is unknown; two of them carry a Siemens wordmark and unsourced figures about a Siemens product, and are left as they are by the owner's decision (`notes/ASSET-REGISTER.md` §3, `notes/CLAIM-REGISTER.md` §6, `notes/REVIEW.md` §9). The four diagrams are drawn in SVG from wording in the original and each is captioned “Conceptual diagram” (概念図).
+- An independent verifier checked the site at commit `30c9b8a`; what it found and what was done is in `notes/REVIEW.md` §12.
 - The site loads nothing from any other host and sets no cookie.
 - Deployment: `docs/README-DEPLOY.md`.
