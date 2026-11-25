@@ -42,11 +42,12 @@ What is and is not known about these eleven images:
 - If they are Siemens material, permission to republish is needed. If they were generated or commissioned by the company, the Siemens marks inside them need Siemens' approval. Either way this is a launch question.
 - Each image contains text that is not available as text; the page gives a short description beside each (noted on the accessibility page).
 
-## 4. Photographs of people and events (23)
+## 4. Photographs of people and events (24)
 
 | File | What it shows (as described on the site) | Source | Consent of the people shown |
 | --- | --- | --- | --- |
 | `assets/img/about-office.webp` (+ `-640`) | About page introduction photograph | Original site `assets/Aboutus_TI.jpeg` | Not confirmed |
+| `assets/img/office-opening.webp` (880 × 1100) and `office-opening-480.webp` (480 × 600) | Home page, Global Presence section. Alt text “ThinkInnov-NexGen Tokyo office opening ceremony”, Japanese “ThinkInnov-NexGen 東京オフィス開設式”: **both supplied by the owner** on 25 November 2026, not written by this build | **Chosen by the owner**, who supplied a screenshot of it (1006 × 764). The same shot is the original site's `assets/Aboutus_TI.jpeg` (900 × 1600), so the file is cut from that original, not from the screenshot: columns 20 to 900 and rows 455 to 1555, a 4:5 crop with all five people in full, not enlarged or retouched | Not confirmed. Open client question |
 | `assets/img/gallery/gallery-01.webp` (+ thumbnail) | Team members gathered around a table with food, smiling at the camera | Original site gallery | Not confirmed |
 | `assets/img/gallery/gallery-02.webp` (+ thumbnail) | Four people beside a lit ceremonial lamp in front of the ThinkInnov-NexGen sign | Original site gallery | Not confirmed |
 | `assets/img/gallery/gallery-03.webp` (+ thumbnail) | A group standing in the office beside the ThinkInnov-NexGen sign and a ceremonial lamp | Original site gallery | Not confirmed |
@@ -70,7 +71,7 @@ What is and is not known about these eleven images:
 | `assets/img/team/sri.webp` | Srikanth K, Business Consultant | Original site `assets/` | Not confirmed |
 | `assets/img/team/javid.webp` | K.S. Mohammed Javid Rahman, Technical Architect | Original site `assets/` | Not confirmed |
 
-The home page “Global Presence” section reuses gallery photograph 14 (two people walking along an office corridor) in a 4:5 crop. It replaced the last generated image, which has been deleted.
+The home page “Global Presence” section shows the office-opening photograph (`office-opening.webp`, above), at the owner's request of 25 November 2026. Until then it reused gallery photograph 14 (two people walking along an office corridor), which stays in the About gallery. The About page introduction shows the same shot as the new home-page photograph, uncropped.
 
 ## 5. Diagrams and icons
 

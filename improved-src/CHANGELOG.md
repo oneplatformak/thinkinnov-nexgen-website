@@ -19,7 +19,8 @@ The rebuild below stands. This round applies `notes/MASTER_PROMPT.txt` as far as
 
 ### From the official package
 
-- Two photographs that the crawl did not have are now photographs 13 and 14 in the About gallery; the second is also in the home page's Global Presence section. Originals in `notes/nexware-official-src/`.
+- Two photographs that the crawl did not have are now photographs 13 and 14 in the About gallery. Originals in `notes/nexware-official-src/`.
+- Home, Global Presence: at the owner's request the photograph is the office-opening ribbon-cutting (`office-opening.webp`, a 4:5 crop of the original site's `Aboutus_TI.jpeg`), with the alt text he supplied in both languages. It replaced gallery photograph 14 in that section only.
 - The last generated image was removed from the home page and the repository.
 - Partner wording is kept only where the source has it: "Siemens Solution Partner" in the home hero, the Expert Partner sentence on About. It was removed from the footer, the home page description and the social image.
 - `legalName` removed from the structured data. "Production Development" restored as the source has it. "Request a demonstration" became "Product enquiry".

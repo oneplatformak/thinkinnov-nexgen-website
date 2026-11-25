@@ -242,7 +242,9 @@ function proof() {
 
 function presence() {
   const [title, text] = content.about.identity.cards[2];
-  const photo = content.about.gallery[13];
+  // Supplied by the owner on 25 November 2026, with this alt text. The same shot as the
+  // original site's Aboutus_TI.jpeg; the file is a 4:5 crop of that original.
+  const photo = { full: "assets/img/office-opening.webp", small: "assets/img/office-opening-480.webp", width: 880, height: 1100, alt: "ThinkInnov-NexGen Tokyo office opening ceremony" };
   return `<section class="section section-tint" id="presence">
     <div class="container split split-photo">
       <div>
@@ -251,7 +253,7 @@ function presence() {
         <p class="actions-inline">${c.linkArrow(site.page("about.html#profile"), "Company profile")}${c.linkArrow(site.page("about.html#gallery"), "Photo gallery")}</p>
       </div>
       <figure class="photo-portrait">
-        <img src="${site.asset(photo.full)}" srcset="${site.asset(photo.thumb)} 600w, ${site.asset(photo.full)} 1200w" sizes="(min-width: 900px) 34vw, 100vw" width="${photo.width}" height="${photo.height}" alt="${esc(photo.alt)}" loading="lazy" decoding="async">
+        <img src="${site.asset(photo.full)}" srcset="${site.asset(photo.small)} 480w, ${site.asset(photo.full)} 880w" sizes="(min-width: 900px) 34vw, 100vw" width="${photo.width}" height="${photo.height}" alt="${esc(photo.alt)}" loading="lazy" decoding="async">
       </figure>
     </div>
   </section>`;

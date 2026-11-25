@@ -14,6 +14,8 @@ module.exports = {
       "製品ライフサイクルをひとつの連続したループとして捉え、その中心にPLM、ERP、MES、製品知識を配置した概念図です。",
     "Product knowledge": "製品知識",
     "Key messages": "主要メッセージ",
+    // Alt text of the Global Presence photograph. Both languages were supplied by the owner (25 November 2026).
+    "ThinkInnov-NexGen Tokyo office opening ceremony": "ThinkInnov-NexGen 東京オフィス開設式",
     "Your partner for innovation and digital transformation": "イノベーションとデジタルトランスフォーメーションのパートナー",
 
     // About band

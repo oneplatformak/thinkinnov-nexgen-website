@@ -75,6 +75,7 @@ function japaneseRegister(i18n) {
   out.push("- **Siemens product names** (NX, Solid Edge, Capital, Teamcenter, Tecnomatix, Mendix) and the company name stay in Latin script.");
   out.push("- **Testimonials** show the original English as the authoritative text. The Japanese beneath each is the staging rendering, labelled 参考訳 (reference translation).");
   out.push("- **People's names and customer names** are not transliterated.");
+  out.push("- **“ThinkInnov-NexGen 東京オフィス開設式”**, the alt text of the home page's office-opening photograph, was supplied by the owner on 25 November 2026 together with its English. It is listed with the new strings below but is the owner's wording.");
   out.push("- **Job titles and job requirements** are translated; staging left them in English. Indian salary terms (CTC, LPA) are kept as abbreviations.");
   out.push("- **Register**: です・ます throughout, with polite request forms in forms and calls to action.");
   out.push("- **The privacy notice** (個人情報の取り扱い) also needs legal review; the Japanese is a translation of the English notice and has no independent legal standing.");
@@ -297,11 +298,12 @@ function assetRegister() {
   out.push("- If they are Siemens material, permission to republish is needed. If they were generated or commissioned by the company, the Siemens marks inside them need Siemens' approval. Either way this is a launch question.");
   out.push("- Each image contains text that is not available as text; the page gives a short description beside each (noted on the accessibility page).");
   out.push("");
-  out.push(`## 4. Photographs of people and events (${a.gallery.length + a.leaders.length + content.behind.team.length + 1})`);
+  out.push(`## 4. Photographs of people and events (${a.gallery.length + a.leaders.length + content.behind.team.length + 2})`);
   out.push("");
   out.push("| File | What it shows (as described on the site) | Source | Consent of the people shown |");
   out.push("| --- | --- | --- | --- |");
   row(["`assets/img/about-office.webp` (+ `-640`)", "About page introduction photograph", "Original site `assets/Aboutus_TI.jpeg`", "Not confirmed"]);
+  row(["`assets/img/office-opening.webp` (880 × 1100) and `office-opening-480.webp` (480 × 600)", "Home page, Global Presence section. Alt text “ThinkInnov-NexGen Tokyo office opening ceremony”, Japanese “ThinkInnov-NexGen 東京オフィス開設式”: **both supplied by the owner** on 25 November 2026, not written by this build", "**Chosen by the owner**, who supplied a screenshot of it (1006 × 764). The same shot is the original site's `assets/Aboutus_TI.jpeg` (900 × 1600), so the file is cut from that original, not from the screenshot: columns 20 to 900 and rows 455 to 1555, a 4:5 crop with all five people in full, not enlarged or retouched", "Not confirmed. Open client question"]);
   a.gallery.forEach((g, i) => {
     const official = i >= 12;
     row([`\`${g.full}\` (+ thumbnail)`, g.alt, official ? `**Official Nexware package** \`assets/gallery-${i === 12 ? "09" : "10"}.jpg\`; not in the crawl. Source copy in \`notes/nexware-official-src/\`` : "Original site gallery", "Not confirmed"]);
@@ -309,7 +311,7 @@ function assetRegister() {
   for (const [file, name, role] of a.leaders) row([`\`${file}\``, `${name}, ${role}`, "Original site `assets/leadership/`", "Not confirmed"]);
   for (const m of content.behind.team) row([`\`${m.photo || m[0]}\``, `${m.name || m[1]}, ${m.role || m[2]}`, "Original site `assets/`", "Not confirmed"]);
   out.push("");
-  out.push(`The home page “Global Presence” section reuses gallery photograph ${a.gallery.length} (two people walking along an office corridor) in a 4:5 crop. It replaced the last generated image, which has been deleted.`);
+  out.push("The home page “Global Presence” section shows the office-opening photograph (`office-opening.webp`, above), at the owner's request of 25 November 2026. Until then it reused gallery photograph 14 (two people walking along an office corridor), which stays in the About gallery. The About page introduction shows the same shot as the new home-page photograph, uncropped.");
   out.push("");
   out.push("## 5. Diagrams and icons");
   out.push("");
