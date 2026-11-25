@@ -63,8 +63,12 @@ if ($started > 0 && (int) (microtime(true) * 1000) - $started < MIN_SECONDS * 10
     exit;
 }
 
-$name = trim((string) ($_POST['name'] ?? ''));
-$email = trim((string) ($_POST['email'] ?? ''));
+function header_safe(string $value): string {
+    return trim(str_replace(["\r", "\n", "%0a", "%0d", "%0A", "%0D"], '', $value));
+}
+
+$name = header_safe((string) ($_POST['name'] ?? ''));
+$email = header_safe((string) ($_POST['email'] ?? ''));
 $company = trim((string) ($_POST['company'] ?? ''));
 $phone = trim((string) ($_POST['phone'] ?? ''));
 $message = trim((string) ($_POST['message'] ?? ''));

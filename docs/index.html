@@ -6,10 +6,15 @@
   <title>ThinkInnov-NexGen | PLM &amp; Digital Transformation Partner</title>
   <meta name="description" content="ThinkInnov-NexGen provides end-to-end solutions in the PLM domain — business consulting, solution mapping, implementation and adoption services. Siemens Solution Partner in Tokyo.">
   <link rel="canonical" href="https://thinkinnovnexgen.co.jp/">
+  <link rel="alternate" hreflang="en" href="https://thinkinnovnexgen.co.jp/">
+  <link rel="alternate" hreflang="ja" href="https://thinkinnovnexgen.co.jp/ja/">
+  <link rel="alternate" hreflang="x-default" href="https://thinkinnovnexgen.co.jp/">
   <meta name="theme-color" content="#0B1220">
   <meta property="og:title" content="ThinkInnov-NexGen | PLM &amp; Digital Transformation Partner">
   <meta property="og:description" content="ThinkInnov-NexGen provides end-to-end solutions in the PLM domain — business consulting, solution mapping, implementation and adoption services. Siemens Solution Partner in Tokyo.">
   <meta property="og:type" content="website">
+  <meta property="og:locale" content="en_US">
+  <meta property="og:locale:alternate" content="ja_JP">
   <meta property="og:url" content="https://thinkinnovnexgen.co.jp/">
   <meta property="og:image" content="https://thinkinnovnexgen.co.jp/assets/img/og-image.jpg">
   <meta property="og:site_name" content="ThinkInnov-NexGen">
@@ -55,15 +60,25 @@
         <a class="nav-link" href="industries.html">Industries</a>
       </nav>
       <div class="nav-actions">
+        <nav class="lang-switch" aria-label="Language">
+      <a href="index.html" lang="en" hreflang="en" aria-current="page">EN</a>
+      <span aria-hidden="true">/</span>
+      <a href="ja/index.html" lang="ja" hreflang="ja">日本語</a>
+    </nav>
         <a class="btn btn-primary nav-cta" href="contact.html">Contact us</a>
       </div>
+      <div class="lang-mobile"><nav class="lang-switch" aria-label="Language">
+      <a href="index.html" lang="en" hreflang="en" aria-current="page">EN</a>
+      <span aria-hidden="true">/</span>
+      <a href="ja/index.html" lang="ja" hreflang="ja">日本語</a>
+    </nav></div>
       <button class="nav-toggle" type="button" aria-label="Open menu" aria-expanded="false" aria-controls="mobile-drawer">
         <span></span><span></span><span></span>
       </button>
     </div>
   </header>
   <div class="backdrop" data-backdrop hidden></div>
-  <aside class="mobile-drawer" id="mobile-drawer" aria-hidden="true" data-drawer>
+  <aside class="mobile-drawer" id="mobile-drawer" aria-hidden="true" inert data-drawer>
     <div class="drawer-top">
       <img src="assets/img/logo.svg" width="160" height="38" alt="ThinkInnov-NexGen">
       <button class="drawer-close" type="button" aria-label="Close menu"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M6 6l12 12M18 6 6 18"/></svg></button>
@@ -84,13 +99,18 @@
         <a href="products.html">Products</a>
       </details>
       <a href="industries.html">Industries</a>
+      <nav class="lang-switch" aria-label="Language">
+      <a href="index.html" lang="en" hreflang="en" aria-current="page">EN</a>
+      <span aria-hidden="true">/</span>
+      <a href="ja/index.html" lang="ja" hreflang="ja">日本語</a>
+    </nav>
       <a class="btn btn-primary drawer-cta" href="contact.html">Contact us</a>
     </nav>
   </aside>
   <main id="main">
   <section class="hero" id="home" data-hero>
     <div class="hero-media">
-      <img src="assets/img/visuals/hero-engineering.webp" alt="" width="1920" height="1080" fetchpriority="high" decoding="async">
+      <img src="assets/img/visuals/hero-engineering.webp" alt="" width="1920" height="1080" fetchpriority="high" decoding="async" srcset="assets/img/visuals/hero-engineering-640.webp 640w, assets/img/visuals/hero-engineering.webp 1280w" sizes="100vw">
       <div class="hero-scrim"></div>
     </div>
     <div class="container hero-content">
@@ -102,11 +122,13 @@
         <a class="btn btn-secondary" href="contact.html">Contact us</a>
       </div>
       <div class="hero-pillars" data-hero-tabs>
+        <div class="hero-tabbar">
         <div class="hero-tablist" role="tablist" aria-label="Focus areas">
           <button type="button" role="tab" aria-selected="true" aria-controls="pillar-1" id="tab-1">Siemens partner</button>
           <button type="button" role="tab" aria-selected="false" aria-controls="pillar-2" id="tab-2">Innovate faster</button>
           <button type="button" role="tab" aria-selected="false" aria-controls="pillar-3" id="tab-3">Mendix</button>
-          <button type="button" class="hero-pause" data-hero-pause aria-pressed="false" aria-label="Pause rotation"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M8 6v12M16 6v12"/></svg></button>
+        </div>
+        <button type="button" class="hero-pause" data-hero-pause aria-pressed="false" aria-label="Pause rotation"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M8 6v12M16 6v12"/></svg></button>
         </div>
         <div class="hero-panels">
           <div role="tabpanel" id="pillar-1" aria-labelledby="tab-1">
@@ -129,7 +151,7 @@
   <section class="section" id="about">
     <div class="container media-band">
       <figure class="media-frame" data-reveal>
-        <img src="assets/img/about-office.webp" alt="ThinkInnov-NexGen office workspace" width="900" height="1600" loading="lazy" decoding="async">
+        <img src="assets/img/about-office.webp" alt="ThinkInnov-NexGen office workspace" width="900" height="1600" loading="lazy" decoding="async" srcset="assets/img/about-office-640.webp 640w, assets/img/about-office.webp 1280w" sizes="(max-width: 800px) 100vw, 720px">
       </figure>
       <div class="rich-text" data-reveal>
         <p class="eyebrow">About us</p>
@@ -164,15 +186,15 @@
         <li class="timeline-step" data-reveal>
               <span class="step-num">01</span>
               <h3>Pre-Implementation</h3>
-              <ul><li>Strategic business consulting</li><li>Business process re-engineering</li><li>Solution evaluation consulting</li><li>Solution mapping</li><li>Service positioning</li><li>Proof of concepts</li></ul>
+              <ul><li>Strategic business consulting</li><li>Business process re-engineering</li><li>Solution evaluation consulting</li><li>Solution mapping</li><li>Service positioning</li><li>Proof of concepts</li><li>Cloud transition &amp; upgrades</li><li>User enablement by training</li></ul>
             </li><li class="timeline-step" data-reveal>
               <span class="step-num">02</span>
               <h3>Implementation</h3>
-              <ul><li>Solution architecting</li><li>Technical architecting</li><li>Project management</li><li>Customization</li><li>Configuration</li><li>Performance tuning</li></ul>
+              <ul><li>Solution architecting</li><li>Technical architecting</li><li>Project management</li><li>Customization</li><li>Configuration</li><li>Performance tuning</li><li>Deployment architecture</li><li>System setup</li></ul>
             </li><li class="timeline-step" data-reveal>
               <span class="step-num">03</span>
               <h3>Post-Implementation</h3>
-              <ul><li>L1 support</li><li>L2 support</li><li>L3 support</li><li>Requirement analysis</li><li>Design</li><li>Development</li></ul>
+              <ul><li>L1 support</li><li>L2 support</li><li>L3 support</li><li>Requirement analysis</li><li>Design</li><li>Development</li><li>UAT</li><li>Production deployment</li></ul>
             </li>
       </ol>
       <a class="text-link" href="services.html">Full services overview <svg class="icon" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
@@ -216,7 +238,7 @@
         <p>Focused PLM and engineering solutions for product data, quality, change, integration and digital manufacturing.</p>
       </div>
       <div class="solution-grid">
-        <article class="solution-card" data-reveal><h3>Design Data Management</h3><p>Reduce product development cycle time and rapidly search, revise and manage design data and product configurations.</p></article><article class="solution-card" data-reveal><h3>3D Shape Search</h3><p>Find similar parts and reuse knowledge to consolidate suppliers and make informed decisions.</p></article><article class="solution-card" data-reveal><h3>Quality Management Solution</h3><p>Support the full quality lifecycle from planning to production and lessons learned for the next planning cycle.</p></article><article class="solution-card" data-reveal><h3>Quality Issue Management</h3><p>Integrating quality planning in the design phase is critical to competitive advantage. Engineering data provides the …</p></article><article class="solution-card" data-reveal><h3>Design Verification Management</h3><p>Manage the design verification plan as one critical activity in product development. Parts designed and requirements …</p></article><article class="solution-card" data-reveal><h3>Engineering Change Management</h3><p>Continuously improve product offerings with best practice solutions for rapid change and full change management using…</p></article><article class="solution-card" data-reveal><h3>Requirements Management</h3><p>Requirements are the blueprint for product development, but traditional paper and document-driven approaches are not …</p></article><article class="solution-card" data-reveal><h3>Active Integration Solution</h3><p>Realize your digital threads with ERP, MES and enterprise applications by using the Teamcenter connection platform.</p></article><article class="solution-card" data-reveal><h3>Digital Factory / Enterprise</h3><p>Digitalization helps companies respond to rapidly changing industrial challenges, geopolitical tensions, technologica…</p></article>
+        <article class="solution-card" data-reveal><h3>Design Data Management</h3><p>Reduce product development cycle time and rapidly search, revise and manage design data and product configurations.</p></article><article class="solution-card" data-reveal><h3>3D Shape Search</h3><p>Find similar parts and reuse knowledge to consolidate suppliers and make informed decisions.</p></article><article class="solution-card" data-reveal><h3>Quality Management Solution</h3><p>Support the full quality lifecycle from planning to production and lessons learned for the next planning cycle.</p></article><article class="solution-card" data-reveal><h3>Quality Issue Management</h3><p>Integrating quality planning in the design phase is critical to competitive advantage. Engineering data provides the information needed to successfully manage quality projects and real products.</p></article><article class="solution-card" data-reveal><h3>Design Verification Management</h3><p>Manage the design verification plan as one critical activity in product development. Parts designed and requirements defined by internal specification as well as external specification like regulatory authorities.</p></article><article class="solution-card" data-reveal><h3>Engineering Change Management</h3><p>Continuously improve product offerings with best practice solutions for rapid change and full change management using a leading PLM digital enterprise backbone.</p></article><article class="solution-card" data-reveal><h3>Requirements Management</h3><p>Requirements are the blueprint for product development, but traditional paper and document-driven approaches are not sufficient for meeting complex customer needs.</p></article><article class="solution-card" data-reveal><h3>Active Integration Solution</h3><p>Realize your digital threads with ERP, MES and enterprise applications by using the Teamcenter connection platform.</p></article><article class="solution-card" data-reveal><h3>Digital Factory / Enterprise</h3><p>Digitalization helps companies respond to rapidly changing industrial challenges, geopolitical tensions, technological change, labour markets and climate impact.</p></article>
       </div>
       <a class="text-link" href="solutions.html">All solutions <svg class="icon" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
     </div>
@@ -285,7 +307,7 @@
       <label class="field">Email *
         <input required type="email" name="email" autocomplete="email" id="home-contact-email">
       </label>
-      <label class="field">Company
+      <label class="field">Company name
         <input type="text" name="company" autocomplete="organization" id="home-contact-company">
       </label>
       <label class="field">Phone
@@ -308,7 +330,7 @@
   <footer class="site-footer">
     <div class="container footer-grid">
       <div class="footer-brand">
-        <img class="footer-logo" src="assets/img/logo.svg" width="180" height="43" alt="ThinkInnov-NexGen">
+        <span class="footer-logo-plate"><img class="footer-logo" src="assets/img/logo.svg" width="180" height="43" alt="ThinkInnov-NexGen"></span>
         <p>We enable customers to innovate more and faster by effectively re-using knowledge acquired during the product lifecycle through our innovative digital solutions.</p>
       </div>
       <div>

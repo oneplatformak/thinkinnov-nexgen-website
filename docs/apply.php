@@ -83,8 +83,12 @@ if (empty($_POST['consent'])) {
     exit;
 }
 
-$email = trim((string) $_POST['email']);
-if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
+function header_safe(string $value): string {
+    return trim(str_replace(["\r", "\n", "%0a", "%0d", "%0A", "%0D"], '', $value));
+}
+
+$email = header_safe((string) $_POST['email']);
+if (!filter_var($email, FILTER_VALIDATE_EMAIL) || str_contains($email, "\n") || str_contains($email, "\r")) {
     http_response_code(400);
     echo json_encode(['ok' => false, 'error' => 'Invalid email address.']);
     exit;
@@ -122,12 +126,9 @@ $allowedMimes = [
     'application/octet-stream',
 ];
 if (!in_array($mime, $allowedMimes, true)) {
-    // still allow by extension if mime is quirky, but reject executables
-    if (in_array($ext, ['exe', 'php', 'js', 'sh', 'bat'], true)) {
-        http_response_code(400);
-        echo json_encode(['ok' => false, 'error' => 'Invalid file type.']);
-        exit;
-    }
+    http_response_code(400);
+    echo json_encode(['ok' => false, 'error' => 'Invalid file type.']);
+    exit;
 }
 
 $lines = [];
@@ -163,7 +164,7 @@ $body .= "--{$boundary}--\r\n";
 
 $headers = [
     'From: ThinkInnov-NexGen Careers <' . FROM_ADDRESS . '>',
-    'Reply-To: ' . trim((string) $_POST['first_name']) . ' ' . trim((string) $_POST['last_name']) . ' <' . $email . '>',
+    'Reply-To: ' . header_safe((string) ($_POST['first_name'] ?? '')) . ' ' . header_safe((string) ($_POST['last_name'] ?? '')) . ' <' . $email . '>',
     'MIME-Version: 1.0',
     'Content-Type: multipart/mixed; boundary="' . $boundary . '"',
 ];

@@ -6,7 +6,7 @@ import sys
 from pathlib import Path
 from urllib.parse import urlparse, unquote
 
-ROOT = Path(__file__).resolve().parents[1] / "improved"
+ROOT = Path(__file__).resolve().parents[1] / "docs"
 HTML_FILES = sorted(ROOT.rglob("*.html"))
 
 href_re = re.compile(r'''(?:href|src)=["']([^"']+)["']''', re.I)

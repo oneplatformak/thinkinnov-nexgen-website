@@ -11,7 +11,8 @@
 - Footer copyright: `© 2026 ThinkInnov-NexGen`.
 - Testimonials kept verbatim (including “Thinkin(g) No(w)”).
 - All 21 customer logos, 4 testimonials, 18 jobs, 15 solutions, 11 industries, gallery, leadership, team, partnership value drivers retained.
-- EN/JP UI toggle removed; staging JP dictionary copied to `i18n-jp-dictionary-from-staging.js`.
+- EN/JP UI toggle removed in the first regeneration; staging JP dictionary copied to `i18n-jp-dictionary-from-staging.js`.
+- Polish pass restored bilingual pages (see below).
 - GoDaddy tccl tracking script removed.
 
 ## SEO
@@ -59,3 +60,35 @@
 - `.htaccess`: HTTPS, old URL 301s, custom 404, security headers.
 - Redirect stubs for GitHub Pages: `page.html`, `jobdetails.html`, `application.html`.
 - Fixed broken customer image paths (bae, bryka); application page overflow addressed via responsive form grid.
+
+## Polish pass
+
+### Build
+- `build.js` writes directly to `docs/`. The `improved` → `docs` symlink is removed.
+
+### Design
+- Header is always a frosted cream bar with the full-colour logo (no white invert on the photo).
+- Home hero stacks on small screens (image band, then copy) so the photograph is not cropped under the headline. Desktop keeps an overlay with a stronger scrim and a higher subject position.
+- Office portrait is cropped to a 420px frame instead of its full 1600px height.
+- Solution cards use a short accent rule; home previews clamp to four lines while the full sentence stays in the HTML. Solutions page shows every sentence.
+- Home service timeline lists every item again.
+- Card grids use two columns until 1024px, then three.
+- Footer is ink with the logo on a white plate.
+- Inner page heroes no longer add a second header-height gap.
+- Motion stays short fades; `prefers-reduced-motion` still disables it.
+
+### Language
+- `/ja/` mirrors every page. `lang`, canonical, and `hreflang` (`en`, `ja`, `x-default`) are set.
+- Japanese text comes from the staging dictionary and `pageContentJp` only, plus UI chrome (navigation, buttons, form labels, aria).
+- Unique body copy with no Japanese source stays English and is listed in `notes/needs-japanese.md`.
+
+### Accessibility, performance, forms
+- Eyebrow colour on ink sections lightened so orange-on-navy clears AA.
+- 404 secondary button uses ink text on the light hero.
+- Responsive `srcset` for visual WebP files that have a 640px sibling, including the office photo.
+- Customer logos `hal.webp` and `sonalika.webp` recompressed under 30 KB. The master logo SVG stays ~35 KB; SVGO changed it by under 1% and further cuts would risk the mark.
+- Contact and application mailers strip CR/LF from header fields. Application uploads must match an allowed MIME type.
+- Preview forms still fall back to `mailto:` and do not claim success without JSON `ok`.
+- Link orange on cream was 4.3:1; text/buttons now use `#B33E14` (passes AA on `#F7F5F1` and white-on-orange).
+- Closed mobile drawer is `inert` so hidden links are not focusable. Hero pause control sits outside the tablist.
+- Lighthouse (local preview, Lighthouse 12): home mobile 96/100/100/100, home desktop 100/100/100/100, about mobile 97/100/100/100, contact mobile 99/100/100/100, industries desktop 100/100/100/100, Japanese home mobile 96/100/100/100 (performance / accessibility / best practices / SEO).

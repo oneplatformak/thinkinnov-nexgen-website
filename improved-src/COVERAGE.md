@@ -6,7 +6,7 @@ Source of truth: `staging-original/thinkinnov-nexgen/`.
 
 | Original | New | Notes |
 |---|---|---|
-| Header logo + 9 nav pages | Sticky header with Company / Offerings dropdowns + Industries; all 9 pages 1-click reachable | EN/JP toggle **removed from UI** (open business decision). JP dictionary preserved in `improved-src/i18n-jp-dictionary-from-staging.js` |
+| Header logo + 9 nav pages | Sticky solid header (full-colour logo) with Company / Offerings dropdowns + Industries; all 9 pages 1-click reachable | EN/JP restored as real URLs: English at `/`, Japanese at `/ja/`, with `lang` and `hreflang`. Japanese body copy only where staging already had it (`pageContentJp` + dictionary). UI labels translated. Strings without a Japanese source stay English (`notes/needs-japanese.md`). Generic filler sentences that replaced unique solution/industry/job copy were not used. |
 | Contact us CTA → `#contact` | → `contact.html` (home still has `#contact` form) | |
 | Mobile drawer | Full-screen drawer with Company/Offerings accordions, focus trap, Esc | |
 | Footer Quick Links / Explore / Locate Us | Same links + map link; legal name from `config.js` | |

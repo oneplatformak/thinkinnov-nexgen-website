@@ -1,21 +1,45 @@
 #!/usr/bin/env node
 /**
- * Generates the finished static site into ../improved/
+ * Generates the finished static site into ../docs/ (GitHub Pages + cPanel root).
  */
 const fs = require("fs");
 const path = require("path");
 const content = require("./content");
+const i18n = require("./i18n");
 const L = require("./layout");
-const { esc, asset, pageShell, pageHero, sectionNav, ctaBand, contactFormFields, orgJsonLd, config, icons } =
+const { esc, asset, pageShell, pageHero, sectionNav, ctaBand, contactFormFields, orgJsonLd, config, icons, setBuildLang } =
   L;
 
-const OUT = path.join(__dirname, "..", "improved");
+const OUT = path.join(__dirname, "..", "docs");
+let LANG = "en";
+
+function withSrcset(html) {
+  return html.replace(/<img\b([^>]*?)>/g, (tag, attrs) => {
+    if (/\ssrcset=/.test(attrs)) return tag;
+    const srcMatch = attrs.match(/\ssrc="([^"]+)"/);
+    if (!srcMatch) return tag;
+    const src = srcMatch[1];
+    if (!/\/visuals\/[^"]+\.webp$/.test(src) && !/about-office\.webp$/.test(src)) return tag;
+    if (src.includes("-640.webp")) return tag;
+    const small = src.replace(/\.webp$/, "-640.webp");
+    const disk = path.join(OUT, small.replace(/^(\.\.\/)+/, ""));
+    if (!fs.existsSync(disk)) return tag;
+    const sizes = src.includes("hero-engineering") ? "100vw" : "(max-width: 800px) 100vw, 720px";
+    return `<img${attrs} srcset="${small} 640w, ${src} 1280w" sizes="${sizes}">`;
+  });
+}
 
 function write(rel, html) {
-  const dest = path.join(OUT, rel);
+  let outRel = rel;
+  let body = withSrcset(html);
+  if (LANG === "ja" && !rel.endsWith(".xml") && !rel.endsWith(".txt") && !rel.endsWith(".json")) {
+    body = i18n.apply(body, path.posix.join("ja", rel));
+    outRel = path.posix.join("ja", rel);
+  }
+  const dest = path.join(OUT, outRel);
   fs.mkdirSync(path.dirname(dest), { recursive: true });
-  fs.writeFileSync(dest, html);
-  console.log("wrote", rel);
+  fs.writeFileSync(dest, body);
+  console.log("wrote", outRel);
 }
 
 function cards(items, className = "card-grid") {
@@ -75,11 +99,13 @@ function buildHome() {
         <a class="btn btn-secondary" href="${a("contact.html")}">Contact us</a>
       </div>
       <div class="hero-pillars" data-hero-tabs>
+        <div class="hero-tabbar">
         <div class="hero-tablist" role="tablist" aria-label="Focus areas">
           <button type="button" role="tab" aria-selected="true" aria-controls="pillar-1" id="tab-1">Siemens partner</button>
           <button type="button" role="tab" aria-selected="false" aria-controls="pillar-2" id="tab-2">Innovate faster</button>
           <button type="button" role="tab" aria-selected="false" aria-controls="pillar-3" id="tab-3">Mendix</button>
-          <button type="button" class="hero-pause" data-hero-pause aria-pressed="false" aria-label="Pause rotation">${icons.pause}</button>
+        </div>
+        <button type="button" class="hero-pause" data-hero-pause aria-pressed="false" aria-label="Pause rotation">${icons.pause}</button>
         </div>
         <div class="hero-panels">
           <div role="tabpanel" id="pillar-1" aria-labelledby="tab-1">
@@ -137,7 +163,7 @@ function buildHome() {
         ${["Pre-Implementation", "Implementation", "Post-Implementation"]
           .map((t, i) => {
             const svc = content.services[i];
-            const items = svc.blocks.flatMap(([, list]) => list).slice(0, 6);
+            const items = svc.blocks.flatMap(([, list]) => list);
             return `<li class="timeline-step" data-reveal>
               <span class="step-num">${String(i + 1).padStart(2, "0")}</span>
               <h3>${esc(t)}</h3>
@@ -180,9 +206,9 @@ function buildHome() {
         ${content.homeSolutionsPreview
           .map((title, i) => {
             const full = content.solutions.find((s) => s[0].startsWith(title.split(" /")[0].split(" Management")[0]) || s[0] === title || s[0].includes(title.replace(" / ", "/")));
-            const body = full ? full[1] : content.solutions[i][1];
+            const bodyText = full ? full[1] : content.solutions[i][1];
             const label = title;
-            return `<article class="solution-card" data-reveal><h3>${esc(label)}</h3><p>${esc(body.length > 120 ? body.slice(0, 117) + "…" : body)}</p></article>`;
+            return `<article class="solution-card" data-reveal><h3>${esc(label)}</h3><p>${esc(bodyText)}</p></article>`;
           })
           .join("")}
       </div>
@@ -768,7 +794,7 @@ function buildApply() {
   })}
   <section class="section">
     <div class="container narrow">
-      <form class="application-form" action="apply.php" method="post" enctype="multipart/form-data" data-form="apply" novalidate>
+      <form class="application-form" action="${asset("apply.php", 0)}" method="post" enctype="multipart/form-data" data-form="apply" novalidate>
         <input type="text" name="website" class="hp-field" tabindex="-1" autocomplete="off" aria-hidden="true">
         <input type="hidden" name="form_started" value="">
         <div class="form-grid apply-grid">
@@ -960,18 +986,27 @@ function buildSitemapRobots() {
     "contact.html",
     ...content.jobs.map((j) => `careers/${j.slug}.html`),
   ];
+  const abs = (lang, p) => (lang === "ja" ? (p ? `${config.baseUrl}/ja/${p}` : `${config.baseUrl}/ja/`) : p ? `${config.baseUrl}/${p}` : `${config.baseUrl}/`);
   const urls = pages
-    .map(
-      (p) => `  <url>
-    <loc>${config.baseUrl}/${p}</loc>
+    .flatMap((p) =>
+      ["en", "ja"].map((lang) => {
+        const loc = abs(lang, p);
+        const en = abs("en", p);
+        const ja = abs("ja", p);
+        return `  <url>
+    <loc>${loc}</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="${en}"/>
+    <xhtml:link rel="alternate" hreflang="ja" href="${ja}"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="${en}"/>
     <changefreq>monthly</changefreq>
-  </url>`
+  </url>`;
+      })
     )
     .join("\n");
   write(
     "sitemap.xml",
     `<?xml version="1.0" encoding="UTF-8"?>
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml">
 ${urls}
 </urlset>
 `
@@ -986,7 +1021,7 @@ Sitemap: ${config.baseUrl}/sitemap.xml
   );
 }
 
-function main() {
+function buildPages() {
   buildHome();
   buildAbout();
   buildPlm();
@@ -1000,6 +1035,17 @@ function main() {
   buildApply();
   buildContact();
   build404();
+}
+
+function main() {
+  i18n.resetReport();
+  for (const lang of ["en", "ja"]) {
+    LANG = lang;
+    setBuildLang(lang);
+    buildPages();
+  }
+  LANG = "en";
+  setBuildLang("en");
   buildRedirects();
   buildSitemapRobots();
   // expose jobs for apply preselect
@@ -1007,6 +1053,21 @@ function main() {
     path.join(OUT, "assets", "jobs-data.json"),
     JSON.stringify(content.jobs.map(({ slug, title, id }) => ({ slug, title, id })), null, 2)
   );
+  const needs = i18n.report();
+  const lines = [
+    "# Needs Japanese translation",
+    "",
+    "Body copy and descriptions below have no Japanese source in staging (`pageContentJp` or the JP dictionary). They stay English on `/ja/` pages. UI labels are translated and are not listed.",
+    "",
+    "Generic staging filler that replaced unique solution, industry and job paragraphs with one repeated sentence was not used.",
+    "",
+    `Unique strings: ${needs.length}`,
+    "",
+    ...needs.map((row) => `- (${row.page}) ${row.text}`),
+    "",
+  ];
+  fs.writeFileSync(path.join(__dirname, "..", "notes", "needs-japanese.md"), lines.join("\n"));
+  console.log(`Needs Japanese translation: ${needs.length} unique strings`);
   console.log("Build complete.");
 }
 

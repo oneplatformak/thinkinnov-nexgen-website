@@ -2,6 +2,24 @@
   "use strict";
 
   const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  const ja = document.documentElement.lang === "ja";
+  const ui = ja
+    ? {
+        required: "必須項目を入力してください。",
+        sending: "送信しています…",
+        mailFail:
+          'このプレビューではメールサーバーに接続できません。メールアプリから送信できます: <a href="%s">メールアプリを開く</a>。',
+        pause: "ローテーションを一時停止",
+        play: "ローテーションを再生",
+      }
+    : {
+        required: "Please complete the required fields.",
+        sending: "Sending…",
+        mailFail:
+          'We could not reach the mail server from this preview. You can still send via email: <a href="%s">open your email app</a>.',
+        pause: "Pause rotation",
+        play: "Play rotation",
+      };
 
   /* Header solid on scroll */
   const header = document.querySelector("[data-header]");
@@ -30,6 +48,7 @@
     lastFocus = document.activeElement;
     drawer.classList.add("is-open");
     drawer.setAttribute("aria-hidden", "false");
+    drawer.removeAttribute("inert");
     toggle?.setAttribute("aria-expanded", "true");
     if (backdrop) backdrop.hidden = false;
     document.body.style.overflow = "hidden";
@@ -41,6 +60,7 @@
     if (!drawer) return;
     drawer.classList.remove("is-open");
     drawer.setAttribute("aria-hidden", "true");
+    drawer.setAttribute("inert", "");
     toggle?.setAttribute("aria-expanded", "false");
     if (backdrop) backdrop.hidden = true;
     document.body.style.overflow = "";
@@ -153,7 +173,7 @@
     pauseBtn?.addEventListener("click", () => {
       paused = !paused;
       pauseBtn.setAttribute("aria-pressed", String(paused));
-      pauseBtn.setAttribute("aria-label", paused ? "Play rotation" : "Pause rotation");
+      pauseBtn.setAttribute("aria-label", paused ? ui.play : ui.pause);
       pauseBtn.innerHTML = paused
         ? '<svg class="icon" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M8 5v14l11-7-11-7Z"/></svg>'
         : '<svg class="icon" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M8 6v12M16 6v12"/></svg>';
@@ -254,7 +274,7 @@
         form.reportValidity();
         if (status) {
           status.className = "form-status is-error";
-          status.textContent = "Please complete the required fields.";
+          status.textContent = ui.required;
         }
         return;
       }
@@ -264,7 +284,7 @@
 
       if (status) {
         status.className = "form-status";
-        status.textContent = "Sending…";
+        status.textContent = ui.sending;
       }
 
       try {
@@ -290,7 +310,7 @@
         const mailto = buildMailto(form, type);
         if (status) {
           status.className = "form-status is-error";
-          status.innerHTML = `We could not reach the mail server from this preview. You can still send via email: <a href="${mailto}">open your email app</a>.`;
+          status.innerHTML = ui.mailFail.replace("%s", mailto);
         }
       }
     });
