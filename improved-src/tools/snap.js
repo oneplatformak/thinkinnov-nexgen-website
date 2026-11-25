@@ -2,6 +2,7 @@
 /**
  * Development screenshots.
  *   node improved-src/tools/snap.js <outDir> <width[,width]> <page> [page...]
+ *   NAMES=final node improved-src/tools/snap.js screenshots-after 390,1440 all
  * Needs puppeteer-core and a local Chrome; serves nothing itself (set BASE).
  * Full-page JPEGs; motion is disabled so that every element is in its final state.
  */
@@ -10,7 +11,11 @@ const fs = require("fs");
 const puppeteer = require("puppeteer-core");
 
 const BASE = process.env.BASE || "http://127.0.0.1:8810/";
-const [outDir, widthArg, ...pages] = process.argv.slice(2);
+const [outDir, widthArg, ...pageArgs] = process.argv.slice(2);
+const docs = path.join(__dirname, "..", "..", "docs");
+const STUBS = new Set(["page.html", "jobdetails.html", "application.html"]);
+const htmlIn = (dir) => fs.readdirSync(path.join(docs, dir)).filter((f) => f.endsWith(".html") && !STUBS.has(f)).sort().map((f) => path.posix.join(dir, f));
+const pages = pageArgs[0] === "all" ? ["", "careers", "ja", "ja/careers"].flatMap(htmlIn) : pageArgs;
 const widths = widthArg.split(",").map(Number);
 const fullPage = process.env.FOLD !== "1";
 
@@ -35,7 +40,11 @@ const fullPage = process.env.FOLD !== "1";
         await Promise.all(Array.from(document.images).map((img) => (img.complete ? null : new Promise((r) => { img.onload = img.onerror = r; }))));
       });
       const overflow = await page.evaluate(() => document.documentElement.scrollWidth - document.documentElement.clientWidth);
-      const name = (rel.split("#")[0] || "index.html").replace(/\.html$/, "").replace(/\//g, "_") + `_${width}.jpg`;
+      const file = rel.split("#")[0] || "index.html";
+      // NAMES=final gives the delivery names: ja_about_html_mobile.jpg, index_html_desktop.jpg.
+      const name = process.env.NAMES === "final"
+        ? file.replace(/[/.]/g, "_") + (width < 700 ? "_mobile.jpg" : "_desktop.jpg")
+        : file.replace(/\.html$/, "").replace(/\//g, "_") + `_${width}.jpg`;
       if (fullPage) {
         // Chrome's own full-page capture sometimes re-lays out very tall pages with
         // viewport units at zero. Growing the viewport to the page height and taking
