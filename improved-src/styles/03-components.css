@@ -42,6 +42,7 @@ html[lang="ja"] .kicker, html[lang="ja"] .marker, html[lang="ja"] .badge { lette
 .section-head .link-arrow { margin-top: var(--s-5); }
 .split { display: grid; gap: var(--s-7); }
 .split > * { min-width: 0; }
+.split > * > .section-head:last-child { margin-bottom: 0; }
 @media (min-width: 900px) {
   .split { grid-template-columns: minmax(0, 5fr) minmax(0, 7fr); gap: clamp(3rem, 6vw, 7rem); align-items: start; }
   .split-wide-left { grid-template-columns: minmax(0, 7fr) minmax(0, 5fr); }
