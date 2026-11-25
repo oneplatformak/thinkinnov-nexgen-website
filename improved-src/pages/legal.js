@@ -95,7 +95,7 @@ function accessibility() {
       p("Because of this we do not claim conformance with any accessibility standard.")],
     ["known", "Known limitations",
       list([
-        "The eleven industry infographics are images that contain text. Each has a short description beside it, but the full text of the image is not available as text.",
+        "The nine industry infographics are images that contain text. Each has a short description beside it, but the full text of the image is not available as text.",
         "Customer logos are images of each company's own logo, labelled with the company name.",
       ])],
     ["feedback", "Tell us about a problem", p("If you cannot use part of this website, please tell us and we will help you with the information you need:") + contactBlock()],

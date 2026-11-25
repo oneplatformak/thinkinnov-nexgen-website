@@ -7,6 +7,8 @@ the things that must never be published.
 3. The same job titles, each with a page in both languages; every English
    sentence of the original on the site with the same words; the careers-list
    summaries character for character; the finder's quotations exact.
+   Eleven industry entries; the original's eleven industry images less the
+   two removed by the owner's decision (I2, I11), which must not come back.
 4. Partner wording appears only where the source has it.
 5. No placeholder text, no banned wording, no empty headings.
 6. Structured data parses and contains none of the excluded types.
@@ -86,6 +88,54 @@ for title, page in zip(staging_jobs, job_pages):
     h1 = re.search(r"<h1[^>]*>(.*?)</h1>", raw_of[page], flags=re.S)
     report(bool(h1) and squash(visible(h1.group(1))) == squash(title), f"job title unchanged on {page}", title)
 report("JobPosting" not in "".join(raw_of.values()), "no JobPosting structured data")
+
+# 3a. Industry images. The original shows one image with each of its eleven
+# industry entries (assets/I1.png to I11.png). Nine are published. Two were
+# removed by the owner's decision (AK, 25 November 2026): I2 carries a Siemens
+# wordmark and I11 prints unsourced figures about a Siemens product; both are
+# inherited images of unknown origin and rights. This is the one approved
+# exception to "nothing dropped": any other missing image fails here, and so
+# does either removed file if it comes back.
+INDUSTRY_IMAGES_REMOVED = {2: "infographic-02.webp", 11: "infographic-11.webp"}
+page_data = (STAGING / "assets" / "page-data.js").read_text(encoding="utf-8")
+staging_industry = [int(n) for n in re.findall(r'"assets/I(\d+)\.png"', page_data[page_data.find("const industryImages"):])]
+report(staging_industry == list(range(1, 12)) and all((STAGING / "assets" / f"I{n}.png").is_file() for n in staging_industry),
+       "the original has eleven industry images, I1 to I11, and all eleven are kept in staging-original/", str(staging_industry))
+expected_images = [f"infographic-{n:02d}.webp" for n in staging_industry if n not in INDUSTRY_IMAGES_REMOVED]
+on_disk = sorted(f.name for f in (DOCS / "assets/img/industries").iterdir())
+report(on_disk == expected_images and len(expected_images) == 9,
+       "docs/ holds exactly the nine industry images that are published (the original's eleven less the two approved removals)", ", ".join(on_disk))
+for page in ("industries.html", "ja/industries.html"):
+    markup = raw_of[page]
+    cards = re.findall(r'<article class="industry[^"]*" id="([^"]+)">(.*?)</article>', markup, flags=re.S)
+    shown = [re.findall(r'<img[^>]*src="[^"]*?(infographic-\d+\.webp)"', body) for _, body in cards]
+    want = [[] if n in INDUSTRY_IMAGES_REMOVED else [f"infographic-{n:02d}.webp"] for n in range(1, 12)]
+    report(len(cards) == 11 and shown == want,
+           f"eleven industry entries on {page}: entry n shows the original's image n, and entries 2 and 11 show none", str([len(x) for x in shown]))
+    bare = [body for (_, body), n in zip(cards, range(1, 12)) if n in INDUSTRY_IMAGES_REMOVED]
+    report(len(bare) == 2 and all(not re.search(r"<figure|<figcaption|<img|data-lightbox|gallery-open|alt=|data-caption", body) for body in bare),
+           f"the two entries without an image on {page} have no figure, caption, alt text or enlarge control left")
+    report(all("<h2" in body and "industry-rel" in body and "contact.html" in body for body in bare),
+           f"the two entries without an image on {page} keep their title, relations and contact link")
+english_titles = [squash(visible(t)) for t in re.findall(r'<article class="industry[^"]*" id="[^"]+">.*?<h2[^>]*>(.*?)</h2>', raw_of["industries.html"], flags=re.S)]
+report(len(english_titles) == 11 and len(set(english_titles)) == 11, "eleven distinct industry titles on industries.html", str(len(english_titles)))
+# Neither removed file name anywhere in what is served: every file under docs/, whatever its type.
+mentions = []
+for path in sorted(DOCS.rglob("*")):
+    if not path.is_file():
+        continue
+    if path.name in INDUSTRY_IMAGES_REMOVED.values():
+        mentions.append(f"{path.relative_to(DOCS)} (the file itself)")
+        continue
+    data = path.read_bytes()
+    for name in INDUSTRY_IMAGES_REMOVED.values():
+        if name.encode() in data or name.rsplit(".", 1)[0].encode() in data:
+            mentions.append(f"{path.relative_to(DOCS)}: {name}")
+report(not mentions, "neither removed image (infographic-02, infographic-11) is present or referenced anywhere in docs/", " | ".join(mentions[:6]))
+# The five figures the removed image printed are nowhere in the site's text either.
+REMOVED_FIGURES = ["20–30%", "20-30%", "15–25%", "15-25%", "30–50%", "30-50%", "20–40%", "20-40%", "99.9%"]
+found_figures = sorted({f"{page}: {fig}" for page, markup in raw_of.items() for fig in REMOVED_FIGURES if fig in markup})
+report(not found_figures, "none of the five figures printed in the removed image appears in any page", " | ".join(found_figures[:6]))
 
 # 3b. Source wording. Every sentence the original shows in English is on the
 # English site with the same words in the same order. Capitals, punctuation

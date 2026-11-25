@@ -115,8 +115,8 @@ module.exports = {
     "Because of this we do not claim conformance with any accessibility standard.":
       "このため、当ウェブサイトは特定のアクセシビリティ規格への適合を表明していません。",
     "Known limitations": "既知の制約",
-    "The eleven industry infographics are images that contain text. Each has a short description beside it, but the full text of the image is not available as text.":
-      "11点の業界別インフォグラフィックは、文字を含む画像です。それぞれの横に短い説明を掲載していますが、画像内の文字のすべてをテキストとして提供しているわけではありません。",
+    "The nine industry infographics are images that contain text. Each has a short description beside it, but the full text of the image is not available as text.":
+      "9点の業界別インフォグラフィックは、文字を含む画像です。それぞれの横に短い説明を掲載していますが、画像内の文字のすべてをテキストとして提供しているわけではありません。",
     "Tell us about a problem": "問題のご連絡",
     "If you cannot use part of this website, please tell us and we will help you with the information you need:":
       "当ウェブサイトの一部をご利用いただけない場合は、ご連絡ください。必要な情報をご案内いたします。",

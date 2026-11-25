@@ -202,15 +202,17 @@ function claimRegister() {
   out.push("| --- | --- | --- | --- |");
   for (const row of STAGING_CLAIMS) out.push(`| ${row.map(cell).join(" | ")} |`);
   out.push("");
-  out.push("## 6. Statements inside inherited images: unsourced");
+  out.push("## 6. Statements inside two inherited images: removed from the site");
   out.push("");
-  out.push("The eleven industry images were carried over from the original site unchanged. They are pictures with text in them, and two of them carry things about Siemens that this site's own text does not say and that no source in this repository supports: figures about a Siemens product in one, the Siemens wordmark in the other. They were found by the independent verification of 25 November 2026; the checks in this repository read page text and cannot read text inside an image. **The owner has decided to leave all eleven as they are for now**; the decision and its options are the first open question in `notes/REVIEW.md` §9.");
+  out.push("The original site shows an image with each of its eleven industry entries. Two of them carried things about Siemens that this site's own text does not say and that no source in this repository supports: figures about a Siemens product in one, the Siemens wordmark in the other. They were found by the independent verification of 25 November 2026; the checks in this repository read page text and cannot read text inside an image.");
   out.push("");
-  out.push("| Image | Shown with | What the image says | Source for the statement | Status |");
+  out.push("**Both images were removed from the site on 25 November 2026 by the owner's decision (AK).** Reason: a Siemens wordmark and unsourced figures about a Siemens product inside inherited images of unknown origin and rights. This is an owner-approved exception to the rule that nothing the original had is dropped. The two industry entries stay, with their titles, text, relations and links; only the images are gone, from the English and the Japanese pages, and the files are deleted from `docs/`. The originals remain in `staging-original/` as the record of the original site. `tools/check-source.py` fails if either file is referenced or present in `docs/` again.");
+  out.push("");
+  out.push("| Image (removed) | Was shown with | What the image said | Source for the statement | Status |");
   out.push("| --- | --- | --- | --- | --- |");
   for (const f of INFOGRAPHIC_FIGURES) out.push(`| ${f.map(cell).join(" | ")} |`);
   out.push("");
-  out.push("None of these figures appears anywhere in the site's text, metadata or structured data, in either language. The Japanese pages show the same images, with the English text inside them untranslated.");
+  out.push("None of these figures ever appeared in the site's text, metadata or structured data, in either language, and none is published anywhere on the site now. The nine industry images that remain were looked at one by one on 25 November 2026 for the same two things; what they show is recorded in `notes/ASSET-REGISTER.md` §3.");
   out.push("");
   out.push("## 7. Things deliberately not stated anywhere");
   out.push("");
@@ -220,8 +222,9 @@ function claimRegister() {
 }
 
 // Statements printed inside the inherited industry images. [image, shown with, statement, source, status]
-const IMAGE_11 = ["`assets/img/industries/infographic-11.webp`, headed in the image “The Business Value of Cloud-based SaaS PLM”", "Industries, entry 11, “Teamcenter X: The business value of cloud-based SaaS PLM”"];
-const UNSOURCED = "Inherited and unsourced. Nothing in the source says these are results of ThinkInnov-NexGen's projects or figures published by Siemens.";
+const IMAGE_11 = ["`infographic-11.webp` (original site `assets/I11.png`), headed in the image “The Business Value of Cloud-based SaaS PLM”", "Industries, entry 11, “Teamcenter X: The business value of cloud-based SaaS PLM”"];
+const REMOVED = "**Removed from the site with the image, 25 November 2026 (owner's decision).**";
+const UNSOURCED = REMOVED + " It was inherited and unsourced: nothing in the source says these are results of ThinkInnov-NexGen's projects or figures published by Siemens.";
 const NO_SOURCE = "None. The image names no source and neither does the original site. This build did not look for one elsewhere.";
 const INFOGRAPHIC_FIGURES = [
   [...IMAGE_11, "“20–30% faster time to market”, under the heading “Real Business Impact”", NO_SOURCE, UNSOURCED],
@@ -230,8 +233,23 @@ const INFOGRAPHIC_FIGURES = [
   [...IMAGE_11, "“20–40% reduction in change cycle time”", NO_SOURCE, UNSOURCED],
   [...IMAGE_11, "“99.9%+ cloud reliability and availability”", NO_SOURCE, UNSOURCED + " It reads as a service-level figure for a Siemens product."],
   [...IMAGE_11, "“Enterprise-grade Security: built on a secure, compliant cloud platform to protect your IP and critical product data.”", NO_SOURCE, UNSOURCED + " It reads as a security and compliance statement, which the site's own text never makes."],
-  ["`assets/img/industries/infographic-02.webp`", "Industries, entry 2, “Siemens SW PDM to PLM”", "The SIEMENS wordmark, in the top-left corner of the image", "Not a statement but a mark. No Siemens brand asset was added by this build; this one is inside an inherited image.", "Inherited. Whether the image is Siemens material, and whether the mark may be shown, is not known."],
+  ["`infographic-02.webp` (original site `assets/I2.png`)", "Industries, entry 2, “Siemens SW PDM to PLM”", "The SIEMENS wordmark, in the top-left corner of the image", "Not a statement but a mark. No Siemens brand asset was added by this build; this one was inside an inherited image.", REMOVED + " Whether the image is Siemens material, and whether the mark may be shown, was not known."],
 ];
+
+// What each industry image of the original shows, from looking at it (25 November 2026).
+const INDUSTRY_IMAGE_NOTES = {
+  1: "Title and description as text. “Teamcenter X” with an X-shaped symbol. Capability and benefit phrases, no numbers. No Siemens wordmark",
+  2: "The SIEMENS wordmark, top left. Two glowing platforms joined by an arrow. No other text",
+  3: "No legible text. No Siemens wordmark",
+  4: "No legible text. No Siemens wordmark",
+  5: "“Teamcenter X” as small text on a drawn screen. No numbers. No Siemens wordmark",
+  6: "“Teamcenter X” as small text on drawn screens. No numbers. No Siemens wordmark",
+  7: "“Teamcenter X” as small text on drawn screens. Capability phrases, among them “Scalable & Secure Cloud PLM”; no numbers. No Siemens wordmark",
+  8: "“Teamcenter X” with an X-shaped symbol, and on a drawn screen. No numbers. No Siemens wordmark",
+  9: "“Teamcenter X” with an X-shaped symbol, and on a drawn screen. Short labels, no numbers. No Siemens wordmark",
+  10: "“Teamcenter X” with an X-shaped symbol, and on drawn screens. Short labels, no numbers as claims (a drawn outboard motor is marked “250”). No Siemens wordmark",
+  11: "Headed “The Business Value of Cloud-based SaaS PLM”. Five unsourced figures about Teamcenter X and a security and compliance sentence. “Teamcenter X” with an X-shaped symbol",
+};
 
 // What the official HTML prints as each logo's alt text is all the source says about a customer.
 const FILE_LABELS = new Set(["BR", "STS", "SUV", "ADA"]);
@@ -300,29 +318,41 @@ function assetRegister() {
   row(["`assets/img/og-image.jpg`", "Drawn by `improved-src/tools/og-image.js` from the logo and plain text", "No third-party material"]);
   row(["Six product tiles (NX, Se, Ca, Tc, Tx, Mx)", "Drawn in CSS from two letters each; they are not Siemens logos or icons", "Open: the product names are Siemens trademarks. Confirm that lettered tiles are acceptable to Siemens, or replace them with approved partner assets."]);
   out.push("");
-  out.push("No Siemens logo, partner badge or product artwork is published as a separate asset. The original site has no approved Siemens partner badge: its `assets/seimens_partner.png` is, despite the file name, a generic illustration of a globe and a city with no Siemens mark. The one place a Siemens mark appears is inside industry image 02 (section 3).");
+  out.push("No Siemens logo, partner badge or product artwork is published as a separate asset. The original site has no approved Siemens partner badge: its `assets/seimens_partner.png` is, despite the file name, a generic illustration of a globe and a city with no Siemens mark. The Siemens wordmark is published nowhere on the site: the one inherited image that carried it was removed on 25 November 2026 (section 3).");
   out.push("");
   out.push(`## 2. Customer logos (${content.customers.length})`);
   out.push("");
   out.push("Listed one by one in `notes/CUSTOMER-REGISTER.md`. Source: original site `assets/customers/`. Rights: **not confirmed for any of them.**");
   out.push("");
-  out.push(`## 3. Industry images (${content.industries.length})`);
+  const shown = content.industries.filter((ind) => ind.image);
+  out.push(`## 3. Industry images (${shown.length} published, ${content.industries.length - shown.length} removed)`);
   out.push("");
-  out.push("| File | Shown with | Source | Rights |");
-  out.push("| --- | --- | --- | --- |");
+  out.push("The original site shows one image with each of its eleven industry entries. Nine are published. Two were removed on 25 November 2026 by the owner's decision; the eleven industry entries are all still on the page.");
+  out.push("");
+  out.push("| File | Shown with | Source | What the picture carries (looked at 25 November 2026) | Status |");
+  out.push("| --- | --- | --- | --- | --- |");
   for (const ind of content.industries) {
     const n = String(ind.n).padStart(2, "0");
-    row([`\`assets/img/industries/infographic-${n}.webp\``, ind.title, `Original site \`assets/I${ind.n}.png\``, "Open"]);
+    if (ind.image) row([`\`assets/img/industries/infographic-${n}.webp\``, ind.title, `Original site \`assets/I${ind.n}.png\``, INDUSTRY_IMAGE_NOTES[ind.n], "Published. Origin and rights: open"]);
+    else row([`\`infographic-${n}.webp\`: **removed**, not in \`docs/\``, `Was shown with “${ind.title}”. The entry stays, without an image`, `Original site \`assets/I${ind.n}.png\`, kept in \`staging-original/\``, INDUSTRY_IMAGE_NOTES[ind.n], "**Removed 25 November 2026, owner's decision (AK)**"]);
   }
   out.push("");
-  out.push("What is and is not known about these eleven images:");
+  out.push("**The two removals.** Decided by the owner (AK) on 25 November 2026, as an explicit, owner-approved exception to the rule that nothing the original had is dropped. Reason: a Siemens wordmark (image 02) and unsourced figures about a Siemens product (image 11) inside inherited images of unknown origin and rights.");
+  out.push("");
+  out.push("- \`infographic-02.webp\` carried the SIEMENS wordmark in its top-left corner, above two glowing platforms joined by an arrow.");
+  out.push("- \`infographic-11.webp\`, headed “The Business Value of Cloud-based SaaS PLM”, printed five figures under “Real Business Impact”: “20–30% faster time to market”, “15–25% lower IT & infrastructure costs”, “30–50% improvement in team productivity”, “20–40% reduction in change cycle time” and “99.9%+ cloud reliability and availability”. It also said the product is “built on a secure, compliant cloud platform”. No source was given in the image or on the original site. The statements are listed in \`notes/CLAIM-REGISTER.md\` §6, marked removed.");
+  out.push("- Both files are deleted from \`docs/\`, with their links to the image viewer, alt text and captions, in English and Japanese. There were no other copies: no thumbnail, no social image, no entry in the search index or the sitemap used them. The originals stay in \`staging-original/thinkinnov-nexgen/assets/\` (\`I2.png\`, \`I11.png\`), which is the record of the original site and is not published.");
+  out.push("- The two entries, “Siemens SW PDM to PLM” and “Teamcenter X: The business value of cloud-based SaaS PLM”, keep their titles, text, relations and links, in a layout made for an entry without an image. Nothing was put in the images' place.");
+  out.push("- \`tools/check-source.py\` expects exactly these nine images and these two removals, and fails if either removed file is referenced or present in \`docs/\`, or if any other image of the original goes missing.");
+  out.push("");
+  out.push("**The nine that remain.** What is and is not known:");
   out.push("");
   out.push("- They are on the site because the original site shows them on its Industries page. This build did not create or alter them.");
-  out.push("- Several carry the text “Teamcenter X”, and \`infographic-02.webp\` (shown with “Siemens SW PDM to PLM”) has the Siemens wordmark in its top-left corner. The coordinator's notes describe them as Siemens infographics. **This build could not verify who made them**, so the site does not say they are Siemens material and does not say they are the company's own.");
-  out.push("- **\`infographic-02.webp\` contains the SIEMENS wordmark.** No Siemens logo file exists in this repository and none was added; the mark is part of the inherited picture.");
-  out.push("- **\`infographic-11.webp\`** (“The Business Value of Cloud-based SaaS PLM”, about Teamcenter X) **prints five figures** under the heading “Real Business Impact”: “20–30% faster time to market”, “15–25% lower IT & infrastructure costs”, “30–50% improvement in team productivity”, “20–40% reduction in change cycle time” and “99.9%+ cloud reliability and availability”. It also says the product is “built on a secure, compliant cloud platform”. No source is given in the image or on the original site, and this build did not look for one elsewhere. They are listed in \`notes/CLAIM-REGISTER.md\` §6 as inherited and unsourced.");
-  out.push("- **Owner's decision, 25 November 2026: all eleven stay as they are.** The options (keep; remove images 02 and 11; replace all eleven with redrawn neutral diagrams) are the first open question in \`notes/REVIEW.md\` §9.");
-  out.push("- If they are Siemens material, permission to republish is needed. If they were generated or commissioned by the company, the Siemens marks inside them need Siemens' approval. Either way this is a launch question.");
+  out.push("- **None of the nine carries the Siemens wordmark, and none prints a figure, percentage or other number as a claim.** Each was opened and looked at on 25 November 2026, including the small text on the drawn screens. This is the author's reading of the pictures, done once, not a mechanical check; no test here reads text inside an image.");
+  out.push("- **Seven of the nine carry the name “Teamcenter X”**, a Siemens product: beside an X-shaped symbol in images 01, 08, 09 and 10, and as small text on drawn screens in images 05, 06, 07, 08, 09 and 10. Images 03 and 04 carry no legible text. Whether that name and symbol may be shown this way is part of the open question below.");
+  out.push("- Images 01, 07, 09 and 10 also carry short phrases about what the product does (for example “Faster Time to Market: accelerate design, change and release cycles” in image 01, and “Scalable & Secure Cloud PLM” in image 07). They contain no numbers. They are statements inside an image that the site's own text does not make.");
+  out.push("- The coordinator's notes describe the images as Siemens infographics. **This build could not verify who made them**, so the site does not say they are Siemens material and does not say they are the company's own.");
+  out.push("- **Open question for the client: the origin of these nine and the right to publish them** (\`notes/REVIEW.md\` §9, question 19). If they are Siemens material, permission to republish is needed. If they were generated or commissioned by the company, the Teamcenter X name and symbol inside them need Siemens' approval. Either way this is a launch question.");
   out.push("- Each image contains text that is not available as text; the page gives a short description beside each (noted on the accessibility page).");
   out.push("");
   out.push(`## 4. Photographs of people and events (${a.gallery.length + a.leaders.length + content.behind.team.length + 2})`);

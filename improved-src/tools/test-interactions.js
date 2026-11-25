@@ -334,7 +334,39 @@ async function testLightbox(browser, base, labels) {
   ok("Escape closes it and returns focus to the photo", await page.evaluate(() => !document.querySelector("dialog.lightbox").open && document.activeElement === document.querySelector("[data-lightbox]")));
   await page.goto(base + labels.prefix + "industries.html", { waitUntil: "load" });
   await page.$eval("[data-lightbox]", (l) => l.click());
-  ok("an industry infographic opens in the viewer", (await info()).open && (await page.$$eval("[data-lightbox]", (ls) => ls.length)) === 11);
+  ok("an industry infographic opens in the viewer", (await info()).open);
+  await page.keyboard.press("Escape");
+  // Eleven industries, nine images. Entries 2 and 11 have none (owner's decision, 25 November 2026).
+  const cards = await page.$$eval(".industries-list > .industry", (list) => list.map((a) => ({
+    id: a.id,
+    images: a.querySelectorAll("img").length,
+    openers: a.querySelectorAll("[data-lightbox], .gallery-open, figure, figcaption").length,
+    title: a.querySelector("h2").textContent.trim().length > 0 && a.querySelector(".industry-text p:not(.industry-n)").textContent.trim().length > 0,
+    relations: a.querySelectorAll(".industry-rel a").length,
+    contact: !!a.querySelector('.industry-actions a[href*="contact.html"][href*="industry=' + a.id + '"]'),
+    finder: !!a.querySelector('.industry-actions a[href*="solutions.html?industry=' + a.id + '"]'),
+    loaded: Array.from(a.querySelectorAll("img")).every((i) => !i.complete || i.naturalWidth > 0),
+  })));
+  const without = cards.filter((x) => x.images === 0).map((x) => x.id);
+  ok("eleven industries, nine with an image", cards.length === 11 && cards.filter((x) => x.images === 1 && x.openers >= 2).length === 9, JSON.stringify(cards.map((x) => x.images)));
+  ok("the two without an image are entries 2 and 11", without.join() === "pdm-to-plm,cloud-saas-plm" && cards[1].id === "pdm-to-plm" && cards[10].id === "cloud-saas-plm", without.join());
+  ok("an entry without an image has no figure, caption or enlarge control", cards.filter((x) => x.images === 0).every((x) => x.openers === 0));
+  ok("every entry keeps its title, text, relations and both links", cards.every((x) => x.title && x.relations > 0 && x.contact && x.finder), JSON.stringify(cards.filter((x) => !(x.title && x.relations > 0 && x.contact && x.finder)).map((x) => x.id)));
+  ok("the index lists all eleven", (await page.$$eval(".industry-index a", (ls) => ls.length)) === 11);
+  for (const [width, columns] of [[1440, 2], [1024, 2], [768, 1], [390, 1]]) {
+    await page.setViewport({ width, height: 900 });
+    const boxes = await page.evaluate(() => ["pdm-to-plm", "cloud-saas-plm"].map((id) => {
+      const a = document.getElementById(id), box = a.getBoundingClientRect();
+      const cs = getComputedStyle(a);
+      const parts = [".industry-text", ".industry-side", ".industry-actions"].map((s) => a.querySelector(s).getBoundingClientRect());
+      const inner = { top: box.top + parseFloat(cs.paddingTop), bottom: box.bottom - parseFloat(cs.paddingBottom) };
+      const lowest = Math.max(...parts.map((r) => r.bottom));
+      const other = document.getElementById("marine").querySelector(".industry-figure").getBoundingClientRect();
+      return { columns: parts[1].left > parts[0].right ? 2 : 1, sideLeft: Math.round(parts[1].left), sideRight: Math.round(parts[1].right), figureLeft: Math.round(other.left), figureRight: Math.round(other.right), slack: Math.round(inner.bottom - lowest), top: Math.round(Math.min(...parts.map((r) => r.top)) - inner.top), inside: parts.every((r) => r.left >= box.left - 1 && r.right <= box.right + 1) };
+    }));
+    ok(`at ${width} an entry without an image fills its card: ${columns} column${columns > 1 ? "s, relations in the image column" : ""}, no empty band`,
+      boxes.every((b) => b.columns === columns && b.inside && Math.abs(b.slack) <= 1 && Math.abs(b.top) <= 1 && (columns === 1 || (b.sideLeft === b.figureLeft && b.sideRight === b.figureRight))), JSON.stringify(boxes));
+  }
   ok("no script errors", page.errors.length === 0, page.errors.join(" | "));
   await done(page);
 }

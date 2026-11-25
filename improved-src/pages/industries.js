@@ -1,4 +1,8 @@
-/** Industries: all 11, each with its original infographic. */
+/**
+ * Industries: all 11. Nine are shown with the image the original site had
+ * (`ind.image`); two have none, by the owner's decision, and use the layout
+ * without an image.
+ */
 const site = require("../lib/site");
 const icons = require("../lib/icons");
 const { esc, pad2 } = require("../lib/html");
@@ -24,21 +28,46 @@ function relations(ind) {
   const links = (rel.links || []).map(([href, label]) => `<li><a href="${site.page(href)}">${esc(label)}</a></li>`);
   if (needs.length) groups.push(["Related business needs", `<ul class="plain-list">${needs.join("")}</ul>`]);
   if (links.length) groups.push(["Related on this site", `<ul class="plain-list">${links.join("")}</ul>`]);
-  return `<dl class="industry-rel">${groups.map(([title, html]) => `<div><dt>${esc(title)}</dt><dd>${html}</dd></div>`).join("")}</dl>`;
+  return `<dl class="industry-rel${ind.image ? "" : " industry-rel-rows"}">${groups.map(([title, html]) => `<div><dt>${esc(title)}</dt><dd>${html}</dd></div>`).join("")}</dl>`;
+}
+
+function actions(ind) {
+  return `<p class="industry-actions">
+            ${c.linkArrow(c.contactHref({ type: "consultation", topic: `industry-${ind.key}`, industry: ind.key }), "Discuss PLM for this industry")}
+            ${c.linkArrow(site.page(`solutions.html?industry=${ind.key}#finder`), "Find by business need")}
+          </p>`;
+}
+
+function head(ind) {
+  return `<p class="industry-n">${pad2(ind.n)}</p>
+          <h2>${esc(ind.title)}</h2>
+          <p>${esc(ind.text)}</p>`;
+}
+
+/**
+ * An entry without an image. The same three parts in the same order, but as
+ * three cells of the card's grid: from 800px the relations take the column
+ * that holds the image in the other cards, as ruled rows, and the links sit
+ * under the description.
+ */
+function industryWithoutImage(ind) {
+  return `<article class="industry industry-plain" id="${ind.key}">
+        <div class="industry-text">
+          ${head(ind)}
+        </div>
+        <div class="industry-side">${relations(ind)}</div>
+        ${actions(ind)}
+      </article>`;
 }
 
 function industry(ind) {
-  const file = `assets/img/industries/infographic-${pad2(ind.n)}.webp`;
+  if (!ind.image) return industryWithoutImage(ind);
+  const file = `assets/img/industries/infographic-${pad2(ind.image)}.webp`;
   return `<article class="industry" id="${ind.key}">
         <div class="industry-text">
-          <p class="industry-n">${pad2(ind.n)}</p>
-          <h2>${esc(ind.title)}</h2>
-          <p>${esc(ind.text)}</p>
+          ${head(ind)}
           ${relations(ind)}
-          <p class="industry-actions">
-            ${c.linkArrow(c.contactHref({ type: "consultation", topic: `industry-${ind.key}`, industry: ind.key }), "Discuss PLM for this industry")}
-            ${c.linkArrow(site.page(`solutions.html?industry=${ind.key}#finder`), "Find by business need")}
-          </p>
+          ${actions(ind)}
         </div>
         <figure class="industry-figure">
           <a href="${site.asset(file)}" data-lightbox data-width="1600" data-height="900" data-caption="Infographic: ${esc(ind.title)}">

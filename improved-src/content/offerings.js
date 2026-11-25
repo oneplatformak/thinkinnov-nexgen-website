@@ -143,7 +143,14 @@ const solutionsIntro = {
   home: "Focused PLM and engineering solutions for product data, quality, change, integration and digital manufacturing.",
 };
 
-// [key, title, description, conceptual image, infographic number]
+// The original site showed one image with each entry (assets/I1.png to I11.png).
+// Two of them are not published. Owner's decision (AK, 25 November 2026): the
+// image of entry 2 carries a Siemens wordmark, and the image of entry 11 prints
+// unsourced figures about a Siemens product; both are inherited, of unknown
+// origin and rights. The two entries themselves stay. See notes/ASSET-REGISTER.md §3.
+const industryImagesRemoved = [2, 11];
+
+// [key, title, description, conceptual image, number]
 const industries = [
   ["component-manufacturers", "PLM for Component Manufacturers", "PLM foundations for component design, reuse and supplier collaboration.", "ind-components", 1],
   ["pdm-to-plm", "Siemens SW PDM to PLM", "Move from product data management to connected PLM practices.", "ind-pdm-plm", 2],
@@ -156,7 +163,7 @@ const industries = [
   ["electronics", "Teamcenter X for Electronics", "Support electronics lifecycle and cross-domain product data.", "ind-electronics", 9],
   ["marine", "Teamcenter X for Marine", "PLM workflows for marine product development.", "ind-marine", 10],
   ["cloud-saas-plm", "Teamcenter X: The business value of cloud-based SaaS PLM", "Understand the business value of cloud-based SaaS PLM with Teamcenter X.", "ind-saas-cloud", 11],
-].map(([key, title, text, visual, n]) => ({ key, title, text, visual, n }));
+].map(([key, title, text, visual, n]) => ({ key, title, text, visual, n, image: industryImagesRemoved.includes(n) ? null : n }));
 
 const industriesIntro = {
   kicker: "Industry PLM",
@@ -248,6 +255,6 @@ const digitalTransformation = {
 
 module.exports = {
   heroMessages, supportingLines, homeAbout, homePlm, deployment, servicesIntro, services,
-  products, productsIntro, solutions, homeSolutionOrder, solutionsIntro, industries, industriesIntro,
+  products, productsIntro, solutions, homeSolutionOrder, solutionsIntro, industries, industryImagesRemoved, industriesIntro,
   customersIntro, testimonialsIntro, contactIntro, plm, digitalTransformation,
 };

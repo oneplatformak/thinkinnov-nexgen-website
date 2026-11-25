@@ -929,7 +929,7 @@ The build does not hide gaps: it reports every English string on a Japanese page
 | Browsers other than Google Chrome, and physical phones or tablets. | Google Chrome以外のブラウザー、およびスマートフォンやタブレットの実機。 | accessibility.html |
 | Because of this we do not claim conformance with any accessibility standard. | このため、当ウェブサイトは特定のアクセシビリティ規格への適合を表明していません。 | accessibility.html |
 | Known limitations | 既知の制約 | accessibility.html |
-| The eleven industry infographics are images that contain text. Each has a short description beside it, but the full text of the image is not available as text. | 11点の業界別インフォグラフィックは、文字を含む画像です。それぞれの横に短い説明を掲載していますが、画像内の文字のすべてをテキストとして提供しているわけではありません。 | accessibility.html |
+| The nine industry infographics are images that contain text. Each has a short description beside it, but the full text of the image is not available as text. | 9点の業界別インフォグラフィックは、文字を含む画像です。それぞれの横に短い説明を掲載していますが、画像内の文字のすべてをテキストとして提供しているわけではありません。 | accessibility.html |
 | Tell us about a problem | 問題のご連絡 | accessibility.html |
 | If you cannot use part of this website, please tell us and we will help you with the information you need: | 当ウェブサイトの一部をご利用いただけない場合は、ご連絡ください。必要な情報をご案内いたします。 | accessibility.html |
 | Every page of the ThinkInnov-NexGen website: what we do, products, solutions, industries, company, careers and website information. | ThinkInnov-NexGenウェブサイトの全ページ：事業内容、製品、ソリューション、業界、企業情報、採用情報、サイト情報。 | sitemap.html |

@@ -13,36 +13,46 @@ Every image the site publishes, where it came from, and what is not known about 
 | `assets/img/og-image.jpg` | Drawn by `improved-src/tools/og-image.js` from the logo and plain text | No third-party material |
 | Six product tiles (NX, Se, Ca, Tc, Tx, Mx) | Drawn in CSS from two letters each; they are not Siemens logos or icons | Open: the product names are Siemens trademarks. Confirm that lettered tiles are acceptable to Siemens, or replace them with approved partner assets. |
 
-No Siemens logo, partner badge or product artwork is published as a separate asset. The original site has no approved Siemens partner badge: its `assets/seimens_partner.png` is, despite the file name, a generic illustration of a globe and a city with no Siemens mark. The one place a Siemens mark appears is inside industry image 02 (section 3).
+No Siemens logo, partner badge or product artwork is published as a separate asset. The original site has no approved Siemens partner badge: its `assets/seimens_partner.png` is, despite the file name, a generic illustration of a globe and a city with no Siemens mark. The Siemens wordmark is published nowhere on the site: the one inherited image that carried it was removed on 25 November 2026 (section 3).
 
 ## 2. Customer logos (21)
 
 Listed one by one in `notes/CUSTOMER-REGISTER.md`. Source: original site `assets/customers/`. Rights: **not confirmed for any of them.**
 
-## 3. Industry images (11)
+## 3. Industry images (9 published, 2 removed)
 
-| File | Shown with | Source | Rights |
-| --- | --- | --- | --- |
-| `assets/img/industries/infographic-01.webp` | PLM for Component Manufacturers | Original site `assets/I1.png` | Open |
-| `assets/img/industries/infographic-02.webp` | Siemens SW PDM to PLM | Original site `assets/I2.png` | Open |
-| `assets/img/industries/infographic-03.webp` | Teamcenter X for Aerospace & Defense | Original site `assets/I3.png` | Open |
-| `assets/img/industries/infographic-04.webp` | Teamcenter X for AME Industrial Machinery | Original site `assets/I4.png` | Open |
-| `assets/img/industries/infographic-05.webp` | Teamcenter X for Automotive | Original site `assets/I5.png` | Open |
-| `assets/img/industries/infographic-06.webp` | Teamcenter X for Battery | Original site `assets/I6.png` | Open |
-| `assets/img/industries/infographic-07.webp` | Teamcenter X for Battery Machine Builders | Original site `assets/I7.png` | Open |
-| `assets/img/industries/infographic-08.webp` | Teamcenter X for Consumer Products | Original site `assets/I8.png` | Open |
-| `assets/img/industries/infographic-09.webp` | Teamcenter X for Electronics | Original site `assets/I9.png` | Open |
-| `assets/img/industries/infographic-10.webp` | Teamcenter X for Marine | Original site `assets/I10.png` | Open |
-| `assets/img/industries/infographic-11.webp` | Teamcenter X: The business value of cloud-based SaaS PLM | Original site `assets/I11.png` | Open |
+The original site shows one image with each of its eleven industry entries. Nine are published. Two were removed on 25 November 2026 by the owner's decision; the eleven industry entries are all still on the page.
 
-What is and is not known about these eleven images:
+| File | Shown with | Source | What the picture carries (looked at 25 November 2026) | Status |
+| --- | --- | --- | --- | --- |
+| `assets/img/industries/infographic-01.webp` | PLM for Component Manufacturers | Original site `assets/I1.png` | Title and description as text. “Teamcenter X” with an X-shaped symbol. Capability and benefit phrases, no numbers. No Siemens wordmark | Published. Origin and rights: open |
+| `infographic-02.webp`: **removed**, not in `docs/` | Was shown with “Siemens SW PDM to PLM”. The entry stays, without an image | Original site `assets/I2.png`, kept in `staging-original/` | The SIEMENS wordmark, top left. Two glowing platforms joined by an arrow. No other text | **Removed 25 November 2026, owner's decision (AK)** |
+| `assets/img/industries/infographic-03.webp` | Teamcenter X for Aerospace & Defense | Original site `assets/I3.png` | No legible text. No Siemens wordmark | Published. Origin and rights: open |
+| `assets/img/industries/infographic-04.webp` | Teamcenter X for AME Industrial Machinery | Original site `assets/I4.png` | No legible text. No Siemens wordmark | Published. Origin and rights: open |
+| `assets/img/industries/infographic-05.webp` | Teamcenter X for Automotive | Original site `assets/I5.png` | “Teamcenter X” as small text on a drawn screen. No numbers. No Siemens wordmark | Published. Origin and rights: open |
+| `assets/img/industries/infographic-06.webp` | Teamcenter X for Battery | Original site `assets/I6.png` | “Teamcenter X” as small text on drawn screens. No numbers. No Siemens wordmark | Published. Origin and rights: open |
+| `assets/img/industries/infographic-07.webp` | Teamcenter X for Battery Machine Builders | Original site `assets/I7.png` | “Teamcenter X” as small text on drawn screens. Capability phrases, among them “Scalable & Secure Cloud PLM”; no numbers. No Siemens wordmark | Published. Origin and rights: open |
+| `assets/img/industries/infographic-08.webp` | Teamcenter X for Consumer Products | Original site `assets/I8.png` | “Teamcenter X” with an X-shaped symbol, and on a drawn screen. No numbers. No Siemens wordmark | Published. Origin and rights: open |
+| `assets/img/industries/infographic-09.webp` | Teamcenter X for Electronics | Original site `assets/I9.png` | “Teamcenter X” with an X-shaped symbol, and on a drawn screen. Short labels, no numbers. No Siemens wordmark | Published. Origin and rights: open |
+| `assets/img/industries/infographic-10.webp` | Teamcenter X for Marine | Original site `assets/I10.png` | “Teamcenter X” with an X-shaped symbol, and on drawn screens. Short labels, no numbers as claims (a drawn outboard motor is marked “250”). No Siemens wordmark | Published. Origin and rights: open |
+| `infographic-11.webp`: **removed**, not in `docs/` | Was shown with “Teamcenter X: The business value of cloud-based SaaS PLM”. The entry stays, without an image | Original site `assets/I11.png`, kept in `staging-original/` | Headed “The Business Value of Cloud-based SaaS PLM”. Five unsourced figures about Teamcenter X and a security and compliance sentence. “Teamcenter X” with an X-shaped symbol | **Removed 25 November 2026, owner's decision (AK)** |
+
+**The two removals.** Decided by the owner (AK) on 25 November 2026, as an explicit, owner-approved exception to the rule that nothing the original had is dropped. Reason: a Siemens wordmark (image 02) and unsourced figures about a Siemens product (image 11) inside inherited images of unknown origin and rights.
+
+- `infographic-02.webp` carried the SIEMENS wordmark in its top-left corner, above two glowing platforms joined by an arrow.
+- `infographic-11.webp`, headed “The Business Value of Cloud-based SaaS PLM”, printed five figures under “Real Business Impact”: “20–30% faster time to market”, “15–25% lower IT & infrastructure costs”, “30–50% improvement in team productivity”, “20–40% reduction in change cycle time” and “99.9%+ cloud reliability and availability”. It also said the product is “built on a secure, compliant cloud platform”. No source was given in the image or on the original site. The statements are listed in `notes/CLAIM-REGISTER.md` §6, marked removed.
+- Both files are deleted from `docs/`, with their links to the image viewer, alt text and captions, in English and Japanese. There were no other copies: no thumbnail, no social image, no entry in the search index or the sitemap used them. The originals stay in `staging-original/thinkinnov-nexgen/assets/` (`I2.png`, `I11.png`), which is the record of the original site and is not published.
+- The two entries, “Siemens SW PDM to PLM” and “Teamcenter X: The business value of cloud-based SaaS PLM”, keep their titles, text, relations and links, in a layout made for an entry without an image. Nothing was put in the images' place.
+- `tools/check-source.py` expects exactly these nine images and these two removals, and fails if either removed file is referenced or present in `docs/`, or if any other image of the original goes missing.
+
+**The nine that remain.** What is and is not known:
 
 - They are on the site because the original site shows them on its Industries page. This build did not create or alter them.
-- Several carry the text “Teamcenter X”, and `infographic-02.webp` (shown with “Siemens SW PDM to PLM”) has the Siemens wordmark in its top-left corner. The coordinator's notes describe them as Siemens infographics. **This build could not verify who made them**, so the site does not say they are Siemens material and does not say they are the company's own.
-- **`infographic-02.webp` contains the SIEMENS wordmark.** No Siemens logo file exists in this repository and none was added; the mark is part of the inherited picture.
-- **`infographic-11.webp`** (“The Business Value of Cloud-based SaaS PLM”, about Teamcenter X) **prints five figures** under the heading “Real Business Impact”: “20–30% faster time to market”, “15–25% lower IT & infrastructure costs”, “30–50% improvement in team productivity”, “20–40% reduction in change cycle time” and “99.9%+ cloud reliability and availability”. It also says the product is “built on a secure, compliant cloud platform”. No source is given in the image or on the original site, and this build did not look for one elsewhere. They are listed in `notes/CLAIM-REGISTER.md` §6 as inherited and unsourced.
-- **Owner's decision, 25 November 2026: all eleven stay as they are.** The options (keep; remove images 02 and 11; replace all eleven with redrawn neutral diagrams) are the first open question in `notes/REVIEW.md` §9.
-- If they are Siemens material, permission to republish is needed. If they were generated or commissioned by the company, the Siemens marks inside them need Siemens' approval. Either way this is a launch question.
+- **None of the nine carries the Siemens wordmark, and none prints a figure, percentage or other number as a claim.** Each was opened and looked at on 25 November 2026, including the small text on the drawn screens. This is the author's reading of the pictures, done once, not a mechanical check; no test here reads text inside an image.
+- **Seven of the nine carry the name “Teamcenter X”**, a Siemens product: beside an X-shaped symbol in images 01, 08, 09 and 10, and as small text on drawn screens in images 05, 06, 07, 08, 09 and 10. Images 03 and 04 carry no legible text. Whether that name and symbol may be shown this way is part of the open question below.
+- Images 01, 07, 09 and 10 also carry short phrases about what the product does (for example “Faster Time to Market: accelerate design, change and release cycles” in image 01, and “Scalable & Secure Cloud PLM” in image 07). They contain no numbers. They are statements inside an image that the site's own text does not make.
+- The coordinator's notes describe the images as Siemens infographics. **This build could not verify who made them**, so the site does not say they are Siemens material and does not say they are the company's own.
+- **Open question for the client: the origin of these nine and the right to publish them** (`notes/REVIEW.md` §9, question 19). If they are Siemens material, permission to republish is needed. If they were generated or commissioned by the company, the Teamcenter X name and symbol inside them need Siemens' approval. Either way this is a launch question.
 - Each image contains text that is not available as text; the page gives a short description beside each (noted on the accessibility page).
 
 ## 4. Photographs of people and events (24)

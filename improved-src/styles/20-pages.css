@@ -230,8 +230,21 @@ html[lang="ja"] .solution-meta dt { letter-spacing: 0.06em; }
 .industry-text .link-arrow { margin-top: var(--s-5); }
 .industry-figure a { display: block; position: relative; border: 1px solid var(--rule); background: #fff; }
 .industry-figure img { width: 100%; }
+/* An entry without an image: the same parts in the same order as three cells. */
+.industry-plain .industry-rel { margin-block: 0; }
+.industry-plain .industry-actions { margin-top: 0; }
+.industry-side { container-type: inline-size; }
 @media (min-width: 800px) {
   .industry { grid-template-columns: minmax(0, 5fr) minmax(0, 7fr); gap: var(--s-6); align-items: start; }
+  /* The relations take the column the image has in the other entries, as ruled rows. */
+  .industry-plain { grid-template-areas: "text side" "actions side"; grid-template-rows: auto 1fr; row-gap: var(--s-5); }
+  .industry-plain .industry-text { grid-area: text; }
+  .industry-plain .industry-side { grid-area: side; }
+  .industry-plain .industry-actions { grid-area: actions; }
+  .industry-rel-rows { gap: 0; border-top: 1px solid var(--rule); }
+  .industry-rel-rows > div { display: grid; gap: 0.5rem 1.5rem; padding-block: var(--s-4); border-bottom: 1px solid var(--rule); }
+  .industry-rel-rows dt { margin-bottom: 0; padding-top: 0.2rem; }
+  @container (min-width: 30rem) { .industry-rel-rows > div { grid-template-columns: 11rem minmax(0, 1fr); } }
 }
 @media (min-width: 1100px) {
   .industries-layout { grid-template-columns: 15rem minmax(0, 1fr); gap: clamp(3rem, 5vw, 5rem); }

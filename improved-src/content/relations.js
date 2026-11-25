@@ -298,8 +298,9 @@ const productSupport = {
   },
 };
 
-/* ---- Industry pages: what each infographic card relates to ----
- * The eleven cards are titles of Siemens infographics shown on staging. A
+/* ---- Industry pages: what each card relates to ----
+ * The eleven cards are titles of infographics shown on staging (nine of the
+ * images are published; see content/offerings.js). A
  * relation is listed only where the card's own title or description names
  * the product or uses the same words as the related item (`basis`). */
 const cloudCard = { need: "cloud", basis: "The card is about Teamcenter X, which staging describes as cloud-based SaaS PLM." };
