@@ -79,8 +79,8 @@ What it changes, measured here with Lighthouse 12 on a local server (laboratory 
 
 | | Home page HTML | `styles.css` | `site.js` | Performance score | Largest Contentful Paint |
 | --- | --- | --- | --- | --- | --- |
-| Compression on (22 phone-preset runs, 11 pages in both languages) | 14 KB | 15 KB | 10 KB | 99 to 100 | 1.7 to 2.1 s |
-| Compression off (10 phone-preset runs, 5 pages in both languages) | 84 KB | 83 KB | 33 KB | 92 to 98 | 2.4 to 3.2 s, over the 2.5 s target on 8 of the 10 |
+| Compression on (22 phone-preset runs, 11 pages in both languages) | 14 KB | 15 KB | 10 KB | 99 to 100 | 1.6 to 2.1 s |
+| Compression off (10 phone-preset runs, 5 pages in both languages) | 84 KB | 84 KB | 33 KB | 93 to 97 | 2.6 to 3.2 s, over the 2.5 s target on all 10 |
 
 The independent verifier's own runs gave 1.6 to 1.8 s with compression and 2.2 to 2.8 s without. The server used here for the uncompressed runs also opens a new connection for every file, which Apache does not, so the real difference may be smaller; it will not be nothing. The preview on GitHub Pages compresses by itself, so it does not show whether the real host will.
 
