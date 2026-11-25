@@ -1,0 +1,25 @@
+/* ---- Motion: small, compositor-only, and off when the visitor asks ---- */
+@media (prefers-reduced-motion: no-preference) {
+  html { scroll-behavior: smooth; }
+  .will-reveal { opacity: 0; transform: translateY(14px); }
+  .will-reveal.is-in { opacity: 1; transform: none; transition: opacity 0.6s var(--ease), transform 0.6s var(--ease); }
+  .fig-orbit { animation: orbit 48s linear infinite; }
+  .js .lc-panel:not([hidden]) { animation: panel-in 0.3s var(--ease); }
+  .mobile-menu[open] { animation: menu-in 0.25s var(--ease); }
+  .mega:not([hidden]) { animation: mega-in 0.18s var(--ease); }
+}
+@keyframes orbit { to { transform: rotate(360deg); } }
+@keyframes panel-in { from { opacity: 0; transform: translateY(6px); } }
+@keyframes menu-in { from { transform: translateX(24px); opacity: 0; } }
+@keyframes mega-in { from { opacity: 0; transform: translateY(-4px); } }
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { animation-duration: 0.01ms !important; animation-iteration-count: 1 !important; transition-duration: 0.01ms !important; scroll-behavior: auto !important; }
+}
+.menu-open { overflow: hidden; }
+
+@media print {
+  .site-header, .site-footer, .mobile-menu, .cta-band, .lang-suggest, .skip-link { display: none !important; }
+  body { background: #fff; }
+  .section { padding-block: 1.5rem; }
+  .section-dark { background: #fff; color: #000; }
+}

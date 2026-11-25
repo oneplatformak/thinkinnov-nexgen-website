@@ -1,0 +1,13 @@
+{
+  "name": "thinkinnov-nexgen-site-generator",
+  "private": true,
+  "version": "2.0.0",
+  "description": "Static site generator for the ThinkInnov-NexGen website. Writes into ../docs/.",
+  "scripts": {
+    "build": "node build.js",
+    "check": "python3 check-site.py"
+  },
+  "devDependencies": {
+    "budoux": "^0.10.4"
+  }
+}

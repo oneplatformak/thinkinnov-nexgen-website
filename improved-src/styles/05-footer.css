@@ -1,0 +1,42 @@
+/* ---- Footer ---- */
+.site-footer { background: var(--dark); border-top: 1px solid var(--dark-rule); color: var(--on-dark-2); padding-block: clamp(3.5rem, 2.5rem + 4vw, 6rem) var(--s-6); font-size: 0.9375rem; }
+.site-footer a { color: var(--on-dark); text-decoration: none; }
+.site-footer a:hover { text-decoration: underline; }
+.footer-top { display: grid; gap: var(--s-7) var(--s-6); grid-template-columns: repeat(2, minmax(0, 1fr)); }
+.footer-brand, .footer-contact { grid-column: 1 / -1; }
+/* The logo is dark artwork: it sits on a paper plate rather than being recoloured. */
+.footer-logo { display: inline-block; padding: 0.75rem 1rem; background: var(--paper); }
+.footer-logo img { width: auto; height: 3.5rem; }
+.footer-tagline { margin-top: var(--s-5); max-width: 26rem; line-height: 1.6; }
+.footer-badge { display: inline-flex; align-items: center; gap: 0.6rem; margin-top: var(--s-5); padding: 0.4rem 0.75rem; border: 1px solid var(--dark-rule); font-family: var(--font-display); font-size: var(--t-xs); font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; color: var(--on-dark); }
+.footer-badge::before { content: ""; width: 0.5rem; height: 0.5rem; background: var(--accent-bright); }
+.footer-title { margin-bottom: var(--s-4); padding-bottom: 0.6rem; border-bottom: 1px solid var(--dark-rule); font-family: var(--font-display); font-size: var(--t-xs); font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; color: var(--on-dark-2); }
+html[lang="ja"] .footer-title { letter-spacing: 0.08em; font-size: 0.8125rem; }
+.footer-col li a { display: inline-block; padding-block: 0.4rem; }
+.footer-contact address { line-height: 1.6; }
+.footer-contact p { margin-top: var(--s-4); line-height: 1.9; }
+.footer-offices { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 0.75rem 1rem; margin-top: var(--s-5); padding-top: var(--s-4); border-top: 1px solid var(--dark-rule); }
+.footer-office-role { display: block; font-size: var(--t-xs); color: var(--on-dark-2); }
+.footer-office-name { display: block; font-family: var(--font-display); font-weight: 700; color: var(--on-dark); }
+.footer-bottom { display: flex; flex-wrap: wrap; align-items: center; gap: 1rem 2rem; margin-top: var(--s-8); padding-top: var(--s-5); border-top: 1px solid var(--dark-rule); font-size: var(--t-sm); }
+.footer-meta { display: flex; flex-wrap: wrap; gap: 0.25rem 1.5rem; }
+.footer-meta a, .to-top { display: inline-flex; align-items: center; gap: 0.4rem; min-height: 2.75rem; }
+.site-footer .lang-switch { border-color: var(--dark-rule); }
+.site-footer .lang-switch a { color: var(--on-dark-2); min-height: 2.75rem; }
+.site-footer .lang-switch a + a { border-color: var(--dark-rule); }
+.site-footer .lang-switch a:hover { background: var(--dark-2); color: var(--on-dark); text-decoration: none; }
+.site-footer .lang-switch a[aria-current] { background: var(--on-dark); color: var(--dark); }
+.to-top { margin-left: auto; }
+.to-top .icon { width: 1em; height: 1em; transform: rotate(-45deg); }
+.footer-trademark { margin-top: var(--s-4); font-size: var(--t-xs); color: var(--on-dark-2); max-width: 60rem; }
+
+@media (min-width: 700px) {
+  .footer-top { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+  .footer-brand { grid-column: 1 / span 2; }
+  .footer-contact { grid-column: 3; grid-row: 1 / span 2; }
+}
+@media (min-width: 1100px) {
+  .footer-top { grid-template-columns: minmax(0, 4fr) minmax(0, 3fr) repeat(3, minmax(0, 2fr)); gap: var(--s-7); }
+  .footer-brand { grid-column: 1; }
+  .footer-contact { grid-column: 2; grid-row: auto; }
+}

@@ -2,13 +2,14 @@
 <html lang="en">
 <head>
   <meta charset="utf-8">
-  <title>Redirect</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Page moved | ThinkInnov-NexGen</title>
   <meta name="robots" content="noindex">
-  <meta http-equiv="refresh" content="0;url=about.html">
-  <script>(()=>{const p=new URLSearchParams(location.search).get("page")||"about";const map={about:"about.html",plm:"plm.html",services:"services.html","digital-transformation":"digital-transformation.html",products:"products.html",solutions:"solutions.html",industries:"industries.html","behind-the-brand":"behind-the-brand.html",careers:"careers.html"};const t=map[p]||"about.html";const h=location.hash||"";location.replace(t+h);const a=document.getElementById("fallback");if(a)a.href=t+h;})();</script>
+  <script>(function(){var q=new URLSearchParams(location.search);var m=["about","plm","services","digital-transformation","products","solutions","industries","behind-the-brand","careers"],p=q.get("page"),t=m.indexOf(p)>=0?p+".html":"./";location.replace(t+location.hash)})();</script>
+  <noscript><meta http-equiv="refresh" content="0;url=./"></noscript>
 </head>
 <body>
-  <h1 style="position:absolute;left:-9999px">Redirecting</h1>
-  <p>Redirecting… If nothing happens, <a id="fallback" href="about.html">continue here</a>.</p>
+  <h1 style="font:600 1.25rem system-ui,sans-serif">This page has moved</h1>
+  <p style="font:1rem system-ui,sans-serif"><a href="./">Continue to the new page</a></p>
 </body>
 </html>
