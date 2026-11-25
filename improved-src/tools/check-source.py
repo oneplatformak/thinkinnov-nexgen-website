@@ -110,6 +110,12 @@ footers = "".join(m.group(0) for r in raw_of.values() for m in [re.search(r"<foo
 report(not re.search(r"Solution Partner|Expert Partner|ソリューションパートナー|エキスパートパートナー", footers), "no partner wording in the footer")
 report("our key customers" in text_of["index.html"].lower(), 'source heading "Our Key Customers" kept (the site sets headings in sentence case)')
 
+# 4b. Diagrams drawn for this site are labelled as conceptual, in both languages
+figures = [(p, m.group(0)) for p, r in raw_of.items() for m in re.finditer(r'<figure class="fig\b.*?</figure>', r, flags=re.S)]
+unlabelled = sorted({p for p, f in figures if not re.search(r'<figcaption[^>]*>\s*<span class="fig-no">(Conceptual diagram|概念図)</span>', f)})
+report(bool(figures) and not unlabelled, f"every drawn diagram ({len(figures)} on {len({p for p, _ in figures})} pages) is captioned “Conceptual diagram” / 「概念図」", ", ".join(unlabelled))
+report(not any(re.search(r"fig-axis|fig-trend", r) for r in raw_of.values()), "no drawn diagram has chart axes or a trend line")
+
 # 5. Wording that must not appear in visible text
 BANNED = [
     "joint venture", "合弁", "digital twin", "デジタルツイン", "Trusted by Industry Leaders",

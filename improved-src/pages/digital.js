@@ -157,7 +157,7 @@ function render() {
     body: [
       c.pageHero({
         kicker: d.kicker, title: d.title, intro: d.intro, crumbs,
-        aside: `<figure class="fig fig-plain">${diagrams.maturitySteps()}<figcaption><span class="fig-no">Fig.</span> Four levels of product data maturity, PDMM L1 to L4.</figcaption></figure>`,
+        aside: diagrams.conceptualFigure("fig-pdmm", diagrams.maturitySteps(), "The four levels of the Product Data Maturity Model, PDMM L1 to L4, drawn as steps. The height of a step is illustrative; nothing is measured.", "fig-plain"),
       }),
       start(), pdmm(), thread(), integration(), factory(), outcomes(), views(),
       c.ctaBand({

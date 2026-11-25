@@ -6,7 +6,7 @@ const kanji = (n) => n;
 
 module.exports = {
   area: "Navigation, footer and forms",
-  keep: ["English", "LinkedIn", "Fig.", "Fig. 1", "mx", "Siemens SW PDM to PLM"],
+  keep: ["English", "LinkedIn", "mx", "Siemens SW PDM to PLM"],
   patterns: [
     [/^Enlarge photo (\d+) of (\d+)$/, (m) => `写真を拡大（${m[2]}枚中${kanji(m[1])}枚目）`],
     [/^Infographic: (.+)$/, (m, inner) => `インフォグラフィック：${inner(m[1])}`],

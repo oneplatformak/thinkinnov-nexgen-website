@@ -72,7 +72,8 @@ module.exports = {
       "ThinkInnov-NexGenは、製品データ成熟度モデルに基づく戦略、ロードマップの考え方、連携した製品データプラットフォームによって、デジタルトランスフォーメーションを実現します。",
     "PDMM defines the maturity of product data managed by a company and helps create the PLM strategy and roadmap.":
       "PDMMは、企業が管理する製品データの成熟度を定義し、PLM戦略とロードマップの策定に役立ちます。",
-    "Four levels of product data maturity, PDMM L1 to L4.": "製品データ成熟度の4つのレベル（PDMM L1〜L4）。",
+    "The four levels of the Product Data Maturity Model, PDMM L1 to L4, drawn as steps. The height of a step is illustrative; nothing is measured.":
+      "製品データ成熟度モデルの4つのレベル（PDMM L1〜L4）を階段として描いたものです。段の高さは説明のためのもので、何かを測定したものではありません。",
     "System Definition": "システム定義",
     "System to Digital": "システムからデジタルへ",
     "Driving Digital": "デジタルの推進",

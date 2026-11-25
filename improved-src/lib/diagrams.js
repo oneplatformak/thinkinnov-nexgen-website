@@ -63,7 +63,7 @@ function heroLoop() {
         ${nodes}
         <path class="fig-arrow" d="M${ax - 6} ${ay - 7}L${ax + 5} ${ay}L${ax - 6} ${ay + 7}" transform="rotate(${-90 + step * 2.5 + 90} ${ax} ${ay})"/>
       </svg>
-      <figcaption id="fig-hero-caption"><span class="fig-no">Fig. 1</span> The product lifecycle as one connected loop, with PLM, ERP, MES and product knowledge at its centre.</figcaption>
+      <figcaption id="fig-hero-caption"><span class="fig-no">Conceptual diagram</span> The product lifecycle as one connected loop, with PLM, ERP, MES and product knowledge at its centre.</figcaption>
     </figure>`;
 }
 
@@ -75,24 +75,26 @@ function approachStrip() {
     .join("")}</ol>`;
 }
 
-/** PDMM levels as rising steps. Purely presentational; the levels are listed in HTML beside it. */
+/**
+ * PDMM levels as a flight of four steps. A staircase, not a chart: there are
+ * no axes, no scale and no trend line, the steps join each other, and every
+ * step rises by the same amount. The levels are listed in HTML on the page.
+ */
 function maturitySteps() {
   const w = 520;
   const h = 300;
   const levels = content.digitalTransformation.pdmm.levels;
-  const sw = 108;
+  const sw = 116;
   const steps = levels
     .map(([level], i) => {
-      const x = 28 + i * (sw + 12);
-      const top = h - 60 - i * 52;
-      return `<g><rect class="fig-step fig-step-${i + 1}" x="${x}" y="${top}" width="${sw}" height="${h - 28 - top}"/><text class="fig-step-label" x="${x + 10}" y="${top + 24}">L${i + 1}</text></g>`;
+      const x = 28 + i * sw;
+      const top = h - 80 - i * 52;
+      return `<g><rect class="fig-step fig-step-${i + 1}" x="${x}" y="${top}" width="${sw}" height="${h - 28 - top}"/><text class="fig-step-label" x="${x + 12}" y="${top + 26}">L${i + 1}</text></g>`;
     })
     .join("");
-  return `<svg class="fig-maturity" viewBox="0 0 ${w} ${h}" aria-hidden="true" focusable="false">
+  return `<svg class="fig-maturity" viewBox="0 0 ${w} ${h}">
       <g class="fig-corners">${cornerMarks(w, h, 6, 12)}</g>
-      <path class="fig-axis" d="M20 ${h - 28}H${w - 16}M20 ${h - 28}V18"/>
       ${steps}
-      <path class="fig-trend" d="M40 ${h - 74}L${w - 40} ${h - 74 - 3 * 52 - 10}"/>
     </svg>`;
 }
 
@@ -126,8 +128,8 @@ function stageStrip(onKeys) {
 }
 
 /** Wraps a conceptual diagram with its label and caption. */
-function conceptualFigure(id, svg, caption) {
-  return `<figure class="fig fig-concept">
+function conceptualFigure(id, svg, caption, extraClass = "") {
+  return `<figure class="fig fig-concept${extraClass ? " " + extraClass : ""}">
       ${svg.replace("<svg ", `<svg role="img" aria-labelledby="${id}-caption" focusable="false" `)}
       <figcaption id="${id}-caption"><span class="fig-no">Conceptual diagram</span> ${esc(caption)}</figcaption>
     </figure>`;
@@ -186,4 +188,4 @@ function integrationMap() {
   return conceptualFigure("fig-map", svg, "Teamcenter connected to ERP, MES and enterprise applications through the Teamcenter connection platform.");
 }
 
-module.exports = { heroLoop, approachStrip, maturitySteps, presenceLine, stageStrip, closedLoop, integrationMap, cornerMarks, polar };
+module.exports = { heroLoop, approachStrip, maturitySteps, presenceLine, stageStrip, closedLoop, integrationMap, conceptualFigure, cornerMarks, polar };

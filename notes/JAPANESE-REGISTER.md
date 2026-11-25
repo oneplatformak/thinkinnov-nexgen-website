@@ -284,7 +284,7 @@ The build does not hide gaps: it reports every English string on a Japanese page
 | Connect your product lifecycle. | 製品ライフサイクルをつなぐ。 | index.html |
 | Innovate more, and faster. | より多く、より速いイノベーションを。 | index.html |
 | Harumi, Tokyo | 東京・晴海 | index.html |
-| The product lifecycle as one connected loop, with PLM, ERP, MES and product knowledge at its centre. | 製品ライフサイクルをひとつの連続したループとして捉え、その中心にPLM、ERP、MES、製品知識を配置した概念図です。 | index.html |
+| The product lifecycle as one connected loop, with PLM, ERP, MES and product knowledge at its centre. | 製品ライフサイクルをひとつの連続したループとして捉え、その中心にPLM、ERP、MES、製品知識を配置しています。 | index.html |
 | Product knowledge | 製品知識 | index.html |
 | Key messages | 主要メッセージ | index.html |
 | ThinkInnov-NexGen Tokyo office opening ceremony | ThinkInnov-NexGen 東京オフィス開設式 | index.html |
@@ -448,7 +448,7 @@ The build does not hide gaps: it reports every English string on a Japanese page
 | Tell us where you are in your PLM journey | PLMへの取り組みの現在地をお聞かせください | services.html |
 | ThinkInnov-NexGen enables digital transformation with Product Data Maturity Model strategy, roadmap thinking and connected product data platforms. | ThinkInnov-NexGenは、製品データ成熟度モデルに基づく戦略、ロードマップの考え方、連携した製品データプラットフォームによって、デジタルトランスフォーメーションを実現します。 | digital-transformation.html |
 | PDMM defines the maturity of product data managed by a company and helps create the PLM strategy and roadmap. | PDMMは、企業が管理する製品データの成熟度を定義し、PLM戦略とロードマップの策定に役立ちます。 | digital-transformation.html |
-| Four levels of product data maturity, PDMM L1 to L4. | 製品データ成熟度の4つのレベル（PDMM L1〜L4）。 | digital-transformation.html |
+| The four levels of the Product Data Maturity Model, PDMM L1 to L4, drawn as steps. The height of a step is illustrative; nothing is measured. | 製品データ成熟度モデルの4つのレベル（PDMM L1〜L4）を階段として描いたものです。段の高さは説明のためのもので、何かを測定したものではありません。 | digital-transformation.html |
 | System Definition | システム定義 | digital-transformation.html, search.html |
 | System to Digital | システムからデジタルへ | digital-transformation.html, search.html |
 | Driving Digital | デジタルの推進 | digital-transformation.html |
@@ -524,7 +524,7 @@ The build does not hide gaps: it reports every English string on a Japanese page
 | Digital thread | デジタルスレッド | digital-transformation.html |
 | Digital factory | デジタルファクトリー | digital-transformation.html |
 | PLM connected to ERP and MES | ERP・MESとつながるPLM | digital-transformation.html |
-| Conceptual diagram | 概念図 | digital-transformation.html |
+| Conceptual diagram | 概念図 | digital-transformation.html, index.html |
 | Closed-loop | クローズドループ | digital-transformation.html |
 | analytics | 分析 | digital-transformation.html |
 | Real-world feedback | 実環境フィードバック | digital-transformation.html |

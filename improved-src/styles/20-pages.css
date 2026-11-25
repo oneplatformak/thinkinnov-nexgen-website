@@ -126,11 +126,9 @@ html[lang="ja"] .svc-block { padding-inline: var(--s-4); }
 
 /* ---- Digital transformation ---- */
 .fig-plain svg { max-width: 30rem; }
-.fig-axis { fill: none; stroke: var(--ink); stroke-width: 1; }
 .fig-step { fill: var(--paper-3); stroke: var(--ink); stroke-width: 1; }
 .fig-step-4 { fill: var(--accent-bright); }
 .fig-step-label { font-family: var(--font-display); font-size: 15px; font-weight: 800; fill: var(--ink); }
-.fig-trend { fill: none; stroke: var(--accent); stroke-width: 1.5; stroke-dasharray: 4 5; }
 .levels { display: grid; gap: var(--s-4); }
 .level { padding: var(--s-5); border: 1px solid var(--ink); background: var(--paper); position: relative; }
 .level::before { content: ""; position: absolute; left: -1px; top: -1px; bottom: -1px; width: 4px; background: var(--rule-strong); }

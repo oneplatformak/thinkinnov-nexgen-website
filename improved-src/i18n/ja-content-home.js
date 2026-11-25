@@ -11,7 +11,7 @@ module.exports = {
     "Innovate more, and faster.": "より多く、より速いイノベーションを。",
     "Harumi, Tokyo": "東京・晴海",
     "The product lifecycle as one connected loop, with PLM, ERP, MES and product knowledge at its centre.":
-      "製品ライフサイクルをひとつの連続したループとして捉え、その中心にPLM、ERP、MES、製品知識を配置した概念図です。",
+      "製品ライフサイクルをひとつの連続したループとして捉え、その中心にPLM、ERP、MES、製品知識を配置しています。",
     "Product knowledge": "製品知識",
     "Key messages": "主要メッセージ",
     // Alt text of the Global Presence photograph. Both languages were supplied by the owner (25 November 2026).
