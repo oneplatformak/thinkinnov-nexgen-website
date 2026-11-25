@@ -1,0 +1,451 @@
+# 2026-11-25T16:40:42Z  commit 8d3d57e
+# node improved-src/tools/test-interactions.js
+
+PASS  desktop menu (en): first Tab stop is the skip link
+PASS  desktop menu (en): skip link shows a focus indicator
+PASS  desktop menu (en): skip link moves to the main content
+PASS  desktop menu (en): Enter opens the first menu
+PASS  desktop menu (en): Escape closes it and keeps focus on the button
+PASS  desktop menu (en): ArrowDown opens it and focuses the first link
+PASS  desktop menu (en): menu link shows a focus indicator
+PASS  desktop menu (en): tabbing past the last link closes the menu
+PASS  desktop menu (en): hovering with a mouse opens a menu
+PASS  desktop menu (en): clicking a menu that hover opened keeps it open
+PASS  desktop menu (en): a second click closes it
+PASS  desktop menu (en): opening one menu closes the other
+PASS  desktop menu (en): a click outside closes the menu
+PASS  desktop menu (en): the current section is marked in the navigation
+PASS  desktop menu (en): no script errors
+PASS  mobile menu (en): menu button is visible, desktop navigation is not
+PASS  mobile menu (en): Enter opens the menu dialog
+PASS  mobile menu (en): button reports expanded
+PASS  mobile menu (en): focus stays inside the dialog for 40 Tab presses
+PASS  mobile menu (en): dialog fits the 390px viewport
+PASS  mobile menu (en): a section expands with Enter
+PASS  mobile menu (en): Escape closes the dialog
+PASS  mobile menu (en): focus returns to the menu button
+PASS  mobile menu (en): the close button closes the dialog
+PASS  mobile menu (en): no script errors
+PASS  lifecycle 1440px (en): nine stages, first selected, one panel shown
+PASS  lifecycle 1440px (en): tab roles are set
+PASS  lifecycle 1440px (en): ArrowRight selects and focuses the second stage
+PASS  lifecycle 1440px (en): End selects the last stage
+PASS  lifecycle 1440px (en): ArrowRight wraps to the first stage
+PASS  lifecycle 1440px (en): ArrowLeft wraps to the last stage
+PASS  lifecycle 1440px (en): Home selects the first stage
+PASS  lifecycle 1440px (en): only the selected tab is in the Tab order
+PASS  lifecycle 1440px (en): selected tab shows a focus indicator
+PASS  lifecycle 1440px (en): clicking the fifth stage shows its panel
+PASS  lifecycle 1440px (en): the panel names the stage and is labelled by its tab
+PASS  lifecycle 1440px (en): with reduced motion nothing animates for longer than an instant
+PASS  lifecycle 1440px (en): a direct link to a stage selects it
+PASS  lifecycle 1440px (en): no script errors
+PASS  lifecycle 390px (en): nine stages, first selected, one panel shown
+PASS  lifecycle 390px (en): tab roles are set
+PASS  lifecycle 390px (en): ArrowRight selects and focuses the second stage
+PASS  lifecycle 390px (en): End selects the last stage
+PASS  lifecycle 390px (en): ArrowRight wraps to the first stage
+PASS  lifecycle 390px (en): ArrowLeft wraps to the last stage
+PASS  lifecycle 390px (en): Home selects the first stage
+PASS  lifecycle 390px (en): only the selected tab is in the Tab order
+PASS  lifecycle 390px (en): selected tab shows a focus indicator
+PASS  lifecycle 390px (en): clicking the fifth stage shows its panel
+PASS  lifecycle 390px (en): the panel names the stage and is labelled by its tab
+PASS  lifecycle 390px (en): with reduced motion nothing animates for longer than an instant
+PASS  lifecycle 390px (en): a direct link to a stage selects it
+PASS  lifecycle 390px (en): no script errors
+PASS  finder (en): one need is shown at first
+PASS  finder (en): sixteen needs are offered
+PASS  finder (en): Enter on a need shows only that need
+PASS  finder (en): the chosen need is marked current
+PASS  finder (en): focus moves to the result
+PASS  finder (en): the result quotes its source and links to real pages
+PASS  finder (en): choosing an industry shows its note
+PASS  finder (en): the contact link carries need, industry and size
+PASS  finder (en): contact form preselects the PLM consultation type
+PASS  finder (en): contact form shows the three items passed on
+PASS  finder (en): hidden fields hold the passed values
+PASS  finder (en): Remove clears the passed context
+PASS  finder (en): unknown values in the address are ignored
+PASS  finder (en): a product's enquiry link preselects type and topic
+PASS  finder (en): a direct link to a need shows it
+PASS  finder (en): no script errors
+PASS  finder result panel (en): 1280x720: all 16 results are shown in full (the panel does not scroll inside itself)
+PASS  finder result panel (en): 1280x720: the "discuss this need" button of every need is inside the panel's visible area
+PASS  finder result panel (en): 1280x720: every result starts in view, below the header, when its need is chosen
+PASS  finder result panel (en): 1280x720: every button comes into view by scrolling the page, and nothing covers it
+PASS  finder result panel (en): 1280x720: no script errors
+PASS  finder result panel (en): 1366x768: all 16 results are shown in full (the panel does not scroll inside itself)
+PASS  finder result panel (en): 1366x768: the "discuss this need" button of every need is inside the panel's visible area
+PASS  finder result panel (en): 1366x768: every result starts in view, below the header, when its need is chosen
+PASS  finder result panel (en): 1366x768: every button comes into view by scrolling the page, and nothing covers it
+PASS  finder result panel (en): 1366x768: no script errors
+PASS  finder result panel (en): 1440x900: all 16 results are shown in full (the panel does not scroll inside itself)
+PASS  finder result panel (en): 1440x900: the "discuss this need" button of every need is inside the panel's visible area
+PASS  finder result panel (en): 1440x900: every result starts in view, below the header, when its need is chosen
+PASS  finder result panel (en): 1440x900: every button comes into view by scrolling the page, and nothing covers it
+PASS  finder result panel (en): 1440x900: no script errors
+PASS  product pages (en): the catalogue links to six product pages
+PASS  product pages (en): nx: page opens with one H1, its sections and working in-page links
+PASS  product pages (en): nx: lifecycle strip shows nine stages with at least one marked
+PASS  product pages (en): nx: outside links in the overview go to Siemens' own sites only
+PASS  product pages (en): nx: enquiry opens the contact form with the product as topic
+PASS  product pages (en): solid-edge: page opens with one H1, its sections and working in-page links
+PASS  product pages (en): solid-edge: lifecycle strip shows nine stages with at least one marked
+PASS  product pages (en): solid-edge: outside links in the overview go to Siemens' own sites only
+PASS  product pages (en): solid-edge: enquiry opens the contact form with the product as topic
+PASS  product pages (en): capital: page opens with one H1, its sections and working in-page links
+PASS  product pages (en): capital: lifecycle strip shows nine stages with at least one marked
+PASS  product pages (en): capital: outside links in the overview go to Siemens' own sites only
+PASS  product pages (en): capital: enquiry opens the contact form with the product as topic
+PASS  product pages (en): teamcenter: page opens with one H1, its sections and working in-page links
+PASS  product pages (en): teamcenter: lifecycle strip shows nine stages with at least one marked
+PASS  product pages (en): teamcenter: outside links in the overview go to Siemens' own sites only
+PASS  product pages (en): teamcenter: enquiry opens the contact form with the product as topic
+PASS  product pages (en): tecnomatix: page opens with one H1, its sections and working in-page links
+PASS  product pages (en): tecnomatix: lifecycle strip shows nine stages with at least one marked
+PASS  product pages (en): tecnomatix: outside links in the overview go to Siemens' own sites only
+PASS  product pages (en): tecnomatix: enquiry opens the contact form with the product as topic
+PASS  product pages (en): mendix: page opens with one H1, its sections and working in-page links
+PASS  product pages (en): mendix: lifecycle strip shows nine stages, none marked (the source ties Mendix to no single stage)
+PASS  product pages (en): mendix: outside links in the overview go to Siemens' own sites only
+PASS  product pages (en): mendix: enquiry opens the contact form with the product as topic
+PASS  product pages (en): previous and next product links are reachable by keyboard
+PASS  product pages (en): home product rows link to the product pages
+PASS  product pages (en): no script errors
+PASS  journey 1: automotive, enterprise, change management (en): industry card opens the finder with the industry chosen
+PASS  journey 1: automotive, enterprise, change management (en): the change need shows the change management solution and Teamcenter
+PASS  journey 1: automotive, enterprise, change management (en): Teamcenter page lists the change management solution
+PASS  journey 1: automotive, enterprise, change management (en): the product page leads to implementation services
+PASS  journey 1: automotive, enterprise, change management (en): the contact form carries service, need, industry and size
+PASS  journey 1: automotive, enterprise, change management (en): the enquiry is accepted by the handler
+PASS  journey 1: automotive, enterprise, change management (en): the email names the enquiry type, topic, need, industry and size
+PASS  journey 1: automotive, enterprise, change management (en): the context is cleared after sending
+PASS  journey 1: automotive, enterprise, change management (en): no script errors
+PASS  journey 2: startup, design data (en): the startup tier opens the finder with the size chosen
+PASS  journey 2: startup, design data (en): the need shows design data management and a product page
+PASS  journey 2: startup, design data (en): the solution entry is reached and names its product
+PASS  journey 2: startup, design data (en): the contact form carries the solution, need and size
+PASS  journey 2: startup, design data (en): after Remove, later contact links carry nothing
+PASS  journey 2: startup, design data (en): no script errors
+PASS  journey 3: engineering revisions (en): the finder leads to change management and to the PLM product
+PASS  journey 3: engineering revisions (en): the same finder offers the design data needs beside it
+PASS  journey 3: engineering revisions (en): the PLM product page lists both design data management and change management
+PASS  journey 3: engineering revisions (en): search for the same problem finds the solution and the need
+PASS  journey 3: engineering revisions (en): an enquiry from the product page still carries the need
+PASS  journey 3: engineering revisions (en): no script errors
+PASS  search (en): the header search link opens the search page
+PASS  search (en): typing a product name lists its page first
+PASS  search (en): the number of results is announced
+PASS  search (en): every result leads to a page that exists
+PASS  search (en): a search with no match says so and keeps the browse links
+PASS  search (en): the address keeps the query
+PASS  search (en): markup in the query is shown as text
+PASS  search (en): no script errors
+PASS  search (en): without scripts the form is hidden and the sitemap is offered
+PASS  career filters (en): 18 roles listed and the filter form is shown
+PASS  career filters (en): 1440: the facts of every role are laid out the same way, none on a line of its own
+PASS  career filters (en): 1280: the facts of every role are laid out the same way, none on a line of its own
+PASS  career filters (en): 1024: the facts of every role are laid out the same way, none on a line of its own
+PASS  career filters (en): typing 'Capital' narrows the list to roles that mention it
+PASS  career filters (en): the count is announced
+PASS  career filters (en): the address records the search
+PASS  career filters (en): Clear filters restores all 18
+PASS  career filters (en): discipline filter shows only that discipline
+PASS  career filters (en): experience filter combines with discipline
+PASS  career filters (en): no match shows the empty message
+PASS  career filters (en): filters in the address are applied on load
+PASS  career filters (en): each role links to its own page
+PASS  career filters (en): no script errors
+PASS  photo viewer (en): fourteen photos
+PASS  photo viewer (en): photo link shows a focus indicator
+PASS  photo viewer (en): Enter opens the viewer on the first photo
+PASS  photo viewer (en): the photo has a text alternative
+PASS  photo viewer (en): ArrowRight shows the second photo
+PASS  photo viewer (en): ArrowLeft wraps to the last photo
+PASS  photo viewer (en): focus stays inside the viewer
+PASS  photo viewer (en): the viewer fits the window
+PASS  photo viewer (en): Escape closes it and returns focus to the photo
+PASS  photo viewer (en): an industry infographic opens in the viewer
+PASS  photo viewer (en): eleven industries, nine with an image
+PASS  photo viewer (en): the two without an image are entries 2 and 11
+PASS  photo viewer (en): an entry without an image has no figure, caption or enlarge control
+PASS  photo viewer (en): every entry keeps its title, text, relations and both links
+PASS  photo viewer (en): the index lists all eleven
+PASS  photo viewer (en): at 1440 an entry without an image fills its card: 2 columns, relations in the image column, no empty band
+PASS  photo viewer (en): at 1024 an entry without an image fills its card: 2 columns, relations in the image column, no empty band
+PASS  photo viewer (en): at 768 an entry without an image fills its card: 1 column, no empty band
+PASS  photo viewer (en): at 390 an entry without an image fills its card: 1 column, no empty band
+PASS  photo viewer (en): no script errors
+PASS  contact form (en): empty submit marks name, email, message and consent
+PASS  contact form (en): focus moves to the first field with an error
+PASS  contact form (en): each error is announced with its field
+PASS  contact form (en): the summary message is shown
+PASS  contact form (en): a malformed email gets its own message
+PASS  contact form (en): on a static host the page does not claim success
+PASS  contact form (en): and offers the enquiry as an email instead
+PASS  contact form (en): a submission within three seconds is refused by the server
+PASS  contact form (en): with a working server the success message appears
+PASS  contact form (en): exactly one message was handed to the mail system
+PASS  contact form (en): it carries the type and topic from the address
+PASS  contact form (en): the form is cleared after sending
+PASS  contact form (en): when the mail system fails the page says so
+PASS  contact form (en): and the address it asks the visitor to write to is a mailto link
+PASS  contact form (en): and the visitor's text is kept
+PASS  application form (en): the role from the address is preselected
+PASS  application form (en): empty submit marks the 13 required fields and none of the optional ones
+PASS  application form (en): a .txt file is refused before sending
+PASS  application form (en): a complete application with a PDF is accepted
+PASS  application form (en): the mail names the role and carries the CV
+PASS  application form (en): optional fields left blank are mailed as not provided
+PASS  application form (en): no script errors
+PASS  scripts off (en): all nine lifecycle stages are readable
+PASS  scripts off (en): stage links jump to their text
+PASS  scripts off (en): the menu button is a plain link to the sitemap
+PASS  scripts off (en): content is visible without the reveal script
+PASS  scripts off (en): every finder result is readable
+PASS  scripts off (en): controls that need scripts are hidden
+PASS  scripts off (en): all 18 roles are listed
+PASS  scripts off (en): gallery photos link straight to the image files
+PASS  scripts off (en): the form still sends and shows a result page
+PASS  scripts off (en): the result page links back to the form
+PASS  desktop menu (ja): first Tab stop is the skip link
+PASS  desktop menu (ja): skip link shows a focus indicator
+PASS  desktop menu (ja): skip link moves to the main content
+PASS  desktop menu (ja): Enter opens the first menu
+PASS  desktop menu (ja): Escape closes it and keeps focus on the button
+PASS  desktop menu (ja): ArrowDown opens it and focuses the first link
+PASS  desktop menu (ja): menu link shows a focus indicator
+PASS  desktop menu (ja): tabbing past the last link closes the menu
+PASS  desktop menu (ja): hovering with a mouse opens a menu
+PASS  desktop menu (ja): clicking a menu that hover opened keeps it open
+PASS  desktop menu (ja): a second click closes it
+PASS  desktop menu (ja): opening one menu closes the other
+PASS  desktop menu (ja): a click outside closes the menu
+PASS  desktop menu (ja): the current section is marked in the navigation
+PASS  desktop menu (ja): no script errors
+PASS  mobile menu (ja): menu button is visible, desktop navigation is not
+PASS  mobile menu (ja): Enter opens the menu dialog
+PASS  mobile menu (ja): button reports expanded
+PASS  mobile menu (ja): focus stays inside the dialog for 40 Tab presses
+PASS  mobile menu (ja): dialog fits the 390px viewport
+PASS  mobile menu (ja): a section expands with Enter
+PASS  mobile menu (ja): Escape closes the dialog
+PASS  mobile menu (ja): focus returns to the menu button
+PASS  mobile menu (ja): the close button closes the dialog
+PASS  mobile menu (ja): no script errors
+PASS  lifecycle 1440px (ja): nine stages, first selected, one panel shown
+PASS  lifecycle 1440px (ja): tab roles are set
+PASS  lifecycle 1440px (ja): ArrowRight selects and focuses the second stage
+PASS  lifecycle 1440px (ja): End selects the last stage
+PASS  lifecycle 1440px (ja): ArrowRight wraps to the first stage
+PASS  lifecycle 1440px (ja): ArrowLeft wraps to the last stage
+PASS  lifecycle 1440px (ja): Home selects the first stage
+PASS  lifecycle 1440px (ja): only the selected tab is in the Tab order
+PASS  lifecycle 1440px (ja): selected tab shows a focus indicator
+PASS  lifecycle 1440px (ja): clicking the fifth stage shows its panel
+PASS  lifecycle 1440px (ja): the panel names the stage and is labelled by its tab
+PASS  lifecycle 1440px (ja): with reduced motion nothing animates for longer than an instant
+PASS  lifecycle 1440px (ja): a direct link to a stage selects it
+PASS  lifecycle 1440px (ja): no script errors
+PASS  lifecycle 390px (ja): nine stages, first selected, one panel shown
+PASS  lifecycle 390px (ja): tab roles are set
+PASS  lifecycle 390px (ja): ArrowRight selects and focuses the second stage
+PASS  lifecycle 390px (ja): End selects the last stage
+PASS  lifecycle 390px (ja): ArrowRight wraps to the first stage
+PASS  lifecycle 390px (ja): ArrowLeft wraps to the last stage
+PASS  lifecycle 390px (ja): Home selects the first stage
+PASS  lifecycle 390px (ja): only the selected tab is in the Tab order
+PASS  lifecycle 390px (ja): selected tab shows a focus indicator
+PASS  lifecycle 390px (ja): clicking the fifth stage shows its panel
+PASS  lifecycle 390px (ja): the panel names the stage and is labelled by its tab
+PASS  lifecycle 390px (ja): with reduced motion nothing animates for longer than an instant
+PASS  lifecycle 390px (ja): a direct link to a stage selects it
+PASS  lifecycle 390px (ja): no script errors
+PASS  finder (ja): one need is shown at first
+PASS  finder (ja): sixteen needs are offered
+PASS  finder (ja): Enter on a need shows only that need
+PASS  finder (ja): the chosen need is marked current
+PASS  finder (ja): focus moves to the result
+PASS  finder (ja): the result quotes its source and links to real pages
+PASS  finder (ja): choosing an industry shows its note
+PASS  finder (ja): the contact link carries need, industry and size
+PASS  finder (ja): contact form preselects the PLM consultation type
+PASS  finder (ja): contact form shows the three items passed on
+PASS  finder (ja): hidden fields hold the passed values
+PASS  finder (ja): Remove clears the passed context
+PASS  finder (ja): unknown values in the address are ignored
+PASS  finder (ja): a product's enquiry link preselects type and topic
+PASS  finder (ja): a direct link to a need shows it
+PASS  finder (ja): no script errors
+PASS  finder result panel (ja): 1280x720: all 16 results are shown in full (the panel does not scroll inside itself)
+PASS  finder result panel (ja): 1280x720: the "discuss this need" button of every need is inside the panel's visible area
+PASS  finder result panel (ja): 1280x720: every result starts in view, below the header, when its need is chosen
+PASS  finder result panel (ja): 1280x720: every button comes into view by scrolling the page, and nothing covers it
+PASS  finder result panel (ja): 1280x720: no script errors
+PASS  finder result panel (ja): 1366x768: all 16 results are shown in full (the panel does not scroll inside itself)
+PASS  finder result panel (ja): 1366x768: the "discuss this need" button of every need is inside the panel's visible area
+PASS  finder result panel (ja): 1366x768: every result starts in view, below the header, when its need is chosen
+PASS  finder result panel (ja): 1366x768: every button comes into view by scrolling the page, and nothing covers it
+PASS  finder result panel (ja): 1366x768: no script errors
+PASS  finder result panel (ja): 1440x900: all 16 results are shown in full (the panel does not scroll inside itself)
+PASS  finder result panel (ja): 1440x900: the "discuss this need" button of every need is inside the panel's visible area
+PASS  finder result panel (ja): 1440x900: every result starts in view, below the header, when its need is chosen
+PASS  finder result panel (ja): 1440x900: every button comes into view by scrolling the page, and nothing covers it
+PASS  finder result panel (ja): 1440x900: no script errors
+PASS  product pages (ja): the catalogue links to six product pages
+PASS  product pages (ja): nx: page opens with one H1, its sections and working in-page links
+PASS  product pages (ja): nx: lifecycle strip shows nine stages with at least one marked
+PASS  product pages (ja): nx: outside links in the overview go to Siemens' own sites only
+PASS  product pages (ja): nx: enquiry opens the contact form with the product as topic
+PASS  product pages (ja): solid-edge: page opens with one H1, its sections and working in-page links
+PASS  product pages (ja): solid-edge: lifecycle strip shows nine stages with at least one marked
+PASS  product pages (ja): solid-edge: outside links in the overview go to Siemens' own sites only
+PASS  product pages (ja): solid-edge: enquiry opens the contact form with the product as topic
+PASS  product pages (ja): capital: page opens with one H1, its sections and working in-page links
+PASS  product pages (ja): capital: lifecycle strip shows nine stages with at least one marked
+PASS  product pages (ja): capital: outside links in the overview go to Siemens' own sites only
+PASS  product pages (ja): capital: enquiry opens the contact form with the product as topic
+PASS  product pages (ja): teamcenter: page opens with one H1, its sections and working in-page links
+PASS  product pages (ja): teamcenter: lifecycle strip shows nine stages with at least one marked
+PASS  product pages (ja): teamcenter: outside links in the overview go to Siemens' own sites only
+PASS  product pages (ja): teamcenter: enquiry opens the contact form with the product as topic
+PASS  product pages (ja): tecnomatix: page opens with one H1, its sections and working in-page links
+PASS  product pages (ja): tecnomatix: lifecycle strip shows nine stages with at least one marked
+PASS  product pages (ja): tecnomatix: outside links in the overview go to Siemens' own sites only
+PASS  product pages (ja): tecnomatix: enquiry opens the contact form with the product as topic
+PASS  product pages (ja): mendix: page opens with one H1, its sections and working in-page links
+PASS  product pages (ja): mendix: lifecycle strip shows nine stages, none marked (the source ties Mendix to no single stage)
+PASS  product pages (ja): mendix: outside links in the overview go to Siemens' own sites only
+PASS  product pages (ja): mendix: enquiry opens the contact form with the product as topic
+PASS  product pages (ja): previous and next product links are reachable by keyboard
+PASS  product pages (ja): home product rows link to the product pages
+PASS  product pages (ja): no script errors
+PASS  journey 1: automotive, enterprise, change management (ja): industry card opens the finder with the industry chosen
+PASS  journey 1: automotive, enterprise, change management (ja): the change need shows the change management solution and Teamcenter
+PASS  journey 1: automotive, enterprise, change management (ja): Teamcenter page lists the change management solution
+PASS  journey 1: automotive, enterprise, change management (ja): the product page leads to implementation services
+PASS  journey 1: automotive, enterprise, change management (ja): the contact form carries service, need, industry and size
+PASS  journey 1: automotive, enterprise, change management (ja): the enquiry is accepted by the handler
+PASS  journey 1: automotive, enterprise, change management (ja): the email names the enquiry type, topic, need, industry and size
+PASS  journey 1: automotive, enterprise, change management (ja): the context is cleared after sending
+PASS  journey 1: automotive, enterprise, change management (ja): no script errors
+PASS  journey 2: startup, design data (ja): the startup tier opens the finder with the size chosen
+PASS  journey 2: startup, design data (ja): the need shows design data management and a product page
+PASS  journey 2: startup, design data (ja): the solution entry is reached and names its product
+PASS  journey 2: startup, design data (ja): the contact form carries the solution, need and size
+PASS  journey 2: startup, design data (ja): after Remove, later contact links carry nothing
+PASS  journey 2: startup, design data (ja): no script errors
+PASS  journey 3: engineering revisions (ja): the finder leads to change management and to the PLM product
+PASS  journey 3: engineering revisions (ja): the same finder offers the design data needs beside it
+PASS  journey 3: engineering revisions (ja): the PLM product page lists both design data management and change management
+PASS  journey 3: engineering revisions (ja): search for the same problem finds the solution and the need
+PASS  journey 3: engineering revisions (ja): an enquiry from the product page still carries the need
+PASS  journey 3: engineering revisions (ja): no script errors
+PASS  search (ja): the header search link opens the search page
+PASS  search (ja): typing a product name lists its page first
+PASS  search (ja): the number of results is announced
+PASS  search (ja): every result leads to a page that exists
+PASS  search (ja): a search with no match says so and keeps the browse links
+PASS  search (ja): the address keeps the query
+PASS  search (ja): markup in the query is shown as text
+PASS  search (ja): no script errors
+PASS  search (ja): without scripts the form is hidden and the sitemap is offered
+PASS  career filters (ja): 18 roles listed and the filter form is shown
+PASS  career filters (ja): 1440: the facts of every role are laid out the same way, none on a line of its own
+PASS  career filters (ja): 1280: the facts of every role are laid out the same way, none on a line of its own
+PASS  career filters (ja): 1024: the facts of every role are laid out the same way, none on a line of its own
+PASS  career filters (ja): typing 'Capital' narrows the list to roles that mention it
+PASS  career filters (ja): the count is announced
+PASS  career filters (ja): the address records the search
+PASS  career filters (ja): Clear filters restores all 18
+PASS  career filters (ja): discipline filter shows only that discipline
+PASS  career filters (ja): experience filter combines with discipline
+PASS  career filters (ja): no match shows the empty message
+PASS  career filters (ja): filters in the address are applied on load
+PASS  career filters (ja): each role links to its own page
+PASS  career filters (ja): no script errors
+PASS  photo viewer (ja): fourteen photos
+PASS  photo viewer (ja): photo link shows a focus indicator
+PASS  photo viewer (ja): Enter opens the viewer on the first photo
+PASS  photo viewer (ja): the photo has a text alternative
+PASS  photo viewer (ja): ArrowRight shows the second photo
+PASS  photo viewer (ja): ArrowLeft wraps to the last photo
+PASS  photo viewer (ja): focus stays inside the viewer
+PASS  photo viewer (ja): the viewer fits the window
+PASS  photo viewer (ja): Escape closes it and returns focus to the photo
+PASS  photo viewer (ja): an industry infographic opens in the viewer
+PASS  photo viewer (ja): eleven industries, nine with an image
+PASS  photo viewer (ja): the two without an image are entries 2 and 11
+PASS  photo viewer (ja): an entry without an image has no figure, caption or enlarge control
+PASS  photo viewer (ja): every entry keeps its title, text, relations and both links
+PASS  photo viewer (ja): the index lists all eleven
+PASS  photo viewer (ja): at 1440 an entry without an image fills its card: 2 columns, relations in the image column, no empty band
+PASS  photo viewer (ja): at 1024 an entry without an image fills its card: 2 columns, relations in the image column, no empty band
+PASS  photo viewer (ja): at 768 an entry without an image fills its card: 1 column, no empty band
+PASS  photo viewer (ja): at 390 an entry without an image fills its card: 1 column, no empty band
+PASS  photo viewer (ja): no script errors
+PASS  contact form (ja): empty submit marks name, email, message and consent
+PASS  contact form (ja): focus moves to the first field with an error
+PASS  contact form (ja): each error is announced with its field
+PASS  contact form (ja): the summary message is shown
+PASS  contact form (ja): a malformed email gets its own message
+PASS  contact form (ja): on a static host the page does not claim success
+PASS  contact form (ja): and offers the enquiry as an email instead
+PASS  contact form (ja): a submission within three seconds is refused by the server
+PASS  contact form (ja): with a working server the success message appears
+PASS  contact form (ja): exactly one message was handed to the mail system
+PASS  contact form (ja): it carries the type and topic from the address
+PASS  contact form (ja): the form is cleared after sending
+PASS  contact form (ja): when the mail system fails the page says so
+PASS  contact form (ja): and the address it asks the visitor to write to is a mailto link
+PASS  contact form (ja): and the visitor's text is kept
+PASS  application form (ja): the role from the address is preselected
+PASS  application form (ja): empty submit marks the 13 required fields and none of the optional ones
+PASS  application form (ja): a .txt file is refused before sending
+PASS  application form (ja): a complete application with a PDF is accepted
+PASS  application form (ja): the mail names the role and carries the CV
+PASS  application form (ja): optional fields left blank are mailed as not provided
+PASS  application form (ja): no script errors
+PASS  scripts off (ja): all nine lifecycle stages are readable
+PASS  scripts off (ja): stage links jump to their text
+PASS  scripts off (ja): the menu button is a plain link to the sitemap
+PASS  scripts off (ja): content is visible without the reveal script
+PASS  scripts off (ja): every finder result is readable
+PASS  scripts off (ja): controls that need scripts are hidden
+PASS  scripts off (ja): all 18 roles are listed
+PASS  scripts off (ja): gallery photos link straight to the image files
+PASS  scripts off (ja): the form still sends and shows a result page
+PASS  scripts off (ja): the result page links back to the form
+PASS  language switch: switching keeps the page and the anchor
+PASS  language switch: the choice is remembered
+PASS  language switch: Japanese page declares lang=ja and marks the current language
+PASS  language switch: a direct link to an English page is not redirected
+PASS  language switch: the remembered language is offered instead
+PASS  language switch: dismissing the offer stops it from returning
+PASS  language switch: switching works from a role page
+PASS  language switch: and back to English
+PASS  language switch: no cookie has been set after five page views and a language choice
+PASS  language switch: a Japanese browser is offered Japanese on the English home page, without a redirect
+PASS  language switch: an English browser on a Japanese page is left alone
+PASS  old addresses: page.html?page=about opens about.html
+PASS  old addresses: page.html?page=plm opens plm.html
+PASS  old addresses: page.html?page=services opens services.html
+PASS  old addresses: page.html?page=digital-transformation opens digital-transformation.html
+PASS  old addresses: page.html?page=products opens products.html
+PASS  old addresses: page.html?page=solutions opens solutions.html
+PASS  old addresses: page.html?page=industries opens industries.html
+PASS  old addresses: page.html?page=behind-the-brand opens behind-the-brand.html
+PASS  old addresses: page.html?page=careers opens careers.html
+PASS  old addresses: an old anchor is carried over and exists on the new page
+PASS  old addresses: a second old anchor is carried over and exists
+PASS  old addresses: an unknown old page name opens the home page
+PASS  old addresses: jobdetails.html?id=1 opens the first role
+PASS  old addresses: jobdetails.html?id=18 opens the last role
+PASS  old addresses: an unknown role number opens the careers page
+PASS  old addresses: application.html?id=5 opens the application form with that role chosen
+PASS  old addresses: application.html without a number opens the application form
+PASS  old addresses: with scripts off the old address still leads somewhere: the home page, or a page with a link to it
+
+Passed: 445  Failed: 0
+# exit code 0

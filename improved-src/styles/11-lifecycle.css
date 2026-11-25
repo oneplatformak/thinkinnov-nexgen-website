@@ -1,0 +1,57 @@
+/*
+ * Lifecycle diagram.
+ * Without scripts: a numbered list of stage links followed by every panel.
+ * With scripts (.js): tabs. A horizontal stepper on small screens, a ring
+ * from 1000px.
+ */
+.lc { display: grid; gap: var(--s-6); }
+.lc > * { min-width: 0; }
+.lc-ring-svg, .lc-centre { display: none; }
+.lc-tabs { display: grid; grid-template-columns: repeat(auto-fill, minmax(9.5rem, 1fr)); border-top: 1px solid var(--dark-rule); border-left: 1px solid var(--dark-rule); }
+.lc-tabs li { border-right: 1px solid var(--dark-rule); border-bottom: 1px solid var(--dark-rule); }
+.lc-tab { display: flex; align-items: center; gap: 0.6rem; min-height: 3rem; padding: 0.5rem 0.75rem; text-decoration: none; font-family: var(--font-display); font-size: var(--t-sm); font-weight: 700; color: var(--on-dark); transition: background-color 0.18s var(--ease), color 0.18s var(--ease); }
+.lc-tab-n { font-size: var(--t-xs); color: var(--accent-on-dark); font-variant-numeric: tabular-nums; }
+.lc-tab:hover { background: var(--dark-2); }
+.lc-tab[aria-selected="true"] { background: var(--on-dark); color: var(--dark); }
+.lc-tab[aria-selected="true"] .lc-tab-n { color: var(--accent); }
+.lc-hint { margin-top: var(--s-4); font-size: var(--t-sm); color: var(--on-dark-2); }
+
+.lc-panel { padding-block: var(--s-6); border-top: 1px solid var(--dark-rule); }
+.lc-count { font-family: var(--font-display); font-size: var(--t-xs); font-weight: 700; letter-spacing: 0.14em; color: var(--on-dark-2); }
+.lc-count span { color: var(--accent-on-dark); }
+.lc-panel h3 { margin-top: 0.4rem; font-size: var(--t-xl); }
+.lc-text { margin-top: var(--s-4); max-width: 38rem; color: var(--on-dark-2); font-size: var(--t-md); line-height: 1.6; }
+.lc-block { margin-top: var(--s-5); }
+.lc-block h4, .lc-across h3 { margin-bottom: 0.75rem; font-size: var(--t-xs); font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; color: var(--on-dark-2); }
+html[lang="ja"] .lc-block h4, html[lang="ja"] .lc-across h3 { letter-spacing: 0.08em; font-size: 0.8125rem; }
+.lc-across { padding-top: var(--s-5); border-top: 1px solid var(--on-dark-2); }
+
+.js .lc-panel { border-top: 0; padding-block: 0; }
+.js .lc-panels { padding: var(--s-5) 0 0; min-height: 22rem; }
+
+/* Small screens with scripts: a scrolling stepper. */
+@media (max-width: 999px) {
+  .js .lc-tabs { display: flex; overflow-x: auto; scroll-snap-type: x proximity; scrollbar-width: thin; border-bottom: 1px solid var(--dark-rule); }
+  .js .lc-tabs li { flex: none; scroll-snap-align: start; border-bottom: 0; }
+  .js .lc-tab { white-space: nowrap; }
+}
+
+@media (min-width: 1000px) {
+  .js .lc { grid-template-columns: minmax(0, 6fr) minmax(0, 6fr); column-gap: clamp(3rem, 6vw, 7rem); align-items: center; }
+  .js .lc-across { grid-column: 1 / -1; display: flex; flex-wrap: wrap; align-items: center; gap: 1rem 2rem; }
+  .js .lc-across h3 { margin: 0; }
+  .js .lc-panels { padding-top: 0; }
+  .js .lc-ring { position: relative; width: min(100% - 7.5rem, 31rem); aspect-ratio: 1; margin: 3rem auto 3.5rem; }
+  .js .lc-ring-svg { display: block; position: absolute; inset: 0; width: 100%; height: 100%; overflow: visible; }
+  .js .lc-ring-svg circle { fill: none; stroke: var(--dark-rule); stroke-width: 1; }
+  .js .lc-centre { display: grid; place-content: center; gap: 0.4rem; position: absolute; inset: 22%; text-align: center; border: 1px solid var(--dark-rule); border-radius: 50%; }
+  .js .lc-centre-label { font-family: var(--font-display); font-size: var(--t-xs); font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; color: var(--on-dark-2); }
+  .js .lc-centre-stage { font-family: var(--font-display); font-size: var(--t-lg); font-weight: 700; letter-spacing: -0.02em; line-height: 1.2; padding-inline: 1rem; }
+  .js .lc-tabs { display: block; position: absolute; inset: 0; border: 0; }
+  .js .lc-tabs li { position: absolute; left: var(--x); top: var(--y); border: 0; transform: translate(-50%, -50%); }
+  .js .lc-tab { flex-direction: column; gap: 0.1rem; min-width: 5.75rem; min-height: 3.25rem; padding: 0.45rem 0.6rem; background: var(--dark); border: 1px solid var(--dark-rule); text-align: center; line-height: 1.2; }
+  .js .lc-tab-label { white-space: nowrap; }
+  .js .lc-tab:hover { border-color: var(--on-dark-2); }
+  .js .lc-tab[aria-selected="true"] { background: var(--on-dark); border-color: var(--on-dark); }
+  .js .lc-hint { text-align: center; max-width: 26rem; margin-inline: auto; }
+}

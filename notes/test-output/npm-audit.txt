@@ -1,0 +1,26 @@
+# 2026-11-25T16:42:55Z  commit 8d3d57e
+# cd improved-src && npm audit --omit=dev; npm audit; npm ls --all 2>/dev/null | head -20
+
+found 0 vulnerabilities
+found 0 vulnerabilities
+thinkinnov-nexgen-site-generator@2.0.0 /workspace/improved-src
+└─┬ budoux@0.10.4
+  ├── commander@15.1.0
+  └─┬ linkedom@0.18.15
+    ├── UNMET OPTIONAL DEPENDENCY canvas@>= 2
+    ├─┬ css-select@7.0.0
+    │ ├── boolbase@2.0.0
+    │ ├── css-what@8.0.0
+    │ ├─┬ domhandler@6.0.1
+    │ │ └── domelementtype@3.0.0
+    │ ├─┬ domutils@4.0.2
+    │ │ ├─┬ dom-serializer@3.1.1
+    │ │ │ ├── domelementtype@3.0.0 deduped
+    │ │ │ ├── domhandler@6.0.1 deduped
+    │ │ │ └── entities@8.1.0
+    │ │ ├── domelementtype@3.0.0 deduped
+    │ │ └── domhandler@6.0.1 deduped
+    │ └─┬ nth-check@3.0.1
+    │   └── boolbase@2.0.0 deduped
+    ├── cssomnom@0.1.12
+# exit code 0

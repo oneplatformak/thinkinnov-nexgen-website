@@ -1,0 +1,24 @@
+# 2026-11-25T16:40:07Z  commit 8d3d57e
+# node improved-src/tools/test-layout.js
+
+Pages: 82 (41 Japanese), widths: 320, 360, 375, 390, 430, 768, 900, 1000, 1024, 1100, 1180, 1280, 1366, 1440, 1920, 2560
+width  pages  overflow  offscreen  clipped  broken-images  small-targets  pages-with-broken-words
+  320     82         0          0        0              0              0                        0
+  360     82         0          0        0              0              0                        0
+  375     82         0          0        0              0              0                        0
+  390     82         0          0        0              0              0                        0
+  430     82         0          0        0              0              0                        0
+  768     82         0          0        0              0              0                        0
+  900     82         0          0        0              0              0                        0
+ 1000     82         0          0        0              0              0                        0
+ 1024     82         0          0        0              0              0                        0
+ 1100     82         0          0        0              0              0                        0
+ 1180     82         0          0        0              0              0                        0
+ 1280     82         0          0        0              0              0                        0
+ 1366     82         0          0        0              0              0                        0
+ 1440     82         0          0        0              0              0                        0
+ 1920     82         0          0        0              0              0                        0
+ 2560     82         0          0        0              0              0                        0
+Broken words: 0
+PASS
+# exit code 0

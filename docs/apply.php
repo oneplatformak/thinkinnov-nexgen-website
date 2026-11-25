@@ -1,179 +1,136 @@
 <?php
 /**
- * Job application handler for cPanel / Apache + PHP.
- * Accepts CV upload: pdf/doc/docx <= 5MB.
+ * Job application handler for cPanel / Apache + PHP 8.
+ *
+ * Accepts only the fields the form has, plus one CV file (PDF, DOC or DOCX,
+ * 5 MB or smaller, checked by extension and by content). The role must be
+ * one the site lists. The recipient is fixed in inc/form-lib.php.
  */
 declare(strict_types=1);
 
-const RECIPIENT = 'info@thinkinnovnexgen.co.jp';
-const FROM_ADDRESS = 'noreply@thinkinnovnexgen.co.jp';
-const RATE_WINDOW = 600;
-const RATE_MAX = 6;
-const MIN_SECONDS = 3;
+require __DIR__ . '/inc/form-lib.php';
+
+const FORM_PAGE = 'apply.html';
 const MAX_UPLOAD = 5 * 1024 * 1024;
 
-header('Content-Type: application/json; charset=utf-8');
-header('X-Content-Type-Options: nosniff');
+tin_guard('apply', 6, FORM_PAGE);
 
-if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
-    http_response_code(405);
-    echo json_encode(['ok' => false, 'error' => 'Method not allowed']);
-    exit;
-}
+$options = tin_options();
 
-function client_ip(): string {
-    return $_SERVER['REMOTE_ADDR'] ?? 'unknown';
-}
-
-function rate_limited(): bool {
-    $dir = sys_get_temp_dir() . '/tin_apply_rl';
-    if (!is_dir($dir)) {
-        @mkdir($dir, 0700, true);
-    }
-    $file = $dir . '/' . hash('sha256', client_ip()) . '.json';
-    $now = time();
-    $hits = [];
-    if (is_file($file)) {
-        $hits = json_decode((string) file_get_contents($file), true) ?: [];
-    }
-    $hits = array_values(array_filter($hits, static fn($t) => ($now - (int) $t) < RATE_WINDOW));
-    if (count($hits) >= RATE_MAX) {
-        return true;
-    }
-    $hits[] = $now;
-    file_put_contents($file, json_encode($hits), LOCK_EX);
-    return false;
-}
-
-if (!empty($_POST['website'])) {
-    echo json_encode(['ok' => true, 'message' => 'Thank you — your application was sent.']);
-    exit;
-}
-
-if (rate_limited()) {
-    http_response_code(429);
-    echo json_encode(['ok' => false, 'error' => 'Too many requests. Please try again later.']);
-    exit;
-}
-
-$started = (int) ($_POST['form_started'] ?? 0);
-if ($started > 0 && (int) (microtime(true) * 1000) - $started < MIN_SECONDS * 1000) {
-    http_response_code(400);
-    echo json_encode(['ok' => false, 'error' => 'Please wait a moment and try again.']);
-    exit;
-}
-
-$required = [
-    'first_name', 'last_name', 'email', 'phone', 'graduation', 'gender',
-    'experience', 'employer', 'current_ctc', 'expected_ctc', 'notice',
-    'skills', 'source', 'current_location', 'preferred_location',
+// Field name => [label in the email, maximum length]. Nothing else is read.
+$fields = [
+    'first_name' => ['First name', 80],
+    'last_name' => ['Last name', 80],
+    'phone' => ['Contact number', 40],
+    'graduation' => ['Year of graduation', 4],
+    'gender' => ['Gender', 40],
+    'experience' => ['Overall experience (years)', 40],
+    'employer' => ['Current employer', 150],
+    'current_ctc' => ['Current CTC (LPA)', 40],
+    'expected_ctc' => ['Expected CTC (LPA)', 40],
+    'notice' => ['Notice period (days)', 40],
+    'source' => ['How did you find this vacancy?', 80],
+    'current_location' => ['Current location', 120],
+    'preferred_location' => ['Preferred location', 120],
+    'skills' => ['Skill set', 500],
 ];
 
-foreach ($required as $key) {
-    if (trim((string) ($_POST[$key] ?? '')) === '') {
-        http_response_code(400);
-        echo json_encode(['ok' => false, 'error' => 'Missing required fields.']);
-        exit;
+// The applicant may leave these blank; the form marks them "Optional".
+$optional = ['gender', 'current_ctc', 'expected_ctc', 'notice'];
+
+$values = [];
+foreach ($fields as $key => [$label, $max]) {
+    $values[$key] = tin_line($key, $max);
+    if ($values[$key] === '' && !in_array($key, $optional, true)) {
+        tin_respond(400, 'invalid', FORM_PAGE);
     }
 }
+if (!preg_match('/^(19|20)\d{2}$/', $values['graduation']) || !preg_match('/^[0-9+().\-\s]{5,40}$/', $values['phone'])) {
+    tin_respond(400, 'invalid', FORM_PAGE);
+}
 
+$emailRaw = tin_line('email', 254);
+$email = tin_email('email');
+if ($emailRaw === '') {
+    tin_respond(400, 'invalid', FORM_PAGE);
+}
+if ($email === '') {
+    tin_respond(400, 'email', FORM_PAGE);
+}
 if (empty($_POST['consent'])) {
-    http_response_code(400);
-    echo json_encode(['ok' => false, 'error' => 'Consent is required.']);
-    exit;
+    tin_respond(400, 'consent', FORM_PAGE);
 }
 
-$email = trim((string) $_POST['email']);
-if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
-    http_response_code(400);
-    echo json_encode(['ok' => false, 'error' => 'Invalid email address.']);
-    exit;
+$job = tin_choice('job', $options['jobs']);
+
+$file = $_FILES['resume'] ?? null;
+if (!is_array($file) || is_array($file['error'] ?? null)) {
+    tin_respond(400, 'file_missing', FORM_PAGE);
+}
+$uploadError = (int) ($file['error'] ?? UPLOAD_ERR_NO_FILE);
+if ($uploadError === UPLOAD_ERR_INI_SIZE || $uploadError === UPLOAD_ERR_FORM_SIZE) {
+    tin_respond(400, 'file_size', FORM_PAGE);
+}
+if ($uploadError !== UPLOAD_ERR_OK || !is_uploaded_file((string) $file['tmp_name'])) {
+    tin_respond(400, 'file_missing', FORM_PAGE);
+}
+if ((int) $file['size'] <= 0 || (int) $file['size'] > MAX_UPLOAD) {
+    tin_respond(400, 'file_size', FORM_PAGE);
 }
 
-if (!isset($_FILES['resume']) || !is_array($_FILES['resume']) || ($_FILES['resume']['error'] ?? UPLOAD_ERR_NO_FILE) !== UPLOAD_ERR_OK) {
-    http_response_code(400);
-    echo json_encode(['ok' => false, 'error' => 'CV upload is required.']);
-    exit;
-}
-
-$file = $_FILES['resume'];
-if (($file['size'] ?? 0) > MAX_UPLOAD) {
-    http_response_code(400);
-    echo json_encode(['ok' => false, 'error' => 'CV must be 5 MB or smaller.']);
-    exit;
-}
-
-$origName = (string) ($file['name'] ?? 'resume');
-$ext = strtolower(pathinfo($origName, PATHINFO_EXTENSION));
-$allowed = ['pdf', 'doc', 'docx'];
-if (!in_array($ext, $allowed, true)) {
-    http_response_code(400);
-    echo json_encode(['ok' => false, 'error' => 'CV must be PDF, DOC or DOCX.']);
-    exit;
-}
-
-$finfo = new finfo(FILEINFO_MIME_TYPE);
-$mime = $finfo->file($file['tmp_name']) ?: 'application/octet-stream';
-$allowedMimes = [
-    'application/pdf',
-    'application/msword',
-    'application/vnd.openxmlformats-officedocument.wordprocessingml.document',
-    'application/zip', // some docx
-    'application/octet-stream',
+$extension = strtolower(pathinfo((string) $file['name'], PATHINFO_EXTENSION));
+// What each extension's content may be detected as. DOCX is a zip container.
+$allowedTypes = [
+    'pdf' => ['application/pdf'],
+    'doc' => ['application/msword', 'application/x-ole-storage', 'application/CDFV2', 'application/vnd.ms-office'],
+    'docx' => ['application/vnd.openxmlformats-officedocument.wordprocessingml.document', 'application/zip', 'application/octet-stream'],
 ];
-if (!in_array($mime, $allowedMimes, true)) {
-    // still allow by extension if mime is quirky, but reject executables
-    if (in_array($ext, ['exe', 'php', 'js', 'sh', 'bat'], true)) {
-        http_response_code(400);
-        echo json_encode(['ok' => false, 'error' => 'Invalid file type.']);
-        exit;
-    }
+if (!isset($allowedTypes[$extension])) {
+    tin_respond(400, 'file_type', FORM_PAGE);
+}
+$detected = (new finfo(FILEINFO_MIME_TYPE))->file((string) $file['tmp_name']) ?: '';
+if (!in_array($detected, $allowedTypes[$extension], true)) {
+    tin_respond(400, 'file_type', FORM_PAGE);
+}
+$data = (string) file_get_contents((string) $file['tmp_name']);
+$signatures = ['pdf' => '%PDF-', 'doc' => "\xD0\xCF\x11\xE0", 'docx' => "PK\x03\x04"];
+if (!str_starts_with($data, $signatures[$extension])) {
+    tin_respond(400, 'file_type', FORM_PAGE);
+}
+// A DOCX is a zip whose entries include [Content_Types].xml and a word/ part.
+// A zip stores entry names as plain text, so a zip of anything else that has
+// been renamed .docx is refused here without unpacking it.
+if ($extension === 'docx' && !(str_contains($data, '[Content_Types].xml') && str_contains($data, 'word/'))) {
+    tin_respond(400, 'file_type', FORM_PAGE);
 }
 
-$lines = [];
-foreach ($_POST as $k => $v) {
-    if (in_array($k, ['website', 'form_started', 'consent'], true)) {
-        continue;
+$lines = ['New job application', '', 'Role: ' . ($job !== '' ? $options['jobs'][$job] . ' (' . $job . ')' : 'General application'), 'Page language: ' . tin_lang(), ''];
+foreach ($fields as $key => [$label]) {
+    if ($key === 'phone') {
+        $lines[] = 'Email: ' . $email;
     }
-    if (is_string($v)) {
-        $lines[] = $k . ': ' . trim($v);
-    }
+    $lines[] = $label . ': ' . ($values[$key] !== '' ? $values[$key] : 'not provided');
 }
-$textBody = "New job application\n\n" . implode("\n", $lines) . "\n";
+$lines[] = '';
 
+$fullName = $values['first_name'] . ' ' . $values['last_name'];
+$safeName = preg_replace('/[^A-Za-z0-9]+/', '-', $fullName) ?: 'applicant';
+$attachmentName = 'cv-' . trim($safeName, '-') . '.' . $extension;
+$attachmentType = $allowedTypes[$extension][0];
 $boundary = '=_tin_' . bin2hex(random_bytes(12));
-$filename = preg_replace('/[^A-Za-z0-9._-]/', '_', $origName) ?: ('resume.' . $ext);
-$fileData = chunk_split(base64_encode((string) file_get_contents($file['tmp_name'])));
 
-$subject = 'Job application — ' . trim((string) ($_POST['first_name'] ?? '')) . ' ' . trim((string) ($_POST['last_name'] ?? ''));
-$job = trim((string) ($_POST['job'] ?? ''));
-if ($job !== '') {
-    $subject .= ' (' . $job . ')';
-}
+$body = "--{$boundary}\r\n"
+    . "Content-Type: text/plain; charset=UTF-8\r\n"
+    . "Content-Transfer-Encoding: 8bit\r\n\r\n"
+    . implode("\r\n", $lines) . "\r\n"
+    . "--{$boundary}\r\n"
+    . 'Content-Type: ' . $attachmentType . '; name="' . $attachmentName . "\"\r\n"
+    . "Content-Transfer-Encoding: base64\r\n"
+    . 'Content-Disposition: attachment; filename="' . $attachmentName . "\"\r\n\r\n"
+    . chunk_split(base64_encode($data))
+    . "--{$boundary}--\r\n";
 
-$body = "--{$boundary}\r\n";
-$body .= "Content-Type: text/plain; charset=UTF-8\r\n\r\n";
-$body .= $textBody . "\r\n";
-$body .= "--{$boundary}\r\n";
-$body .= 'Content-Type: ' . $mime . '; name="' . $filename . "\"\r\n";
-$body .= "Content-Transfer-Encoding: base64\r\n";
-$body .= 'Content-Disposition: attachment; filename="' . $filename . "\"\r\n\r\n";
-$body .= $fileData . "\r\n";
-$body .= "--{$boundary}--\r\n";
+$subject = 'Job application: ' . $fullName . ($job !== '' ? ' (' . $options['jobs'][$job] . ')' : '');
+$sent = tin_send('ThinkInnov-NexGen Careers', $subject, $body, $email, 'multipart/mixed; boundary="' . $boundary . '"');
 
-$headers = [
-    'From: ThinkInnov-NexGen Careers <' . FROM_ADDRESS . '>',
-    'Reply-To: ' . trim((string) $_POST['first_name']) . ' ' . trim((string) $_POST['last_name']) . ' <' . $email . '>',
-    'MIME-Version: 1.0',
-    'Content-Type: multipart/mixed; boundary="' . $boundary . '"',
-];
-
-$sent = @mail(RECIPIENT, '=?UTF-8?B?' . base64_encode($subject) . '?=', $body, implode("\r\n", $headers));
-
-if (!$sent) {
-    http_response_code(500);
-    echo json_encode(['ok' => false, 'error' => 'Mail could not be sent.']);
-    exit;
-}
-
-echo json_encode(['ok' => true, 'message' => 'Thank you — your application was sent.']);
+tin_respond($sent ? 200 : 500, $sent ? 'sent_apply' : 'mail_failed', FORM_PAGE);

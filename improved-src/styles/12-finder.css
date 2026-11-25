@@ -1,0 +1,57 @@
+/*
+ * Finder. Without scripts every need panel is shown in order. With scripts
+ * one panel is shown beside the list of needs.
+ */
+.finder { display: grid; gap: var(--s-7); }
+.finder > * { min-width: 0; }
+.finder-group + .finder-group { margin-top: var(--s-6); }
+.finder-group h3 { padding-bottom: 0.6rem; border-bottom: 1px solid var(--ink); font-size: var(--t-xs); font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; color: var(--ink-3); }
+html[lang="ja"] .finder-group h3 { letter-spacing: 0.08em; font-size: 0.8125rem; }
+.finder-group li { border-bottom: 1px solid var(--rule); }
+.finder-group a { display: grid; grid-template-columns: 2rem minmax(0, 1fr); gap: 0.5rem; align-items: baseline; padding: 0.7rem 0.5rem 0.7rem 0; text-decoration: none; font-weight: 600; line-height: 1.4; transition: background-color 0.15s var(--ease), padding 0.15s var(--ease); }
+.finder-n { font-family: var(--font-display); font-size: var(--t-xs); font-weight: 700; color: var(--accent); font-variant-numeric: tabular-nums; }
+.finder-group a:hover { color: var(--accent); }
+.finder-group a[aria-current="true"] { background: var(--ink); color: var(--paper); padding-left: 0.75rem; }
+.finder-group a[aria-current="true"] .finder-n { color: var(--accent-on-dark); }
+
+.finder-context { margin-top: var(--s-6); padding: var(--s-5); border: 1px solid var(--rule-strong); background: var(--paper); }
+.finder-context-title { font-family: var(--font-display); font-weight: 700; }
+.finder-fields { display: grid; gap: var(--s-4); margin-top: var(--s-4); }
+.finder-notes { margin-top: var(--s-4); }
+.finder-note { padding: 0.6rem 0 0.6rem 0.9rem; border-left: 2px solid var(--accent-bright); font-size: var(--t-sm); color: var(--ink-2); }
+.finder-note + .finder-note { margin-top: 0.5rem; }
+.finder-note a { display: block; font-family: var(--font-display); font-weight: 700; color: var(--ink); }
+.finder-context-help { margin-top: var(--s-4); font-size: var(--t-xs); color: var(--ink-3); }
+
+.need { padding: var(--s-6) 0; border-top: 1px solid var(--ink); }
+.need:focus { outline: none; }
+.need-count { font-family: var(--font-display); font-size: var(--t-xs); font-weight: 700; letter-spacing: 0.14em; color: var(--accent); }
+.need h3 { margin-top: 0.4rem; font-size: var(--t-xl); max-width: 24ch; }
+html[lang="ja"] .need h3 { max-width: 22em; }
+.need-source { margin-top: var(--s-4); padding: var(--s-4); background: var(--paper); border-left: 2px solid var(--accent-bright); color: var(--ink-2); max-width: 40rem; }
+.need-source-label { display: block; margin-bottom: 0.25rem; font-family: var(--font-display); font-size: var(--t-xs); font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: var(--ink-3); }
+.need-block { margin-top: var(--s-5); }
+.need-block h4 { margin-bottom: 0.6rem; font-size: var(--t-xs); font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; color: var(--ink-3); }
+html[lang="ja"] .need-block h4 { letter-spacing: 0.08em; font-size: 0.8125rem; }
+.need-list { border-top: 1px solid var(--rule); }
+.need-list li { border-bottom: 1px solid var(--rule); }
+.need-list a { display: block; padding-block: 0.8rem; text-decoration: none; }
+.need-item-title { display: block; font-family: var(--font-display); font-size: var(--t-md); font-weight: 700; }
+.need-item-text { display: block; color: var(--ink-2); font-size: 0.9375rem; }
+.need-list a:hover .need-item-title { color: var(--accent); }
+.need-cta { margin-top: var(--s-6); }
+
+.js .need { border-top: 0; padding-top: 0; }
+@media (min-width: 1000px) {
+  .finder { grid-template-columns: minmax(0, 5fr) minmax(0, 7fr); gap: clamp(3rem, 5vw, 6rem); align-items: start; }
+  /*
+   * The result is as tall as its content and never scrolls inside itself. A
+   * result that fits the window stays below the header while the list is
+   * read. A taller one scrolls with the page until its last line, the
+   * "discuss" button, is in view and then stays there: the script reports the
+   * height, and the second term of min() is the offset that keeps the bottom
+   * edge 1.5rem above the bottom of the window.
+   */
+  .js .finder-panels { position: sticky; top: min(calc(var(--header-h) + 1.5rem), calc(100vh - var(--finder-panel-h, 0px) - 1.5rem)); padding: var(--s-6); border: 1px solid var(--ink); background: var(--paper); transition-property: none !important; }
+  .js .need-source { background: var(--paper-2); }
+}

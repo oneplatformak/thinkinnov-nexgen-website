@@ -1,0 +1,314 @@
+#!/usr/bin/env python3
+"""Checks the built site against the original (staging-original/) and against
+the things that must never be published.
+
+1. The four testimonials and their attributions are word-for-word the same.
+2. The same 21 customer logos, with the same names, in the same order.
+3. The same job titles, each with a page in both languages; every English
+   sentence of the original on the site with the same words; the careers-list
+   summaries character for character; the finder's quotations exact.
+   Eleven industry entries; the original's eleven industry images less the
+   two removed by the owner's decision (I2, I11), which must not come back.
+4. Partner wording appears only where the source has it.
+5. No placeholder text, no banned wording, no empty headings.
+6. Structured data parses and contains none of the excluded types.
+7. No credentials in any tracked file.
+
+Usage: python3 improved-src/tools/check-source.py
+"""
+from __future__ import annotations
+import html
+import json
+import re
+import subprocess
+import sys
+from pathlib import Path
+
+REPO = Path(__file__).resolve().parents[2]
+DOCS = REPO / "docs"
+STAGING = REPO / "staging-original" / "thinkinnov-nexgen"
+
+failures: list[str] = []
+lines: list[str] = []
+
+
+def report(ok: bool, label: str, detail: str = "") -> None:
+    lines.append(f"{'PASS' if ok else 'FAIL'}  {label}{(' — ' + detail) if detail else ''}")
+    if not ok:
+        failures.append(label)
+
+
+def visible(markup: str) -> str:
+    markup = re.sub(r"<(script|style|template)\b.*?</\1>", " ", markup, flags=re.S | re.I)
+    markup = re.sub(r"<wbr\s*/?>", "", markup, flags=re.I)
+    markup = re.sub(r"<[^>]+>", " ", markup)
+    return re.sub(r"\s+", " ", html.unescape(markup)).strip()
+
+
+def squash(text: str) -> str:
+    return re.sub(r"\s+", " ", text.replace("\u2019", "'").replace("\u2018", "'")).strip()
+
+
+pages = sorted(p for p in DOCS.rglob("*.html"))
+text_of = {p.relative_to(DOCS).as_posix(): visible(p.read_text(encoding="utf-8")) for p in pages}
+raw_of = {p.relative_to(DOCS).as_posix(): p.read_text(encoding="utf-8") for p in pages}
+staging_index = (STAGING / "index.html").read_text(encoding="utf-8")
+
+# 1. Testimonials
+cards = re.findall(r'<article class="testimonial-card[^"]*">(.*?)</article>', staging_index, flags=re.S)
+report(len(cards) == 4, "staging has four testimonials", str(len(cards)))
+for lang, page in (("en", "index.html"), ("ja", "ja/index.html")):
+    body = squash(text_of[page])
+    for card in cards:
+        quote = squash(html.unescape(re.sub(r"<[^>]+>", "", re.search(r"<p>(.*?)</p>", card, flags=re.S).group(1))))
+        who = [squash(html.unescape(x)) for x in re.findall(r"<(?:strong|small)>(.*?)</(?:strong|small)>", card)]
+        report(quote in body, f"testimonial verbatim on {page}", quote[:48] + "…")
+        for name in who:
+            report(name in body, f"attribution on {page}", name)
+
+# 2. Customer logos
+staging_logos = re.findall(r'<img[^>]*src="assets/customers/[^"]+"[^>]*alt="([^"]*)"', staging_index)
+if not staging_logos:
+    staging_logos = [alt for src, alt in re.findall(r'<img[^>]*src="([^"]+)"[^>]*alt="([^"]*)"', staging_index) if "customers/" in src]
+staging_logos = [a for a in staging_logos if a]
+for page in ("index.html", "ja/index.html"):
+    built = re.findall(r'<img src="[^"]*assets/img/customers/[^"]+"[^>]*alt="([^"]*)"', raw_of[page])
+    report(built == staging_logos and len(built) == 21, f"21 customer logos, same names and order, on {page}", f"{len(built)} built, {len(staging_logos)} in staging")
+logo_files = {m for page in raw_of.values() for m in re.findall(r'assets/img/customers/([^"]+)"', page)}
+report(all((DOCS / "assets/img/customers" / f).is_file() for f in logo_files), "every customer logo file exists", str(len(logo_files)))
+
+# 3. Jobs
+jobs_js = (STAGING / "assets" / "jobs.js").read_text(encoding="utf-8").split("].map(")[0]
+# The first role is written out as an object; the other seventeen are rows of [title, focus, experience].
+staging_jobs = re.findall(r'^\s*title:\s*"([^"]+)"', jobs_js, flags=re.M) + re.findall(r'^\s*\["([^"]+)",\s*"[^"]*",\s*"[^"]*"\]', jobs_js, flags=re.M)
+job_pages = sorted(p for p in text_of if re.match(r"careers/\d\d-", p))
+ja_job_pages = sorted(p for p in text_of if re.match(r"ja/careers/\d\d-", p))
+report(len(staging_jobs) == len(job_pages) == len(ja_job_pages), "one job page per staging role, in both languages", f"{len(staging_jobs)} roles, {len(job_pages)} EN pages, {len(ja_job_pages)} JA pages")
+for title, page in zip(staging_jobs, job_pages):
+    h1 = re.search(r"<h1[^>]*>(.*?)</h1>", raw_of[page], flags=re.S)
+    report(bool(h1) and squash(visible(h1.group(1))) == squash(title), f"job title unchanged on {page}", title)
+report("JobPosting" not in "".join(raw_of.values()), "no JobPosting structured data")
+
+# 3a. Industry images. The original shows one image with each of its eleven
+# industry entries (assets/I1.png to I11.png). Nine are published. Two were
+# removed by the owner's decision (AK, 25 November 2026): I2 carries a Siemens
+# wordmark and I11 prints unsourced figures about a Siemens product; both are
+# inherited images of unknown origin and rights. This is the one approved
+# exception to "nothing dropped": any other missing image fails here, and so
+# does either removed file if it comes back.
+INDUSTRY_IMAGES_REMOVED = {2: "infographic-02.webp", 11: "infographic-11.webp"}
+page_data = (STAGING / "assets" / "page-data.js").read_text(encoding="utf-8")
+staging_industry = [int(n) for n in re.findall(r'"assets/I(\d+)\.png"', page_data[page_data.find("const industryImages"):])]
+report(staging_industry == list(range(1, 12)) and all((STAGING / "assets" / f"I{n}.png").is_file() for n in staging_industry),
+       "the original has eleven industry images, I1 to I11, and all eleven are kept in staging-original/", str(staging_industry))
+expected_images = [f"infographic-{n:02d}.webp" for n in staging_industry if n not in INDUSTRY_IMAGES_REMOVED]
+on_disk = sorted(f.name for f in (DOCS / "assets/img/industries").iterdir())
+report(on_disk == expected_images and len(expected_images) == 9,
+       "docs/ holds exactly the nine industry images that are published (the original's eleven less the two approved removals)", ", ".join(on_disk))
+for page in ("industries.html", "ja/industries.html"):
+    markup = raw_of[page]
+    cards = re.findall(r'<article class="industry[^"]*" id="([^"]+)">(.*?)</article>', markup, flags=re.S)
+    shown = [re.findall(r'<img[^>]*src="[^"]*?(infographic-\d+\.webp)"', body) for _, body in cards]
+    want = [[] if n in INDUSTRY_IMAGES_REMOVED else [f"infographic-{n:02d}.webp"] for n in range(1, 12)]
+    report(len(cards) == 11 and shown == want,
+           f"eleven industry entries on {page}: entry n shows the original's image n, and entries 2 and 11 show none", str([len(x) for x in shown]))
+    bare = [body for (_, body), n in zip(cards, range(1, 12)) if n in INDUSTRY_IMAGES_REMOVED]
+    report(len(bare) == 2 and all(not re.search(r"<figure|<figcaption|<img|data-lightbox|gallery-open|alt=|data-caption", body) for body in bare),
+           f"the two entries without an image on {page} have no figure, caption, alt text or enlarge control left")
+    report(all("<h2" in body and "industry-rel" in body and "contact.html" in body for body in bare),
+           f"the two entries without an image on {page} keep their title, relations and contact link")
+english_titles = [squash(visible(t)) for t in re.findall(r'<article class="industry[^"]*" id="[^"]+">.*?<h2[^>]*>(.*?)</h2>', raw_of["industries.html"], flags=re.S)]
+report(len(english_titles) == 11 and len(set(english_titles)) == 11, "eleven distinct industry titles on industries.html", str(len(english_titles)))
+# Neither removed file name anywhere in what is served: every file under docs/, whatever its type.
+mentions = []
+for path in sorted(DOCS.rglob("*")):
+    if not path.is_file():
+        continue
+    if path.name in INDUSTRY_IMAGES_REMOVED.values():
+        mentions.append(f"{path.relative_to(DOCS)} (the file itself)")
+        continue
+    data = path.read_bytes()
+    for name in INDUSTRY_IMAGES_REMOVED.values():
+        if name.encode() in data or name.rsplit(".", 1)[0].encode() in data:
+            mentions.append(f"{path.relative_to(DOCS)}: {name}")
+report(not mentions, "neither removed image (infographic-02, infographic-11) is present or referenced anywhere in docs/", " | ".join(mentions[:6]))
+# The five figures the removed image printed are nowhere in the site's text either.
+REMOVED_FIGURES = ["20–30%", "20-30%", "15–25%", "15-25%", "30–50%", "30-50%", "20–40%", "20-40%", "99.9%"]
+found_figures = sorted({f"{page}: {fig}" for page, markup in raw_of.items() for fig in REMOVED_FIGURES if fig in markup})
+report(not found_figures, "none of the five figures printed in the removed image appears in any page", " | ".join(found_figures[:6]))
+
+# 3b. Source wording. Every sentence the original shows in English is on the
+# English site with the same words in the same order. Capitals, punctuation
+# and the word "Infographic" (moved from the industry titles to the captions
+# of the images) are not compared; a changed, added or dropped word fails.
+def loose(text: str) -> str:
+    text = re.sub(r"<[^>]+>", " ", text).lower().replace("infographic", " ")
+    return re.sub(r"\s+", " ", re.sub(r"[^a-z0-9]+", " ", text)).strip()
+
+# The exceptions, each with the corrected wording the site must show instead
+# (None: nothing is shown). All are listed with their reasons in COVERAGE.md.
+SOURCE_EXCEPTIONS = {
+    "Bussiness process re-Engineering": "Business process re-engineering",
+    "Solution evalution Consulting": "Solution evaluation consulting",
+    "Your partners for innovation digital transformation solutions.": "Your partners for innovation and digital transformation solutions.",
+    "104-0053, 1-40 Harumi Prime Square, 15th Floor 2-Chome, Harumi, Chuo-ku, Tokyo": "15th Floor, Harumi Prime Square, 2-1-40 Harumi, Chuo-ku, Tokyo 104-0053, Japan",
+    "ThinkInnov-NexGen Technologies Pvt Ltd 104-0053, 1-40 Harumi Prime Square, 15th Floor 2-Chome, Harumi, Chuo-ku, Tokyo": "15th Floor, Harumi Prime Square, 2-1-40 Harumi, Chuo-ku, Tokyo 104-0053, Japan",
+    # Text of the old menu panel, which described the About page.
+    "ThinkInnov-NexGen profile, mission, values, gallery, leadership and company profile.": None,
+    # Filler in jobdetails.html that its script replaces with the role's own lists.
+    "Deliver customer-focused PLM and digital transformation work.": None,
+    "Collaborate with cross-functional teams and support project milestones.": None,
+    "Create clear documentation and help users adopt practical solutions.": None,
+    "Relevant experience in the selected role.": None,
+    "Strong communication and problem-solving skills.": None,
+    "Interest in PLM, engineering systems and digital transformation.": None,
+}
+source_strings: list[str] = []
+for name in ("jobs.js", "page-data.js"):
+    js = (STAGING / "assets" / name).read_text(encoding="utf-8")
+    if name == "page-data.js":
+        js = js[: js.find("function getPageKey")]  # the English content; the Japanese copy follows
+    source_strings += [json.loads('"' + m + '"') for m in re.findall(r'"((?:[^"\\]|\\.)*)"', js)]
+for name in ("index.html", "jobdetails.html", "application.html", "page.html"):
+    markup = (STAGING / name).read_text(encoding="utf-8")
+    markup = re.sub(r"<(script|style|template|title)\b.*?</\1>", " ", markup, flags=re.S | re.I)
+    markup = re.sub(r"<br\s*/?>", " ", markup)
+    source_strings += [squash(html.unescape(t)) for t in re.findall(r">([^<]+)<", markup)]
+source_strings = [x for x in dict.fromkeys(source_strings) if len(x) >= 25 and " " in x and not x.startswith("assets/")]
+english_site = loose(" ".join(t for p, t in text_of.items() if not p.startswith("ja/")))
+changed = [x for x in source_strings if x not in SOURCE_EXCEPTIONS and loose(x) not in english_site]
+report(len(source_strings) > 200 and not changed, f"all {len(source_strings)} English sentences of the original are on the site with the same words in the same order ({len(SOURCE_EXCEPTIONS)} listed exceptions)", " | ".join(x[:80] for x in changed[:6]))
+stale = [x for x in SOURCE_EXCEPTIONS if x not in source_strings or loose(x) in english_site]
+report(not stale, "every listed exception is still needed", " | ".join(x[:60] for x in stale))
+uncorrected = [f"{x[:40]}…" for x, fixed in SOURCE_EXCEPTIONS.items() if fixed and loose(fixed) not in english_site]
+report(not uncorrected, "each corrected sentence is shown in its corrected form", " | ".join(uncorrected))
+# The careers list and the home problem statements: character for character.
+page_data = (STAGING / "assets" / "page-data.js").read_text(encoding="utf-8")
+listings = re.search(r"jobs: \[(.*?)\], cta:", page_data, flags=re.S)
+listing_texts = [json.loads('"' + b + '"') for _, b in re.findall(r'\["((?:[^"\\]|\\.)*)",\s*"((?:[^"\\]|\\.)*)"\]', listings.group(1))] if listings else []
+careers_text = squash(text_of["careers.html"])
+not_verbatim = [t for t in listing_texts if squash(t) not in careers_text]
+report(len(listing_texts) == 18 and not not_verbatim, "the 18 careers-list summaries are character for character the original's", " | ".join(t[:60] for t in not_verbatim))
+# "What our site says" in the finder: each is a whole sentence shown elsewhere on the site.
+for prefix, page in (("", "solutions.html"), ("ja/", "ja/solutions.html")):
+    quotes = [squash(visible(q)) for q in re.findall(r'<span class="need-source-label"[^>]*>.*?</span>(.*?)</p>', raw_of[page], flags=re.S)]
+    elsewhere = squash(" ".join(t for p, t in text_of.items() if p.startswith("ja/") == bool(prefix) and not p.endswith("solutions.html") and not p.endswith("search.html")))
+    solutions_rest = squash(visible(re.sub(r'<div class="finder\b.*?</section>', " ", re.sub(r'<span class="solution-need-source".*?</span>', " ", raw_of[page], flags=re.S), flags=re.S)))
+    unquoted = [q for q in quotes if q not in elsewhere and q not in solutions_rest]
+    report(len(quotes) == 16 and not unquoted, f"each of the 16 “what our site says” lines in the finder is a whole sentence shown elsewhere on the site ({page})", " | ".join(q[:70] for q in unquoted))
+
+# 4. Partner wording, only where the source places it
+def pages_with(phrase: str) -> list[str]:
+    return sorted(p for p, t in text_of.items() if phrase.lower() in t.lower())
+
+# The Japanese form is the original site's own (staging assets/i18n.js).
+solution_partner = sorted(set(pages_with("Siemens Solution Partner") + pages_with("Siemensソリューションパートナー")))
+report(solution_partner == ["index.html", "ja/index.html"], '"Siemens Solution Partner" only on the home page', ", ".join(solution_partner))
+# Once per home page, in the hero, as the source has it; counted in the whole
+# file so that titles, descriptions, attributes and structured data count too.
+partner_re = re.compile(r"Solution\s*Partner|ソリューション\s*パートナー", flags=re.I)
+partner_counts = {p: len(partner_re.findall(re.sub(r"<wbr\s*/?>", "", r))) for p, r in raw_of.items()}
+partner_counts = {p: n for p, n in partner_counts.items() if n}
+report(partner_counts == {"index.html": 1, "ja/index.html": 1}, '"Siemens Solution Partner" / 「Siemensソリューションパートナー」 exactly once on each home page and on no other page', ", ".join(f"{p}: {n}" for p, n in sorted(partner_counts.items())))
+for home in ("index.html", "ja/index.html"):
+    hero = re.search(r'<section class="hero\b.*?</section>', raw_of[home], flags=re.S)
+    report(bool(hero) and len(partner_re.findall(re.sub(r"<wbr\s*/?>", "", hero.group(0)))) == 1, f"that one occurrence is in the hero of {home}")
+report(not pages_with("ソリューションパートナー") or pages_with("ソリューションパートナー") == ["ja/index.html"], "Japanese partner wording only on the Japanese home page", ", ".join(pages_with("ソリューションパートナー")))
+report(pages_with("Expert Partner") == ["about.html", "ja/about.html"], '"Expert Partner - PLM" only on About', ", ".join(pages_with("Expert Partner")))
+report(pages_with("A Strategic Partnership in Japan") == ["about.html"] or pages_with("A Strategic Partnership in Japan") == ["about.html", "ja/about.html"], '"ThinkInnov-NexGen KK - A Strategic Partnership in Japan" only on About', ", ".join(pages_with("A Strategic Partnership in Japan")))
+heads = "".join(re.search(r"<head>.*?</head>", r, flags=re.S).group(0) for r in raw_of.values() if "<head>" in r)
+report(not re.search(r"Solution Partner|Expert Partner|ソリューションパートナー|エキスパートパートナー", heads), "no partner wording in any <head> (titles, descriptions, structured data)")
+footers = "".join(m.group(0) for r in raw_of.values() for m in [re.search(r"<footer\b.*?</footer>", r, flags=re.S)] if m)
+report(not re.search(r"Solution Partner|Expert Partner|ソリューションパートナー|エキスパートパートナー", footers), "no partner wording in the footer")
+report("our key customers" in text_of["index.html"].lower(), 'source heading "Our Key Customers" kept (the site sets headings in sentence case)')
+
+# 4b. Diagrams drawn for this site are labelled as conceptual, in both languages
+figures = [(p, m.group(0)) for p, r in raw_of.items() for m in re.finditer(r'<figure class="fig\b.*?</figure>', r, flags=re.S)]
+unlabelled = sorted({p for p, f in figures if not re.search(r'<figcaption[^>]*>\s*<span class="fig-no">(Conceptual diagram|概念図)</span>', f)})
+report(bool(figures) and not unlabelled, f"every drawn diagram ({len(figures)} on {len({p for p, _ in figures})} pages) is captioned “Conceptual diagram” / 「概念図」", ", ".join(unlabelled))
+report(not any(re.search(r"fig-axis|fig-trend", r) for r in raw_of.values()), "no drawn diagram has chart axes or a trend line")
+
+# 5. Wording that must not appear in visible text
+BANNED = [
+    "joint venture", "合弁", "digital twin", "デジタルツイン", "Trusted by Industry Leaders",
+    "lorem ipsum", "coming soon", "under construction", "TODO", "TBD", "placeholder text",
+    "world-leading", "world leading", "number one", "best-in-class", "best in class", "guaranteed",
+    "award-winning", "ISO 9001", "ISO 27001", "ISMS",
+]
+for phrase in BANNED:
+    hits = [p for p, t in text_of.items() if re.search(r"(?<![A-Za-z])" + re.escape(phrase) + r"(?![A-Za-z])", t, flags=re.I)]
+    report(not hits, f'"{phrase}" absent from visible text', ", ".join(hits[:5]))
+empty = [p for p, r in raw_of.items() if re.search(r"<h[1-6][^>]*>\s*</h[1-6]>", r)]
+report(not empty, "no empty headings", ", ".join(empty[:5]))
+stars = [p for p, t in text_of.items() if "★" in t]
+report(not stars, "no star ratings", ", ".join(stars[:5]))
+
+# 6. Structured data
+types: dict[str, int] = {}
+bad_json: list[str] = []
+keys: set[str] = set()
+
+
+def walk(node) -> None:
+    if isinstance(node, dict):
+        t = node.get("@type")
+        for name in (t if isinstance(t, list) else [t]):
+            if name:
+                types[name] = types.get(name, 0) + 1
+        keys.update(node.keys())
+        for value in node.values():
+            walk(value)
+    elif isinstance(node, list):
+        for item in node:
+            walk(item)
+
+
+for page, raw in raw_of.items():
+    for block in re.findall(r'<script type="application/ld\+json">(.*?)</script>', raw, flags=re.S):
+        try:
+            walk(json.loads(block))
+        except ValueError:
+            bad_json.append(page)
+report(not bad_json, "every JSON-LD block parses", ", ".join(bad_json[:5]))
+for excluded in ("JobPosting", "Review", "AggregateRating", "Rating", "Offer", "FAQPage"):
+    report(excluded not in types, f"no {excluded} structured data")
+for key in ("legalName", "award", "aggregateRating", "review", "foundingDate", "numberOfEmployees"):
+    report(key not in keys, f'no "{key}" property in structured data')
+lines.append("INFO  structured data types: " + ", ".join(f"{k} ×{v}" for k, v in sorted(types.items())))
+
+# 7. Credentials in tracked files
+SECRET_PATTERNS = [
+    r"-----BEGIN (?:RSA |EC |OPENSSH |DSA )?PRIVATE KEY-----",
+    r"AKIA[0-9A-Z]{16}",
+    r"gh[pousr]_[A-Za-z0-9]{30,}",
+    r"sk-[A-Za-z0-9]{32,}",
+    r"xox[baprs]-[A-Za-z0-9-]{10,}",
+    r"AIza[0-9A-Za-z_\-]{35}",
+    r"(?i)\b(?:password|passwd|secret|api[_-]?key|access[_-]?token|smtp_pass)\b\s*[:=]\s*[\"'][^\"'\s]{6,}[\"']",
+]
+tracked = subprocess.run(["git", "ls-files"], cwd=REPO, capture_output=True, text=True, check=True).stdout.split("\n")
+secret_hits: list[str] = []
+scanned = 0
+for name in tracked:
+    path = REPO / name
+    if not name or not path.is_file() or path.suffix.lower() in {".jpg", ".jpeg", ".png", ".webp", ".woff2", ".ico", ".gif", ".pdf", ".zip", ".avif"}:
+        continue
+    if name == "improved-src/tools/check-source.py":
+        continue
+    try:
+        content = path.read_text(encoding="utf-8")
+    except (UnicodeDecodeError, OSError):
+        continue
+    scanned += 1
+    for pattern in SECRET_PATTERNS:
+        if re.search(pattern, content):
+            secret_hits.append(f"{name} ({pattern[:24]})")
+report(not secret_hits, f"no credentials in {scanned} tracked text files", "; ".join(secret_hits[:5]))
+env_files = [n for n in tracked if re.search(r"(^|/)\.env(\.|$)|\.pem$|id_rsa", n)]
+report(not env_files, "no .env, .pem or key files tracked", ", ".join(env_files))
+
+print("\n".join(lines))
+print()
+print(f"{len(text_of)} HTML files read. {sum(1 for l in lines if l.startswith('PASS'))} checks passed, {len(failures)} failed.")
+print("RESULT:", "FAIL" if failures else "PASS")
+sys.exit(1 if failures else 0)

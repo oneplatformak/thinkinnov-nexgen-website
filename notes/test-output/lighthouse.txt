@@ -1,0 +1,77 @@
+# 2026-11-25T15:41:02Z to 15:51:48Z  commit b0cb123
+# Lighthouse 12.8.2, headless Chrome. Two sets of runs, both after the last change to any page.
+# Set 1, compression ON: 44 runs, 11 pages x 2 languages x mobile and desktop presets,
+#   served by: node improved-src/tools/serve.js 8812 (gzip and the headers that .htaccess sets, local machine)
+# Set 2, compression OFF: 10 runs, 5 pages x 2 languages, mobile preset only,
+#   served by: python3 -m http.server 8810 (no compression, and a new connection for every file)
+# command per run: npx lighthouse@12 http://127.0.0.1:<port>/<page> [--preset=desktop] --quiet --output=json --chrome-flags="--headless=new --no-sandbox --disable-dev-shm-usage"  (no preset = mobile)
+# These are local lab numbers with Lighthouse's simulated throttling. They are not field data,
+# and say nothing about the response time of the production host. Whether the production host
+# compresses is not known: see docs/README-DEPLOY.md, section 6.
+# about.html is the page that holds the photo gallery.
+# LCP = Largest Contentful Paint, CLS = Cumulative Layout Shift, TBT = Total Blocking Time (lab stand-in; INP cannot be measured in a lab)
+
+SET 1: compression on
+page                                                       perf a11y bp seo  LCP    CLS   TBT
+about_html_desktop                                          100  100 100 100  0.4 s  0     0 ms
+about_html_mobile                                            99  100 100 100  2.1 s  0     0 ms
+careers_01-tech-lead-teamcenter_html_desktop                100  100 100 100  0.4 s  0     0 ms
+careers_01-tech-lead-teamcenter_html_mobile                 100  100 100 100  1.7 s  0     0 ms
+careers_html_desktop                                        100  100 100 100  0.4 s  0     0 ms
+careers_html_mobile                                         100  100 100 100  1.8 s  0     0 ms
+contact_html_desktop                                        100  100 100 100  0.4 s  0     0 ms
+contact_html_mobile                                         100  100 100 100  1.7 s  0     0 ms
+digital-transformation_html_desktop                         100  100 100 100  0.4 s  0     0 ms
+digital-transformation_html_mobile                          100  100 100 100  1.7 s  0     0 ms
+index_html_desktop                                          100  100 100 100  0.4 s  0     0 ms
+index_html_mobile                                            99  100 100 100  2.0 s  0     20 ms
+industries_html_desktop                                     100  100 100 100  0.4 s  0     0 ms
+industries_html_mobile                                      100  100 100 100  1.7 s  0     0 ms
+ja_about_html_desktop                                       100  100 100 100  0.5 s  0     0 ms
+ja_about_html_mobile                                         99  100 100 100  2.1 s  0     0 ms
+ja_careers_01-tech-lead-teamcenter_html_desktop             100  100 100 100  0.4 s  0     0 ms
+ja_careers_01-tech-lead-teamcenter_html_mobile              100  100 100 100  1.7 s  0     0 ms
+ja_careers_html_desktop                                     100  100 100 100  0.4 s  0     0 ms
+ja_careers_html_mobile                                      100  100 100 100  1.7 s  0     0 ms
+ja_contact_html_desktop                                     100  100 100 100  0.4 s  0     0 ms
+ja_contact_html_mobile                                      100  100 100 100  1.7 s  0     0 ms
+ja_digital-transformation_html_desktop                      100  100 100 100  0.4 s  0     0 ms
+ja_digital-transformation_html_mobile                       100  100 100 100  1.8 s  0     0 ms
+ja_index_html_desktop                                       100  100 100 100  0.4 s  0     0 ms
+ja_index_html_mobile                                        100  100 100 100  1.9 s  0     60 ms
+ja_industries_html_desktop                                  100  100 100 100  0.4 s  0     0 ms
+ja_industries_html_mobile                                   100  100 100 100  1.9 s  0     0 ms
+ja_products_html_desktop                                    100  100 100 100  0.4 s  0     0 ms
+ja_products_html_mobile                                     100  100 100 100  1.6 s  0     60 ms
+ja_products_teamcenter_html_desktop                         100  100 100 100  0.4 s  0     0 ms
+ja_products_teamcenter_html_mobile                          100  100 100 100  1.7 s  0     0 ms
+ja_search_html_desktop                                      100  100 100 100  0.4 s  0     0 ms
+ja_search_html_mobile                                       100  100 100 100  1.7 s  0     0 ms
+ja_solutions_html_desktop                                   100  100 100 100  0.4 s  0     0 ms
+ja_solutions_html_mobile                                    100  100 100 100  1.7 s  0     0 ms
+products_html_desktop                                       100  100 100 100  0.4 s  0     0 ms
+products_html_mobile                                        100  100 100 100  1.7 s  0     0 ms
+products_teamcenter_html_desktop                            100  100 100 100  0.4 s  0     0 ms
+products_teamcenter_html_mobile                             100  100 100 100  1.7 s  0     0 ms
+search_html_desktop                                         100  100 100 100  0.4 s  0     0 ms
+search_html_mobile                                          100  100 100 100  1.7 s  0     0 ms
+solutions_html_desktop                                      100  100 100 100  0.4 s  0     0 ms
+solutions_html_mobile                                       100  100 100 100  1.7 s  0     0 ms
+
+Set 1 summary: performance 99 to 100 (3 runs below 100: about_html_mobile 99, index_html_mobile 99, ja_about_html_mobile 99); accessibility, best practices, SEO lowest 100, 100, 100; mobile LCP 1.58 to 2.10 s; desktop LCP 0.36 to 0.48 s; highest CLS 0.000; highest TBT 60 ms (mobile), 0 ms (desktop)
+
+SET 2: compression off (mobile preset)
+page                                                       perf a11y bp seo  LCP    CLS   TBT
+about_html_mobile                                            93  100 100 100  3.2 s  0     0 ms
+index_html_mobile                                            96  100 100 100  2.6 s  0     20 ms
+ja_about_html_mobile                                         93  100 100 100  3.2 s  0     0 ms
+ja_index_html_mobile                                         96  100 100 100  2.6 s  0     0 ms
+ja_products_html_mobile                                      97  100 100 100  2.6 s  0     60 ms
+ja_products_teamcenter_html_mobile                           97  100 100 100  2.6 s  0     0 ms
+ja_solutions_html_mobile                                     96  100 100 100  2.7 s  0     0 ms
+products_html_mobile                                         97  100 100 100  2.6 s  0     0 ms
+products_teamcenter_html_mobile                              97  100 100 100  2.6 s  0     0 ms
+solutions_html_mobile                                        95  100 100 100  2.9 s  0     0 ms
+
+Set 2 summary: performance 93 to 97; mobile LCP 2.55 to 3.15 s; over 2.5 s on 10 of 10 runs; below 95 for performance on 2 of 10; accessibility, best practices, SEO lowest 100, 100, 100; highest CLS 0.000
+# exit code 0

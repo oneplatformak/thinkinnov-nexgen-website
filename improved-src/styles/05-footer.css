@@ -1,0 +1,47 @@
+/* ---- Footer ---- */
+.site-footer { background: var(--dark); border-top: 1px solid var(--dark-rule); color: var(--on-dark-2); padding-block: clamp(3.5rem, 2.5rem + 4vw, 6rem) var(--s-6); font-size: 0.9375rem; }
+.site-footer a { color: var(--on-dark); text-decoration: none; }
+.site-footer a:hover { text-decoration: underline; }
+.footer-top { display: grid; gap: var(--s-7) var(--s-6); grid-template-columns: repeat(2, minmax(0, 1fr)); }
+.footer-brand, .footer-contact { grid-column: 1 / -1; }
+/* The logo is dark artwork and a brand asset: it is not recoloured or redrawn. It sits on a
+   paper plate with even margins until the client supplies a version for dark backgrounds. */
+.footer-logo { display: inline-block; padding: 1rem 1.25rem; border-radius: var(--radius); background: var(--paper); line-height: 0; }
+.footer-logo img { width: auto; height: 3.5rem; }
+.footer-tagline { margin-top: var(--s-5); max-width: 26rem; line-height: 1.6; }
+.footer-title { margin-bottom: var(--s-4); padding-bottom: 0.6rem; border-bottom: 1px solid var(--dark-rule); font-family: var(--font-display); font-size: var(--t-xs); font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; color: var(--on-dark-2); }
+html[lang="ja"] .footer-title { letter-spacing: 0.08em; font-size: 0.8125rem; }
+.footer-col li a { display: inline-block; min-width: 1.5rem; padding-block: 0.4rem; }
+.footer-contact address { line-height: 1.6; }
+.footer-contact p { margin-top: var(--s-4); line-height: 1.9; }
+.footer-contact p a { display: inline-block; min-height: 1.5rem; }
+/* The e-mail address stays on one line: it is set a little smaller if its column is narrow. */
+@supports (font-size: 1cqi) { .footer-contact { container-type: inline-size; } .footer-contact a[href^="mailto:"] { font-size: min(1em, 7.1cqi); } }
+/* Japanese link text is wider: one column of links on the narrowest phones. */
+@media (max-width: 439px) { html[lang="ja"] .footer-top { grid-template-columns: minmax(0, 1fr); } }
+.footer-offices { display: grid; grid-template-columns: repeat(auto-fit, minmax(7.5rem, 1fr)); gap: 0.75rem 1rem; margin-top: var(--s-5); padding-top: var(--s-4); border-top: 1px solid var(--dark-rule); }
+.footer-office-role { display: block; font-size: var(--t-xs); color: var(--on-dark-2); }
+.footer-office-name { display: block; font-family: var(--font-display); font-weight: 700; color: var(--on-dark); }
+.footer-bottom { display: flex; flex-wrap: wrap; align-items: center; gap: 1rem 2rem; margin-top: var(--s-8); padding-top: var(--s-5); border-top: 1px solid var(--dark-rule); font-size: var(--t-sm); }
+.footer-legal { display: flex; flex-wrap: wrap; gap: 0.25rem 1.5rem; }
+.footer-meta { display: flex; flex-wrap: wrap; gap: 0.25rem 1.5rem; }
+.footer-meta a, .to-top { display: inline-flex; align-items: center; gap: 0.4rem; min-height: 2.75rem; }
+.site-footer .lang-switch { border-color: var(--dark-rule); }
+.site-footer .lang-switch a { color: var(--on-dark-2); min-height: 2.75rem; }
+.site-footer .lang-switch a + a { border-color: var(--dark-rule); }
+.site-footer .lang-switch a:hover { background: var(--dark-2); color: var(--on-dark); text-decoration: none; }
+.site-footer .lang-switch a[aria-current] { background: var(--on-dark); color: var(--dark); }
+.to-top { margin-left: auto; }
+.to-top .icon { width: 1em; height: 1em; transform: rotate(-45deg); }
+.footer-trademark { margin-top: var(--s-4); font-size: var(--t-xs); color: var(--on-dark-2); max-width: 60rem; }
+
+@media (min-width: 700px) {
+  .footer-top { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+  .footer-brand { grid-column: 1 / span 2; }
+  .footer-contact { grid-column: 3; grid-row: 1 / span 2; }
+}
+@media (min-width: 1280px) {
+  .footer-top { grid-template-columns: minmax(0, 1.4fr) minmax(0, 1.25fr) repeat(3, minmax(0, 1fr)); gap: var(--s-6); }
+  .footer-brand { grid-column: 1; }
+  .footer-contact { grid-column: 2; grid-row: auto; }
+}

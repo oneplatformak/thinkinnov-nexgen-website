@@ -1,0 +1,117 @@
+# 2026-11-25T16:40:04Z  commit 8d3d57e
+# python3 improved-src/tools/check-source.py
+
+PASS  staging has four testimonials — 4
+PASS  testimonial verbatim on index.html — Congratulations on the successful Teamcenter upg…
+PASS  attribution on index.html — SWARAJ
+PASS  testimonial verbatim on index.html — We're thrilled with the successful Teamcenter up…
+PASS  attribution on index.html — EXIDE ENERGY
+PASS  testimonial verbatim on index.html — We just Thinkin(g) No(w) that we have found a gr…
+PASS  attribution on index.html — Ohmium
+PASS  testimonial verbatim on index.html — I am thrilled at the pace of implementation and …
+PASS  attribution on index.html — KISLAY PANKAJ
+PASS  attribution on index.html — CEO - LECTRIX
+PASS  testimonial verbatim on ja/index.html — Congratulations on the successful Teamcenter upg…
+PASS  attribution on ja/index.html — SWARAJ
+PASS  testimonial verbatim on ja/index.html — We're thrilled with the successful Teamcenter up…
+PASS  attribution on ja/index.html — EXIDE ENERGY
+PASS  testimonial verbatim on ja/index.html — We just Thinkin(g) No(w) that we have found a gr…
+PASS  attribution on ja/index.html — Ohmium
+PASS  testimonial verbatim on ja/index.html — I am thrilled at the pace of implementation and …
+PASS  attribution on ja/index.html — KISLAY PANKAJ
+PASS  attribution on ja/index.html — CEO - LECTRIX
+PASS  21 customer logos, same names and order, on index.html — 21 built, 21 in staging
+PASS  21 customer logos, same names and order, on ja/index.html — 21 built, 21 in staging
+PASS  every customer logo file exists — 21
+PASS  one job page per staging role, in both languages — 18 roles, 18 EN pages, 18 JA pages
+PASS  job title unchanged on careers/01-tech-lead-teamcenter.html — Tech Lead - Teamcenter
+PASS  job title unchanged on careers/02-teamcenter-developer.html — Teamcenter Developer
+PASS  job title unchanged on careers/03-support-engineer-capital.html — Support Engineer - Capital
+PASS  job title unchanged on careers/04-application-engineer-capital.html — Application Engineer - Capital
+PASS  job title unchanged on careers/05-project-manager.html — Project Manager
+PASS  job title unchanged on careers/06-plm-teamcenter-developer.html — PLM Teamcenter Developer
+PASS  job title unchanged on careers/07-teamcenter-plm-solution-architect.html — Teamcenter PLM Solution Architect
+PASS  job title unchanged on careers/08-team-lead.html — Team Lead
+PASS  job title unchanged on careers/09-plm-teamcenter-developer.html — PLM Teamcenter Developer
+PASS  job title unchanged on careers/10-plm-teamcenter-administrator.html — PLM Teamcenter Administrator
+PASS  job title unchanged on careers/11-technical-lead.html — Technical Lead
+PASS  job title unchanged on careers/12-solution-architect-digital-manufacturing.html — Solution Architect - Digital Manufacturing
+PASS  job title unchanged on careers/13-sales-engineer.html — Sales Engineer
+PASS  job title unchanged on careers/14-inside-sales-specialist.html — Inside Sales Specialist
+PASS  job title unchanged on careers/15-nx-application-engineer.html — NX Application Engineer
+PASS  job title unchanged on careers/16-plm-analyst.html — PLM Analyst
+PASS  job title unchanged on careers/17-catia-support-engineer.html — CATIA Support Engineer
+PASS  job title unchanged on careers/18-mendix-developer.html — Mendix Developer
+PASS  no JobPosting structured data
+PASS  the original has eleven industry images, I1 to I11, and all eleven are kept in staging-original/ — [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11]
+PASS  docs/ holds exactly the nine industry images that are published (the original's eleven less the two approved removals) — infographic-01.webp, infographic-03.webp, infographic-04.webp, infographic-05.webp, infographic-06.webp, infographic-07.webp, infographic-08.webp, infographic-09.webp, infographic-10.webp
+PASS  eleven industry entries on industries.html: entry n shows the original's image n, and entries 2 and 11 show none — [1, 0, 1, 1, 1, 1, 1, 1, 1, 1, 0]
+PASS  the two entries without an image on industries.html have no figure, caption, alt text or enlarge control left
+PASS  the two entries without an image on industries.html keep their title, relations and contact link
+PASS  eleven industry entries on ja/industries.html: entry n shows the original's image n, and entries 2 and 11 show none — [1, 0, 1, 1, 1, 1, 1, 1, 1, 1, 0]
+PASS  the two entries without an image on ja/industries.html have no figure, caption, alt text or enlarge control left
+PASS  the two entries without an image on ja/industries.html keep their title, relations and contact link
+PASS  eleven distinct industry titles on industries.html — 11
+PASS  neither removed image (infographic-02, infographic-11) is present or referenced anywhere in docs/
+PASS  none of the five figures printed in the removed image appears in any page
+PASS  all 242 English sentences of the original are on the site with the same words in the same order (12 listed exceptions)
+PASS  every listed exception is still needed
+PASS  each corrected sentence is shown in its corrected form
+PASS  the 18 careers-list summaries are character for character the original's
+PASS  each of the 16 “what our site says” lines in the finder is a whole sentence shown elsewhere on the site (solutions.html)
+PASS  each of the 16 “what our site says” lines in the finder is a whole sentence shown elsewhere on the site (ja/solutions.html)
+PASS  "Siemens Solution Partner" only on the home page — index.html, ja/index.html
+PASS  "Siemens Solution Partner" / 「Siemensソリューションパートナー」 exactly once on each home page and on no other page — index.html: 1, ja/index.html: 1
+PASS  that one occurrence is in the hero of index.html
+PASS  that one occurrence is in the hero of ja/index.html
+PASS  Japanese partner wording only on the Japanese home page — ja/index.html
+PASS  "Expert Partner - PLM" only on About — about.html, ja/about.html
+PASS  "ThinkInnov-NexGen KK - A Strategic Partnership in Japan" only on About — about.html
+PASS  no partner wording in any <head> (titles, descriptions, structured data)
+PASS  no partner wording in the footer
+PASS  source heading "Our Key Customers" kept (the site sets headings in sentence case)
+PASS  every drawn diagram (8 on 4 pages) is captioned “Conceptual diagram” / 「概念図」
+PASS  no drawn diagram has chart axes or a trend line
+PASS  "joint venture" absent from visible text
+PASS  "合弁" absent from visible text
+PASS  "digital twin" absent from visible text
+PASS  "デジタルツイン" absent from visible text
+PASS  "Trusted by Industry Leaders" absent from visible text
+PASS  "lorem ipsum" absent from visible text
+PASS  "coming soon" absent from visible text
+PASS  "under construction" absent from visible text
+PASS  "TODO" absent from visible text
+PASS  "TBD" absent from visible text
+PASS  "placeholder text" absent from visible text
+PASS  "world-leading" absent from visible text
+PASS  "world leading" absent from visible text
+PASS  "number one" absent from visible text
+PASS  "best-in-class" absent from visible text
+PASS  "best in class" absent from visible text
+PASS  "guaranteed" absent from visible text
+PASS  "award-winning" absent from visible text
+PASS  "ISO 9001" absent from visible text
+PASS  "ISO 27001" absent from visible text
+PASS  "ISMS" absent from visible text
+PASS  no empty headings
+PASS  no star ratings
+PASS  every JSON-LD block parses
+PASS  no JobPosting structured data
+PASS  no Review structured data
+PASS  no AggregateRating structured data
+PASS  no Rating structured data
+PASS  no Offer structured data
+PASS  no FAQPage structured data
+PASS  no "legalName" property in structured data
+PASS  no "award" property in structured data
+PASS  no "aggregateRating" property in structured data
+PASS  no "review" property in structured data
+PASS  no "foundingDate" property in structured data
+PASS  no "numberOfEmployees" property in structured data
+INFO  structured data types: BreadcrumbList ×78, EntryPoint ×2, ListItem ×206, Organization ×82, PostalAddress ×82, SearchAction ×2, WebSite ×2
+PASS  no credentials in 241 tracked text files
+PASS  no .env, .pem or key files tracked
+
+85 HTML files read. 109 checks passed, 0 failed.
+RESULT: PASS
+# exit code 0

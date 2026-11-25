@@ -1,0 +1,67 @@
+/* Design tokens. Paper and ink, hairline rules, one accent taken from the logo. */
+:root {
+  --paper: #fbfaf7;
+  --paper-2: #f4f1ea;
+  --paper-3: #ebe7dd;
+  --ink: #14181c;
+  --ink-2: #3b4249;
+  --ink-3: #5a626a;
+  --rule: #d9d4c9;
+  --rule-strong: #b5aea0;
+  --accent: #b33e14;
+  --accent-deep: #8f300e;
+  --accent-bright: #e05426;
+  --blue: #1f5c94;
+  --dark: #10151a;
+  --dark-2: #182028;
+  --dark-rule: #303b45;
+  --on-dark: #f3f0e9;
+  --on-dark-2: #b7bfc7;
+  --accent-on-dark: #f28a63;
+  --ok: #1e6b43;
+  --error: #a3261c;
+
+  --jp: "Hiragino Sans", "Hiragino Kaku Gothic ProN", "Yu Gothic UI", "Yu Gothic", "Meiryo", "Noto Sans JP", "Noto Sans CJK JP", sans-serif;
+  --font-display: "Manrope", "Inter", system-ui, -apple-system, "Segoe UI", var(--jp);
+  --font-body: "Inter", system-ui, -apple-system, "Segoe UI", var(--jp);
+  --font-mono: ui-monospace, "SFMono-Regular", "Cascadia Mono", "Menlo", "Consolas", monospace;
+
+  --t-xs: 0.75rem;
+  --t-sm: 0.875rem;
+  --t-base: 1rem;
+  --t-md: clamp(1.0625rem, 0.99rem + 0.3vw, 1.1875rem);
+  --t-lg: clamp(1.25rem, 1.12rem + 0.55vw, 1.5rem);
+  --t-xl: clamp(1.5rem, 1.25rem + 1.1vw, 2.125rem);
+  --t-2xl: clamp(1.875rem, 1.4rem + 2.1vw, 3rem);
+  --t-3xl: clamp(2.25rem, 1.45rem + 3.6vw, 4.25rem);
+  /* Page and section headings. Japanese sets its own sizes in 02-base.css; components
+     that mean "the normal heading size" use these, so both languages follow. */
+  --h1: var(--t-3xl);
+  --h2: var(--t-2xl);
+
+  --s-1: 0.25rem;
+  --s-2: 0.5rem;
+  --s-3: 0.75rem;
+  --s-4: 1rem;
+  --s-5: 1.5rem;
+  --s-6: 2rem;
+  --s-7: 3rem;
+  --s-8: 4rem;
+  --s-9: 6rem;
+  --section: clamp(4rem, 2.6rem + 6vw, 8rem);
+
+  --container: 77.5rem;
+  --gutter: clamp(1.25rem, 0.6rem + 3vw, 3rem);
+  --header-h: 4.5rem;
+  --radius: 2px;
+  --ease: cubic-bezier(0.2, 0.7, 0.2, 1);
+}
+
+@media (min-width: 1800px) {
+  :root { --container: 88rem; }
+  html { font-size: 106.25%; }
+}
+@media (min-width: 2400px) {
+  :root { --container: 100rem; }
+  html { font-size: 118.75%; }
+}

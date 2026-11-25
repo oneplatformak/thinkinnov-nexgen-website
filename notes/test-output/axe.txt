@@ -1,0 +1,12 @@
+# 2026-11-25T16:42:26Z  commit 8d3d57e
+# node improved-src/tools/test-axe.js
+
+
+axe-core 4.14.1: 82 pages x 2 widths = 164 scans, 60 rules passed somewhere
+Violations: 0. Items axe could not decide and left for a person: 36
+UNDECIDED color-contrast: Elements must meet minimum color contrast ratio thresholds: 36 scans, 222 elements
+    apply.html @390: #a-job
+    careers.html @390: #role-discipline
+    contact.html @390: #f-type
+PASS
+# exit code 0
