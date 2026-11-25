@@ -30,7 +30,7 @@ function footer() {
         <div class="footer-contact">
           <h2 class="footer-title">Head office</h2>
           <address>
-            <a href="${config.mapUrl}" target="_blank" rel="noopener">${config.addressLines.map((l) => verbatim(l)).join("<br>")}<span class="visually-hidden"> (opens map in a new tab)</span></a>
+            <a href="${config.mapUrl}" target="_blank" rel="noopener">${site.isJa() ? esc(config.addressSingle) : config.addressLines.map((l) => verbatim(l)).join("<br>")}<span class="visually-hidden"> (opens map in a new tab)</span></a>
           </address>
           <p><a href="tel:${config.phoneTel}">${esc(config.phoneDisplay)}</a><br><a href="mailto:${config.email}">${esc(config.email)}</a></p>
           <ul class="footer-offices">${offices}</ul>

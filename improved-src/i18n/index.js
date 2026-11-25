@@ -59,7 +59,7 @@ function isNeutral(text) {
   if (keep.has(text)) return true;
   if (/^(https?:|mailto:|tel:)/i.test(text) || /^[\w.+-]+@[\w.-]+$/.test(text)) return true;
   const stripped = text.replace(/ThinkInnov-NexGen|Teamcenter X|Teamcenter|Tecnomatix|Solid Edge|Mendix|Capital|Siemens|PDMLink|CATIA/g, "");
-  return !/[a-z]{3,}/.test(stripped);
+  return !/[a-z]{2,}/.test(stripped);
 }
 
 function lookup(text, pageRel, kind) {
@@ -101,7 +101,7 @@ const ATTRS = /\b(aria-label|aria-description|alt|placeholder|title|data-l10n-[a
 
 function apply(html, pageRel) {
   const held = [];
-  let out = html.replace(/<(script|style)\b[\s\S]*?<\/\1>/gi, (block) => {
+  let out = html.replace(/<(script|style|title)\b[\s\S]*?<\/\1>/gi, (block) => {
     held.push(block);
     return `%%HELD${held.length - 1}%%`;
   });
@@ -113,7 +113,7 @@ function apply(html, pageRel) {
   });
 
   out = out.replace(ATTRS, (full, attr, value) => {
-    if (!value.trim()) return full;
+    if (!value.trim() || value.includes(RAW_OPEN)) return full;
     const next = lookup(decode(value), pageRel, attr);
     return next == null ? full : `${attr}="${encode(next)}"`;
   });
@@ -132,4 +132,4 @@ function register() {
   }));
 }
 
-module.exports = { t, apply, report, register, duplicates, phraseEngine: phrase.engine };
+module.exports = { t, apply, report, register, duplicates, phraseEngine: phrase.engine, get patternCount() { return patterns.length; } };

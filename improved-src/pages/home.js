@@ -23,7 +23,7 @@ function hero() {
         </div>
         <dl class="hero-facts">
           <div><dt>Head office</dt><dd>Harumi, Tokyo</dd></div>
-          <div><dt>Branch offices</dt><dd>Nagaoka · Coimbatore · Chennai</dd></div>
+          <div><dt>Branch offices</dt><dd><span>Nagaoka</span> · <span>Coimbatore</span> · <span>Chennai</span></dd></div>
           <div><dt>Siemens portfolio</dt><dd>${content.products.map((p) => verbatim(p.name)).join(" · ")}</dd></div>
         </dl>
       </div>
@@ -98,7 +98,7 @@ function services() {
           <p class="phase-when">${labels[i]}</p>
           <h3><a href="${site.page(`services.html#${phase.key}`)}">${esc(phase.title)}</a></h3>
           <dl>${phase.blocks
-            .map(([label, items]) => `<div><dt>${esc(label)}</dt><dd>${items.length ? items.map(esc).join(", ") : "—"}</dd></div>`)
+            .map(([label, items]) => `<div><dt>${esc(label)}</dt>${items.length ? `<dd><ul class="inline-list">${items.map((item) => `<li>${esc(item)}</li>`).join("")}</ul></dd>` : ""}</div>`)
             .join("")}</dl>
         </li>`
     )
@@ -274,7 +274,7 @@ function contact() {
         <ul class="contact-lines">
           <li>${icons.phone}<a href="tel:${config.phoneTel}">${esc(config.phoneDisplay)}</a></li>
           <li>${icons.mail}<a href="mailto:${config.email}">${esc(config.email)}</a></li>
-          <li>${icons.map}<a href="${config.mapUrl}" target="_blank" rel="noopener">${verbatim(config.addressSingle)}<span class="visually-hidden"> (opens map in a new tab)</span></a></li>
+          <li>${icons.map}<a href="${config.mapUrl}" target="_blank" rel="noopener">${esc(config.addressSingle)}<span class="visually-hidden"> (opens map in a new tab)</span></a></li>
         </ul>
       </div>
       <ul class="action-list">${actions}</ul>

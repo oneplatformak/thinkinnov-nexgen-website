@@ -1,0 +1,111 @@
+/**
+ * New Japanese for the site chrome: navigation, footer, buttons, forms and
+ * validation messages. Written for this build; awaiting native review.
+ */
+const kanji = (n) => n;
+
+module.exports = {
+  area: "Navigation, footer and forms",
+  keep: ["English", "LinkedIn", "Fig.", "Fig. 1", "mx", "Siemens SW PDM to PLM"],
+  patterns: [
+    [/^Enlarge photo (\d+) of (\d+)$/, (m) => `写真を拡大（${m[2]}枚中${kanji(m[1])}枚目）`],
+    [/^Infographic: (.+)$/, (m, inner) => `インフォグラフィック：${inner(m[1])}`],
+    [/^(\d+)\+ Years$/, (m) => `${m[1]}年以上`],
+    [/^(\d+) - (\d+) Years$/, (m) => `${m[1]}〜${m[2]}年`],
+    [/^Other roles in (.+)$/, (m, inner) => `「${inner(m[1])}」のその他の職種`],
+    [/^Careers that mention (.+)$/, (m) => `${m[1]}に関連する募集職種`],
+  ],
+  entries: {
+    // Header and navigation
+    "Skip to content": "本文へスキップ",
+    "ThinkInnov-NexGen home": "ThinkInnov-NexGen ホーム",
+    "Main": "メインナビゲーション",
+    "Mobile": "モバイルナビゲーション",
+    "Menu": "メニュー",
+    "Close": "閉じる",
+    "Language": "言語",
+    "Breadcrumb": "パンくずリスト",
+    "Home": "ホーム",
+    "What we do": "事業内容",
+    "Company": "企業情報",
+    "Approach": "アプローチ",
+    "About": "会社について",
+    "Work with us": "採用・お問い合わせ",
+    // Staging used 会社概要 for both "About Us" and "Company Profile". On the
+    // About page those are two different things, so the page is 会社情報.
+    "About Us": "会社情報",
+    "Find by business need": "課題から探す",
+    "Start from the problem you want to solve.": "解決したい課題からお探しいただけます。",
+    "Product lifecycle": "製品ライフサイクル",
+    "See where each product and solution fits.": "各製品・ソリューションの位置づけをご覧いただけます。",
+    "All solutions": "ソリューション一覧",
+    "Fifteen solutions for product data, quality, change and integration.": "製品データ、品質、変更、システム連携に関する15のソリューション。",
+    "Consulting, implementation and sustaining services.": "コンサルティング、導入、保守・運用支援のサービス。",
+    "Strategy and roadmap with the Product Data Maturity Model.": "製品データ成熟度モデル（PDMM）による戦略とロードマップ。",
+    "Profile, mission, values, gallery, leadership and company profile.": "プロフィール、ミッション、価値観、ギャラリー、経営陣、会社概要。",
+    "The problems we solve and the team that solves them.": "私たちが解決する課題と、それに取り組むチーム。",
+    "Current opportunity areas and how to apply.": "募集中の職種と応募方法。",
+    "Enquiries, demonstrations and consultations.": "お問い合わせ、デモンストレーション、ご相談。",
+    "All products": "製品一覧",
+    "Siemens portfolio": "Siemens製品ポートフォリオ",
+    "Email us": "メールでのお問い合わせ",
+    "On this page": "このページの内容",
+
+    // Footer
+    "We enable customers to innovate more and faster by effectively re-using knowledge acquired during the product lifecycle through our innovative digital solutions.":
+      "製品ライフサイクルで得られた知識を革新的なデジタルソリューションで効果的に再利用し、お客様がより多く、より速くイノベーションを実現できるよう支援します。",
+    "Head office": "本社",
+    "Privacy notice": "個人情報の取り扱い",
+    "Accessibility": "アクセシビリティ",
+    "Sitemap": "サイトマップ",
+    "Back to top": "ページの先頭へ",
+    "Siemens, NX, Solid Edge, Capital, Teamcenter, Tecnomatix and Mendix are trademarks or registered trademarks of their respective owners.":
+      "Siemens、NX、Solid Edge、Capital、Teamcenter、Tecnomatix、Mendixは、各社の商標または登録商標です。",
+    "(opens map in a new tab)": "（新しいタブで地図を開きます）",
+    "(opens in a new tab)": "（新しいタブで開きます）",
+    "Conceptual image": "イメージ画像",
+    "Tokyo": "東京",
+    "Nagaoka": "長岡",
+    "Coimbatore": "コインバトール",
+    "Chennai": "チェンナイ",
+    "Japan": "日本",
+    "India": "インド",
+
+    // Shared calls to action
+    "Book a PLM consultation": "PLMのご相談を予約する",
+    "Request a product demonstration": "製品デモンストレーションを依頼する",
+    "Request a demonstration": "デモンストレーションを依頼する",
+    "Discuss digital transformation": "デジタルトランスフォーメーションについて相談する",
+    "Ask about support": "サポートについて問い合わせる",
+    "Ask a question": "質問する",
+    "See what helps": "解決の手がかりを見る",
+    "All services": "サービス一覧",
+    "All industries": "業界一覧",
+    "All 15 solutions": "全15ソリューションを見る",
+    "Company profile": "会社概要を見る",
+    "Meet the delivery team": "デリバリーチームを見る",
+    "Executive leadership": "経営陣を見る",
+    "All roles": "募集職種一覧",
+    "View all roles": "募集職種一覧を見る",
+
+    // Forms
+    "Required": "必須",
+    "Optional": "任意",
+    "Select": "選択してください",
+    "PDF, DOC or DOCX, up to 5 MB.": "PDF、DOC、DOCX形式、5MBまで。",
+    "Leave this field empty": "この欄は空欄のままにしてください",
+    "Please check the highlighted fields.": "入力内容をご確認ください。",
+    "Please enter your name.": "お名前をご入力ください。",
+    "Please enter your email address.": "メールアドレスをご入力ください。",
+    "Please enter a valid email address.": "正しい形式のメールアドレスをご入力ください。",
+    "Please enter your message.": "お問い合わせ内容をご入力ください。",
+    "Please choose an enquiry type.": "お問い合わせ種別をお選びください。",
+    "Please choose an option.": "選択肢からお選びください。",
+    "Please confirm your agreement to continue.": "送信には同意が必要です。チェックを入れてください。",
+    "Please confirm your consent to continue.": "送信には同意が必要です。チェックを入れてください。",
+
+    // Lightbox and misc aria
+    "Customers": "お客様",
+    "Enlarge infographic": "インフォグラフィックを拡大",
+  },
+};

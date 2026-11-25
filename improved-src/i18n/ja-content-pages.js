@@ -1,0 +1,158 @@
+/** New Japanese for About, Services, Digital Transformation and Behind the Brand. Awaiting native review. */
+module.exports = {
+  area: "Company and service pages",
+  keep: [],
+  entries: {
+    // Service items (home and services page)
+    "Business process re-engineering": "ビジネスプロセス・リエンジニアリング",
+    "Strategic business consulting": "戦略的ビジネスコンサルティング",
+    "Solution evaluation consulting": "ソリューション評価コンサルティング",
+    "Service positioning": "サービスポジショニング",
+    "Solution mapping": "ソリューションマッピング",
+    "Proof of concepts": "概念実証（PoC）",
+    "Requirement analysis": "要件分析",
+    "Solution architecting": "ソリューションアーキテクチャ設計",
+    "Technical architecting": "テクニカルアーキテクチャ設計",
+    "Deployment architecture": "導入アーキテクチャ設計",
+    "System setup": "システムセットアップ",
+    "Configuration": "コンフィグレーション",
+    "Customization": "カスタマイズ",
+    "Production deployment": "本番環境への展開",
+    "User enablement by training": "トレーニングによるユーザー定着支援",
+    "Project management": "プロジェクトマネジメント",
+    "L1 support": "L1サポート",
+    "L2 support": "L2サポート",
+    "L3 support": "L3サポート",
+    "Performance tuning": "パフォーマンスチューニング",
+    "Cloud transition & upgrades": "クラウド移行とアップグレード",
+
+    // About
+    "ThinkInnov-NexGen profile: who we are, vision, mission and values, gallery, executive leadership, the strategic partnership in Japan and the company profile.":
+      "ThinkInnov-NexGenのご紹介：私たちについて、ビジョン・ミッション・価値観、ギャラリー、経営陣、日本における戦略的パートナーシップ、会社概要。",
+    "Identity": "私たちについて",
+    "Principles": "理念",
+    "Profile": "会社概要",
+    "Partnership": "パートナーシップ",
+    "Partnership in Japan": "日本におけるパートナーシップ",
+    "CEO & Founder": "CEO・創業者",
+    "MD & Founder": "MD・創業者",
+    "Click here to view map": "地図を見る",
+    "A group cutting a red ribbon at the office entrance": "オフィス入口でテープカットを行う人々",
+    "A group standing in the office beside the ThinkInnov-NexGen sign and a ceremonial lamp": "オフィス内、ThinkInnov-NexGenのサインと儀式用のランプの横に並ぶ人々",
+    "A guest holding a bouquet of flowers in the corridor": "廊下で花束を手にする来賓",
+    "A guest lighting the ceremonial lamp in front of the ThinkInnov-NexGen sign": "ThinkInnov-NexGenのサインの前で儀式用のランプに点灯する来賓",
+    "Four people beside a lit ceremonial lamp in front of the ThinkInnov-NexGen sign": "ThinkInnov-NexGenのサインの前、点灯した儀式用ランプの横に立つ4名",
+    "Guests gathered in a corridor in front of a red ribbon at the office entrance": "オフィス入口の赤いリボンの前、廊下に集まった来賓",
+    "Guests gathered in the corridor outside the office entrance": "オフィス入口前の廊下に集まった来賓",
+    "Guests lined up along a corridor behind a red ribbon": "赤いリボンの後ろ、廊下に並ぶ来賓",
+    "Guests talking in the corridor outside the office entrance": "オフィス入口前の廊下で歓談する来賓",
+    "Hands cutting a red ribbon at the office entrance": "オフィス入口で赤いリボンにはさみを入れる手元",
+    "Team members gathered around a table with food, smiling at the camera": "料理の並ぶテーブルを囲み、カメラに笑顔を向けるメンバー",
+    "Two people exchanging a bouquet of flowers in the office": "オフィスで花束を受け渡す2名",
+    "Japan on-site sales & market development and customer relationship": "日本国内でのオンサイト営業、市場開拓、顧客リレーション",
+    "Pre-sales support & PoC development": "プリセールス支援とPoC開発",
+    "Bilingual PM / PMO / Bridge Engineer / Coordinators with offshore and any onsite support":
+      "バイリンガルのPM／PMO／ブリッジエンジニア／コーディネーターによる、オフショアおよびオンサイトでの支援",
+    "End-to-end Digital Thread / Digital Transformation delivery combining the expertise of PLM, ERP and MES (onsite & offshore)":
+      "PLM・ERP・MESの専門性を組み合わせた、デジタルスレッド／デジタルトランスフォーメーションの一貫した提供（オンサイトおよびオフショア）",
+    "Expertise: MCAD, ECAD, Teamcenter, Mendix, SAP, Web/Mobile Tech, IIoT, MES, Cloud and AI.":
+      "専門領域：MCAD、ECAD、Teamcenter、Mendix、SAP、Web／モバイル技術、IIoT、MES、クラウド、AI。",
+
+    // Services
+    "Pre-implementation, implementation and post-implementation services: consulting, solution mapping, development, deployment, L1 to L3 support and enhancements.":
+      "導入前・導入・導入後の各サービス：コンサルティング、ソリューションマッピング、開発、展開、L1〜L3サポート、機能拡張。",
+    "Structured consulting, implementation and sustaining services grouped for clearer reading.":
+      "コンサルティング、導入、保守・運用支援の各サービスを、段階ごとに整理してご紹介します。",
+    "Service phases": "サービスの段階",
+    "Discuss an implementation": "導入について相談する",
+    "Tell us where you are in your PLM journey": "PLMへの取り組みの現在地をお聞かせください",
+
+    // Digital transformation
+    "Digital transformation with the Product Data Maturity Model (PDMM): four maturity levels from system definition to innovation platform, and the digital outcomes they support.":
+      "製品データ成熟度モデル（PDMM）によるデジタルトランスフォーメーション：システム定義からイノベーションプラットフォームまでの4つの成熟度レベルと、それらが支えるデジタル成果。",
+    "ThinkInnov-NexGen enables digital transformation with Product Data Maturity Model strategy, roadmap thinking and connected product data platforms.":
+      "ThinkInnov-NexGenは、製品データ成熟度モデルに基づく戦略、ロードマップの考え方、連携した製品データプラットフォームによって、デジタルトランスフォーメーションを実現します。",
+    "PDMM defines the maturity of product data managed by a company and helps create the PLM strategy and roadmap.":
+      "PDMMは、企業が管理する製品データの成熟度を定義し、PLM戦略とロードマップの策定に役立ちます。",
+    "Four levels of product data maturity, PDMM L1 to L4.": "製品データ成熟度の4つのレベル（PDMM L1〜L4）。",
+    "System Definition": "システム定義",
+    "System to Digital": "システムからデジタルへ",
+    "Driving Digital": "デジタルの推進",
+    "Innovation Platform": "イノベーションプラットフォーム",
+    "Defines the data and information that must be collected or managed for the product.":
+      "製品について収集・管理すべきデータと情報を定義します。",
+    "Structured and connected data management with a digital foundation.": "デジタル基盤による、構造化され連携したデータ管理。",
+    "Effective usage of existing product data to reduce time-to-market and cost.": "既存の製品データを有効活用し、市場投入までの期間とコストを削減します。",
+    "Engineering-powered predictive layer for the right feature mix of the product.": "エンジニアリングに基づく予測レイヤーにより、製品に最適な機能構成を導きます。",
+    "Digital Outcomes": "デジタル成果",
+    "Outcomes": "成果",
+    "Process Data": "プロセスデータ",
+    "Predictive Innovation": "予測型イノベーション",
+    "Augmented Intelligence Platform": "拡張知能プラットフォーム",
+    "Connect product data and quality feedback into a reusable digital thread.": "製品データと品質フィードバックを、再利用可能なデジタルスレッドとしてつなぎます。",
+    "Structure process knowledge so teams can make faster and better decisions.": "プロセスの知識を構造化し、チームがより速く、より良い意思決定を行えるようにします。",
+    "Use augmented intelligence to identify patterns and improve product choices.": "拡張知能を活用してパターンを見いだし、製品に関する選択を改善します。",
+    "Consulting services": "コンサルティングサービス",
+    "Finder": "課題別ファインダー",
+    "Gaining insight from product data": "製品データから知見を得る",
+    "Predicting product performance earlier": "製品性能を早期に予測する",
+    "The connected product lifecycle": "つながる製品ライフサイクル",
+    "Where products and solutions sit": "製品とソリューションの位置づけ",
+
+    // PLM For Everyone
+    "PLM for startups, SMBs and enterprises: the benefits of PLM, the new product development process, deployment options and why ThinkInnov-NexGen for PLM.":
+      "スタートアップ、中堅・中小企業、大企業のためのPLM：PLMのメリット、新製品開発プロセス、導入形態、そしてThinkInnov-NexGenが選ばれる理由。",
+    "Benefits of PLM": "PLMのメリット",
+    "Why PLM": "PLMの意義",
+    "Why us": "選ばれる理由",
+    "Business Benefits": "ビジネス上のメリット",
+    "Better Collaboration": "コラボレーションの向上",
+    "Smart PLM Tools": "スマートなPLMツール",
+    "Implementation Expertise": "導入の専門性",
+    "PLM reduces time to market, improves quality and sustainability, increases efficiency and lowers costs by helping teams make informed decisions.":
+      "PLMは、チームが的確な意思決定を行えるよう支援することで、市場投入までの期間を短縮し、品質とサステナビリティを向上させ、効率を高め、コストを削減します。",
+    "Faster time to market, improved quality, cost reduction, innovation and regulatory compliance.":
+      "市場投入までの期間短縮、品質向上、コスト削減、イノベーション、法規制への対応。",
+    "Real-time information sharing, task management and streamlined communication across functions.":
+      "リアルタイムの情報共有、タスク管理、部門をまたぐ円滑なコミュニケーション。",
+    "Tailored PLM implementation and integration for your industry and operating model.":
+      "お客様の業界と事業運営の形に合わせた、PLMの導入とシステム連携。",
+    "Company size": "企業規模",
+    "Solutions for Every Business Size": "あらゆる企業規模に対応するソリューション",
+    "Process": "プロセス",
+    "New Product Development Process": "新製品開発プロセス",
+    "Structured Ideation": "体系的なアイデア創出",
+    "Collaborative Design": "協調設計",
+    "Real-Time Tracking": "リアルタイム追跡",
+    "Capture and manage ideas with a repeatable path toward product decisions.": "アイデアを収集・管理し、製品化の判断へとつなげる再現性のある道筋をつくります。",
+    "Give teams shared spaces for design, review and product definition.": "設計、レビュー、製品定義のための共有スペースをチームに提供します。",
+    "Track milestones, quality controls and commercialization readiness.": "マイルストーン、品質管理、製品化に向けた準備状況を追跡します。",
+    "Deployment": "導入形態",
+    "Deployment options": "導入形態の選択肢",
+    "Why ThinkInnov-NexGen for PLM": "PLMにThinkInnov-NexGenが選ばれる理由",
+    "Integrate": "統合する",
+    "Interconnect": "相互につなぐ",
+    "Collaborate": "協働する",
+    "Synchronize": "同期する",
+    "Bring product and process information together so knowledge is no longer siloed across disconnected systems.":
+      "製品情報とプロセス情報をひとつにまとめ、分断されたシステムの間で知識が孤立しないようにします。",
+    "Connect systems and sub-systems to avoid late-stage problems and build accurate definitions earlier.":
+      "システムとサブシステムをつなぎ、後工程での問題を防ぎ、より早い段階で正確な定義を確立します。",
+    "Enable cross-domain collaboration to accelerate innovation and decision-making.": "領域をまたぐコラボレーションを可能にし、イノベーションと意思決定を加速します。",
+    "Help stakeholders find, share, reuse and automate product data and processes.": "関係者が製品データとプロセスを検索・共有・再利用・自動化できるよう支援します。",
+    "See the whole product lifecycle": "製品ライフサイクル全体を見る",
+    "Talk to us about your situation": "貴社の状況をお聞かせください",
+
+    // Behind the brand
+    "The problems ThinkInnov-NexGen solves in new product development, and the delivery leaders and specialists who solve them.":
+      "ThinkInnov-NexGenが新製品開発において解決する課題と、その解決に取り組むデリバリーリーダーおよびスペシャリストをご紹介します。",
+    "Delivery leaders and specialists helping customers adopt practical PLM and digital transformation.":
+      "実践的なPLMとデジタルトランスフォーメーションの定着を支援する、デリバリーリーダーとスペシャリスト。",
+    "Problems": "課題",
+    "People": "メンバー",
+    "Business Consultant": "ビジネスコンサルタント",
+    "Delivery Manager": "デリバリーマネージャー",
+    "Solution Architect": "ソリューションアーキテクト",
+    "Technical Architect": "テクニカルアーキテクト",
+  },
+};

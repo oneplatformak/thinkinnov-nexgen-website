@@ -96,7 +96,7 @@ function profile() {
       let cell;
       if (value === "map-link") cell = `<a href="${config.mapUrl}" target="_blank" rel="noopener">Click here to view map<span class="visually-hidden"> (opens in a new tab)</span></a>`;
       else if (Array.isArray(value)) cell = value.map((v) => esc(v)).join("<br>");
-      else if (label === "Head Office") cell = verbatim(value);
+      else if (label === "Head Office") cell = esc(value);
       else cell = `<span translate="no">${verbatim(value)}</span>`;
       return `<div><dt>${esc(label)}</dt><dd>${cell}</dd></div>`;
     })

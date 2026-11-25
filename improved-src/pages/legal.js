@@ -28,7 +28,7 @@ const p = (text) => `<p>${esc(text)}</p>`;
 const list = (items) => `<ul class="ticks">${items.map((i) => `<li>${esc(i)}</li>`).join("")}</ul>`;
 
 function contactBlock() {
-  return `<p>ThinkInnov-NexGen<br>${verbatim(config.addressSingle)}<br><a href="mailto:${config.email}">${esc(config.email)}</a><br><a href="tel:${config.phoneTel}">${esc(config.phoneDisplay)}</a></p>`;
+  return `<p>ThinkInnov-NexGen<br>${esc(config.addressSingle)}<br><a href="mailto:${config.email}">${esc(config.email)}</a><br><a href="tel:${config.phoneTel}">${esc(config.phoneDisplay)}</a></p>`;
 }
 
 function privacy() {

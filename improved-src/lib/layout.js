@@ -26,12 +26,12 @@ function translateTitle(title) {
 const BASE_404 =
   '<script>(function(){var p=location.pathname.split("/"),r=/github\\.io$/.test(location.hostname)&&p[1]?"/"+p[1]+"/":"/",b=document.createElement("base");b.href=r+LANGDIR;document.head.appendChild(b)})()</script>';
 
-function head({ title, description, noindex, is404 }) {
+function head({ title, description, descriptionJa, noindex, is404 }) {
   const lang = site.lang();
   const pagePath = site.currentPath();
   const canonical = site.absolute(pagePath, lang);
   const pageTitle = translateTitle(title);
-  const pageDescription = i18n.t(description);
+  const pageDescription = site.isJa() && descriptionJa ? descriptionJa : i18n.t(description);
   const image = `${config.baseUrl}/${config.ogImage}`;
   const base = is404 ? BASE_404.replace("LANGDIR", lang === "ja" ? '"ja/"' : '""') + "\n  " : "";
   const robots = noindex ? '<meta name="robots" content="noindex">\n  ' : "";

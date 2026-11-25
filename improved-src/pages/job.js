@@ -2,6 +2,7 @@
 const site = require("../lib/site");
 const icons = require("../lib/icons");
 const { esc } = require("../lib/html");
+const i18n = require("../i18n");
 const c = require("../lib/components");
 const config = require("../config");
 const content = require("../content");
@@ -23,6 +24,7 @@ function render(job) {
   return {
     title: `${job.title} | Careers | ThinkInnov-NexGen`,
     description: `${job.title} at ThinkInnov-NexGen (${job.location}, ${job.experience}). ${job.summary}`,
+    descriptionJa: `ThinkInnov-NexGenの募集職種：${i18n.t(job.title)}（${i18n.t(job.location)}、${i18n.t(job.experience)}）。${i18n.t(job.summary)}`,
     active: "careers",
     crumbs,
     body: `<section class="page-hero job-hero">
@@ -30,7 +32,7 @@ function render(job) {
         ${c.breadcrumbs(crumbs)}
         <div class="page-hero-grid">
           <div class="page-hero-text">
-            <p class="kicker">ThinkInnov-NexGen · ${esc(job.employment)}</p>
+            <p class="kicker"><span>ThinkInnov-NexGen</span> · <span>${esc(job.employment)}</span></p>
             <h1>${esc(job.title)}</h1>
             <p class="lead">${esc(job.summary)}</p>
           </div>

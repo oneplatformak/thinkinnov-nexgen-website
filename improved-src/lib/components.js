@@ -2,7 +2,7 @@
 const config = require("../config");
 const site = require("./site");
 const icons = require("./icons");
-const { esc, pad2 } = require("./html");
+const { esc, verbatim, pad2 } = require("./html");
 const content = require("../content");
 const { webpSize } = require("./imagesize");
 
@@ -128,7 +128,7 @@ function logoWall() {
     .map(([file, name]) => {
       const rel = `assets/img/customers/${file}.webp`;
       const [w, h] = webpSize(rel);
-      return `<li><img src="${site.asset(rel)}" width="${w}" height="${h}" alt="${esc(name)}" loading="lazy" decoding="async"></li>`;
+      return `<li><img src="${site.asset(rel)}" width="${w}" height="${h}" alt="${verbatim(name)}" loading="lazy" decoding="async"></li>`;
     })
     .join("")}</ul>`;
 }
@@ -136,7 +136,7 @@ function logoWall() {
 function person([image, name, role], { size = 600 } = {}) {
   return `<li class="person">
           <img src="${site.asset(image)}" width="${size}" height="${size}" alt="" loading="lazy" decoding="async">
-          <h3 class="person-name" translate="no">${esc(name)}</h3>
+          <h3 class="person-name" translate="no">${verbatim(name)}</h3>
           <p class="person-role">${esc(role)}</p>
         </li>`;
 }

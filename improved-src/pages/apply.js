@@ -73,7 +73,7 @@ function render() {
               mailSubject: "Job application",
             },
           })}
-          <noscript><p class="form-noscript">If the form does not send, please email your CV to <a href="mailto:${config.email}">${esc(config.email)}</a>.</p></noscript>
+          <noscript><p class="form-noscript">If the form does not send, please email your CV to us: <a href="mailto:${config.email}">${esc(config.email)}</a></p></noscript>
         </div>
         <aside class="form-aside" aria-label="About applying">
           <h2 class="h-sub">Before you apply</h2>

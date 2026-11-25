@@ -41,7 +41,7 @@ html[lang="ja"] .message h2 { font-size: 1.25rem; line-height: 1.5; max-width: n
 }
 
 /* ---- Approach strip ---- */
-.strip { display: grid; grid-template-columns: repeat(auto-fit, minmax(8.75rem, 1fr)); border-top: 1px solid var(--ink); border-left: 1px solid var(--rule); }
+.strip { display: grid; grid-template-columns: repeat(2, 1fr); border-top: 1px solid var(--ink); border-left: 1px solid var(--rule); }
 .strip li { padding: 0.9rem 1rem 1rem; border-right: 1px solid var(--rule); border-bottom: 1px solid var(--rule); }
 .strip-n { display: block; font-family: var(--font-display); font-size: var(--t-xs); font-weight: 700; color: var(--accent); }
 .strip-label { font-family: var(--font-display); font-weight: 700; }
@@ -70,6 +70,9 @@ html[lang="ja"] .message h2 { font-size: 1.25rem; line-height: 1.5; max-width: n
 .phase dl div { padding-block: 0.8rem; border-top: 1px solid var(--rule); }
 .phase dt { font-family: var(--font-display); font-weight: 700; }
 .phase dd { color: var(--ink-2); font-size: 0.9375rem; }
+.inline-list li { display: inline; }
+.inline-list li:not(:last-child)::after { content: ", "; }
+html[lang="ja"] .inline-list li:not(:last-child)::after { content: "、"; }
 @media (min-width: 900px) {
   .phases { grid-template-columns: repeat(3, minmax(0, 1fr)); }
   .phase { padding: var(--s-6) var(--s-6) 0 0; border-left: 0; border-top: 1px solid var(--ink); }

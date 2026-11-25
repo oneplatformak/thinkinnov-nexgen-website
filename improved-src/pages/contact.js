@@ -30,9 +30,9 @@ function fields() {
       extra: { "data-enquiry-topic": true },
     }),
     f.input({ name: "name", label: "Name", required: true, autocomplete: "name", messages: { required: "Please enter your name." } }),
-    f.input({ name: "company", label: "Company", autocomplete: "organization" }),
+    f.input({ name: "company", label: "Company name", autocomplete: "organization" }),
     f.input({ name: "email", label: "Email", type: "email", required: true, autocomplete: "email", messages: { required: "Please enter your email address.", invalid: "Please enter a valid email address." } }),
-    f.input({ name: "phone", label: "Phone", type: "tel", autocomplete: "tel" }),
+    f.input({ name: "phone", label: "Phone number", type: "tel", autocomplete: "tel" }),
     f.textarea({ name: "message", label: "Message", required: true, messages: { required: "Please enter your message." } }),
     f.consent({
       text: "I agree that ThinkInnov-NexGen may use these details to respond to my enquiry.",
@@ -70,19 +70,20 @@ function render() {
               mailSubject: "Website enquiry",
             },
           })}
-          <noscript><p class="form-noscript">If the form does not send, please email <a href="mailto:${config.email}">${esc(config.email)}</a>.</p></noscript>
+          <noscript><p class="form-noscript">If the form does not send, please email us: <a href="mailto:${config.email}">${esc(config.email)}</a></p></noscript>
         </div>
         <aside class="form-aside" aria-label="Other ways to reach us">
           <h2 class="h-sub">Head office</h2>
           <ul class="contact-lines contact-lines-light">
             <li>${icons.phone}<a href="tel:${config.phoneTel}">${esc(config.phoneDisplay)}</a></li>
             <li>${icons.mail}<a href="mailto:${config.email}">${esc(config.email)}</a></li>
-            <li>${icons.map}<span>${verbatim(config.addressSingle)}<br><a href="${config.mapUrl}" target="_blank" rel="noopener">View map<span class="visually-hidden"> (opens in a new tab)</span></a></span></li>
+            <li>${icons.map}<span>${esc(config.addressSingle)}<br><a href="${config.mapUrl}" target="_blank" rel="noopener">View map<span class="visually-hidden"> (opens in a new tab)</span></a></span></li>
           </ul>
           <h2 class="h-sub">Branch offices</h2>
           <ul class="plain-list">${config.branches.map((b) => `<li>${esc(b)}</li>`).join("")}</ul>
           <h2 class="h-sub">What happens to your message</h2>
-          <p>The form emails your enquiry to our company address. Nothing is sent until you press “Send enquiry”. See the <a href="${site.page("privacy.html")}">privacy notice</a>.</p>
+          <p>The form emails your enquiry to our company address. Nothing is sent until you press “Send enquiry”.</p>
+          <p><a href="${site.page("privacy.html")}">Privacy notice</a></p>
           <p>${c.linkArrow(site.page("careers.html"), "Looking for a job? See Careers")}</p>
         </aside>
       </div>
