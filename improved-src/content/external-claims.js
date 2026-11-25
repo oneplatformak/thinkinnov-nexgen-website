@@ -10,7 +10,11 @@ const retrieved = "2026-11-25";
 const trademarks = {
   text: "Siemens lists this name among the trademarks or registered trademarks of Siemens Industry Software Inc., or its subsidiaries or affiliates.",
   url: "https://www.siemens.com/en-us/company/digital-industries-software-trademarks/",
-  evidence: "Page text: “Unless otherwise noted, the following are trademarks or registered trademarks of Siemens Industry Software Inc., or its subsidiaries or affiliates, in the United States and in other countries.” The list includes Capital, Designcenter NX, Designcenter Solid Edge, Solid Edge, Mendix, Teamcenter, Teamcenter X and Tecnomatix, and many NX product names.",
+  // The list has no row for "NX" alone, so the NX page names what the list does have.
+  byProduct: {
+    nx: "Siemens lists Designcenter NX and other NX product names among the trademarks or registered trademarks of Siemens Industry Software Inc., or its subsidiaries or affiliates.",
+  },
+  evidence: "Page text: “Unless otherwise noted, the following are trademarks or registered trademarks of Siemens Industry Software Inc., or its subsidiaries or affiliates, in the United States and in other countries.” The list has rows for Capital, Mendix, Solid Edge, Teamcenter, Teamcenter X and Tecnomatix. It has no row for NX alone: it lists Designcenter NX and names such as “NX 2D Nesting”. Re-read on 25 November 2026.",
 };
 
 module.exports = {

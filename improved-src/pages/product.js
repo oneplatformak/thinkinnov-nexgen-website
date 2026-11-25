@@ -35,7 +35,7 @@ function overview(p) {
       <div class="prose">
         <p class="product-text">${esc(p.text)}</p>
         <p class="product-claim">${esc(claim.text)} ${source(claim.url)}</p>
-        <p class="note">${esc(tm.text)} ${source(tm.url)}</p>
+        <p class="note">${esc(tm.byProduct[p.key] || tm.text)} ${source(tm.url)}</p>
         <p class="note">This page describes how ThinkInnov-NexGen works with the product. For features, versions and licensing, please refer to Siemens.</p>
       </div>
     </div>

@@ -193,5 +193,7 @@ module.exports = {
     "Solutions by lifecycle stage": "ライフサイクルの段階別のソリューション一覧",
     "Where each solution sits in the lifecycle": "各ソリューションのライフサイクルにおける位置づけ",
     "Each placement is this site's reading of the solution descriptions on this page, as a guide to the site.": "各ソリューションの位置づけは、このページの説明に基づく当サイトの整理であり、サイト内のご案内を目的としたものです。",
+    // NX trademark sentence
+    "Siemens lists Designcenter NX and other NX product names among the trademarks or registered trademarks of Siemens Industry Software Inc., or its subsidiaries or affiliates.": "Siemensは、Designcenter NXおよびNXを冠する各製品名を、Siemens Industry Software Inc.またはその子会社・関連会社の商標または登録商標として掲載しています。",
   },
 };
