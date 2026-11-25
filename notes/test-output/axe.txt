@@ -1,8 +1,8 @@
-# 2026-11-25T12:29:50Z  commit 727ca7f
+# 2026-11-25T15:12:08Z  commit d0fcd00
 # node improved-src/tools/test-axe.js
 
 
-axe-core 4.14.1: 82 pages x 2 widths = 164 scans, 61 rules passed somewhere
+axe-core 4.14.1: 82 pages x 2 widths = 164 scans, 60 rules passed somewhere
 Violations: 0. Items axe could not decide and left for a person: 36
 UNDECIDED color-contrast: Elements must meet minimum color contrast ratio thresholds: 36 scans, 222 elements
     apply.html @390: #a-job

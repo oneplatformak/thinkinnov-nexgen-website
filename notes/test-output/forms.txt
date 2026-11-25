@@ -1,4 +1,4 @@
-# 2026-11-25T12:18:28Z  commit f9e9cf2
+# 2026-11-25T15:09:45Z  commit d0fcd00
 # bash improved-src/tools/test-forms.sh
 
 == contact.php ==
@@ -59,8 +59,12 @@ PASS  file over 5 MB is rejected (400)
 PASS  non-numeric graduation year is rejected (400)
 PASS  filled honeypot is rejected (400)
 PASS  none of the rejected applications sent mail
+PASS  a zip of other files renamed .docx is rejected (400)
+PASS  and sends no mail
+PASS  a Word document (.docx) is accepted (200)
+PASS  and is attached under a generated file name
 PASS  7th application in the window is rate limited (429)
 PASS  mail failure is reported as failure (500)
 
-Passed: 58  Failed: 0
+Passed: 62  Failed: 0
 # exit code 0

@@ -1,4 +1,4 @@
-# 2026-11-25T12:18:45Z  commit f9e9cf2
+# 2026-11-25T15:10:23Z  commit d0fcd00
 # node improved-src/tools/test-interactions.js
 
 PASS  desktop menu (en): first Tab stop is the skip link
@@ -70,6 +70,21 @@ PASS  finder (en): unknown values in the address are ignored
 PASS  finder (en): a product's enquiry link preselects type and topic
 PASS  finder (en): a direct link to a need shows it
 PASS  finder (en): no script errors
+PASS  finder result panel (en): 1280x720: all 16 results are shown in full (the panel does not scroll inside itself)
+PASS  finder result panel (en): 1280x720: the "discuss this need" button of every need is inside the panel's visible area
+PASS  finder result panel (en): 1280x720: every result starts in view, below the header, when its need is chosen
+PASS  finder result panel (en): 1280x720: every button comes into view by scrolling the page, and nothing covers it
+PASS  finder result panel (en): 1280x720: no script errors
+PASS  finder result panel (en): 1366x768: all 16 results are shown in full (the panel does not scroll inside itself)
+PASS  finder result panel (en): 1366x768: the "discuss this need" button of every need is inside the panel's visible area
+PASS  finder result panel (en): 1366x768: every result starts in view, below the header, when its need is chosen
+PASS  finder result panel (en): 1366x768: every button comes into view by scrolling the page, and nothing covers it
+PASS  finder result panel (en): 1366x768: no script errors
+PASS  finder result panel (en): 1440x900: all 16 results are shown in full (the panel does not scroll inside itself)
+PASS  finder result panel (en): 1440x900: the "discuss this need" button of every need is inside the panel's visible area
+PASS  finder result panel (en): 1440x900: every result starts in view, below the header, when its need is chosen
+PASS  finder result panel (en): 1440x900: every button comes into view by scrolling the page, and nothing covers it
+PASS  finder result panel (en): 1440x900: no script errors
 PASS  product pages (en): the catalogue links to six product pages
 PASS  product pages (en): nx: page opens with one H1, its sections and working in-page links
 PASS  product pages (en): nx: lifecycle strip shows nine stages with at least one marked
@@ -129,6 +144,9 @@ PASS  search (en): markup in the query is shown as text
 PASS  search (en): no script errors
 PASS  search (en): without scripts the form is hidden and the sitemap is offered
 PASS  career filters (en): 18 roles listed and the filter form is shown
+PASS  career filters (en): 1440: the facts of every role are laid out the same way, none on a line of its own
+PASS  career filters (en): 1280: the facts of every role are laid out the same way, none on a line of its own
+PASS  career filters (en): 1024: the facts of every role are laid out the same way, none on a line of its own
 PASS  career filters (en): typing 'Capital' narrows the list to roles that mention it
 PASS  career filters (en): the count is announced
 PASS  career filters (en): the address records the search
@@ -163,6 +181,7 @@ PASS  contact form (en): exactly one message was handed to the mail system
 PASS  contact form (en): it carries the type and topic from the address
 PASS  contact form (en): the form is cleared after sending
 PASS  contact form (en): when the mail system fails the page says so
+PASS  contact form (en): and the address it asks the visitor to write to is a mailto link
 PASS  contact form (en): and the visitor's text is kept
 PASS  application form (en): the role from the address is preselected
 PASS  application form (en): empty submit marks the 13 required fields and none of the optional ones
@@ -250,6 +269,21 @@ PASS  finder (ja): unknown values in the address are ignored
 PASS  finder (ja): a product's enquiry link preselects type and topic
 PASS  finder (ja): a direct link to a need shows it
 PASS  finder (ja): no script errors
+PASS  finder result panel (ja): 1280x720: all 16 results are shown in full (the panel does not scroll inside itself)
+PASS  finder result panel (ja): 1280x720: the "discuss this need" button of every need is inside the panel's visible area
+PASS  finder result panel (ja): 1280x720: every result starts in view, below the header, when its need is chosen
+PASS  finder result panel (ja): 1280x720: every button comes into view by scrolling the page, and nothing covers it
+PASS  finder result panel (ja): 1280x720: no script errors
+PASS  finder result panel (ja): 1366x768: all 16 results are shown in full (the panel does not scroll inside itself)
+PASS  finder result panel (ja): 1366x768: the "discuss this need" button of every need is inside the panel's visible area
+PASS  finder result panel (ja): 1366x768: every result starts in view, below the header, when its need is chosen
+PASS  finder result panel (ja): 1366x768: every button comes into view by scrolling the page, and nothing covers it
+PASS  finder result panel (ja): 1366x768: no script errors
+PASS  finder result panel (ja): 1440x900: all 16 results are shown in full (the panel does not scroll inside itself)
+PASS  finder result panel (ja): 1440x900: the "discuss this need" button of every need is inside the panel's visible area
+PASS  finder result panel (ja): 1440x900: every result starts in view, below the header, when its need is chosen
+PASS  finder result panel (ja): 1440x900: every button comes into view by scrolling the page, and nothing covers it
+PASS  finder result panel (ja): 1440x900: no script errors
 PASS  product pages (ja): the catalogue links to six product pages
 PASS  product pages (ja): nx: page opens with one H1, its sections and working in-page links
 PASS  product pages (ja): nx: lifecycle strip shows nine stages with at least one marked
@@ -309,6 +343,9 @@ PASS  search (ja): markup in the query is shown as text
 PASS  search (ja): no script errors
 PASS  search (ja): without scripts the form is hidden and the sitemap is offered
 PASS  career filters (ja): 18 roles listed and the filter form is shown
+PASS  career filters (ja): 1440: the facts of every role are laid out the same way, none on a line of its own
+PASS  career filters (ja): 1280: the facts of every role are laid out the same way, none on a line of its own
+PASS  career filters (ja): 1024: the facts of every role are laid out the same way, none on a line of its own
 PASS  career filters (ja): typing 'Capital' narrows the list to roles that mention it
 PASS  career filters (ja): the count is announced
 PASS  career filters (ja): the address records the search
@@ -343,6 +380,7 @@ PASS  contact form (ja): exactly one message was handed to the mail system
 PASS  contact form (ja): it carries the type and topic from the address
 PASS  contact form (ja): the form is cleared after sending
 PASS  contact form (ja): when the mail system fails the page says so
+PASS  contact form (ja): and the address it asks the visitor to write to is a mailto link
 PASS  contact form (ja): and the visitor's text is kept
 PASS  application form (ja): the role from the address is preselected
 PASS  application form (ja): empty submit marks the 13 required fields and none of the optional ones
@@ -391,5 +429,5 @@ PASS  old addresses: application.html?id=5 opens the application form with that 
 PASS  old addresses: application.html without a number opens the application form
 PASS  old addresses: with scripts off the old address still leads somewhere: the home page, or a page with a link to it
 
-Passed: 389  Failed: 0
+Passed: 427  Failed: 0
 # exit code 0

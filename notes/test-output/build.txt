@@ -1,12 +1,12 @@
-# 2026-11-25T12:18:26Z  commit f9e9cf2
+# 2026-11-25T15:09:44Z  commit d0fcd00
 # cd improved-src && node build.js --strict && node build.js --strict && cd .. && echo && echo 'git status after two builds (docs/, notes/ registers):' && git status --short docs notes/CLAIM-REGISTER.md notes/JAPANESE-REGISTER.md notes/CUSTOMER-REGISTER.md notes/ASSET-REGISTER.md && echo '(end of git status; empty means unchanged)'
 
 Pages: 82 (41 per language)
-CSS 77.6 kB, JS 30.4 kB
+CSS 80.9 kB, JS 31.7 kB
 Japanese line breaking: budoux
 Japanese strings without a translation: 0
 Pages: 82 (41 per language)
-CSS 77.6 kB, JS 30.4 kB
+CSS 80.9 kB, JS 31.7 kB
 Japanese line breaking: budoux
 Japanese strings without a translation: 0
 

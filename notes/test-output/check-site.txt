@@ -1,4 +1,4 @@
-# 2026-11-25T12:18:27Z  commit f9e9cf2
+# 2026-11-25T15:09:44Z  commit d0fcd00
 # python3 improved-src/check-site.py
 
 Checked 85 HTML files under /workspace/docs
@@ -7,6 +7,7 @@ Language pairs: 41 English pages, 41 Japanese pages, 3 redirect stubs without a 
 Third-party scan: 98 text files, 951 resource references examined
 H1: 0
 lang attribute: 0
+document start and end: 0
 duplicate ids: 0
 missing files: 0
 missing anchors: 0

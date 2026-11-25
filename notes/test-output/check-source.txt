@@ -1,4 +1,4 @@
-# 2026-11-25T12:18:27Z  commit f9e9cf2
+# 2026-11-25T15:09:45Z  commit d0fcd00
 # python3 improved-src/tools/check-source.py
 
 PASS  staging has four testimonials — 4
@@ -43,13 +43,24 @@ PASS  job title unchanged on careers/16-plm-analyst.html — PLM Analyst
 PASS  job title unchanged on careers/17-catia-support-engineer.html — CATIA Support Engineer
 PASS  job title unchanged on careers/18-mendix-developer.html — Mendix Developer
 PASS  no JobPosting structured data
+PASS  all 242 English sentences of the original are on the site with the same words in the same order (12 listed exceptions)
+PASS  every listed exception is still needed
+PASS  each corrected sentence is shown in its corrected form
+PASS  the 18 careers-list summaries are character for character the original's
+PASS  each of the 16 “what our site says” lines in the finder is a whole sentence shown elsewhere on the site (solutions.html)
+PASS  each of the 16 “what our site says” lines in the finder is a whole sentence shown elsewhere on the site (ja/solutions.html)
 PASS  "Siemens Solution Partner" only on the home page — index.html, ja/index.html
+PASS  "Siemens Solution Partner" / 「Siemensソリューションパートナー」 exactly once on each home page and on no other page — index.html: 1, ja/index.html: 1
+PASS  that one occurrence is in the hero of index.html
+PASS  that one occurrence is in the hero of ja/index.html
 PASS  Japanese partner wording only on the Japanese home page — ja/index.html
 PASS  "Expert Partner - PLM" only on About — about.html, ja/about.html
 PASS  "ThinkInnov-NexGen KK - A Strategic Partnership in Japan" only on About — about.html
 PASS  no partner wording in any <head> (titles, descriptions, structured data)
 PASS  no partner wording in the footer
 PASS  source heading "Our Key Customers" kept (the site sets headings in sentence case)
+PASS  every drawn diagram (8 on 4 pages) is captioned “Conceptual diagram” / 「概念図」
+PASS  no drawn diagram has chart axes or a trend line
 PASS  "joint venture" absent from visible text
 PASS  "合弁" absent from visible text
 PASS  "digital twin" absent from visible text
@@ -87,9 +98,9 @@ PASS  no "review" property in structured data
 PASS  no "foundingDate" property in structured data
 PASS  no "numberOfEmployees" property in structured data
 INFO  structured data types: BreadcrumbList ×78, EntryPoint ×2, ListItem ×206, Organization ×82, PostalAddress ×82, SearchAction ×2, WebSite ×2
-PASS  no credentials in 221 tracked text files
+PASS  no credentials in 239 tracked text files
 PASS  no .env, .pem or key files tracked
 
-85 HTML files read. 87 checks passed, 0 failed.
+85 HTML files read. 98 checks passed, 0 failed.
 RESULT: PASS
 # exit code 0
