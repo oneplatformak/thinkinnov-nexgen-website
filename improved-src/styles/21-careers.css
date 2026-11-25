@@ -16,15 +16,27 @@
 html[lang="ja"] .role-title { letter-spacing: 0; line-height: 1.5; }
 .role-text { display: block; margin-top: 0.3rem; color: var(--ink-2); font-size: 0.9375rem; }
 .role-meta { grid-column: 2 / -1; display: flex; flex-wrap: wrap; gap: 0.35rem 0.5rem; font-size: var(--t-xs); color: var(--ink-2); }
-.role-meta span { padding: 0.15rem 0.5rem; border: 1px solid var(--rule-strong); }
+.role-meta > span { padding: 0.15rem 0.5rem; border: 1px solid var(--rule-strong); }
 .role-meta .role-discipline { border-color: var(--ink); color: var(--ink); font-weight: 600; }
 .role-link > .icon { grid-column: 3; grid-row: 1; margin-top: 0.3rem; color: var(--ink-3); transition: transform 0.18s var(--ease); }
 .role-link:hover .role-title { color: var(--accent); }
 .role-link:hover > .icon { transform: translateX(4px); color: var(--accent); }
 @media (min-width: 1000px) {
-  .role-link { grid-template-columns: 3rem minmax(0, 6fr) minmax(0, 5fr) 1.5rem; gap: 1.5rem; }
-  .role-meta { grid-column: 3; justify-content: flex-end; padding-top: 0.3rem; }
+  .role-link { grid-template-columns: 3rem minmax(0, 1fr) auto 1.5rem; gap: 1.5rem; }
+  /*
+   * Beside the title the four facts are laid out the same way in every row,
+   * so none of them drops to a line of its own: the discipline above the
+   * other three, or all four on one line where the window has the room.
+   */
+  .role-meta { grid-column: 3; display: grid; grid-template-columns: repeat(3, auto); justify-content: end; align-content: start; padding-top: 0.3rem; }
+  .role-meta > span { white-space: nowrap; }
+  .role-meta wbr { display: none; }
+  .role-meta .role-discipline { grid-column: 1 / -1; justify-self: end; }
   .role-link > .icon { grid-column: 4; }
+}
+@media (min-width: 1280px) {
+  .role-meta { grid-template-columns: repeat(4, auto); }
+  .role-meta .role-discipline { grid-column: auto; }
 }
 
 /* ---- Job page ---- */

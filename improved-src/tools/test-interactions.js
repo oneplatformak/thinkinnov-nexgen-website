@@ -264,6 +264,20 @@ async function testCareers(browser, base, labels) {
   const shown = () => page.$$eval("[data-role]", (rs) => rs.filter((r) => !r.hidden).length);
   const countText = () => page.$eval("[data-role-count]", (c) => c.textContent);
   ok("18 roles listed and the filter form is shown", (await shown()) === 18 && (await page.$eval("[data-role-filters]", (f) => !f.hidden)));
+  // The four facts of a role: on one line at 1440 and 1280, and at 1024 the
+  // discipline above the other three. No fact alone on a last line, none wrapped.
+  for (const [width, lines] of [[1440, 1], [1280, 1], [1024, 2]]) {
+    await page.setViewport({ width, height: 900 });
+    const odd = await page.$$eval(".role-meta", (metas, want) => metas.map((m, i) => {
+      const chips = [...m.children].map((c) => c.getBoundingClientRect());
+      const rows = [...new Set(chips.map((c) => Math.round(c.top)))];
+      const last = chips.filter((c) => Math.round(c.top) === rows[rows.length - 1]).length;
+      const oneLine = chips.every((c) => c.height < 30);
+      return rows.length === want && oneLine && (want === 1 || last === 3) ? null : `role ${i + 1}: ${rows.length} lines, ${last} on the last`;
+    }).filter(Boolean), lines);
+    ok(`${width}: the facts of every role are laid out the same way, none on a line of its own`, odd.length === 0, odd.join("; "));
+  }
+  await page.setViewport({ width: 1440, height: 900 });
   await page.focus('[data-role-filters] [name="q"]');
   await page.keyboard.type("Capital");
   const n = await shown();
