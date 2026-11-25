@@ -1,8 +1,9 @@
 #!/usr/bin/env node
 /**
  * Scripted keyboard and click tests in headless Chrome: menus, lifecycle
- * diagram, finder, career filters, photo viewer, language switch, both forms,
- * and the same pages with scripts switched off.
+ * diagram, finder, product pages, the brief's three worked journeys through
+ * to the contact form, search, career filters, photo viewer, language switch,
+ * both forms, and the same pages with scripts switched off.
  *
  * Forms are posted to a local PHP server whose sendmail writes to a file, so
  * no mail leaves the machine.
@@ -239,20 +240,20 @@ async function testLightbox(browser, base, labels) {
   const page = await open(browser, base + labels.prefix + "about.html");
   const info = () => page.evaluate(() => { const d = document.querySelector("dialog.lightbox"); return { open: d.open, src: d.querySelector("img").getAttribute("src") || "", count: d.querySelector("[data-lb-count]").textContent, alt: d.querySelector("img").alt }; });
   const hrefs = await page.$$eval("[data-lightbox]", (ls) => ls.map((l) => l.href));
-  ok("twelve photos", hrefs.length === 12);
+  ok("fourteen photos", hrefs.length === 14);
   await page.focus("[data-lightbox]");
   ok("photo link shows a focus indicator", await focusRing(page));
   await page.keyboard.press("Enter");
   let i = await info();
-  ok("Enter opens the viewer on the first photo", i.open && i.src === hrefs[0] && i.count === "1 / 12", JSON.stringify(i));
+  ok("Enter opens the viewer on the first photo", i.open && i.src === hrefs[0] && i.count === "1 / 14", JSON.stringify(i));
   ok("the photo has a text alternative", i.alt.length > 10);
   await page.keyboard.press("ArrowRight");
   i = await info();
-  ok("ArrowRight shows the second photo", i.src === hrefs[1] && i.count === "2 / 12");
+  ok("ArrowRight shows the second photo", i.src === hrefs[1] && i.count === "2 / 14");
   await page.keyboard.press("ArrowLeft");
   await page.keyboard.press("ArrowLeft");
   i = await info();
-  ok("ArrowLeft wraps to the last photo", i.src === hrefs[11] && i.count === "12 / 12");
+  ok("ArrowLeft wraps to the last photo", i.src === hrefs[13] && i.count === "14 / 14");
   let inside = true;
   for (let k = 0; k < 8; k += 1) { await page.keyboard.press("Tab"); inside = inside && (await page.evaluate(() => document.activeElement === document.body || !!document.activeElement.closest("dialog.lightbox"))); }
   ok("focus stays inside the viewer", inside);
@@ -369,10 +370,9 @@ async function testApplyForm(browser, labels) {
   ok("the role from the address is preselected", await page.$eval("[data-job-select]", (s) => s.value === "05-project-manager"));
   await page.click('form[data-form] button[type="submit"]');
   const invalid = await page.$$eval('[aria-invalid="true"]', (els) => els.length);
-  ok("empty submit marks all 17 required fields", invalid === 17, String(invalid));
-  const values = { first_name: "Test", last_name: "Candidate", email: "candidate@example.com", phone: "+91 98765 43210", graduation: "2015", experience: "8", employer: "Example Ltd", current_ctc: "10", expected_ctc: "12", notice: "30", current_location: "Chennai", preferred_location: "Coimbatore", skills: "Teamcenter, ITK" };
+  ok("empty submit marks the 13 required fields and none of the optional ones", invalid === 13 && await page.$$eval('[name="gender"], [name="current_ctc"], [name="expected_ctc"], [name="notice"]', (els) => els.length === 4 && els.every((e) => !e.required && e.getAttribute("aria-invalid") !== "true")), String(invalid));
+  const values = { first_name: "Test", last_name: "Candidate", email: "candidate@example.com", phone: "+91 98765 43210", graduation: "2015", experience: "8", employer: "Example Ltd", current_location: "Chennai", preferred_location: "Coimbatore", skills: "Teamcenter, ITK" };
   for (const [name, value] of Object.entries(values)) await page.type(`[name="${name}"]`, value);
-  await page.select('[name="gender"]', await page.$eval('[name="gender"]', (s) => s.options[1].value));
   await page.select('[name="source"]', await page.$eval('[name="source"]', (s) => s.options[1].value));
   await page.click('[name="consent"]');
   const file = await page.$('[name="resume"]');
@@ -387,6 +387,7 @@ async function testApplyForm(browser, labels) {
   ok("a complete application with a PDF is accepted", (await status(page)) === labels.sentApply && mails() === before + 1, await status(page));
   const mail = fs.readFileSync(path.join(MAILDIR, fs.readdirSync(MAILDIR).sort().pop()), "utf8");
   ok("the mail names the role and carries the CV", mail.includes("Role: Project Manager") && mail.includes('filename="cv-Test-Candidate.pdf"'));
+  ok("optional fields left blank are mailed as not provided", ["Gender", "Current CTC (LPA)", "Expected CTC (LPA)", "Notice period (days)"].every((l) => mail.includes(`${l}: not provided`)));
   ok("no script errors", page.errors.length === 0, page.errors.join(" | "));
   await done(page);
 }
@@ -421,17 +422,169 @@ async function testNoScript(browser, base, labels) {
   await done(page);
 }
 
+const go = async (page, selector) => {
+  const href = await page.$eval(selector, (a) => a.href);
+  await Promise.all([page.waitForNavigation({ waitUntil: "load" }), page.$eval(selector, (a) => a.click())]);
+  return href;
+};
+const formValues = (page) => page.evaluate(() => { const f = document.querySelector("form[data-form]"); return { type: f.elements.type.value, topic: f.elements.topic.value, need: f.elements.need.value, industry: f.elements.industry.value, size: f.elements.size.value, shown: [...document.querySelectorAll("[data-context-item]")].filter((i) => !i.hidden).length }; });
+const lastMail = () => fs.readFileSync(path.join(MAILDIR, fs.readdirSync(MAILDIR).sort().pop()), "utf8");
+async function sendEnquiry(page, labels, message) {
+  await page.type('[name="name"]', "Test Person");
+  await page.type('[name="email"]', "test.person@example.com");
+  await page.type('[name="message"]', message);
+  await page.click('[name="consent"]');
+  await sleep(3200);
+  const before = mails();
+  await page.click('form[data-form] button[type="submit"]');
+  await waitStatus(page, labels.sending);
+  return (await status(page)) === labels.sentContact && mails() === before + 1;
+}
+
+async function testProductPages(browser, base, labels) {
+  group = `product pages (${labels.lang})`;
+  const page = await open(browser, base + labels.prefix + "products.html");
+  const keys = await page.$$eval("[data-product-page]", (as) => as.map((a) => a.getAttribute("data-product-page")));
+  ok("the catalogue links to six product pages", keys.join() === "nx,solid-edge,capital,teamcenter,tecnomatix,mendix", keys.join());
+  for (const key of keys) {
+    await page.goto(base + labels.prefix + "products.html", { waitUntil: "load" });
+    await go(page, `[data-product-page="${key}"]`);
+    const info = await page.evaluate(() => ({
+      path: location.pathname, h1: document.querySelectorAll("h1").length,
+      sections: ["overview", "lifecycle-position", "support", "enquire"].filter((id) => !document.getElementById(id)),
+      onpage: [...document.querySelectorAll(".onpage a")].every((a) => document.getElementById(a.getAttribute("href").slice(1))),
+      marked: document.querySelectorAll(".stage-strip .is-on").length, stages: document.querySelectorAll(".stage-strip li").length,
+      sources: [...document.querySelectorAll('#overview a[href^="https://"]')].map((a) => a.hostname).filter((h) => !/(^|\.)(siemens|mendix)\.com$/.test(h)),
+      enquire: document.querySelector('.page-hero a[href*="contact.html"]').getAttribute("href"),
+    }));
+    ok(`${key}: page opens with one H1, its sections and working in-page links`, info.path.endsWith(`products/${key}.html`) && info.h1 === 1 && info.sections.length === 0 && info.onpage, JSON.stringify(info));
+    ok(`${key}: lifecycle strip shows nine stages${key === "mendix" ? ", none marked (the source ties Mendix to no single stage)" : " with at least one marked"}`, info.stages === 9 && (key === "mendix" ? info.marked === 0 : info.marked >= 1), `${info.marked}/${info.stages}`);
+    ok(`${key}: outside links in the overview go to Siemens' own sites only`, info.sources.length === 0, info.sources.join());
+    await go(page, '.page-hero a[href*="contact.html"]');
+    const v = await formValues(page);
+    ok(`${key}: enquiry opens the contact form with the product as topic`, v.type === "product" && v.topic === `product-${key}`, JSON.stringify(v));
+  }
+  await page.goto(base + labels.prefix + "products/teamcenter.html", { waitUntil: "load" });
+  await page.focus(".pager a");
+  ok("previous and next product links are reachable by keyboard", await focusRing(page));
+  await page.goto(base + labels.prefix + "index.html", { waitUntil: "load" });
+  ok("home product rows link to the product pages", await page.$$eval('#products a[href*="products/"]', (as) => new Set(as.map((a) => a.getAttribute("href"))).size === 6));
+  ok("no script errors", page.errors.length === 0, page.errors.join(" | "));
+  await done(page);
+}
+
+/**
+ * The three journeys the brief works through, run by clicking the links a
+ * visitor would use. Each ends on the contact form; the first is sent to the
+ * local handler to show that the context reaches the email.
+ */
+async function testJourneys(browser, labels) {
+  const base = PHP_OK + labels.prefix;
+  clearRate();
+
+  group = `journey 1: automotive, enterprise, change management (${labels.lang})`;
+  let page = await open(browser, base + "industries.html");
+  await go(page, '#automotive a[href*="solutions.html?industry=automotive"][href$="#finder"]');
+  ok("industry card opens the finder with the industry chosen", await page.$eval("[data-finder-industry]", (s) => s.value === "automotive"));
+  await page.select("[data-finder-size]", "enterprises");
+  await page.click('[data-need-link="change"]');
+  ok("the change need shows the change management solution and Teamcenter", await page.$eval('[data-need-panel="change"]', (p) => !p.hidden && !!p.querySelector('a[href$="#engineering-change-management"]') && !!p.querySelector('a[href$="products/teamcenter.html"]')));
+  await go(page, '[data-need-panel="change"] a[href$="products/teamcenter.html"]');
+  ok("Teamcenter page lists the change management solution", await page.$eval("#solutions", (el) => !!el.querySelector('a[href$="#engineering-change-management"]')));
+  await go(page, '#support a[href$="services.html#implementation"]');
+  ok("the product page leads to implementation services", await page.evaluate(() => location.pathname.endsWith("services.html") && location.hash === "#implementation"));
+  const href1 = await go(page, '#implementation a[href*="contact.html"]');
+  let v = await formValues(page);
+  ok("the contact form carries service, need, industry and size", v.type === "implementation" && v.topic === "service-implementation" && v.need === "change" && v.industry === "automotive" && v.size === "enterprises" && v.shown === 3, href1 + " " + JSON.stringify(v));
+  ok("the enquiry is accepted by the handler", await sendEnquiry(page, labels, "Journey 1 test."));
+  const mail = lastMail();
+  ok("the email names the enquiry type, topic, need, industry and size", ["Enquiry type: Implementation", "Topic: Implementation", "Business need: Keep engineering change under control", "Industry: Teamcenter X for Automotive", "Company size: Enterprises"].every((line) => mail.includes(line)), mail.split("\n").slice(0, 30).filter((l) => /^(Enquiry|Topic|Business|Industry|Company)/.test(l)).join(" / "));
+  await page.goto(base + "contact.html", { waitUntil: "load" });
+  v = await formValues(page);
+  ok("the context is cleared after sending", v.need === "" && v.industry === "" && v.size === "" && v.shown === 0, JSON.stringify(v));
+  ok("no script errors", page.errors.length === 0, page.errors.join(" | "));
+  await done(page);
+
+  group = `journey 2: startup, design data (${labels.lang})`;
+  page = await open(browser, base + "plm.html");
+  await go(page, '#size-startups a[href*="solutions.html?size=startups"]');
+  ok("the startup tier opens the finder with the size chosen", await page.$eval("[data-finder-size]", (s) => s.value === "startups"));
+  await page.click('[data-need-link="duplication"]');
+  ok("the need shows design data management and a product page", await page.$eval('[data-need-panel="duplication"]', (p) => !p.hidden && !!p.querySelector('a[href$="#design-data-management"]') && !!p.querySelector('a[href*="products/"]')));
+  await go(page, '[data-need-panel="duplication"] a[href$="#design-data-management"]');
+  ok("the solution entry is reached and names its product", await page.evaluate(() => location.hash === "#design-data-management" && !!document.querySelector('#design-data-management a[href*="products/"]')));
+  await go(page, '#design-data-management a[href*="contact.html"]');
+  v = await formValues(page);
+  ok("the contact form carries the solution, need and size", v.topic === "solution-design-data-management" && v.need === "duplication" && v.size === "startups" && v.industry === "" && v.shown === 2, JSON.stringify(v));
+  await page.click("[data-context-clear]");
+  await page.goto(base + "services.html", { waitUntil: "load" });
+  ok("after Remove, later contact links carry nothing", await page.$eval('#implementation a[href*="contact.html"]', (a) => !/need=|size=|industry=/.test(a.href)));
+  ok("no script errors", page.errors.length === 0, page.errors.join(" | "));
+  await done(page);
+
+  group = `journey 3: engineering revisions (${labels.lang})`;
+  page = await open(browser, base + "index.html");
+  await go(page, 'a[href$="solutions.html#finder"]');
+  await page.click('[data-need-link="change"]');
+  const found = await page.$eval('[data-need-panel="change"]', (p) => ({ change: !!p.querySelector('a[href$="#engineering-change-management"]'), plm: !!p.querySelector('a[href$="products/teamcenter.html"]') }));
+  ok("the finder leads to change management and to the PLM product", found.change && found.plm, JSON.stringify(found));
+  ok("the same finder offers the design data needs beside it", await page.$$eval("[data-need-panel]", (ps) => ps.some((p) => p.getAttribute("data-need-panel") !== "change" && p.querySelector('a[href$="#design-data-management"]'))));
+  await go(page, '[data-need-panel="change"] a[href$="products/teamcenter.html"]');
+  ok("the PLM product page lists both design data management and change management", await page.$eval("#solutions", (el) => !!el.querySelector('a[href$="#design-data-management"]') && !!el.querySelector('a[href$="#engineering-change-management"]')));
+  await page.goto(base + "search.html?q=" + encodeURIComponent(labels.revisionQuery), { waitUntil: "load" });
+  await page.waitForFunction(() => document.querySelector("[data-search-status]").textContent.trim() !== "");
+  const hits = await page.$$eval(".search-results a", (as) => as.map((a) => a.getAttribute("href")));
+  ok("search for the same problem finds the solution and the need", hits.includes("solutions.html#engineering-change-management") && hits.includes("solutions.html#need-change"), hits.join());
+  await page.goto(base + "products/teamcenter.html", { waitUntil: "load" });
+  await go(page, '.page-hero a[href*="contact.html"]');
+  v = await formValues(page);
+  ok("an enquiry from the product page still carries the need", v.type === "product" && v.topic === "product-teamcenter" && v.need === "change", JSON.stringify(v));
+  ok("no script errors", page.errors.length === 0, page.errors.join(" | "));
+  await done(page);
+}
+
+async function testSearch(browser, base, labels) {
+  group = `search (${labels.lang})`;
+  const page = await open(browser, base + labels.prefix + "index.html");
+  await go(page, ".header-search");
+  ok("the header search link opens the search page", await page.evaluate(() => location.pathname.endsWith("search.html")));
+  await page.focus("#search-q");
+  await page.keyboard.type("Teamcenter");
+  await page.waitForFunction(() => document.querySelectorAll(".search-results a").length > 0);
+  const first = await page.$eval(".search-results a", (a) => a.getAttribute("href"));
+  ok("typing a product name lists its page first", first === "products/teamcenter.html", first);
+  ok("the number of results is announced", await page.$eval("[data-search-status]", (s) => s.getAttribute("role") === "status" && /\d/.test(s.textContent)));
+  const hrefs = await page.$$eval(".search-results a", (as) => as.map((a) => a.href));
+  const missing = [];
+  for (const href of [...new Set(hrefs.map((h) => h.split("#")[0]))]) { const r = await page.evaluate((u) => fetch(u).then((x) => x.status), href); if (r !== 200) missing.push(href); }
+  ok("every result leads to a page that exists", missing.length === 0, missing.join());
+  await page.$eval("#search-q", (i) => { i.value = ""; });
+  await page.keyboard.type("zzzzqq");
+  await page.keyboard.press("Enter");
+  await sleep(200);
+  ok("a search with no match says so and keeps the browse links", await page.evaluate(() => document.querySelectorAll(".search-results a").length === 0 && document.querySelector("[data-search-status]").textContent.includes("zzzzqq") && document.querySelectorAll(".search-browse a").length >= 5));
+  ok("the address keeps the query", await page.evaluate(() => new URLSearchParams(location.search).get("q") === "zzzzqq"));
+  await page.goto(base + labels.prefix + "search.html?q=" + encodeURIComponent('<img src=x onerror="window.__x=1">'), { waitUntil: "load" });
+  await sleep(300);
+  ok("markup in the query is shown as text", await page.evaluate(() => !window.__x && !document.querySelector("[data-search-status] img")));
+  ok("no script errors", page.errors.length === 0, page.errors.join(" | "));
+  await done(page);
+  const off = await open(browser, base + labels.prefix + "search.html", { js: false });
+  ok("without scripts the form is hidden and the sitemap is offered", await off.evaluate(() => document.querySelector("[data-search-form]").hidden && !!document.querySelector('noscript') ));
+  await done(off);
+}
+
 const EN = {
   lang: "en", prefix: "", invalid: "Please check the highlighted fields.", sending: "Sending your enquiry…", sendingApply: "Sending your application…",
   sentContact: "Thank you. Your enquiry has been sent.", sentApply: "Thank you. Your application has been sent.",
   tooFast: "The form was submitted too quickly. Please wait a moment and try again.", mailFailed: "Your message could not be sent. Please try again, or email us directly.",
-  count: (n, total) => `${n} of ${total} roles shown`, none: "No roles match these filters.",
+  count: (n, total) => `${n} of ${total} roles shown`, none: "No roles match these filters.", revisionQuery: "engineering change",
 };
 const JA = {
   lang: "ja", prefix: "ja/", invalid: "入力内容をご確認ください。", sending: "お問い合わせを送信しています…", sendingApply: "応募内容を送信しています…",
   sentContact: "お問い合わせありがとうございます。内容を送信いたしました。", sentApply: "ご応募ありがとうございます。応募内容を送信いたしました。",
   tooFast: "送信が早すぎます。少し時間をおいてから、もう一度お試しください。", mailFailed: "送信できませんでした。お手数ですが、もう一度お試しいただくか、メールで直接ご連絡ください。",
-  count: (n, total) => `全${total}職種中${n}職種を表示`, none: "条件に一致する職種はありません。",
+  count: (n, total) => `全${total}職種中${n}職種を表示`, none: "条件に一致する職種はありません。", revisionQuery: "変更",
 };
 
 (async () => {
@@ -447,6 +600,9 @@ const JA = {
       await testLifecycle(browser, STATIC, labels, 1440);
       await testLifecycle(browser, STATIC, labels, 390);
       await testFinder(browser, STATIC, labels);
+      await testProductPages(browser, STATIC, labels);
+      await testJourneys(browser, labels);
+      await testSearch(browser, STATIC, labels);
       await testCareers(browser, STATIC, labels);
       await testLightbox(browser, STATIC, labels);
       await testContactForm(browser, labels);
