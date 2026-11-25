@@ -4,8 +4,11 @@
 Checks every HTML file for: exactly one H1; links, assets and CSS url()s that
 resolve to a file; #fragment targets that exist; duplicate ids; a lang
 attribute; a title and meta description (unique within each language); images
-without alt; canonical and reciprocal hreflang links; and that the legacy
-anchors listed in COVERAGE terms still exist.
+without alt; canonical and reciprocal hreflang links; that the legacy
+anchors listed in COVERAGE terms still exist; that every English page has a
+Japanese counterpart (and the reverse) apart from the named redirect stubs;
+and that nothing in docs/ loads a resource from another host or contains a
+known tracker string.
 
 Usage: python3 improved-src/check-site.py
 """
@@ -35,6 +38,70 @@ SKIP_SCHEMES = ("http://", "https://", "mailto:", "tel:", "data:", "javascript:"
 
 # Redirect stubs for the old single-page URLs: no layout, not in the sitemap.
 STUBS = {"page.html", "jobdetails.html", "application.html"}
+
+# Strings from the script that the staging host (GoDaddy cPanel) injects into
+# crawled HTML, plus the common analytics and tag loaders. None may appear in
+# any text file under docs/. The first seven were taken from a diff of
+# staging-original/thinkinnov-nexgen/index.html against the official file.
+TRACKER_STRINGS = [
+    "_trfq", "_trfd", "tccl.min.js", "tccl.baseHost", "traffic-assets", "wsimg.com", "secureserver.net",
+    "googletagmanager", "google-analytics", "gtag(", "fbq(", "hotjar", "clarity.ms", "doubleclick",
+]
+# Absolute URLs that may appear in a resource-loading position. Nothing is
+# fetched from them: they are XML namespaces and the schema.org vocabulary.
+RESOURCE_ALLOW = ("http://www.w3.org/", "https://schema.org")
+TEXT_SUFFIXES = {".html", ".css", ".js", ".php", ".xml", ".txt", ".svg", ".json", ".webmanifest", ".htaccess", ".md"}
+
+# Tags whose URL attributes make the browser fetch something. <a href> is a
+# link the visitor chooses to follow, so it is not in this list.
+loader_res = [
+    re.compile(r"<(?:script|img|iframe|source|video|audio|embed|track|input)\b[^>]*?\bsrc=[\"']([^\"']+)[\"']", re.I),
+    re.compile(r"<link\b(?![^>]*\brel=[\"'](?:canonical|alternate)[\"'])[^>]*?\bhref=[\"']([^\"']+)[\"']", re.I),
+    re.compile(r"<object\b[^>]*?\bdata=[\"']([^\"']+)[\"']", re.I),
+    re.compile(r"<form\b[^>]*?\baction=[\"']([^\"']+)[\"']", re.I),
+    re.compile(r"<(?:video)\b[^>]*?\bposter=[\"']([^\"']+)[\"']", re.I),
+    re.compile(r"<meta\b[^>]*http-equiv=[\"']refresh[\"'][^>]*url=([^\"'>]+)", re.I),
+]
+srcset_re = re.compile(r"\bsrcset=[\"']([^\"']+)[\"']", re.I)
+abs_url_re = re.compile(r"""(?:https?:)?//[A-Za-z0-9.-]+\.[A-Za-z]{2,}[^\s"'<>)]*""")
+css_import_re = re.compile(r"@import\s+(?:url\()?\s*['\"]?([^'\")\s;]+)", re.I)
+
+
+def is_remote(ref: str) -> bool:
+    ref = ref.strip().lower()
+    return ref.startswith(("http://", "https://", "//"))
+
+
+def third_party(problems: dict[str, list[str]]) -> tuple[int, int]:
+    """Tracker strings anywhere, and remote URLs wherever something would be loaded."""
+    files = [f for f in sorted(ROOT.rglob("*")) if f.is_file() and (f.suffix.lower() in TEXT_SUFFIXES or f.name == ".htaccess")]
+    loaders = 0
+    for file in files:
+        rel = file.relative_to(ROOT).as_posix()
+        text = file.read_text(encoding="utf-8", errors="replace")
+        for needle in TRACKER_STRINGS:
+            if needle in text:
+                problems["tracker strings"].append(f"{rel}: {needle}")
+        refs: list[str] = []
+        if file.suffix == ".html":
+            for pattern in loader_res:
+                refs += pattern.findall(text)
+            for value in srcset_re.findall(text):
+                refs += [part.strip().split(" ")[0] for part in value.split(",")]
+            for block in re.findall(r"<style\b[^>]*>(.*?)</style>", text, re.S | re.I):
+                refs += css_url_re.findall(block) + css_import_re.findall(block)
+            for block in re.findall(r"<script\b(?![^>]*application/ld\+json)[^>]*>(.*?)</script>", text, re.S | re.I):
+                refs += abs_url_re.findall(block)
+        elif file.suffix == ".css":
+            refs += css_url_re.findall(text) + css_import_re.findall(text)
+        elif file.suffix == ".js":
+            refs += abs_url_re.findall(text)
+        loaders += len(refs)
+        for ref in refs:
+            if is_remote(ref) and not ref.startswith(RESOURCE_ALLOW):
+                problems["third-party resources"].append(f"{rel}: {ref[:100]}")
+    return len(files), loaders
+
 
 # Anchors that existed before the rebuild and must keep working.
 LEGACY_ANCHORS = {
@@ -136,7 +203,19 @@ def main() -> int:
                 problems["hreflang"].append(f"{rel}: no {code}")
         other = rel.removeprefix("ja/") if lang == "ja" else "ja/" + rel
         if not (ROOT / other).exists():
-            problems["hreflang"].append(f"{rel}: no counterpart {other}")
+            problems["language parity"].append(f"{rel}: no counterpart {other}")
+            continue
+        # Reciprocal: this page's link to the other language must be that page's
+        # own canonical address, and x-default must be the English page.
+        other_canonical = canonical_re.search(texts[ROOT / other])
+        other_code = "en" if lang == "ja" else "ja"
+        if other_canonical and alternates.get(other_code) != other_canonical.group(1):
+            problems["hreflang"].append(f"{rel}: {other_code} link {alternates.get(other_code)} is not the canonical of {other}")
+        if alternates.get(lang) != expected:
+            problems["hreflang"].append(f"{rel}: {lang} link is not this page")
+        english = expected.replace(SITE + "ja/", SITE) if lang == "ja" else expected
+        if alternates.get("x-default") != english:
+            problems["hreflang"].append(f"{rel}: x-default is not the English page")
 
     for lang in ("en", "ja"):
         for value, pages in titles[lang].items():
@@ -161,6 +240,15 @@ def main() -> int:
             if target is not None and not target.exists():
                 problems["missing files"].append(f"{css.relative_to(ROOT)} -> {ref}")
 
+    scanned, loaders = third_party(problems)
+    english_pages = [h for h in HTML_FILES if not h.relative_to(ROOT).as_posix().startswith("ja/") and h.relative_to(ROOT).as_posix() not in STUBS]
+    japanese_pages = [h for h in HTML_FILES if h.relative_to(ROOT).as_posix().startswith("ja/")]
+    for name in STUBS:
+        if not (ROOT / name).exists():
+            problems["language parity"].append(f"named stub {name} does not exist")
+        if (ROOT / "ja" / name).exists():
+            problems["language parity"].append(f"ja/{name} exists but {name} is listed as a stub without a counterpart")
+
     sitemap = (ROOT / "sitemap.xml").read_text(encoding="utf-8") if (ROOT / "sitemap.xml").exists() else ""
     for html in HTML_FILES:
         rel = html.relative_to(ROOT).as_posix()
@@ -169,13 +257,25 @@ def main() -> int:
         url = SITE + ("" if rel == "index.html" else "ja/" if rel == "ja/index.html" else rel)
         if f"<loc>{url}</loc>" not in sitemap:
             problems["sitemap.xml"].append(f"{rel} not listed")
+    for loc in re.findall(r"<loc>([^<]+)</loc>", sitemap):
+        rel = loc.removeprefix(SITE)
+        if rel == "" or rel.endswith("/"):
+            rel += "index.html"
+        if not (ROOT / rel).exists():
+            problems["sitemap.xml"].append(f"{loc} listed but {rel} does not exist")
+        pair = rel.removeprefix("ja/") if rel.startswith("ja/") else "ja/" + rel
+        pair_url = SITE + ("" if pair == "index.html" else "ja/" if pair == "ja/index.html" else pair)
+        if f"<loc>{pair_url}</loc>" not in sitemap:
+            problems["sitemap.xml"].append(f"{loc} listed without its other-language page {pair_url}")
 
     print(f"Checked {len(HTML_FILES)} HTML files under {ROOT}")
     print(f"Internal links and assets resolved: {links} (of which {fragments} with a #fragment)")
+    print(f"Language pairs: {len(english_pages)} English pages, {len(japanese_pages)} Japanese pages, {len(STUBS)} redirect stubs without a counterpart ({', '.join(sorted(STUBS))})")
+    print(f"Third-party scan: {scanned} text files, {loaders} resource references examined")
     checks = [
         "H1", "lang attribute", "duplicate ids", "missing files", "missing anchors", "images without alt",
         "images without dimensions", "title", "meta description", "duplicate titles", "duplicate descriptions",
-        "canonical", "hreflang", "legacy anchors", "sitemap.xml",
+        "canonical", "hreflang", "language parity", "legacy anchors", "sitemap.xml", "tracker strings", "third-party resources",
     ]
     for name in checks:
         rows = problems.get(name, [])
