@@ -1,0 +1,182 @@
+VIOLATION index.html @390: aria-allowed-role (minor) x1: ARIA role should be appropriate for the element
+    #lc-idea  Fix any of the following: ARIA role tabpanel is not allowed for given element
+VIOLATION ja/index.html @390: aria-allowed-role (minor) x1: ARIA role should be appropriate for the element
+    #lc-idea  Fix any of the following: ARIA role tabpanel is not allowed for given element
+VIOLATION ja/products.html @390: landmark-unique (moderate) x1: Landmarks should have a unique role or role/label/title (i.e. accessible name) combination
+    .pjump  Fix any of the following: The landmark must have a unique aria-label, aria-labelledby, or title to make landmarks distinguishable
+VIOLATION products.html @390: landmark-unique (moderate) x1: Landmarks should have a unique role or role/label/title (i.e. accessible name) combination
+    .pjump  Fix any of the following: The landmark must have a unique aria-label, aria-labelledby, or title to make landmarks distinguishable
+VIOLATION 404.html @1440: landmark-unique (moderate) x1: Landmarks should have a unique role or role/label/title (i.e. accessible name) combination
+    .header-tools > .lang-switch[aria-label="Language"][data-lang-switch=""]  Fix any of the following: The landmark must have a unique aria-label, aria-labelledby, or title to make landmarks distinguishable
+VIOLATION about.html @1440: landmark-unique (moderate) x1: Landmarks should have a unique role or role/label/title (i.e. accessible name) combination
+    .header-tools > .lang-switch[aria-label="Language"][data-lang-switch=""]  Fix any of the following: The landmark must have a unique aria-label, aria-labelledby, or title to make landmarks distinguishable
+VIOLATION accessibility.html @1440: landmark-unique (moderate) x1: Landmarks should have a unique role or role/label/title (i.e. accessible name) combination
+    .header-tools > .lang-switch[aria-label="Language"][data-lang-switch=""]  Fix any of the following: The landmark must have a unique aria-label, aria-labelledby, or title to make landmarks distinguishable
+VIOLATION apply.html @1440: landmark-unique (moderate) x1: Landmarks should have a unique role or role/label/title (i.e. accessible name) combination
+    .header-tools > .lang-switch[aria-label="Language"][data-lang-switch=""]  Fix any of the following: The landmark must have a unique aria-label, aria-labelledby, or title to make landmarks distinguishable
+VIOLATION behind-the-brand.html @1440: landmark-unique (moderate) x1: Landmarks should have a unique role or role/label/title (i.e. accessible name) combination
+    .header-tools > .lang-switch[aria-label="Language"][data-lang-switch=""]  Fix any of the following: The landmark must have a unique aria-label, aria-labelledby, or title to make landmarks distinguishable
+VIOLATION careers.html @1440: landmark-unique (moderate) x1: Landmarks should have a unique role or role/label/title (i.e. accessible name) combination
+    .header-tools > .lang-switch[aria-label="Language"][data-lang-switch=""]  Fix any of the following: The landmark must have a unique aria-label, aria-labelledby, or title to make landmarks distinguishable
+VIOLATION careers/01-tech-lead-teamcenter.html @1440: landmark-unique (moderate) x1: Landmarks should have a unique role or role/label/title (i.e. accessible name) combination
+    .header-tools > .lang-switch[aria-label="Language"][data-lang-switch=""]  Fix any of the following: The landmark must have a unique aria-label, aria-labelledby, or title to make landmarks distinguishable
+VIOLATION careers/02-teamcenter-developer.html @1440: landmark-unique (moderate) x1: Landmarks should have a unique role or role/label/title (i.e. accessible name) combination
+    .header-tools > .lang-switch[aria-label="Language"][data-lang-switch=""]  Fix any of the following: The landmark must have a unique aria-label, aria-labelledby, or title to make landmarks distinguishable
+VIOLATION careers/03-support-engineer-capital.html @1440: landmark-unique (moderate) x1: Landmarks should have a unique role or role/label/title (i.e. accessible name) combination
+    .header-tools > .lang-switch[aria-label="Language"][data-lang-switch=""]  Fix any of the following: The landmark must have a unique aria-label, aria-labelledby, or title to make landmarks distinguishable
+VIOLATION careers/04-application-engineer-capital.html @1440: landmark-unique (moderate) x1: Landmarks should have a unique role or role/label/title (i.e. accessible name) combination
+    .header-tools > .lang-switch[aria-label="Language"][data-lang-switch=""]  Fix any of the following: The landmark must have a unique aria-label, aria-labelledby, or title to make landmarks distinguishable
+VIOLATION careers/05-project-manager.html @1440: landmark-unique (moderate) x1: Landmarks should have a unique role or role/label/title (i.e. accessible name) combination
+    .header-tools > .lang-switch[aria-label="Language"][data-lang-switch=""]  Fix any of the following: The landmark must have a unique aria-label, aria-labelledby, or title to make landmarks distinguishable
+VIOLATION careers/06-plm-teamcenter-developer.html @1440: landmark-unique (moderate) x1: Landmarks should have a unique role or role/label/title (i.e. accessible name) combination
+    .header-tools > .lang-switch[aria-label="Language"][data-lang-switch=""]  Fix any of the following: The landmark must have a unique aria-label, aria-labelledby, or title to make landmarks distinguishable
+VIOLATION careers/07-teamcenter-plm-solution-architect.html @1440: landmark-unique (moderate) x1: Landmarks should have a unique role or role/label/title (i.e. accessible name) combination
+    .header-tools > .lang-switch[aria-label="Language"][data-lang-switch=""]  Fix any of the following: The landmark must have a unique aria-label, aria-labelledby, or title to make landmarks distinguishable
+VIOLATION careers/08-team-lead.html @1440: landmark-unique (moderate) x1: Landmarks should have a unique role or role/label/title (i.e. accessible name) combination
+    .header-tools > .lang-switch[aria-label="Language"][data-lang-switch=""]  Fix any of the following: The landmark must have a unique aria-label, aria-labelledby, or title to make landmarks distinguishable
+VIOLATION careers/09-plm-teamcenter-developer.html @1440: landmark-unique (moderate) x1: Landmarks should have a unique role or role/label/title (i.e. accessible name) combination
+    .header-tools > .lang-switch[aria-label="Language"][data-lang-switch=""]  Fix any of the following: The landmark must have a unique aria-label, aria-labelledby, or title to make landmarks distinguishable
+VIOLATION careers/10-plm-teamcenter-administrator.html @1440: landmark-unique (moderate) x1: Landmarks should have a unique role or role/label/title (i.e. accessible name) combination
+    .header-tools > .lang-switch[aria-label="Language"][data-lang-switch=""]  Fix any of the following: The landmark must have a unique aria-label, aria-labelledby, or title to make landmarks distinguishable
+VIOLATION careers/11-technical-lead.html @1440: landmark-unique (moderate) x1: Landmarks should have a unique role or role/label/title (i.e. accessible name) combination
+    .header-tools > .lang-switch[aria-label="Language"][data-lang-switch=""]  Fix any of the following: The landmark must have a unique aria-label, aria-labelledby, or title to make landmarks distinguishable
+VIOLATION careers/12-solution-architect-digital-manufacturing.html @1440: landmark-unique (moderate) x1: Landmarks should have a unique role or role/label/title (i.e. accessible name) combination
+    .header-tools > .lang-switch[aria-label="Language"][data-lang-switch=""]  Fix any of the following: The landmark must have a unique aria-label, aria-labelledby, or title to make landmarks distinguishable
+VIOLATION careers/13-sales-engineer.html @1440: landmark-unique (moderate) x1: Landmarks should have a unique role or role/label/title (i.e. accessible name) combination
+    .header-tools > .lang-switch[aria-label="Language"][data-lang-switch=""]  Fix any of the following: The landmark must have a unique aria-label, aria-labelledby, or title to make landmarks distinguishable
+VIOLATION careers/14-inside-sales-specialist.html @1440: landmark-unique (moderate) x1: Landmarks should have a unique role or role/label/title (i.e. accessible name) combination
+    .header-tools > .lang-switch[aria-label="Language"][data-lang-switch=""]  Fix any of the following: The landmark must have a unique aria-label, aria-labelledby, or title to make landmarks distinguishable
+VIOLATION careers/15-nx-application-engineer.html @1440: landmark-unique (moderate) x1: Landmarks should have a unique role or role/label/title (i.e. accessible name) combination
+    .header-tools > .lang-switch[aria-label="Language"][data-lang-switch=""]  Fix any of the following: The landmark must have a unique aria-label, aria-labelledby, or title to make landmarks distinguishable
+VIOLATION careers/16-plm-analyst.html @1440: landmark-unique (moderate) x1: Landmarks should have a unique role or role/label/title (i.e. accessible name) combination
+    .header-tools > .lang-switch[aria-label="Language"][data-lang-switch=""]  Fix any of the following: The landmark must have a unique aria-label, aria-labelledby, or title to make landmarks distinguishable
+VIOLATION careers/17-catia-support-engineer.html @1440: landmark-unique (moderate) x1: Landmarks should have a unique role or role/label/title (i.e. accessible name) combination
+    .header-tools > .lang-switch[aria-label="Language"][data-lang-switch=""]  Fix any of the following: The landmark must have a unique aria-label, aria-labelledby, or title to make landmarks distinguishable
+VIOLATION careers/18-mendix-developer.html @1440: landmark-unique (moderate) x1: Landmarks should have a unique role or role/label/title (i.e. accessible name) combination
+    .header-tools > .lang-switch[aria-label="Language"][data-lang-switch=""]  Fix any of the following: The landmark must have a unique aria-label, aria-labelledby, or title to make landmarks distinguishable
+VIOLATION contact.html @1440: landmark-unique (moderate) x1: Landmarks should have a unique role or role/label/title (i.e. accessible name) combination
+    .header-tools > .lang-switch[aria-label="Language"][data-lang-switch=""]  Fix any of the following: The landmark must have a unique aria-label, aria-labelledby, or title to make landmarks distinguishable
+VIOLATION digital-transformation.html @1440: landmark-unique (moderate) x1: Landmarks should have a unique role or role/label/title (i.e. accessible name) combination
+    .header-tools > .lang-switch[aria-label="Language"][data-lang-switch=""]  Fix any of the following: The landmark must have a unique aria-label, aria-labelledby, or title to make landmarks distinguishable
+VIOLATION index.html @1440: aria-allowed-role (minor) x1: ARIA role should be appropriate for the element
+    #lc-idea  Fix any of the following: ARIA role tabpanel is not allowed for given element
+VIOLATION index.html @1440: landmark-unique (moderate) x1: Landmarks should have a unique role or role/label/title (i.e. accessible name) combination
+    .header-tools > .lang-switch[aria-label="Language"][data-lang-switch=""]  Fix any of the following: The landmark must have a unique aria-label, aria-labelledby, or title to make landmarks distinguishable
+VIOLATION industries.html @1440: landmark-unique (moderate) x1: Landmarks should have a unique role or role/label/title (i.e. accessible name) combination
+    .header-tools > .lang-switch[aria-label="Language"][data-lang-switch=""]  Fix any of the following: The landmark must have a unique aria-label, aria-labelledby, or title to make landmarks distinguishable
+VIOLATION ja/404.html @1440: landmark-unique (moderate) x1: Landmarks should have a unique role or role/label/title (i.e. accessible name) combination
+    .header-tools > .lang-switch[aria-label="言語"][data-lang-switch=""]  Fix any of the following: The landmark must have a unique aria-label, aria-labelledby, or title to make landmarks distinguishable
+VIOLATION ja/about.html @1440: landmark-unique (moderate) x1: Landmarks should have a unique role or role/label/title (i.e. accessible name) combination
+    .header-tools > .lang-switch[aria-label="言語"][data-lang-switch=""]  Fix any of the following: The landmark must have a unique aria-label, aria-labelledby, or title to make landmarks distinguishable
+VIOLATION ja/accessibility.html @1440: landmark-unique (moderate) x1: Landmarks should have a unique role or role/label/title (i.e. accessible name) combination
+    .header-tools > .lang-switch[aria-label="言語"][data-lang-switch=""]  Fix any of the following: The landmark must have a unique aria-label, aria-labelledby, or title to make landmarks distinguishable
+VIOLATION ja/apply.html @1440: landmark-unique (moderate) x1: Landmarks should have a unique role or role/label/title (i.e. accessible name) combination
+    .header-tools > .lang-switch[aria-label="言語"][data-lang-switch=""]  Fix any of the following: The landmark must have a unique aria-label, aria-labelledby, or title to make landmarks distinguishable
+VIOLATION ja/behind-the-brand.html @1440: landmark-unique (moderate) x1: Landmarks should have a unique role or role/label/title (i.e. accessible name) combination
+    .header-tools > .lang-switch[aria-label="言語"][data-lang-switch=""]  Fix any of the following: The landmark must have a unique aria-label, aria-labelledby, or title to make landmarks distinguishable
+VIOLATION ja/careers.html @1440: landmark-unique (moderate) x1: Landmarks should have a unique role or role/label/title (i.e. accessible name) combination
+    .header-tools > .lang-switch[aria-label="言語"][data-lang-switch=""]  Fix any of the following: The landmark must have a unique aria-label, aria-labelledby, or title to make landmarks distinguishable
+VIOLATION ja/careers/01-tech-lead-teamcenter.html @1440: landmark-unique (moderate) x1: Landmarks should have a unique role or role/label/title (i.e. accessible name) combination
+    .header-tools > .lang-switch[aria-label="言語"][data-lang-switch=""]  Fix any of the following: The landmark must have a unique aria-label, aria-labelledby, or title to make landmarks distinguishable
+VIOLATION ja/careers/02-teamcenter-developer.html @1440: landmark-unique (moderate) x1: Landmarks should have a unique role or role/label/title (i.e. accessible name) combination
+    .header-tools > .lang-switch[aria-label="言語"][data-lang-switch=""]  Fix any of the following: The landmark must have a unique aria-label, aria-labelledby, or title to make landmarks distinguishable
+VIOLATION ja/careers/03-support-engineer-capital.html @1440: landmark-unique (moderate) x1: Landmarks should have a unique role or role/label/title (i.e. accessible name) combination
+    .header-tools > .lang-switch[aria-label="言語"][data-lang-switch=""]  Fix any of the following: The landmark must have a unique aria-label, aria-labelledby, or title to make landmarks distinguishable
+VIOLATION ja/careers/04-application-engineer-capital.html @1440: landmark-unique (moderate) x1: Landmarks should have a unique role or role/label/title (i.e. accessible name) combination
+    .header-tools > .lang-switch[aria-label="言語"][data-lang-switch=""]  Fix any of the following: The landmark must have a unique aria-label, aria-labelledby, or title to make landmarks distinguishable
+VIOLATION ja/careers/05-project-manager.html @1440: landmark-unique (moderate) x1: Landmarks should have a unique role or role/label/title (i.e. accessible name) combination
+    .header-tools > .lang-switch[aria-label="言語"][data-lang-switch=""]  Fix any of the following: The landmark must have a unique aria-label, aria-labelledby, or title to make landmarks distinguishable
+VIOLATION ja/careers/06-plm-teamcenter-developer.html @1440: landmark-unique (moderate) x1: Landmarks should have a unique role or role/label/title (i.e. accessible name) combination
+    .header-tools > .lang-switch[aria-label="言語"][data-lang-switch=""]  Fix any of the following: The landmark must have a unique aria-label, aria-labelledby, or title to make landmarks distinguishable
+VIOLATION ja/careers/07-teamcenter-plm-solution-architect.html @1440: landmark-unique (moderate) x1: Landmarks should have a unique role or role/label/title (i.e. accessible name) combination
+    .header-tools > .lang-switch[aria-label="言語"][data-lang-switch=""]  Fix any of the following: The landmark must have a unique aria-label, aria-labelledby, or title to make landmarks distinguishable
+VIOLATION ja/careers/08-team-lead.html @1440: landmark-unique (moderate) x1: Landmarks should have a unique role or role/label/title (i.e. accessible name) combination
+    .header-tools > .lang-switch[aria-label="言語"][data-lang-switch=""]  Fix any of the following: The landmark must have a unique aria-label, aria-labelledby, or title to make landmarks distinguishable
+VIOLATION ja/careers/09-plm-teamcenter-developer.html @1440: landmark-unique (moderate) x1: Landmarks should have a unique role or role/label/title (i.e. accessible name) combination
+    .header-tools > .lang-switch[aria-label="言語"][data-lang-switch=""]  Fix any of the following: The landmark must have a unique aria-label, aria-labelledby, or title to make landmarks distinguishable
+VIOLATION ja/careers/10-plm-teamcenter-administrator.html @1440: landmark-unique (moderate) x1: Landmarks should have a unique role or role/label/title (i.e. accessible name) combination
+    .header-tools > .lang-switch[aria-label="言語"][data-lang-switch=""]  Fix any of the following: The landmark must have a unique aria-label, aria-labelledby, or title to make landmarks distinguishable
+VIOLATION ja/careers/11-technical-lead.html @1440: landmark-unique (moderate) x1: Landmarks should have a unique role or role/label/title (i.e. accessible name) combination
+    .header-tools > .lang-switch[aria-label="言語"][data-lang-switch=""]  Fix any of the following: The landmark must have a unique aria-label, aria-labelledby, or title to make landmarks distinguishable
+VIOLATION ja/careers/12-solution-architect-digital-manufacturing.html @1440: landmark-unique (moderate) x1: Landmarks should have a unique role or role/label/title (i.e. accessible name) combination
+    .header-tools > .lang-switch[aria-label="言語"][data-lang-switch=""]  Fix any of the following: The landmark must have a unique aria-label, aria-labelledby, or title to make landmarks distinguishable
+VIOLATION ja/careers/13-sales-engineer.html @1440: landmark-unique (moderate) x1: Landmarks should have a unique role or role/label/title (i.e. accessible name) combination
+    .header-tools > .lang-switch[aria-label="言語"][data-lang-switch=""]  Fix any of the following: The landmark must have a unique aria-label, aria-labelledby, or title to make landmarks distinguishable
+VIOLATION ja/careers/14-inside-sales-specialist.html @1440: landmark-unique (moderate) x1: Landmarks should have a unique role or role/label/title (i.e. accessible name) combination
+    .header-tools > .lang-switch[aria-label="言語"][data-lang-switch=""]  Fix any of the following: The landmark must have a unique aria-label, aria-labelledby, or title to make landmarks distinguishable
+VIOLATION ja/careers/15-nx-application-engineer.html @1440: landmark-unique (moderate) x1: Landmarks should have a unique role or role/label/title (i.e. accessible name) combination
+    .header-tools > .lang-switch[aria-label="言語"][data-lang-switch=""]  Fix any of the following: The landmark must have a unique aria-label, aria-labelledby, or title to make landmarks distinguishable
+VIOLATION ja/careers/16-plm-analyst.html @1440: landmark-unique (moderate) x1: Landmarks should have a unique role or role/label/title (i.e. accessible name) combination
+    .header-tools > .lang-switch[aria-label="言語"][data-lang-switch=""]  Fix any of the following: The landmark must have a unique aria-label, aria-labelledby, or title to make landmarks distinguishable
+VIOLATION ja/careers/17-catia-support-engineer.html @1440: landmark-unique (moderate) x1: Landmarks should have a unique role or role/label/title (i.e. accessible name) combination
+    .header-tools > .lang-switch[aria-label="言語"][data-lang-switch=""]  Fix any of the following: The landmark must have a unique aria-label, aria-labelledby, or title to make landmarks distinguishable
+VIOLATION ja/careers/18-mendix-developer.html @1440: landmark-unique (moderate) x1: Landmarks should have a unique role or role/label/title (i.e. accessible name) combination
+    .header-tools > .lang-switch[aria-label="言語"][data-lang-switch=""]  Fix any of the following: The landmark must have a unique aria-label, aria-labelledby, or title to make landmarks distinguishable
+VIOLATION ja/contact.html @1440: landmark-unique (moderate) x1: Landmarks should have a unique role or role/label/title (i.e. accessible name) combination
+    .header-tools > .lang-switch[aria-label="言語"][data-lang-switch=""]  Fix any of the following: The landmark must have a unique aria-label, aria-labelledby, or title to make landmarks distinguishable
+VIOLATION ja/digital-transformation.html @1440: landmark-unique (moderate) x1: Landmarks should have a unique role or role/label/title (i.e. accessible name) combination
+    .header-tools > .lang-switch[aria-label="言語"][data-lang-switch=""]  Fix any of the following: The landmark must have a unique aria-label, aria-labelledby, or title to make landmarks distinguishable
+VIOLATION ja/index.html @1440: aria-allowed-role (minor) x1: ARIA role should be appropriate for the element
+    #lc-idea  Fix any of the following: ARIA role tabpanel is not allowed for given element
+VIOLATION ja/index.html @1440: landmark-unique (moderate) x1: Landmarks should have a unique role or role/label/title (i.e. accessible name) combination
+    .header-tools > .lang-switch[aria-label="言語"][data-lang-switch=""]  Fix any of the following: The landmark must have a unique aria-label, aria-labelledby, or title to make landmarks distinguishable
+VIOLATION ja/industries.html @1440: landmark-unique (moderate) x1: Landmarks should have a unique role or role/label/title (i.e. accessible name) combination
+    .header-tools > .lang-switch[aria-label="言語"][data-lang-switch=""]  Fix any of the following: The landmark must have a unique aria-label, aria-labelledby, or title to make landmarks distinguishable
+VIOLATION ja/plm.html @1440: landmark-unique (moderate) x1: Landmarks should have a unique role or role/label/title (i.e. accessible name) combination
+    .header-tools > .lang-switch[aria-label="言語"][data-lang-switch=""]  Fix any of the following: The landmark must have a unique aria-label, aria-labelledby, or title to make landmarks distinguishable
+VIOLATION ja/privacy.html @1440: landmark-unique (moderate) x1: Landmarks should have a unique role or role/label/title (i.e. accessible name) combination
+    .header-tools > .lang-switch[aria-label="言語"][data-lang-switch=""]  Fix any of the following: The landmark must have a unique aria-label, aria-labelledby, or title to make landmarks distinguishable
+VIOLATION ja/products.html @1440: landmark-unique (moderate) x2: Landmarks should have a unique role or role/label/title (i.e. accessible name) combination
+    .header-tools > .lang-switch[aria-label="言語"][data-lang-switch=""]  Fix any of the following: The landmark must have a unique aria-label, aria-labelledby, or title to make landmarks distinguishable
+    .pjump  Fix any of the following: The landmark must have a unique aria-label, aria-labelledby, or title to make landmarks distinguishable
+VIOLATION ja/products/capital.html @1440: landmark-unique (moderate) x1: Landmarks should have a unique role or role/label/title (i.e. accessible name) combination
+    .header-tools > .lang-switch[aria-label="言語"][data-lang-switch=""]  Fix any of the following: The landmark must have a unique aria-label, aria-labelledby, or title to make landmarks distinguishable
+VIOLATION ja/products/mendix.html @1440: landmark-unique (moderate) x1: Landmarks should have a unique role or role/label/title (i.e. accessible name) combination
+    .header-tools > .lang-switch[aria-label="言語"][data-lang-switch=""]  Fix any of the following: The landmark must have a unique aria-label, aria-labelledby, or title to make landmarks distinguishable
+VIOLATION ja/products/nx.html @1440: landmark-unique (moderate) x1: Landmarks should have a unique role or role/label/title (i.e. accessible name) combination
+    .header-tools > .lang-switch[aria-label="言語"][data-lang-switch=""]  Fix any of the following: The landmark must have a unique aria-label, aria-labelledby, or title to make landmarks distinguishable
+VIOLATION ja/products/solid-edge.html @1440: landmark-unique (moderate) x1: Landmarks should have a unique role or role/label/title (i.e. accessible name) combination
+    .header-tools > .lang-switch[aria-label="言語"][data-lang-switch=""]  Fix any of the following: The landmark must have a unique aria-label, aria-labelledby, or title to make landmarks distinguishable
+VIOLATION ja/products/teamcenter.html @1440: landmark-unique (moderate) x1: Landmarks should have a unique role or role/label/title (i.e. accessible name) combination
+    .header-tools > .lang-switch[aria-label="言語"][data-lang-switch=""]  Fix any of the following: The landmark must have a unique aria-label, aria-labelledby, or title to make landmarks distinguishable
+VIOLATION ja/products/tecnomatix.html @1440: landmark-unique (moderate) x1: Landmarks should have a unique role or role/label/title (i.e. accessible name) combination
+    .header-tools > .lang-switch[aria-label="言語"][data-lang-switch=""]  Fix any of the following: The landmark must have a unique aria-label, aria-labelledby, or title to make landmarks distinguishable
+VIOLATION ja/search.html @1440: landmark-unique (moderate) x1: Landmarks should have a unique role or role/label/title (i.e. accessible name) combination
+    .header-tools > .lang-switch[aria-label="言語"][data-lang-switch=""]  Fix any of the following: The landmark must have a unique aria-label, aria-labelledby, or title to make landmarks distinguishable
+VIOLATION ja/services.html @1440: landmark-unique (moderate) x1: Landmarks should have a unique role or role/label/title (i.e. accessible name) combination
+    .header-tools > .lang-switch[aria-label="言語"][data-lang-switch=""]  Fix any of the following: The landmark must have a unique aria-label, aria-labelledby, or title to make landmarks distinguishable
+VIOLATION ja/sitemap.html @1440: landmark-unique (moderate) x1: Landmarks should have a unique role or role/label/title (i.e. accessible name) combination
+    .header-tools > .lang-switch[aria-label="言語"][data-lang-switch=""]  Fix any of the following: The landmark must have a unique aria-label, aria-labelledby, or title to make landmarks distinguishable
+VIOLATION ja/solutions.html @1440: landmark-unique (moderate) x1: Landmarks should have a unique role or role/label/title (i.e. accessible name) combination
+    .header-tools > .lang-switch[aria-label="言語"][data-lang-switch=""]  Fix any of the following: The landmark must have a unique aria-label, aria-labelledby, or title to make landmarks distinguishable
+VIOLATION plm.html @1440: landmark-unique (moderate) x1: Landmarks should have a unique role or role/label/title (i.e. accessible name) combination
+    .header-tools > .lang-switch[aria-label="Language"][data-lang-switch=""]  Fix any of the following: The landmark must have a unique aria-label, aria-labelledby, or title to make landmarks distinguishable
+VIOLATION privacy.html @1440: landmark-unique (moderate) x1: Landmarks should have a unique role or role/label/title (i.e. accessible name) combination
+    .header-tools > .lang-switch[aria-label="Language"][data-lang-switch=""]  Fix any of the following: The landmark must have a unique aria-label, aria-labelledby, or title to make landmarks distinguishable
+VIOLATION products.html @1440: landmark-unique (moderate) x2: Landmarks should have a unique role or role/label/title (i.e. accessible name) combination
+    .header-tools > .lang-switch[aria-label="Language"][data-lang-switch=""]  Fix any of the following: The landmark must have a unique aria-label, aria-labelledby, or title to make landmarks distinguishable
+    .pjump  Fix any of the following: The landmark must have a unique aria-label, aria-labelledby, or title to make landmarks distinguishable
+VIOLATION products/capital.html @1440: landmark-unique (moderate) x1: Landmarks should have a unique role or role/label/title (i.e. accessible name) combination
+    .header-tools > .lang-switch[aria-label="Language"][data-lang-switch=""]  Fix any of the following: The landmark must have a unique aria-label, aria-labelledby, or title to make landmarks distinguishable
+VIOLATION products/mendix.html @1440: landmark-unique (moderate) x1: Landmarks should have a unique role or role/label/title (i.e. accessible name) combination
+    .header-tools > .lang-switch[aria-label="Language"][data-lang-switch=""]  Fix any of the following: The landmark must have a unique aria-label, aria-labelledby, or title to make landmarks distinguishable
+VIOLATION products/nx.html @1440: landmark-unique (moderate) x1: Landmarks should have a unique role or role/label/title (i.e. accessible name) combination
+    .header-tools > .lang-switch[aria-label="Language"][data-lang-switch=""]  Fix any of the following: The landmark must have a unique aria-label, aria-labelledby, or title to make landmarks distinguishable
+VIOLATION products/solid-edge.html @1440: landmark-unique (moderate) x1: Landmarks should have a unique role or role/label/title (i.e. accessible name) combination
+    .header-tools > .lang-switch[aria-label="Language"][data-lang-switch=""]  Fix any of the following: The landmark must have a unique aria-label, aria-labelledby, or title to make landmarks distinguishable
+VIOLATION products/teamcenter.html @1440: landmark-unique (moderate) x1: Landmarks should have a unique role or role/label/title (i.e. accessible name) combination
+    .header-tools > .lang-switch[aria-label="Language"][data-lang-switch=""]  Fix any of the following: The landmark must have a unique aria-label, aria-labelledby, or title to make landmarks distinguishable
+VIOLATION products/tecnomatix.html @1440: landmark-unique (moderate) x1: Landmarks should have a unique role or role/label/title (i.e. accessible name) combination
+    .header-tools > .lang-switch[aria-label="Language"][data-lang-switch=""]  Fix any of the following: The landmark must have a unique aria-label, aria-labelledby, or title to make landmarks distinguishable
+VIOLATION search.html @1440: landmark-unique (moderate) x1: Landmarks should have a unique role or role/label/title (i.e. accessible name) combination
+    .header-tools > .lang-switch[aria-label="Language"][data-lang-switch=""]  Fix any of the following: The landmark must have a unique aria-label, aria-labelledby, or title to make landmarks distinguishable
+VIOLATION services.html @1440: landmark-unique (moderate) x1: Landmarks should have a unique role or role/label/title (i.e. accessible name) combination
+    .header-tools > .lang-switch[aria-label="Language"][data-lang-switch=""]  Fix any of the following: The landmark must have a unique aria-label, aria-labelledby, or title to make landmarks distinguishable
+VIOLATION sitemap.html @1440: landmark-unique (moderate) x1: Landmarks should have a unique role or role/label/title (i.e. accessible name) combination
+    .header-tools > .lang-switch[aria-label="Language"][data-lang-switch=""]  Fix any of the following: The landmark must have a unique aria-label, aria-labelledby, or title to make landmarks distinguishable
+VIOLATION solutions.html @1440: landmark-unique (moderate) x1: Landmarks should have a unique role or role/label/title (i.e. accessible name) combination
+    .header-tools > .lang-switch[aria-label="Language"][data-lang-switch=""]  Fix any of the following: The landmark must have a unique aria-label, aria-labelledby, or title to make landmarks distinguishable
+
+axe-core 4.14.1: 82 pages x 2 widths = 164 scans, 61 rules passed somewhere
+Violations: 90. Items axe could not decide and left for a person: 40
+FAIL

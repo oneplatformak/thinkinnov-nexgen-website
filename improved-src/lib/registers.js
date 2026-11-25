@@ -98,7 +98,7 @@ function japaneseRegister(i18n) {
   out.push("");
   out.push("These are built from parts by rule rather than stored as whole sentences:");
   out.push("");
-  out.push("- Photo viewer labels: “Enlarge photo N of 12” → 写真を拡大（12枚中N枚目）");
+  out.push(`- Photo viewer labels: “Enlarge photo N of ${content.about.gallery.length}” → 写真を拡大（${content.about.gallery.length}枚中N枚目）`);
   out.push("- Infographic labels: “Infographic: <industry>” → インフォグラフィック：<industry>");
   out.push("- Experience: “2+ Years” → 2年以上; “4 - 6 Years” → 4〜6年");
   out.push("- “Other roles in <discipline>” → 「<discipline>」のその他の職種");
@@ -112,6 +112,26 @@ function japaneseRegister(i18n) {
   out.push("");
   return out.join("\n") + "\n";
 }
+
+// [claim, where on this site, where in the source, status]
+const STAGING_CLAIMS = [
+  ["“Siemens Solution Partner”", "Home hero, above the headline. Nowhere else: not in the footer, metadata or structured data.", "Official `index.html` line 48 (hero eyebrow); same in the crawl.", "Wording confirmed from the official source; placement kept as in source. Whether it is the current designation is for the client and Siemens."],
+  ["“A Siemens Certified \"Expert Partner - PLM\" synergizing with ThinkInnov-NexGen's extensive project delivery experience in Japan, to deliver high value to customers in Japan.”", "About, `#partnership`. Nowhere else.", "Official `assets/page-data.js` line 29; same in the crawl.", "Wording confirmed from the official source; placement kept as in source. Two different partner designations exist in the source; which is current is open."],
+  ["“ThinkInnov-NexGen KK — A Strategic Partnership in Japan”", "About, `#partnership` heading. Nowhere else.", "Official `assets/page-data.js` line 28.", "Kept as the source has it. The source never says “joint venture” and never names Nexware or NEXGEN as a separate company, so neither does the site."],
+  ["“since 2014” (“A software development service provider since 2014…”, “…serving customers since 2014.”)", "About intro and `#identity`.", "Official `assets/page-data.js` line 8 and Japanese lines 250 and 254; footer “© 2014 - 2026”.", "Open: which legal entity dates from 2014."],
+  ["“Trusted by product-led teams across automotive, aerospace, energy, electrical and manufacturing industries.”", "Home `#customers`, under the source heading “Our key customers”.", "Staging home page, customers section.", "Open: depends on the logo permissions in `notes/CUSTOMER-REGISTER.md`."],
+  ["“Faster time to market, improved quality, cost reduction, innovation and regulatory compliance.”", "`plm.html#why` and home `#why`, as the source card “Business Benefits”.", "Staging `assets/page-data.js`, “Why ThinkInnov-NexGen for PLM”.", "Open: a general benefit statement about PLM. The site attaches no figure, customer or guarantee to it and makes no compliance claim of its own."],
+  ["Key Value Drivers: bilingual PM / PMO / bridge engineers; onsite and offshore support; expertise list (MCAD, ECAD, Teamcenter, Mendix, SAP, …); end-to-end digital thread delivery combining PLM, ERP and MES", "About `#partnership`; quoted as the basis for links on product pages and solution entries.", "Staging `assets/page-data.js`, partnership panel.", "Open: confirm the list is current."],
+  ["“Japan headquarters with India delivery presence across Chennai and Coimbatore.”", "Home `#presence`, About `#identity`.", "Staging About, “Global Presence” card.", "Open: confirm offices and addresses."],
+  ["Company profile: company name “ThinkInnov-NexGen Corporation”, four officers and their titles, head office, branches", "About `#profile`.", "Official `assets/page-data.js` lines 40–44.", "Open: the source uses three forms of the company name and gives two CEO-titled roles. See `notes/REVIEW.md`, open questions."],
+  ["Four leadership profiles with photographs and titles", "About `#leadership`.", "Official `assets/page-data.js` lines 21–25.", "Open: titles differ between the leadership panel and the company profile; both are shown as the source has them."],
+  ["21 customer logos under “Our key customers”", "Home `#customers`.", "Official `index.html` lines 150–170.", "Open: permission, correct names and which entity each relationship is with. See `notes/CUSTOMER-REGISTER.md`."],
+  ["Four testimonials, verbatim", "Home `#testimonials`.", "Official `index.html` lines 204–207.", "Open: permission to publish, and the name and role of each speaker."],
+  ["18 job roles with location, experience and skills", "Careers and 18 job pages.", "Staging `assets/jobs.js`.", "Open: whether each vacancy is current. No `JobPosting` markup is published."],
+  ["Service lists, including “Production Development” in Enhancements", "Services, home `#services`.", "Staging `assets/page-data.js`.", "Open: “Production Development” may be a typo for “Product Development” or “Production Deployment”; published as the source has it."],
+  ["Head office address, telephone “+81 3-3525-8197”", "Footer, Contact, About `#profile`, structured data.", "Official `index.html` line 235 (“+03-3525-8197”).", "Open: number rewritten in international form on the assumption that “+03” means Tokyo area code 03."],
+  ["Email `info@thinkinnovnexgen.co.jp`", "Footer, Contact, forms, structured data.", "**Not in the source.** The official package and the crawl both show `info@thinkinnovnexgen.com`; the old sitemap uses the domain `thinkinnovsolution.com`.", "Open and launch-blocking: enquiries go nowhere if the `.co.jp` mailbox does not exist."],
+];
 
 function claimRegister() {
   const ext = content.external;
@@ -129,11 +149,18 @@ function claimRegister() {
   out.push("");
   out.push("## 1. Sentences sourced from Siemens' own websites");
   out.push("");
-  out.push(`Six sentences, one per product, on \`products.html\` (and its Japanese translation on \`ja/products.html\`). Each says only what the product is and who it is for, is worded as the owner's description, and links to its source. No features, compatibility, licensing or pricing. Pages retrieved on ${ext.retrieved}.`);
+  out.push(`Six sentences, one per product, shown on \`products.html\` and on that product's own page (\`products/<product>.html\`), with their Japanese translations under \`ja/\`. Each says only what the product is, is worded as the owner's description, and links to its source. No features, compatibility, licensing or pricing. Pages retrieved on ${ext.retrieved}.`);
   out.push("");
   out.push("| Product | Sentence on the site | Source URL | Evidence on that page |");
   out.push("| --- | --- | --- | --- |");
   out.push(rows.join("\n"));
+  out.push("");
+  out.push("One further sentence appears on each product page, about who owns the name:");
+  out.push("");
+  out.push("| Where | Sentence on the site | Source URL | Evidence on that page |");
+  out.push("| --- | --- | --- | --- |");
+  out.push(`| Solid Edge, Capital, Teamcenter, Tecnomatix and Mendix pages | ${cell(ext.trademarks.text)} | ${ext.trademarks.url} | ${cell(ext.trademarks.evidence)} |`);
+  out.push(`| NX page | ${cell(ext.trademarks.byProduct.nx)} | ${ext.trademarks.url} | The list has no row for “NX” alone, so the NX page names what the list does contain. |`);
   out.push("");
   out.push("Notes for the owner:");
   out.push("");
@@ -163,13 +190,151 @@ function claimRegister() {
   out.push("- **Finder need titles** (for example “Duplicate parts and systems keep appearing”) rephrase a staging problem or solution statement as a visitor's need; the staging sentence is shown with each.");
   out.push("- **Photo descriptions** on the About gallery describe what is visible in each photograph and nothing more. They do not name the event, the place or the people, because staging does not.");
   out.push("- **Privacy notice and accessibility statement** describe how this website's code behaves and what was tested. They are not from staging and need legal review (privacy) and owner approval before launch.");
-  out.push("- **“Conceptual image”** labels mark the one generated visual still in use.");
+  out.push("- **“Conceptual diagram”** labels mark the two SVG diagrams on the Digital Transformation page. Every word in them is a staging term (closed-loop analytics, development, manufacturing, real-world feedback, design; Teamcenter, ERP, MES, enterprise applications, Teamcenter connection platform, SAP, Oracle). No generated photograph or illustration is used anywhere on the site.");
+  out.push("- **Product pages** add no description of a product beyond the staging tagline, the staging category and the one sourced sentence above. Everything else on a product page is a relationship already listed in section 3.");
   out.push("");
-  out.push("## 5. Things deliberately not stated anywhere");
+  out.push("## 5. Claims inherited from the original site that only the client can confirm");
+  out.push("");
+  out.push("These statements are on the site because the original site makes them. “Official” means the Nexware package of the original site (`/cursor/stores/bot/thinkinnov/nexware-files/`, summarised in its `MANIFEST.md`); “crawl” means `staging-original/`. The two agree on every item below. Agreement between two copies of the same site is not proof that a claim is true or current, so each stays open until the client confirms it.");
+  out.push("");
+  out.push("| Claim as published | Where on this site | Where in the source | Status |");
+  out.push("| --- | --- | --- | --- |");
+  for (const row of STAGING_CLAIMS) out.push(`| ${row.map(cell).join(" | ")} |`);
+  out.push("");
+  out.push("## 6. Things deliberately not stated anywhere");
   out.push("");
   out.push("No customer counts, project counts, years of experience, certifications beyond the staging wording, awards, partnership tiers beyond the staging wording, case studies, pricing, SLAs, response times, retention periods, legal bases or compliance claims. No `JobPosting`, review or rating markup. The description of the company as a joint venture is **not** in staging and is therefore not on the site.");
   out.push("");
   return out.join("\n") + "\n";
 }
 
-module.exports = { enquiryOptionsPhp, japaneseRegister, claimRegister };
+// What the official HTML prints as each logo's alt text is all the source says about a customer.
+const FILE_LABELS = new Set(["BR", "STS", "SUV", "ADA"]);
+
+function customerRegister() {
+  const out = [];
+  out.push("# Customer logo and testimonial register");
+  out.push("");
+  out.push("Generated by `node improved-src/build.js` from `improved-src/content/company.js`. Do not edit by hand.");
+  out.push("");
+  out.push("The site shows these logos under the source heading **“Our key customers”** and nowhere else. It says nothing about what was delivered to any of them, and it does not group them by industry, because the source does not. Every column the source cannot fill is marked as a question for the client.");
+  out.push("");
+  out.push(`## Logos (${content.customers.length})`);
+  out.push("");
+  out.push("| # | Name shown on the site (image alt text) | File in `docs/assets/img/customers/` | Is the name confirmed? | Industry | Permission to display | Which entity the relationship is with |");
+  out.push("| --- | --- | --- | --- | --- | --- | --- |");
+  content.customers.forEach(([file, name], i) => {
+    const label = FILE_LABELS.has(name)
+      ? "**No.** This is the label the original site used as alt text. It is not a confirmed company name."
+      : "As printed in the original site's alt text. Legal name not confirmed.";
+    out.push(`| ${i + 1} | ${cell(name)} | \`${file}.webp\` | ${label} | Not stated in source | Not confirmed | Not stated in source |`);
+  });
+  out.push("");
+  out.push("Notes:");
+  out.push("");
+  out.push("- All 21 files are byte-identical in the official Nexware package and in the crawl; the site's copies are resized WebP versions of the same artwork.");
+  out.push("- “BR”, “STS”, “SUV” and “ADA” are file labels. The client needs to give the company names, or the logos should come off before launch.");
+  out.push("- “Which entity” means: ThinkInnov-NexGen KK in Japan, ThinkInnov-NexGen Technologies Pvt Ltd in India, or an earlier ThinkInnov company. The source uses all of these names and does not say which one holds each customer relationship.");
+  out.push("");
+  out.push(`## Testimonials (${content.testimonials.length})`);
+  out.push("");
+  out.push("Shown verbatim on the home page, in English, with the original site's Japanese rendering beneath on Japanese pages.");
+  out.push("");
+  out.push("| Attribution as published | Quote (verbatim) | Logo in the customer row? | Permission to publish | Speaker's name and role |");
+  out.push("| --- | --- | --- | --- | --- |");
+  const logoNames = content.customers.map(([, name]) => name.toLowerCase());
+  for (const t of content.testimonials) {
+    const who = [t.name, t.role].filter(Boolean).join(", ");
+    const company = (t.role || t.name).toLowerCase();
+    const hasLogo = logoNames.some((n) => company.includes(n.split(" ")[0]));
+    const speaker = t.role ? "Name and role as printed in the source" : "Company name only; no person is named in the source";
+    out.push(`| ${cell(who)} | “${cell(t.quote)}” | ${hasLogo ? "Yes" : "**No.** The source has no logo file for this company."} | Not confirmed | ${speaker} |`);
+  }
+  out.push("");
+  out.push("Questions for the client that follow from this register are listed in `notes/REVIEW.md`.");
+  out.push("");
+  return out.join("\n") + "\n";
+}
+
+function assetRegister() {
+  const a = content.about;
+  const out = [];
+  const row = (cells) => out.push(`| ${cells.map(cell).join(" | ")} |`);
+  out.push("# Asset register");
+  out.push("");
+  out.push("Generated by `node improved-src/build.js`. Do not edit by hand.");
+  out.push("");
+  out.push("Every image the site publishes, where it came from, and what is not known about the right to use it. “Original site” means `staging-original/` (the crawl); the official Nexware package has byte-identical copies of all of them. Images were resized, cropped and converted to WebP; nothing was retouched or redrawn. **No generated photograph or illustration is published.**");
+  out.push("");
+  out.push("## 1. Brand");
+  out.push("");
+  out.push("| File | Source | Rights |");
+  out.push("| --- | --- | --- |");
+  row(["`assets/img/logo.svg`", "Original site `assets/thinkinnov-nexgen-logo.svg`, artwork unchanged", "Company's own logo"]);
+  row(["`assets/favicon.ico`, `assets/img/favicon-32.png`, `assets/img/apple-touch-icon.png`", "Made from the original site's `assets/favicon.png`", "Company's own mark"]);
+  row(["`assets/img/og-image.jpg`", "Drawn by `improved-src/tools/og-image.js` from the logo and plain text", "No third-party material"]);
+  row(["Six product tiles (NX, Se, Ca, Tc, Tx, Mx)", "Drawn in CSS from two letters each; they are not Siemens logos or icons", "Open: the product names are Siemens trademarks. Confirm that lettered tiles are acceptable to Siemens, or replace them with approved partner assets."]);
+  out.push("");
+  out.push("No Siemens logo, partner badge or product artwork is published. The original site's `assets/seimens_partner.png` (a hero background that carries Siemens branding) is not used.");
+  out.push("");
+  out.push(`## 2. Customer logos (${content.customers.length})`);
+  out.push("");
+  out.push("Listed one by one in `notes/CUSTOMER-REGISTER.md`. Source: original site `assets/customers/`. Rights: **not confirmed for any of them.**");
+  out.push("");
+  out.push(`## 3. Industry images (${content.industries.length})`);
+  out.push("");
+  out.push("| File | Shown with | Source | Rights |");
+  out.push("| --- | --- | --- | --- |");
+  for (const ind of content.industries) {
+    const n = String(ind.n).padStart(2, "0");
+    row([`\`assets/img/industries/infographic-${n}.webp\``, ind.title, `Original site \`assets/I${ind.n}.png\``, "Open"]);
+  }
+  out.push("");
+  out.push("What is and is not known about these eleven images:");
+  out.push("");
+  out.push("- They are on the site because the original site shows them on its Industries page. This build did not create or alter them.");
+  out.push("- Several carry the text “Teamcenter X” and at least one carries a Siemens wordmark inside the picture. The coordinator's notes describe them as Siemens infographics. **This build could not verify who made them**, so the site does not say they are Siemens material and does not say they are the company's own.");
+  out.push("- If they are Siemens material, permission to republish is needed. If they were generated or commissioned by the company, the Siemens marks inside them need Siemens' approval. Either way this is a launch question.");
+  out.push("- Each image contains text that is not available as text; the page gives a short description beside each (noted on the accessibility page).");
+  out.push("");
+  out.push(`## 4. Photographs of people and events (${a.gallery.length + a.leaders.length + content.behind.team.length + 1})`);
+  out.push("");
+  out.push("| File | What it shows (as described on the site) | Source | Consent of the people shown |");
+  out.push("| --- | --- | --- | --- |");
+  row(["`assets/img/about-office.webp` (+ `-640`)", "About page introduction photograph", "Original site `assets/Aboutus_TI.jpeg`", "Not confirmed"]);
+  a.gallery.forEach((g, i) => {
+    const official = i >= 12;
+    row([`\`${g.full}\` (+ thumbnail)`, g.alt, official ? `**Official Nexware package** \`assets/gallery-${i === 12 ? "09" : "10"}.jpg\`; not in the crawl. Source copy in \`notes/nexware-official-src/\`` : "Original site gallery", "Not confirmed"]);
+  });
+  for (const [file, name, role] of a.leaders) row([`\`${file}\``, `${name}, ${role}`, "Original site `assets/leadership/`", "Not confirmed"]);
+  for (const m of content.behind.team) row([`\`${m.photo || m[0]}\``, `${m.name || m[1]}, ${m.role || m[2]}`, "Original site `assets/`", "Not confirmed"]);
+  out.push("");
+  out.push(`The home page “Global Presence” section reuses gallery photograph ${a.gallery.length} (two people walking along an office corridor) in a 4:5 crop. It replaced the last generated image, which has been deleted.`);
+  out.push("");
+  out.push("## 5. Diagrams and icons");
+  out.push("");
+  out.push("All diagrams (lifecycle, maturity model, deployment, presence line, the two conceptual diagrams on Digital Transformation, the stage tables) and all icons are SVG or HTML drawn in this repository's code. No third-party icon set or image is used.");
+  out.push("");
+  out.push("## 6. Fonts");
+  out.push("");
+  out.push("| File | Source | Licence |");
+  out.push("| --- | --- | --- |");
+  row(["`assets/fonts/manrope-latin.woff2`", "Manrope, self-hosted", "SIL Open Font License 1.1"]);
+  row(["`assets/fonts/inter-latin.woff2`", "Inter, self-hosted", "SIL Open Font License 1.1"]);
+  out.push("");
+  out.push("Japanese text uses the fonts installed on the visitor's device; no Japanese web font is downloaded.");
+  out.push("");
+  out.push("## 7. Original-site images that are not published");
+  out.push("");
+  out.push("| Original file | Why it is not used |");
+  out.push("| --- | --- |");
+  row(["`assets/seimens_partner.png`", "Hero background carrying Siemens branding; the right to use it is not confirmed"]);
+  row(["`assets/PLM_bg.png`, `assets/about-digital-engineering.png`, `assets/mendix-image.png`, `assets/hero-collaboration.jpeg`", "Stock-style or generated-looking illustrations used as backgrounds; they show no real person, place or product of the company"]);
+  out.push("");
+  out.push("They remain in `staging-original/` and can be restored if the client confirms the rights.");
+  out.push("");
+  return out.join("\n") + "\n";
+}
+
+module.exports = { enquiryOptionsPhp, japaneseRegister, claimRegister, customerRegister, assetRegister };
+

@@ -48,6 +48,7 @@ function footer() {
           ["behind-the-brand.html", "Behind the Brand"],
           ["careers.html", "Careers"],
           ["contact.html", "Contact"],
+          ["contact.html?type=support", "Ask about support"],
         ])}
       </div>
       <div class="footer-bottom">
@@ -58,10 +59,10 @@ function footer() {
           <li><a href="${site.page("search.html")}">Search</a></li>
           <li><a href="${site.page("sitemap.html")}">Sitemap</a></li>
         </ul>
-        ${langSwitch()}
+        ${langSwitch("Language, in the footer")}
         <a class="to-top" href="#main">Back to top${icons.arrowUpRight}</a>
       </div>
-      <p class="footer-trademark">Siemens, NX, Solid Edge, Capital, Teamcenter, Tecnomatix and Mendix are trademarks or registered trademarks of their respective owners.</p>
+      <p class="footer-trademark">NX, Solid Edge, Capital, Teamcenter, Tecnomatix and Mendix are Siemens products. Siemens and these product names are trademarks or registered trademarks of Siemens or its affiliates.</p>
     </div>
   </footer>`;
 }

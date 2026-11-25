@@ -26,7 +26,7 @@ function render() {
           <div class="page-hero-text">
             <p class="kicker">Website</p>
             <h1>Search</h1>
-            <form class="search-form" role="search" action="${site.page("search.html")}" method="get" data-search-form data-index="${site.asset(`assets/search-${site.lang()}.json`)}" data-js-only hidden>
+            <form class="search-form" role="search" action="${site.page("search.html")}" method="get" data-search-form data-index="${site.asset(`assets/search-${site.lang()}.json`)}">
               <label class="field-label" for="search-q">Search this website</label>
               <div class="search-row">
                 <div class="search-input">${icons.search}<input type="search" id="search-q" name="q" autocomplete="off" spellcheck="false" maxlength="80"></div>

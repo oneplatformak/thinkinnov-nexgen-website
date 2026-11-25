@@ -51,7 +51,7 @@ function product(p, i) {
 }
 
 function jumpNav() {
-  return `<nav class="pjump" aria-label="Products">
+  return `<nav class="pjump" aria-label="Products on this page">
         <ul>${content.products
           .map((p) => `<li><a href="#${p.key}">${c.productMark(p)}<span class="pjump-name">${esc(p.name)}</span><span class="pjump-cat">${esc(p.category)}</span></a></li>`)
           .join("")}</ul>

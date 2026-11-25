@@ -73,9 +73,9 @@ function linkHref(link) {
   return site.page(link.href);
 }
 
-function langSwitch(id) {
+function langSwitch(label = "Language") {
   const cur = (l) => (site.lang() === l ? ' aria-current="true"' : "");
-  return `<nav class="lang-switch" aria-label="Language" data-lang-switch>
+  return `<nav class="lang-switch" aria-label="${label}" data-lang-switch>
         <a href="${site.alternate("en")}" lang="en" hreflang="en" data-lang="en"${cur("en")}>English</a>
         <a href="${site.alternate("ja")}" lang="ja" hreflang="ja" data-lang="ja"${cur("ja")}>日本語</a>
       </nav>`;
@@ -158,7 +158,7 @@ function mobileMenu(active) {
     </div>
     <nav class="mm-nav" aria-label="Mobile">${sections}</nav>
     <div class="mm-foot">
-      ${langSwitch()}
+      ${langSwitch("Language, in the menu")}
       <a class="btn btn-primary btn-block" href="${site.page("contact.html")}">Contact us${icons.arrow}</a>
       <div class="mm-quick">
         <a href="${site.page("search.html")}">${icons.search}<span>Search</span></a>

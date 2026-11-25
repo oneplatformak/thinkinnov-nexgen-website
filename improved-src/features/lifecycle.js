@@ -36,12 +36,12 @@ function panel(stage, index, total) {
         .join("")}</ul></div>`
     );
   }
-  return `<article class="lc-panel" id="lc-${stage.key}" data-lc-panel>
+  return `<section class="lc-panel" id="lc-${stage.key}" data-lc-panel>
           <p class="lc-count"><span>${pad2(index + 1)}</span> / ${pad2(total)}</p>
           <h3 id="lc-title-${stage.key}">${esc(stage.title)}</h3>
           <p class="lc-text">${esc(stage.text)}</p>
           ${blocks.join("")}
-        </article>`;
+        </section>`;
 }
 
 function lifecycle() {

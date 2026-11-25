@@ -59,8 +59,6 @@ module.exports = {
     "Accessibility": "アクセシビリティ",
     "Sitemap": "サイトマップ",
     "Back to top": "ページの先頭へ",
-    "Siemens, NX, Solid Edge, Capital, Teamcenter, Tecnomatix and Mendix are trademarks or registered trademarks of their respective owners.":
-      "Siemens、NX、Solid Edge、Capital、Teamcenter、Tecnomatix、Mendixは、各社の商標または登録商標です。",
     "(opens map in a new tab)": "（新しいタブで地図を開きます）",
     "(opens in a new tab)": "（新しいタブで開きます）",
     "Conceptual image": "イメージ画像",
@@ -122,5 +120,10 @@ module.exports = {
     "Page": "ページ",
     "Maturity level": "成熟度レベル",
     "Fields marked “Required” must be completed. Gender, current and expected CTC and notice period are optional.": "「必須」の項目は必ずご入力ください。性別、現在の年収と希望年収、退職までに必要な期間は任意です。",
+    // Review round 1 fixes
+    "NX, Solid Edge, Capital, Teamcenter, Tecnomatix and Mendix are Siemens products. Siemens and these product names are trademarks or registered trademarks of Siemens or its affiliates.": "NX、Solid Edge、Capital、Teamcenter、Tecnomatix、MendixはSiemensの製品です。Siemensおよびこれらの製品名は、Siemensまたはその関連会社の商標または登録商標です。",
+    "Language, in the menu": "言語（メニュー内）",
+    "Language, in the footer": "言語（フッター）",
+    "Products on this page": "このページの製品",
   },
 };

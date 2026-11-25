@@ -570,7 +570,7 @@ async function testSearch(browser, base, labels) {
   ok("no script errors", page.errors.length === 0, page.errors.join(" | "));
   await done(page);
   const off = await open(browser, base + labels.prefix + "search.html", { js: false });
-  ok("without scripts the form is hidden and the sitemap is offered", await off.evaluate(() => document.querySelector("[data-search-form]").hidden && !!document.querySelector('noscript') ));
+  ok("without scripts the form is hidden and the sitemap is offered", await off.evaluate(() => getComputedStyle(document.querySelector("[data-search-form]")).display === "none" && !!document.querySelector('noscript') ));
   await done(off);
 }
 

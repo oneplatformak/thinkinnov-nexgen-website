@@ -6,7 +6,7 @@ The rule for this site: every factual statement about ThinkInnov-NexGen comes fr
 
 ## 1. Sentences sourced from Siemens' own websites
 
-Six sentences, one per product, on `products.html` (and its Japanese translation on `ja/products.html`). Each says only what the product is and who it is for, is worded as the owner's description, and links to its source. No features, compatibility, licensing or pricing. Pages retrieved on 2026-11-25.
+Six sentences, one per product, shown on `products.html` and on that product's own page (`products/<product>.html`), with their Japanese translations under `ja/`. Each says only what the product is, is worded as the owner's description, and links to its source. No features, compatibility, licensing or pricing. Pages retrieved on 2026-11-25.
 
 | Product | Sentence on the site | Source URL | Evidence on that page |
 | --- | --- | --- | --- |
@@ -16,6 +16,13 @@ Six sentences, one per product, on `products.html` (and its Japanese translation
 | Teamcenter | Siemens describes Teamcenter as product lifecycle management (PLM) software that connects people and processes across the product lifecycle. | https://www.siemens.com/en-us/products/teamcenter/ | Page description: “Connect people and processes throughout your product lifecycle with a single source of data with Siemens Teamcenter product lifecycle management (PLM) software.” |
 | Tecnomatix | Siemens describes Tecnomatix as digital manufacturing software for modelling, simulating and optimizing manufacturing processes. | https://www.siemens.com/en-us/products/tecnomatix/ | Page heading: “Tecnomatix digital manufacturing software”. Page text: “Model, simulate and optimize a comprehensive digital twin of your manufacturing processes…” |
 | Mendix | Mendix, which publishes its website under the Siemens name, describes its product as a low-code application development platform. | https://www.mendix.com/company/ | Page description: “Mendix is an industry-leading low-code application development platform.” Page title ends “\| Siemens \| Mendix”. |
+
+One further sentence appears on each product page, about who owns the name:
+
+| Where | Sentence on the site | Source URL | Evidence on that page |
+| --- | --- | --- | --- |
+| Solid Edge, Capital, Teamcenter, Tecnomatix and Mendix pages | Siemens lists this name among the trademarks or registered trademarks of Siemens Industry Software Inc., or its subsidiaries or affiliates. | https://www.siemens.com/en-us/company/digital-industries-software-trademarks/ | Page text: “Unless otherwise noted, the following are trademarks or registered trademarks of Siemens Industry Software Inc., or its subsidiaries or affiliates, in the United States and in other countries.” The list has rows for Capital, Mendix, Solid Edge, Teamcenter, Teamcenter X and Tecnomatix. It has no row for NX alone: it lists Designcenter NX and names such as “NX 2D Nesting”. Re-read on 25 November 2026. |
+| NX page | Siemens lists Designcenter NX and other NX product names among the trademarks or registered trademarks of Siemens Industry Software Inc., or its subsidiaries or affiliates. | https://www.siemens.com/en-us/company/digital-industries-software-trademarks/ | The list has no row for “NX” alone, so the NX page names what the list does contain. |
 
 Notes for the owner:
 
@@ -53,9 +60,33 @@ The stage a product is listed under is this build's reading of the staging categ
 - **Finder need titles** (for example “Duplicate parts and systems keep appearing”) rephrase a staging problem or solution statement as a visitor's need; the staging sentence is shown with each.
 - **Photo descriptions** on the About gallery describe what is visible in each photograph and nothing more. They do not name the event, the place or the people, because staging does not.
 - **Privacy notice and accessibility statement** describe how this website's code behaves and what was tested. They are not from staging and need legal review (privacy) and owner approval before launch.
-- **“Conceptual image”** labels mark the one generated visual still in use.
+- **“Conceptual diagram”** labels mark the two SVG diagrams on the Digital Transformation page. Every word in them is a staging term (closed-loop analytics, development, manufacturing, real-world feedback, design; Teamcenter, ERP, MES, enterprise applications, Teamcenter connection platform, SAP, Oracle). No generated photograph or illustration is used anywhere on the site.
+- **Product pages** add no description of a product beyond the staging tagline, the staging category and the one sourced sentence above. Everything else on a product page is a relationship already listed in section 3.
 
-## 5. Things deliberately not stated anywhere
+## 5. Claims inherited from the original site that only the client can confirm
+
+These statements are on the site because the original site makes them. “Official” means the Nexware package of the original site (`/cursor/stores/bot/thinkinnov/nexware-files/`, summarised in its `MANIFEST.md`); “crawl” means `staging-original/`. The two agree on every item below. Agreement between two copies of the same site is not proof that a claim is true or current, so each stays open until the client confirms it.
+
+| Claim as published | Where on this site | Where in the source | Status |
+| --- | --- | --- | --- |
+| “Siemens Solution Partner” | Home hero, above the headline. Nowhere else: not in the footer, metadata or structured data. | Official `index.html` line 48 (hero eyebrow); same in the crawl. | Wording confirmed from the official source; placement kept as in source. Whether it is the current designation is for the client and Siemens. |
+| “A Siemens Certified "Expert Partner - PLM" synergizing with ThinkInnov-NexGen's extensive project delivery experience in Japan, to deliver high value to customers in Japan.” | About, `#partnership`. Nowhere else. | Official `assets/page-data.js` line 29; same in the crawl. | Wording confirmed from the official source; placement kept as in source. Two different partner designations exist in the source; which is current is open. |
+| “ThinkInnov-NexGen KK — A Strategic Partnership in Japan” | About, `#partnership` heading. Nowhere else. | Official `assets/page-data.js` line 28. | Kept as the source has it. The source never says “joint venture” and never names Nexware or NEXGEN as a separate company, so neither does the site. |
+| “since 2014” (“A software development service provider since 2014…”, “…serving customers since 2014.”) | About intro and `#identity`. | Official `assets/page-data.js` line 8 and Japanese lines 250 and 254; footer “© 2014 - 2026”. | Open: which legal entity dates from 2014. |
+| “Trusted by product-led teams across automotive, aerospace, energy, electrical and manufacturing industries.” | Home `#customers`, under the source heading “Our key customers”. | Staging home page, customers section. | Open: depends on the logo permissions in `notes/CUSTOMER-REGISTER.md`. |
+| “Faster time to market, improved quality, cost reduction, innovation and regulatory compliance.” | `plm.html#why` and home `#why`, as the source card “Business Benefits”. | Staging `assets/page-data.js`, “Why ThinkInnov-NexGen for PLM”. | Open: a general benefit statement about PLM. The site attaches no figure, customer or guarantee to it and makes no compliance claim of its own. |
+| Key Value Drivers: bilingual PM / PMO / bridge engineers; onsite and offshore support; expertise list (MCAD, ECAD, Teamcenter, Mendix, SAP, …); end-to-end digital thread delivery combining PLM, ERP and MES | About `#partnership`; quoted as the basis for links on product pages and solution entries. | Staging `assets/page-data.js`, partnership panel. | Open: confirm the list is current. |
+| “Japan headquarters with India delivery presence across Chennai and Coimbatore.” | Home `#presence`, About `#identity`. | Staging About, “Global Presence” card. | Open: confirm offices and addresses. |
+| Company profile: company name “ThinkInnov-NexGen Corporation”, four officers and their titles, head office, branches | About `#profile`. | Official `assets/page-data.js` lines 40–44. | Open: the source uses three forms of the company name and gives two CEO-titled roles. See `notes/REVIEW.md`, open questions. |
+| Four leadership profiles with photographs and titles | About `#leadership`. | Official `assets/page-data.js` lines 21–25. | Open: titles differ between the leadership panel and the company profile; both are shown as the source has them. |
+| 21 customer logos under “Our key customers” | Home `#customers`. | Official `index.html` lines 150–170. | Open: permission, correct names and which entity each relationship is with. See `notes/CUSTOMER-REGISTER.md`. |
+| Four testimonials, verbatim | Home `#testimonials`. | Official `index.html` lines 204–207. | Open: permission to publish, and the name and role of each speaker. |
+| 18 job roles with location, experience and skills | Careers and 18 job pages. | Staging `assets/jobs.js`. | Open: whether each vacancy is current. No `JobPosting` markup is published. |
+| Service lists, including “Production Development” in Enhancements | Services, home `#services`. | Staging `assets/page-data.js`. | Open: “Production Development” may be a typo for “Product Development” or “Production Deployment”; published as the source has it. |
+| Head office address, telephone “+81 3-3525-8197” | Footer, Contact, About `#profile`, structured data. | Official `index.html` line 235 (“+03-3525-8197”). | Open: number rewritten in international form on the assumption that “+03” means Tokyo area code 03. |
+| Email `info@thinkinnovnexgen.co.jp` | Footer, Contact, forms, structured data. | **Not in the source.** The official package and the crawl both show `info@thinkinnovnexgen.com`; the old sitemap uses the domain `thinkinnovsolution.com`. | Open and launch-blocking: enquiries go nowhere if the `.co.jp` mailbox does not exist. |
+
+## 6. Things deliberately not stated anywhere
 
 No customer counts, project counts, years of experience, certifications beyond the staging wording, awards, partnership tiers beyond the staging wording, case studies, pricing, SLAs, response times, retention periods, legal bases or compliance claims. No `JobPosting`, review or rating markup. The description of the company as a joint venture is **not** in staging and is therefore not on the site.
 

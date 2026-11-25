@@ -80,6 +80,8 @@ function main() {
     write("inc/enquiry-options.php", registers.enquiryOptionsPhp());
     fs.writeFileSync(path.join(NOTES, "JAPANESE-REGISTER.md"), registers.japaneseRegister(i18n));
     fs.writeFileSync(path.join(NOTES, "CLAIM-REGISTER.md"), registers.claimRegister());
+    fs.writeFileSync(path.join(NOTES, "CUSTOMER-REGISTER.md"), registers.customerRegister());
+    fs.writeFileSync(path.join(NOTES, "ASSET-REGISTER.md"), registers.assetRegister());
   }
 
   const misses = i18n.report();
