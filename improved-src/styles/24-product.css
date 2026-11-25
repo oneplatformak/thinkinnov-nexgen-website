@@ -51,7 +51,7 @@
   .pager-all { grid-column: 2; grid-row: 1; margin-top: 0; }
 }
 
-.table-scroll { overflow-x: auto; margin-bottom: var(--s-5); border: 1px solid var(--rule-strong); background: var(--paper); }
+.table-scroll { position: relative; overflow-x: auto; margin-bottom: var(--s-5); border: 1px solid var(--rule-strong); background: var(--paper); }
 .stage-map { width: 100%; min-width: 46rem; border-collapse: collapse; font-size: var(--t-sm); }
 .stage-map th, .stage-map td { padding: 0.6rem 0.5rem; border-bottom: 1px solid var(--rule); border-right: 1px solid var(--rule); text-align: center; }
 .stage-map thead th { font-family: var(--font-display); font-size: var(--t-xs); font-weight: 700; color: var(--ink-2); vertical-align: bottom; }
