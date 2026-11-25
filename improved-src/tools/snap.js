@@ -15,7 +15,7 @@ const [outDir, widthArg, ...pageArgs] = process.argv.slice(2);
 const docs = path.join(__dirname, "..", "..", "docs");
 const STUBS = new Set(["page.html", "jobdetails.html", "application.html"]);
 const htmlIn = (dir) => fs.readdirSync(path.join(docs, dir)).filter((f) => f.endsWith(".html") && !STUBS.has(f)).sort().map((f) => path.posix.join(dir, f));
-const pages = pageArgs[0] === "all" ? ["", "careers", "ja", "ja/careers"].flatMap(htmlIn) : pageArgs;
+const pages = pageArgs[0] === "all" ? ["", "careers", "products", "ja", "ja/careers", "ja/products"].flatMap(htmlIn) : pageArgs;
 const widths = widthArg.split(",").map(Number);
 const fullPage = process.env.FOLD !== "1";
 

@@ -122,7 +122,7 @@ function products() {
   const rows = content.products
     .map(
       (p) => `<li>
-          <a class="portfolio-row" href="${site.page(`products.html#${p.key}`)}">
+          <a class="portfolio-row" href="${site.page(content.productPath(p.key))}">
             ${c.productMark(p)}
             <span class="portfolio-name">${esc(p.name)}</span>
             <span class="portfolio-cat">${esc(p.category)}</span>

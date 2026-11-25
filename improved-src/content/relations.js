@@ -250,6 +250,88 @@ const needs = [
   },
 ];
 
+/* ---- Product pages ----
+ * What the source says about ThinkInnov-NexGen's work with each product.
+ * `items` are [text shown, link, basis]. Text is source wording; nothing here
+ * describes a feature, version, licence or price of the Siemens product. */
+const productSupport = {
+  nx: {
+    items: [
+      ["MCAD is listed among the areas of expertise in our Key Value Drivers.", "about.html#partnership", "About, Key Value Drivers: “Expertise: MCAD, ECAD, Teamcenter, Mendix, …”"],
+      ["Customization is one of our implementation services.", "services.html#implementation", "Services, Implementation, Development: “Customization”"],
+    ],
+  },
+  "solid-edge": {
+    items: [
+      ["MCAD is listed among the areas of expertise in our Key Value Drivers.", "about.html#partnership", "About, Key Value Drivers: “Expertise: MCAD, ECAD, Teamcenter, Mendix, …”"],
+    ],
+  },
+  capital: {
+    items: [
+      ["ECAD is listed among the areas of expertise in our Key Value Drivers.", "about.html#partnership", "About, Key Value Drivers: “Expertise: MCAD, ECAD, Teamcenter, Mendix, …”"],
+    ],
+  },
+  teamcenter: {
+    items: [
+      ["Teamcenter is listed among the areas of expertise in our Key Value Drivers.", "about.html#partnership", "About, Key Value Drivers: “Expertise: MCAD, ECAD, Teamcenter, Mendix, …”"],
+      ["Get Teamcenter delivered any way you want it – on premises or on the cloud – operated by your IT team or Siemens.", "plm.html#deployment", "Home, “PLM your way”"],
+      ["Cloud transition & upgrades is one of our pre-implementation services.", "services.html#pre-implementation", "Services, Pre-Implementation, State of the art"],
+      ["End-to-end Digital Thread / Digital Transformation delivery combining the expertise of PLM, ERP and MES (onsite & offshore)", "about.html#partnership", "About, Key Value Drivers"],
+    ],
+  },
+  // Nothing on staging names a service or expertise term for Tecnomatix alone.
+  tecnomatix: { items: [] },
+  mendix: {
+    items: [
+      ["Mendix is listed among the areas of expertise in our Key Value Drivers.", "about.html#partnership", "About, Key Value Drivers: “Expertise: MCAD, ECAD, Teamcenter, Mendix, …”"],
+      ["Move faster from idea to usable application with enterprise-ready low-code delivery.", "", "Home hero, low-code message"],
+      ["Build, integrate and deploy applications rapidly while improving collaboration and agility in a dynamic digital landscape.", "", "Home hero, Mendix message"],
+    ],
+  },
+};
+
+/* ---- Industry pages: what each infographic card relates to ----
+ * The eleven cards are titles of Siemens infographics shown on staging. A
+ * relation is listed only where the card's own title or description names
+ * the product or uses the same words as the related item (`basis`). */
+const cloudCard = { need: "cloud", basis: "The card is about Teamcenter X, which staging describes as cloud-based SaaS PLM." };
+const industryRelations = {
+  "component-manufacturers": {
+    products: [], solutions: ["3d-shape-search", "design-data-management"], needs: ["reuse-ip"],
+    basis: "Card text: “component design, reuse and supplier collaboration”. 3D Shape Search: “find similar parts and reuse knowledge to consolidate suppliers”.",
+  },
+  "pdm-to-plm": {
+    products: [], solutions: ["design-data-management"], needs: ["start"],
+    links: [["digital-transformation.html#pdmm", "Product Data Maturity Model"], ["plm.html", "PLM For Everyone"]],
+    basis: "Card text: “move from product data management to connected PLM practices”. PDMM L2: “structured and connected data management”.",
+  },
+  "aerospace-defense": {
+    products: ["teamcenter"], solutions: ["design-verification-management"], needs: ["cloud"],
+    basis: "Title names Teamcenter X. Card text: “regulated and complex … programs”. Design Verification Management: “external specification like regulatory authorities”.",
+  },
+  "industrial-machinery": {
+    products: ["teamcenter"], solutions: [], needs: ["cloud"],
+    basis: "Title names Teamcenter X.",
+  },
+  automotive: {
+    products: ["teamcenter"], solutions: [], needs: ["cloud", "time-to-market"],
+    basis: "Title names Teamcenter X. Card text: “faster launch cycles”. Finder need: “shorten the product development cycle”.",
+  },
+  battery: { products: ["teamcenter"], solutions: [], needs: ["cloud"], basis: "Title names Teamcenter X." },
+  "battery-machine-builders": { products: ["teamcenter"], solutions: [], needs: ["cloud"], basis: "Title names Teamcenter X." },
+  "consumer-products": { products: ["teamcenter"], solutions: [], needs: ["cloud"], basis: "Title names Teamcenter X." },
+  electronics: {
+    products: ["teamcenter"], solutions: ["design-data-management"], needs: ["cloud"],
+    basis: "Title names Teamcenter X. Card text: “cross-domain product data”. Design Data Management: “manage design data and product configurations”.",
+  },
+  marine: { products: ["teamcenter"], solutions: [], needs: ["cloud"], basis: "Title names Teamcenter X." },
+  "cloud-saas-plm": {
+    products: ["teamcenter"], solutions: [], needs: ["cloud"],
+    links: [["plm.html#deployment", "Deployment options"], ["services.html#pre-implementation", "Cloud transition & upgrades"]],
+    basis: "Title names Teamcenter X and SaaS. Deployment option: “On cloud, SaaS by Siemens”.",
+  },
+};
+
 /* ---- Contact form ---- */
 const enquiryTypes = [
   ["general", "General enquiry"],
@@ -263,5 +345,5 @@ const enquiryTypes = [
 
 module.exports = {
   solutionProducts, solutionGroups, lifecycle, lifecycleAcross, productStages, productExpertise,
-  needGroups, needs, enquiryTypes,
+  needGroups, needs, enquiryTypes, productSupport, industryRelations, cloudCard,
 };

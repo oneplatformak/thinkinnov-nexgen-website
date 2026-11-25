@@ -6,8 +6,16 @@
  */
 const retrieved = "2026-11-25";
 
+// Who owns the product names. One sentence, shown on every product page.
+const trademarks = {
+  text: "Siemens lists this name among the trademarks or registered trademarks of Siemens Industry Software Inc., or its subsidiaries or affiliates.",
+  url: "https://www.siemens.com/en-us/company/digital-industries-software-trademarks/",
+  evidence: "Page text: “Unless otherwise noted, the following are trademarks or registered trademarks of Siemens Industry Software Inc., or its subsidiaries or affiliates, in the United States and in other countries.” The list includes Capital, Designcenter NX, Designcenter Solid Edge, Solid Edge, Mendix, Teamcenter, Teamcenter X and Tecnomatix, and many NX product names.",
+};
+
 module.exports = {
   retrieved,
+  trademarks,
   products: {
     nx: {
       text: "Siemens describes NX as integrated software for design, simulation and manufacturing.",
@@ -25,9 +33,9 @@ module.exports = {
       evidence: "Page heading: “Capital software for E/E systems development”.",
     },
     teamcenter: {
-      text: "Siemens describes Teamcenter as product lifecycle management (PLM) software that connects people and processes across the product lifecycle, used by companies from start-ups to large enterprises.",
+      text: "Siemens describes Teamcenter as product lifecycle management (PLM) software that connects people and processes across the product lifecycle.",
       url: "https://www.siemens.com/en-us/products/teamcenter/",
-      evidence: "Page description: “Connect people and processes throughout your product lifecycle with a single source of data with Siemens Teamcenter product lifecycle management (PLM) software.” Page text: “Start-ups to large enterprises - across industries - trust Teamcenter.”",
+      evidence: "Page description: “Connect people and processes throughout your product lifecycle with a single source of data with Siemens Teamcenter product lifecycle management (PLM) software.”",
     },
     tecnomatix: {
       text: "Siemens describes Tecnomatix as digital manufacturing software for modelling, simulating and optimizing manufacturing processes.",

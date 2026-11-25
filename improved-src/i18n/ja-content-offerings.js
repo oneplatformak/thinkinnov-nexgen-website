@@ -18,14 +18,12 @@ module.exports = {
       "Siemensは、Solid Edgeを設計、シミュレーション、製造、データ管理に用いられる製品開発ソフトウェアのポートフォリオと説明しています。",
     "Siemens describes Capital as a software portfolio for developing electrical and electronic (E/E) systems.":
       "Siemensは、Capitalを電気・電子（E/E）システム開発のためのソフトウェアポートフォリオと説明しています。",
-    "Siemens describes Teamcenter as product lifecycle management (PLM) software that connects people and processes across the product lifecycle, used by companies from start-ups to large enterprises.":
-      "Siemensは、Teamcenterを、製品ライフサイクル全体にわたって人とプロセスをつなぐ製品ライフサイクル管理（PLM）ソフトウェアであり、スタートアップから大企業まで利用されていると説明しています。",
+    "Siemens describes Teamcenter as product lifecycle management (PLM) software that connects people and processes across the product lifecycle.":
+      "Siemensは、Teamcenterを、製品ライフサイクル全体にわたって人とプロセスをつなぐ製品ライフサイクル管理（PLM）ソフトウェアと説明しています。",
     "Siemens describes Tecnomatix as digital manufacturing software for modelling, simulating and optimizing manufacturing processes.":
-      "Siemensは、Tecnomatixを製造プロセスのモデリング、シミュレーション、最適化のためのデジタルマニュファクチャリングソフトウェアと説明しています。",
+      "Siemensは、Tecnomatixを製造プロセスのモデリング、シミュレーション、最適化のためのデジタル製造ソフトウェアと説明しています。",
     "Mendix, which publishes its website under the Siemens name, describes its product as a low-code application development platform.":
       "Siemensの名のもとでウェブサイトを公開しているMendixは、自社製品をローコードアプリケーション開発プラットフォームと説明しています。",
-    "Product names are trademarks of their respective owners. Sentences beginning “Siemens describes” or “Mendix … describes” summarise the owner's own public description and link to it; all other text describes ThinkInnov-NexGen's work with the product.":
-      "製品名は各社の商標です。「Siemensは…と説明しています」「Mendixは…と説明しています」という文は、各社が公開している説明を要約したもので、出典へのリンクを付しています。それ以外の文章は、ThinkInnov-NexGenによる各製品への取り組みを説明したものです。",
 
     // Solutions page
     "Fifteen PLM and engineering solutions, from design data management and 3D shape search to quality, change, requirements, ERP integration and low-code, with a finder by business need.":
@@ -143,5 +141,46 @@ module.exports = {
     "Support electronics lifecycle and cross-domain product data.": "エレクトロニクスのライフサイクルと、領域をまたぐ製品データを支援します。",
     "PLM workflows for marine product development.": "船舶・海洋製品の開発のためのPLMワークフロー。",
     "Understand the business value of cloud-based SaaS PLM with Teamcenter X.": "Teamcenter XによるクラウドベースのSaaS型PLMのビジネス価値をご理解いただけます。",
+    // Product pages and catalogue
+    "(marked)": "（該当）",
+    "Yes": "該当",
+    "No": "該当なし",
+    "Maker": "開発元",
+    "Product": "製品",
+    "Product family": "製品分類",
+    "Product page": "製品ページ",
+    "Overview": "概要",
+    "What it is": "製品の概要",
+    "Lifecycle": "ライフサイクル",
+    "How we work with it": "当社の取り組み",
+    "Needs and industries": "課題と業界",
+    "Enquire": "お問い合わせ",
+    "Find your way": "関連情報",
+    "Our services": "当社のサービス",
+    "Related business needs and industries": "関連する課題と業界",
+    "Industry material that names it": "この製品に関連する業界別資料",
+    "Read about this solution": "このソリューションを見る",
+    "Previous product": "前の製品",
+    "Next product": "次の製品",
+    "Other products": "その他の製品",
+    "Products by lifecycle stage": "ライフサイクルの段階別の製品一覧",
+    "Open the lifecycle diagram": "ライフサイクル図を開く",
+    "See this stage in the lifecycle diagram": "ライフサイクル図でこの段階を見る",
+    "Where it sits in the product lifecycle": "製品ライフサイクルにおける位置づけ",
+    "Where each product sits in the lifecycle": "各製品のライフサイクルにおける位置づけ",
+    "Shown at every stage of the lifecycle.": "ライフサイクルのすべての段階に関わる製品として掲載しています。",
+    "Not tied to a single stage of the lifecycle.": "ライフサイクルの特定の段階に限定されない製品として掲載しています。",
+    "Mendix is not tied to a single stage. Each placement is this site's reading of the product descriptions on this page, as a guide to the site.": "Mendixは特定の段階に限定していません。各製品の位置づけは、このページの製品説明に基づく当サイトの整理であり、サイト内のご案内を目的としたものです。",
+    "The stage shown is this site's reading of the description above. It is a guide to the site, not a statement of what the product can do.": "ここに示す段階は、上記の説明に基づく当サイトの整理です。サイト内のご案内を目的としたもので、製品の機能を示すものではありません。",
+    "This page describes how ThinkInnov-NexGen works with the product. For features, versions and licensing, please refer to Siemens.": "このページでは、この製品に対するThinkInnov-NexGenの取り組みをご紹介しています。機能、バージョン、ライセンスについては、Siemensの情報をご確認ください。",
+    "Siemens lists this name among the trademarks or registered trademarks of Siemens Industry Software Inc., or its subsidiaries or affiliates.": "Siemensは、この名称をSiemens Industry Software Inc.またはその子会社・関連会社の商標または登録商標として掲載しています。",
+    "The products on this page are Siemens products, and their names are trademarks of Siemens or its affiliates. Sentences beginning “Siemens describes” or “Mendix … describes” summarise the owner's own public description and link to it; all other text describes ThinkInnov-NexGen's work with the product.": "このページに掲載している製品はSiemensの製品であり、製品名はSiemensまたはその関連会社の商標です。「Siemensは…と説明しています」「Mendixは…と説明しています」という文は、各社が公開している説明を要約したもので、出典へのリンクを付しています。それ以外の文章は、各製品に対するThinkInnov-NexGenの取り組みを説明したものです。",
+    "Your enquiry opens with this product already selected, so you do not have to explain where you came from.": "お問い合わせフォームは、この製品が選択された状態で開きます。ご覧になっていたページを改めてご説明いただく必要はありません。",
+    "MCAD is listed among the areas of expertise in our Key Value Drivers.": "MCADは、当社の「主な提供価値」に専門領域として挙げています。",
+    "ECAD is listed among the areas of expertise in our Key Value Drivers.": "ECADは、当社の「主な提供価値」に専門領域として挙げています。",
+    "Teamcenter is listed among the areas of expertise in our Key Value Drivers.": "Teamcenterは、当社の「主な提供価値」に専門領域として挙げています。",
+    "Mendix is listed among the areas of expertise in our Key Value Drivers.": "Mendixは、当社の「主な提供価値」に専門領域として挙げています。",
+    "Customization is one of our implementation services.": "カスタマイズは、当社の導入サービスのひとつです。",
+    "Cloud transition & upgrades is one of our pre-implementation services.": "クラウド移行とアップグレードは、当社の導入前サービスのひとつです。",
   },
 };

@@ -43,7 +43,7 @@ module.exports = {
     "PLM Analyst": "PLM アナリスト",
     "Sales Engineer": "セールスエンジニア",
     "Inside Sales Specialist": "インサイドセールス担当",
-    "Solution Architect - Digital Manufacturing": "ソリューションアーキテクト（デジタルマニュファクチャリング）",
+    "Solution Architect - Digital Manufacturing": "ソリューションアーキテクト（デジタル製造）",
 
     // Role summaries
     "Lead end-to-end technical delivery of Teamcenter PLM projects.": "Teamcenter PLMプロジェクトの技術面を、最初から最後まで一貫してリードします。",
@@ -122,7 +122,7 @@ module.exports = {
     "PDMLink environment setup and configuration for validation and testing.": "検証およびテスト用のPDMLink環境の構築と設定。",
     "Territory sales and business development with marketing and technical support teams.": "マーケティングおよび技術サポートのチームと連携した、担当地域の営業と事業開発。",
     "Prospecting and customer lead generation from provided databases.": "提供されるデータベースをもとにした、見込み客の開拓とリード創出。",
-    "Digital manufacturing solution architecture and customer delivery.": "デジタルマニュファクチャリングのソリューションアーキテクチャ設計と、お客様への提供。",
+    "Digital manufacturing solution architecture and customer delivery.": "デジタル製造のソリューションアーキテクチャ設計と、お客様への提供。",
 
     // Application form
     "Apply for a role at ThinkInnov-NexGen or register your interest with a general application.":

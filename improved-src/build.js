@@ -25,7 +25,7 @@ const OUT = path.join(__dirname, "..", "docs");
 const NOTES = path.join(__dirname, "..", "notes");
 
 const PAGE_MODULES = [
-  "home", "about", "plm", "services", "digital", "products", "solutions", "industries",
+  "home", "about", "plm", "services", "digital", "products", "product", "solutions", "industries",
   "behind", "careers", "job", "apply", "contact", "legal", "notfound",
 ];
 const only = process.env.ONLY ? process.env.ONLY.split(",") : null; // development aid

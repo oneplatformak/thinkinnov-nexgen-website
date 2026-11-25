@@ -42,7 +42,7 @@ function footer() {
           ["solutions.html#finder", "Find by business need"],
           ["industries.html", "Industries"],
         ])}
-        ${column("Products", content.products.map((p) => [`products.html#${p.key}`, p.name]))}
+        ${column("Products", content.products.map((p) => [content.productPath(p.key), p.name]))}
         ${column("Company", [
           ["about.html", "About Us"],
           ["behind-the-brand.html", "Behind the Brand"],

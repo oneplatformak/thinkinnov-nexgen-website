@@ -21,7 +21,7 @@ const STUBS = new Set(["page.html", "jobdetails.html", "application.html"]);
 
 function pages(dir, prefix = "") {
   return fs.readdirSync(dir, { withFileTypes: true }).flatMap((entry) => {
-    if (entry.isDirectory()) return ["ja", "careers"].includes(entry.name) ? pages(path.join(dir, entry.name), prefix + entry.name + "/") : [];
+    if (entry.isDirectory()) return ["ja", "careers", "products"].includes(entry.name) ? pages(path.join(dir, entry.name), prefix + entry.name + "/") : [];
     return entry.name.endsWith(".html") && !STUBS.has(entry.name) ? [prefix + entry.name] : [];
   });
 }

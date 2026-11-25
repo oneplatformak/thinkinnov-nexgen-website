@@ -111,4 +111,18 @@ function presenceLine() {
       </div>`;
 }
 
-module.exports = { heroLoop, approachStrip, maturitySteps, presenceLine, cornerMarks, polar };
+/**
+ * The nine lifecycle stages in a row, with the given stages marked. Text, not
+ * an image, so it reads in order and reflows on a phone.
+ */
+function stageStrip(onKeys) {
+  const items = content.lifecycle
+    .map((s, i) => {
+      const on = onKeys.includes(s.key);
+      return `<li class="${on ? "is-on" : ""}"><span class="stage-n">${pad2(i + 1)}</span><span class="stage-name">${esc(s.title)}</span>${on ? '<span class="visually-hidden"> (marked)</span>' : ""}</li>`;
+    })
+    .join("");
+  return `<ol class="stage-strip" aria-label="Lifecycle stages">${items}</ol>`;
+}
+
+module.exports = { heroLoop, approachStrip, maturitySteps, presenceLine, stageStrip, cornerMarks, polar };

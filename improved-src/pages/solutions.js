@@ -13,7 +13,7 @@ function solution(key, n) {
   const needs = content.needsForSolution(key);
   const meta = [];
   if (product) {
-    meta.push(`<div><dt>Siemens product</dt><dd><a class="chip chip-product" href="${site.page(`products.html#${product.key}`)}">${c.productMark(product, "sm")}<span><span class="chip-label">${esc(product.name)}</span><span class="chip-small">${esc(product.category)}</span></span></a></dd></div>`);
+    meta.push(`<div><dt>Siemens product</dt><dd><a class="chip chip-product" href="${site.page(content.productPath(product.key))}">${c.productMark(product, "sm")}<span><span class="chip-label">${esc(product.name)}</span><span class="chip-small">${esc(product.category)}</span></span></a></dd></div>`);
   }
   if (stages.length) {
     meta.push(`<div><dt>Lifecycle stage</dt><dd>${stages.map((st) => `<a href="${site.page(`#lc-${st.key}`)}">${esc(st.title)}</a>`).join(", ")}</dd></div>`);

@@ -39,7 +39,7 @@ function structure() {
       groups: [
         {
           title: "Siemens portfolio",
-          links: content.products.map((p) => ({ href: `products.html#${p.key}`, label: p.name, text: p.category, mark: p })),
+          links: content.products.map((p) => ({ href: content.productPath(p.key), label: p.name, text: p.category, mark: p })),
         },
       ],
       more: { href: "products.html", label: "All products", active: "products" },

@@ -31,6 +31,31 @@ function needsForSolution(key) {
   return relations.needs.filter((need) => need.solutions.includes(key));
 }
 
+function needsForProduct(key) {
+  return relations.needs.filter((need) => need.products.includes(key));
+}
+
+function industriesForProduct(key) {
+  return offerings.industries.filter((ind) => relations.industryRelations[ind.key].products.includes(key));
+}
+
+function industriesForSolution(key) {
+  return offerings.industries.filter((ind) => relations.industryRelations[ind.key].solutions.includes(key));
+}
+
+/** Service items the finder relates to a need that names this solution. */
+function servicesForSolution(key) {
+  const seen = new Set();
+  return needsForSolution(key)
+    .flatMap((need) => need.services)
+    .filter(([phase, item]) => !seen.has(phase + item) && seen.add(phase + item));
+}
+
+/** Site path of a product's own page. */
+function productPath(key) {
+  return `products/${key}.html`;
+}
+
 /** Topics an enquiry can be about: every product, solution, industry and service phase. */
 function enquiryTopics() {
   return {
@@ -60,6 +85,15 @@ function validate() {
       check(names.includes(name), `${item.key}: unknown service item ${phase} / ${name}`);
     });
   }
+  for (const key of Object.keys(productByKey)) check(relations.productSupport[key], `productSupport: no entry for ${key}`);
+  for (const ind of offerings.industries) {
+    const rel = relations.industryRelations[ind.key];
+    check(rel, `industryRelations: no entry for ${ind.key}`);
+    if (!rel) continue;
+    rel.products.forEach((key) => check(productByKey[key], `industryRelations ${ind.key}: unknown product ${key}`));
+    rel.solutions.forEach((key) => check(solutionByKey[key], `industryRelations ${ind.key}: unknown solution ${key}`));
+    rel.needs.forEach((key) => check(needByKey[key], `industryRelations ${ind.key}: unknown need ${key}`));
+  }
   company.behind.problems.forEach(([key]) => check(needByKey[key], `behind.problems: no finder need ${key}`));
   if (problems.length) throw new Error("Content relations are inconsistent:\n  " + problems.join("\n  "));
 }
@@ -68,5 +102,6 @@ module.exports = {
   jobs, disciplines, bands,
   ...company, ...offerings, ...relations, external,
   productByKey, solutionByKey, industryByKey, serviceByKey, needByKey,
-  rolesForProduct, solutionsForProduct, stagesForSolution, needsForSolution, enquiryTopics, validate,
+  rolesForProduct, solutionsForProduct, stagesForSolution, needsForSolution, needsForProduct,
+  industriesForProduct, industriesForSolution, servicesForSolution, productPath, enquiryTopics, validate,
 };

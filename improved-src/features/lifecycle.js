@@ -13,7 +13,7 @@ const content = require("../content");
 
 function productItem(key) {
   const p = content.productByKey[key];
-  return `<li><a class="chip chip-product" href="${site.page(`products.html#${p.key}`)}">${productMark(p, "sm")}<span><span class="chip-label">${esc(p.name)}</span><span class="chip-small">${esc(p.category)}</span></span></a></li>`;
+  return `<li><a class="chip chip-product" href="${site.page(content.productPath(p.key))}">${productMark(p, "sm")}<span><span class="chip-label">${esc(p.name)}</span><span class="chip-small">${esc(p.category)}</span></span></a></li>`;
 }
 
 function solutionItem(key) {

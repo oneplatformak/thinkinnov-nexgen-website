@@ -100,16 +100,6 @@ function relatedList(items, { cls = "" } = {}) {
     .join("")}</ul>`;
 }
 
-function solutionLink(key) {
-  const s = content.solutionByKey(key);
-  return [site.page(`solutions.html#${s.key}`), s.title];
-}
-
-function productLink(key) {
-  const p = content.productByKey(key);
-  return [site.page(`products.html#${p.key}`), p.name, p.category];
-}
-
 /** Customer logo wall: every logo is the real file from the staging customer row. */
 function logoWall() {
   return `<ul class="logo-wall" aria-label="Customers">${content.customers
@@ -131,5 +121,5 @@ function person([image, name, role], { size = 600 } = {}) {
 
 module.exports = {
   breadcrumbs, crumbsFor, pageHero, sectionHead, linkArrow, button, productMark, contactHref,
-  ctaBand, relatedList, solutionLink, productLink, logoWall, person, config,
+  ctaBand, relatedList, logoWall, person, config,
 };
