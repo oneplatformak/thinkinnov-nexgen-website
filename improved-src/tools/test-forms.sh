@@ -160,6 +160,18 @@ assert "application names the whitelisted role" grep -q 'Role: Tech Lead - Teamc
 assert "CV is attached under a generated file name" grep -q 'filename="cv-Test-Candidate.pdf"' <(last_mail)
 
 reset
+MINIMAL=(-F "first_name=Test" -F "last_name=Candidate" -F "email=candidate@example.com" -F "phone=+91 98765 43210"
+  -F "graduation=2015" -F "experience=8" -F "employer=Example Ltd" -F "source=Website" -F "current_location=Chennai"
+  -F "preferred_location=Coimbatore" -F "skills=Teamcenter, ITK" -F "consent=1" -F "form_started=$OLD" -F "lang=en")
+post $PORT_OK apply.php json "${MINIMAL[@]}" -F "resume=@$WORK/cv.pdf;type=application/pdf"
+check "application without gender, CTC and notice period is accepted" 200 '"ok":true' "$STATUS" "$BODY"
+assert "optional fields left blank are mailed as not provided" bash -c "grep -q '^Gender: not provided' '$OUT'/*.eml && grep -q '^Current CTC (LPA): not provided' '$OUT'/*.eml && grep -q '^Expected CTC (LPA): not provided' '$OUT'/*.eml && grep -q '^Notice period (days): not provided' '$OUT'/*.eml"
+reset
+post $PORT_OK apply.php json "${MINIMAL[@]}" -F "resume=@$WORK/cv.pdf;type=application/pdf" -F "employer="
+check "a required field left blank is still rejected" 400 '"code":"invalid"' "$STATUS" "$BODY"
+assert "the rejected application sent no mail" test "$(mails)" = 0
+
+reset
 post $PORT_OK apply.php json "${APPLY[@]}" -F "resume=@$WORK/cv.pdf;type=application/pdf" -F "job=../../etc/passwd" -F "evil=should-not-appear" -F "to=attacker@example.com"
 check "unknown role becomes a general application" 200 '"ok":true' "$STATUS" "$BODY"
 assert "unknown role is not mailed" grep -q 'Role: General application' <(last_mail)

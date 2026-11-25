@@ -20,13 +20,14 @@ const { stripMarkers } = require("./lib/html");
 const i18n = require("./i18n");
 const content = require("./content");
 const registers = require("./lib/registers");
+const search = require("./lib/search");
 
 const OUT = path.join(__dirname, "..", "docs");
 const NOTES = path.join(__dirname, "..", "notes");
 
 const PAGE_MODULES = [
   "home", "about", "plm", "services", "digital", "products", "product", "solutions", "industries",
-  "behind", "careers", "job", "apply", "contact", "legal", "notfound",
+  "behind", "careers", "job", "apply", "contact", "search", "legal", "notfound",
 ];
 const only = process.env.ONLY ? process.env.ONLY.split(",") : null; // development aid
 const routes = PAGE_MODULES.filter((m) => !only || only.includes(m)).flatMap((m) => require(`./pages/${m}`).routes);
@@ -46,6 +47,8 @@ function buildAssets() {
   return { css: css.text.length, js: js.text.length };
 }
 
+const indexed = { en: [], ja: [] };
+
 function buildPage(route, lang) {
   site.setPage(lang, route.path);
   const page = route.render();
@@ -53,6 +56,10 @@ function buildPage(route, lang) {
   const rel = (lang === "ja" ? "ja/" : "") + (route.path || "index.html");
   if (lang === "ja") html = i18n.apply(html, rel);
   write(rel, stripMarkers(html));
+  if (!route.noindex && !page.noindex && route.path !== "search.html") {
+    const pick = (re) => (html.match(re) || [, ""])[1].replace(/&amp;/g, "&").replace(/&quot;/g, '"').replace(/&#39;/g, "'");
+    indexed[lang].push({ path: route.path, title: pick(/<title>([^<]*)<\/title>/).split(" | ")[0], description: pick(/<meta name="description" content="([^"]*)"/) });
+  }
   return rel;
 }
 
@@ -69,6 +76,7 @@ function main() {
     for (const [rel, html] of require("./pages/redirects").stubs()) write(rel, html);
     write("sitemap.xml", seo.sitemapXml(routes.filter((r) => !r.noindex).map((r) => r.path)));
     write("robots.txt", seo.robotsTxt());
+    for (const lang of ["en", "ja"]) write(`assets/search-${lang}.json`, search.buildIndex(lang, indexed[lang]));
     write("inc/enquiry-options.php", registers.enquiryOptionsPhp());
     fs.writeFileSync(path.join(NOTES, "JAPANESE-REGISTER.md"), registers.japaneseRegister(i18n));
     fs.writeFileSync(path.join(NOTES, "CLAIM-REGISTER.md"), registers.claimRegister());

@@ -6,7 +6,7 @@ const c = require("../lib/components");
 function render() {
   const links = [
     ["", "Home"], ["solutions.html#finder", "Find by business need"], ["products.html", "Products"],
-    ["services.html", "Services"], ["careers.html", "Careers"], ["contact.html", "Contact"], ["sitemap.html", "Sitemap"],
+    ["services.html", "Services"], ["careers.html", "Careers"], ["contact.html", "Contact"], ["search.html", "Search"], ["sitemap.html", "Sitemap"],
   ];
   return {
     title: "Page not found | ThinkInnov-NexGen",

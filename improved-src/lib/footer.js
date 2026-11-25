@@ -55,6 +55,7 @@ function footer() {
         <ul class="footer-meta">
           <li><a href="${site.page("privacy.html")}">Privacy notice</a></li>
           <li><a href="${site.page("accessibility.html")}">Accessibility</a></li>
+          <li><a href="${site.page("search.html")}">Search</a></li>
           <li><a href="${site.page("sitemap.html")}">Sitemap</a></li>
         </ul>
         ${langSwitch()}

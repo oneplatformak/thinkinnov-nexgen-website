@@ -35,10 +35,13 @@ $fields = [
     'skills' => ['Skill set', 500],
 ];
 
+// The applicant may leave these blank; the form marks them "Optional".
+$optional = ['gender', 'current_ctc', 'expected_ctc', 'notice'];
+
 $values = [];
 foreach ($fields as $key => [$label, $max]) {
     $values[$key] = tin_line($key, $max);
-    if ($values[$key] === '') {
+    if ($values[$key] === '' && !in_array($key, $optional, true)) {
         tin_respond(400, 'invalid', FORM_PAGE);
     }
 }
@@ -100,7 +103,7 @@ foreach ($fields as $key => [$label]) {
     if ($key === 'phone') {
         $lines[] = 'Email: ' . $email;
     }
-    $lines[] = $label . ': ' . $values[$key];
+    $lines[] = $label . ': ' . ($values[$key] !== '' ? $values[$key] : 'not provided');
 }
 $lines[] = '';
 

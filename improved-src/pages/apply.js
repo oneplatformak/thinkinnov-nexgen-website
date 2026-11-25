@@ -1,4 +1,7 @@
-/** Application form. Fields are the ones the staging form asked for. */
+/**
+ * Application form. Fields are the ones the staging form asked for. Gender,
+ * current and expected CTC and notice period are kept but optional.
+ */
 const site = require("../lib/site");
 const { esc } = require("../lib/html");
 const c = require("../lib/components");
@@ -21,15 +24,14 @@ function fields() {
     f.input({ name: "phone", label: "Contact number", type: "tel", required: true, autocomplete: "tel", prefix: p, messages: req("your contact number") }),
     f.input({ name: "graduation", label: "Year of graduation", required: true, inputmode: "numeric", maxlength: 4, prefix: p, messages: req("your year of graduation") }),
     f.select({
-      name: "gender", label: "Gender", required: true, prefix: p, placeholder: "Select",
+      name: "gender", label: "Gender", prefix: p, placeholder: "Select",
       options: [["Male", "Male"], ["Female", "Female"], ["Prefer not to say", "Prefer not to say"]],
-      messages: { required: "Please choose an option." },
     }),
     f.input({ name: "experience", label: "Overall experience (years)", required: true, prefix: p, messages: req("your overall experience") }),
     f.input({ name: "employer", label: "Current employer", required: true, autocomplete: "organization", prefix: p, messages: req("your current employer") }),
-    f.input({ name: "current_ctc", label: "Current CTC (LPA)", required: true, prefix: p, messages: req("your current CTC") }),
-    f.input({ name: "expected_ctc", label: "Expected CTC (LPA)", required: true, prefix: p, messages: req("your expected CTC") }),
-    f.input({ name: "notice", label: "Notice period (days)", required: true, prefix: p, messages: req("your notice period") }),
+    f.input({ name: "current_ctc", label: "Current CTC (LPA)", prefix: p }),
+    f.input({ name: "expected_ctc", label: "Expected CTC (LPA)", prefix: p }),
+    f.input({ name: "notice", label: "Notice period (days)", prefix: p }),
     f.select({
       name: "source", label: "How did you find this vacancy?", required: true, prefix: p, placeholder: "Select",
       options: [["LinkedIn", "LinkedIn"], ["Referral", "Referral"], ["Website", "Website"], ["Other", "Other"]],
@@ -78,7 +80,7 @@ function render() {
         <aside class="form-aside" aria-label="About applying">
           <h2 class="h-sub">Before you apply</h2>
           <ul class="ticks">
-            <li>Fields marked “Required” must be completed.</li>
+            <li>Fields marked “Required” must be completed. Gender, current and expected CTC and notice period are optional.</li>
             <li>Your application and CV are emailed to our company address.</li>
             <li>Choose “General application” if no listed role fits.</li>
           </ul>

@@ -433,6 +433,18 @@
     <xhtml:link rel="alternate" hreflang="x-default" href="https://thinkinnovnexgen.co.jp/contact.html"/>
   </url>
   <url>
+    <loc>https://thinkinnovnexgen.co.jp/search.html</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://thinkinnovnexgen.co.jp/search.html"/>
+    <xhtml:link rel="alternate" hreflang="ja" href="https://thinkinnovnexgen.co.jp/ja/search.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://thinkinnovnexgen.co.jp/search.html"/>
+  </url>
+  <url>
+    <loc>https://thinkinnovnexgen.co.jp/ja/search.html</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://thinkinnovnexgen.co.jp/search.html"/>
+    <xhtml:link rel="alternate" hreflang="ja" href="https://thinkinnovnexgen.co.jp/ja/search.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://thinkinnovnexgen.co.jp/search.html"/>
+  </url>
+  <url>
     <loc>https://thinkinnovnexgen.co.jp/privacy.html</loc>
     <xhtml:link rel="alternate" hreflang="en" href="https://thinkinnovnexgen.co.jp/privacy.html"/>
     <xhtml:link rel="alternate" hreflang="ja" href="https://thinkinnovnexgen.co.jp/ja/privacy.html"/>

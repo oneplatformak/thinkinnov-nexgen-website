@@ -39,10 +39,12 @@ function privacy() {
       p("When you send the contact form, the website collects what you enter:") +
       list(["Enquiry type and, if you choose one, a topic", "Name", "Company, if given", "Email address", "Phone number, if given", "Your message"]) +
       p("If you arrived from the finder or from a product, solution, industry or service page, the form also carries the business need, industry, company size or topic you selected there. This is shown above the form and you can remove it before sending.") +
+      p("To carry that selection from page to page, your browser keeps it in session storage for the current tab. It is not sent to us unless you send the contact form, and it is cleared when you remove it, send the form or close the tab.") +
       p("We use this information to respond to your enquiry.")],
     ["application-form", "Job application form",
       p("When you send the application form, the website collects what you enter:") +
-      list(["The role you are applying for, if selected", "First and last name", "Email address and contact number", "Year of graduation and gender", "Overall experience and current employer", "Current and expected CTC, and notice period", "Skill set", "How you found the vacancy", "Current and preferred location", "The CV file you attach"]) +
+      list(["The role you are applying for, if selected", "First and last name", "Email address and contact number", "Year of graduation", "Overall experience and current employer", "Skill set", "How you found the vacancy", "Current and preferred location", "The CV file you attach", "Gender, if given", "Current and expected CTC (cost to company), if given", "Notice period, if given"]) +
+      p("Gender, current and expected CTC and notice period are optional. You can leave them blank and still apply.") +
       p("We use this information to consider your application.")],
     ["where", "Where the information goes",
       p("Each form sends what you entered to the website's server, which emails it to the company address shown below. The website has no database and does not keep a copy of your submission after the email has been handed to the mail system.") +
@@ -50,6 +52,7 @@ function privacy() {
     ["cookies", "Cookies, analytics and tracking",
       p("This website does not use analytics, advertising or tracking cookies, and does not load fonts, scripts or images from other companies.") +
       p("If you switch language, or dismiss the language suggestion, your choice is saved in your browser's local storage so that the site can offer that language next time. It is not sent to us.") +
+      p("The search page matches what you type against a list of this website's pages inside your browser. What you search for is not sent to us or recorded.") +
       p("Links to other websites, such as the map link and the links to Siemens product pages, open those websites, which have their own privacy notices.")],
     ["questions", "Questions and requests", p("To ask about the information you have sent us through this website, or to ask us to correct or delete it, contact us:") + contactBlock()],
   ];
@@ -78,7 +81,7 @@ function accessibility() {
       p("Before publication the pages were checked in Google Chrome on a desktop computer, in English and Japanese:") +
       list([
         "Automated accessibility audits with Lighthouse on the home page and representative inner pages.",
-        "Scripted keyboard tests of the menus, the lifecycle diagram, the finder, the career filters, the photo viewer, the language switch and both forms.",
+        "Scripted keyboard tests of the menus, the lifecycle diagram, the finder, the career filters, the photo viewer, the language switch, the search page and both forms.",
         "Layout checks at ten screen widths from 320 to 2560 pixels.",
         "Contrast of text colours against their backgrounds.",
       ])],
@@ -115,7 +118,7 @@ function sitemap() {
   groups.push(["Careers", content.jobs.map((job) => [site.page(`careers/${job.slug}.html`), job.title])]);
   groups.push(["Solutions", content.solutions.map((s) => [site.page(`solutions.html#${s.key}`), s.title])]);
   groups.push(["Industries", content.industries.map((i) => [site.page(`industries.html#${i.key}`), i.title])]);
-  groups.push(["Website", [[site.page("apply.html"), "Apply"], [site.page("privacy.html"), "Privacy notice"], [site.page("accessibility.html"), "Accessibility"], [site.alternate(site.isJa() ? "en" : "ja"), site.isJa() ? "English" : "日本語"]]]);
+  groups.push(["Website", [[site.page("apply.html"), "Apply"], [site.page("search.html"), "Search"], [site.page("privacy.html"), "Privacy notice"], [site.page("accessibility.html"), "Accessibility"], [site.alternate(site.isJa() ? "en" : "ja"), site.isJa() ? "English" : "日本語"]]]);
   const html = groups
     .map(([title, links]) => `<section class="sitemap-group"><h2>${esc(title)}</h2><ul>${links.map(([href, label]) => `<li><a href="${href}">${esc(label)}</a></li>`).join("")}</ul></section>`)
     .join("");

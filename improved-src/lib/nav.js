@@ -161,6 +161,7 @@ function mobileMenu(active) {
       ${langSwitch()}
       <a class="btn btn-primary btn-block" href="${site.page("contact.html")}">Contact us${icons.arrow}</a>
       <div class="mm-quick">
+        <a href="${site.page("search.html")}">${icons.search}<span>Search</span></a>
         <a href="tel:${config.phoneTel}">${icons.phone}<span>${esc(config.phoneDisplay)}</span></a>
         <a href="mailto:${config.email}">${icons.mail}<span>Email us</span></a>
       </div>
@@ -179,6 +180,7 @@ function header(active = "") {
         <ul>${desktopNav(active)}</ul>
       </nav>
       <div class="header-tools">
+        <a class="header-search" href="${site.page("search.html")}"${active === "search" ? ' aria-current="page"' : ""}>${icons.search}<span class="visually-hidden">Search</span></a>
         ${langSwitch()}
         <a class="btn btn-primary btn-sm header-cta" href="${site.page("contact.html")}">Contact us</a>
         <a class="menu-toggle" href="${site.page("sitemap.html")}" data-menu-open><span>Menu</span>${icons.menu}</a>

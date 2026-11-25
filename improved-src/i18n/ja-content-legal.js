@@ -58,9 +58,7 @@ module.exports = {
     "The role you are applying for, if selected": "応募される職種（選択された場合）",
     "First and last name": "氏名",
     "Email address and contact number": "メールアドレスと電話番号",
-    "Year of graduation and gender": "卒業年と性別",
     "Overall experience and current employer": "通算の実務経験と現在の勤務先",
-    "Current and expected CTC, and notice period": "現在の年収と希望年収、退職までに必要な期間",
     "Current and preferred location": "現在の居住地と希望勤務地",
     "How you found the vacancy": "求人をお知りになった経緯",
     "The CV file you attach": "添付された履歴書ファイル",
@@ -106,8 +104,8 @@ module.exports = {
       "公開前に、デスクトップコンピューター上のGoogle Chromeで、英語と日本語の各ページについて次の確認を行いました。",
     "Automated accessibility audits with Lighthouse on the home page and representative inner pages.":
       "Lighthouseによる自動アクセシビリティ監査（ホームページおよび代表的な下層ページ）。",
-    "Scripted keyboard tests of the menus, the lifecycle diagram, the finder, the career filters, the photo viewer, the language switch and both forms.":
-      "メニュー、ライフサイクル図、課題別ファインダー、採用情報の絞り込み、写真ビューアー、言語切り替え、2つのフォームについての、スクリプトによるキーボード操作テスト。",
+    "Scripted keyboard tests of the menus, the lifecycle diagram, the finder, the career filters, the photo viewer, the language switch, the search page and both forms.":
+      "メニュー、ライフサイクル図、課題別ファインダー、採用情報の絞り込み、写真ビューアー、言語切り替え、検索ページ、2つのフォームについての、スクリプトによるキーボード操作テスト。",
     "Layout checks at ten screen widths from 320 to 2560 pixels.": "320〜2560ピクセルの10種類の画面幅でのレイアウト確認。",
     "Contrast of text colours against their backgrounds.": "文字色と背景色のコントラスト。",
     "What was not tested": "確認していない内容",
@@ -132,5 +130,12 @@ module.exports = {
     "The page you were looking for could not be found.": "お探しのページは見つかりませんでした。",
     "The address may have changed, or the page may have been removed. These links will take you to the main parts of the site.":
       "アドレスが変更されたか、ページが削除された可能性があります。以下のリンクから、サイトの主なページへお進みいただけます。",
+    // Optional fields, journey context and search
+    "Gender, if given": "性別（入力された場合）",
+    "Current and expected CTC (cost to company), if given": "現在の年収と希望年収（CTC：Cost to Company。入力された場合）",
+    "Notice period, if given": "退職までに必要な期間（入力された場合）",
+    "Gender, current and expected CTC and notice period are optional. You can leave them blank and still apply.": "性別、現在の年収と希望年収、退職までに必要な期間は任意項目です。空欄のままでもご応募いただけます。",
+    "To carry that selection from page to page, your browser keeps it in session storage for the current tab. It is not sent to us unless you send the contact form, and it is cleared when you remove it, send the form or close the tab.": "選択内容をページ間で引き継ぐため、お使いのブラウザが現在のタブのセッションストレージに保存します。お問い合わせフォームを送信しない限り当社に送信されることはなく、選択内容を削除したとき、フォームを送信したとき、タブを閉じたときに消去されます。",
+    "The search page matches what you type against a list of this website's pages inside your browser. What you search for is not sent to us or recorded.": "検索ページでは、入力された語句を、お使いのブラウザ内で当サイトのページ一覧と照合します。検索した語句が当社に送信されたり、記録されたりすることはありません。",
   },
 };
