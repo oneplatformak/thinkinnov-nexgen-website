@@ -22,7 +22,8 @@ function render(job) {
     .join("");
   const list = (items) => `<ul class="ticks">${items.map((item) => `<li>${esc(item)}</li>`).join("")}</ul>`;
   return {
-    title: `${job.title} | Careers | ThinkInnov-NexGen`,
+    // Two roles share a title; the experience band keeps their page titles unique.
+    title: `${job.title}${content.jobs.filter((j) => j.title === job.title).length > 1 ? ` | ${job.experience}` : ""} | Careers | ThinkInnov-NexGen`,
     description: `${job.title} at ThinkInnov-NexGen (${job.location}, ${job.experience}). ${job.summary}`,
     descriptionJa: `ThinkInnov-NexGenの募集職種：${i18n.t(job.title)}（${i18n.t(job.location)}、${i18n.t(job.experience)}）。${i18n.t(job.summary)}`,
     active: "careers",
