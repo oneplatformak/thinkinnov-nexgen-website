@@ -71,12 +71,16 @@ const galleryAlt = [
   "Guests gathered in the corridor outside the office entrance",
   "A guest holding a bouquet of flowers in the corridor",
   "Guests talking in the corridor outside the office entrance",
+  // The next two come from the official Nexware package (notes/nexware-official-src/).
+  "People standing on both sides of a corridor behind a red ribbon tied with a bow",
+  "Two people walking along an office corridor",
 ];
 
 // [width, height] of each full-size gallery image, for layout without shift.
 const gallerySize = [
   [1280, 960], [1200, 1600], [1600, 1200], [900, 1600], [1200, 1600], [900, 1600],
   [1200, 1600], [1200, 1600], [900, 1600], [1200, 1600], [1200, 1600], [1200, 1600],
+  [1200, 1600], [1200, 1600],
 ];
 
 const about = {

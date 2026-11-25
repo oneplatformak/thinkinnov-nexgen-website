@@ -3,7 +3,7 @@
 return [
     'types' => [
         'general' => 'General enquiry',
-        'demo' => 'Product demonstration',
+        'product' => 'Product enquiry',
         'consultation' => 'PLM consultation',
         'dx' => 'Digital transformation',
         'implementation' => 'Implementation',

@@ -149,7 +149,12 @@ html[lang="ja"] .inline-list li:not(:last-child)::after { content: "、"; }
 .presence-role { font-size: var(--t-sm); color: var(--ink-3); text-align: right; }
 .presence-link { display: flex; align-items: center; justify-content: center; gap: 0.75rem; font-family: var(--font-display); font-size: var(--t-xs); font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; color: var(--accent); }
 .presence-link i { width: 1px; height: 2rem; background: var(--accent-bright); }
-.presence-note { margin-block: var(--s-5); color: var(--ink-2); }
+.actions-inline { display: flex; flex-wrap: wrap; gap: var(--s-3) var(--s-6); margin-top: var(--s-6); }
+.photo-portrait { margin: 0; border: 1px solid var(--rule); background: var(--paper-3); }
+.photo-portrait img { display: block; width: 100%; height: auto; aspect-ratio: 4 / 5; object-fit: cover; object-position: 50% 62%; }
+@media (min-width: 900px) {
+  .split-photo { grid-template-columns: minmax(0, 7fr) minmax(0, 4fr); align-items: center; }
+}
 @media (min-width: 640px) {
   .presence-diagram { grid-template-columns: minmax(0, 1fr) auto minmax(0, 1fr); align-items: center; }
   .presence-link { flex-direction: column; gap: 0.4rem; }

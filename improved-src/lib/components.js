@@ -75,18 +75,6 @@ function contactHref(params = {}) {
   return site.page("contact.html" + (query ? `?${query}` : ""));
 }
 
-/**
- * A generated, conceptual image. Always labelled so that it cannot be read as
- * a photograph of the company, its people or its customers.
- */
-function conceptual(name, alt, { sizes = "(min-width: 900px) 40vw, 100vw", cls = "", eager = false } = {}) {
-  const base = site.asset(`assets/img/visuals/${name}`);
-  return `<figure class="plate${cls ? ` ${cls}` : ""}">
-        <img src="${base}.webp" srcset="${base}-640.webp 640w, ${base}.webp 1600w" sizes="${sizes}" width="1600" height="900" alt="${esc(alt)}"${eager ? ' fetchpriority="high"' : ' loading="lazy" decoding="async"'}>
-        <figcaption class="plate-label">Conceptual image</figcaption>
-      </figure>`;
-}
-
 /** Closing invitation used on inner pages. `actions`: [[href, label, kind]]. */
 function ctaBand({ title, text, actions, id = "" }) {
   const buttons = actions.map(([href, label, kind]) => button(href, label, kind || "primary")).join("");
@@ -143,5 +131,5 @@ function person([image, name, role], { size = 600 } = {}) {
 
 module.exports = {
   breadcrumbs, crumbsFor, pageHero, sectionHead, linkArrow, button, productMark, contactHref,
-  conceptual, ctaBand, relatedList, solutionLink, productLink, logoWall, person, config,
+  ctaBand, relatedList, solutionLink, productLink, logoWall, person, config,
 };

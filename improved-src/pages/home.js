@@ -171,10 +171,9 @@ function industries() {
     .map((ind) => `<li><a href="${site.page(`industries.html#${ind.key}`)}"><span class="index-n">${pad2(ind.n)}</span><span>${esc(ind.title)}</span>${icons.arrow}</a></li>`)
     .join("");
   return `<section class="section section-tint" id="industries">
-    <div class="container split">
+    <div class="container split split-sticky">
       <div>
         ${c.sectionHead({ n: 7, kicker: content.industriesIntro.kicker, title: content.industriesIntro.sectionTitle, text: content.industriesIntro.page, link: [site.page("industries.html"), "All industries"] })}
-        ${c.conceptual("siemens-digital-industry", "Conceptual image of an automated factory floor", { sizes: "(min-width: 900px) 38vw, 100vw" })}
       </div>
       <ul class="link-list">${items}</ul>
     </div>
@@ -238,24 +237,25 @@ function proof() {
 }
 
 function presence() {
-  const p = content.about.partnership;
+  const [title, text] = content.about.identity.cards[2];
+  const photo = content.about.gallery[13];
   return `<section class="section section-tint" id="presence">
-    <div class="container split">
+    <div class="container split split-photo">
       <div>
-        ${c.sectionHead({ n: 11, kicker: "Japan and India", title: p.title, text: p.intro, link: [site.page("about.html#partnership"), p.label] })}
-      </div>
-      <div>
+        ${c.sectionHead({ n: 11, kicker: "Japan and India", title, text })}
         ${diagrams.presenceLine()}
-        <p class="presence-note">${esc(content.about.identity.cards[2][1])}</p>
-        ${c.linkArrow(site.page("about.html#profile"), "Company profile")}
+        <p class="actions-inline">${c.linkArrow(site.page("about.html#profile"), "Company profile")}${c.linkArrow(site.page("about.html#gallery"), "Photo gallery")}</p>
       </div>
+      <figure class="photo-portrait">
+        <img src="${site.asset(photo.full)}" srcset="${site.asset(photo.thumb)} 600w, ${site.asset(photo.full)} 1200w" sizes="(min-width: 900px) 34vw, 100vw" width="${photo.width}" height="${photo.height}" alt="${esc(photo.alt)}" loading="lazy" decoding="async">
+      </figure>
     </div>
   </section>`;
 }
 
 function contact() {
   const actions = [
-    ["demo", "Request a product demonstration", "See a Siemens product with our team."],
+    ["product", "Ask about a product", "NX, Solid Edge, Capital, Teamcenter, Tecnomatix or Mendix."],
     ["consultation", "Book a PLM consultation", "Talk through your product data and processes."],
     ["dx", "Discuss digital transformation", "Start from the Product Data Maturity Model."],
     ["support", "Ask about support", "L1, L2 and L3 support and enhancements."],
@@ -285,7 +285,7 @@ function contact() {
 function render() {
   return {
     title: "ThinkInnov-NexGen | PLM consulting, implementation and support in Japan",
-    description: "ThinkInnov-NexGen, a Siemens Solution Partner in Tokyo, provides PLM consulting, implementation and support around NX, Solid Edge, Capital, Teamcenter, Tecnomatix and Mendix.",
+    description: "ThinkInnov-NexGen in Tokyo provides PLM consulting, implementation and support around the Siemens products NX, Solid Edge, Capital, Teamcenter, Tecnomatix and Mendix.",
     active: "home",
     bodyClass: "page page-home",
     crumbs: [{ label: "Home", path: "" }],
