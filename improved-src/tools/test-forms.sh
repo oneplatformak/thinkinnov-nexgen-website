@@ -192,6 +192,26 @@ post $PORT_OK apply.php json "${APPLY[@]}" -F "resume=@$WORK/cv.pdf;type=applica
 check "filled honeypot is rejected" 400 '"ok":false' "$STATUS" "$BODY"
 assert "none of the rejected applications sent mail" test "$(mails)" = 0
 
+# A DOCX is a zip container. A zip of something else renamed .docx is refused; a Word file is accepted.
+python3 - "$WORK" <<'PY'
+import sys, zipfile
+work = sys.argv[1]
+with zipfile.ZipFile(work + "/renamed.docx", "w", zipfile.ZIP_DEFLATED) as z:
+    z.writestr("notes.txt", "not a document " * 50)
+    z.writestr("run.sh", "#!/bin/sh\necho hello\n")
+with zipfile.ZipFile(work + "/cv.docx", "w", zipfile.ZIP_DEFLATED) as z:
+    z.writestr("[Content_Types].xml", '<?xml version="1.0"?><Types xmlns="http://schemas.openxmlformats.org/package/2006/content-types"><Default Extension="xml" ContentType="application/xml"/><Override PartName="/word/document.xml" ContentType="application/vnd.openxmlformats-officedocument.wordprocessingml.document.main+xml"/></Types>')
+    z.writestr("_rels/.rels", '<?xml version="1.0"?><Relationships xmlns="http://schemas.openxmlformats.org/package/2006/relationships"><Relationship Id="rId1" Type="http://schemas.openxmlformats.org/officeDocument/2006/relationships/officeDocument" Target="word/document.xml"/></Relationships>')
+    z.writestr("word/document.xml", '<?xml version="1.0"?><w:document xmlns:w="http://schemas.openxmlformats.org/wordprocessingml/2006/main"><w:body><w:p><w:r><w:t>Test CV</w:t></w:r></w:p></w:body></w:document>')
+PY
+reset
+post $PORT_OK apply.php json "${APPLY[@]}" -F "resume=@$WORK/renamed.docx;type=application/vnd.openxmlformats-officedocument.wordprocessingml.document"
+check "a zip of other files renamed .docx is rejected" 400 '"code":"file_type"' "$STATUS" "$BODY"
+assert "and sends no mail" test "$(mails)" = 0
+post $PORT_OK apply.php json "${APPLY[@]}" -F "resume=@$WORK/cv.docx;type=application/vnd.openxmlformats-officedocument.wordprocessingml.document"
+check "a Word document (.docx) is accepted" 200 '"ok":true' "$STATUS" "$BODY"
+assert "and is attached under a generated file name" grep -q 'filename="cv-Test-Candidate.docx"' <(last_mail)
+
 reset
 for i in 1 2 3 4 5 6; do post $PORT_OK apply.php json "${APPLY[@]}" -F "resume=@$WORK/cv.pdf;type=application/pdf"; done
 post $PORT_OK apply.php json "${APPLY[@]}" -F "resume=@$WORK/cv.pdf;type=application/pdf"

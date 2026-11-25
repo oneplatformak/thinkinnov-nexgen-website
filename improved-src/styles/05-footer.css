@@ -10,9 +10,10 @@
 .footer-tagline { margin-top: var(--s-5); max-width: 26rem; line-height: 1.6; }
 .footer-title { margin-bottom: var(--s-4); padding-bottom: 0.6rem; border-bottom: 1px solid var(--dark-rule); font-family: var(--font-display); font-size: var(--t-xs); font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; color: var(--on-dark-2); }
 html[lang="ja"] .footer-title { letter-spacing: 0.08em; font-size: 0.8125rem; }
-.footer-col li a { display: inline-block; padding-block: 0.4rem; }
+.footer-col li a { display: inline-block; min-width: 1.5rem; padding-block: 0.4rem; }
 .footer-contact address { line-height: 1.6; }
 .footer-contact p { margin-top: var(--s-4); line-height: 1.9; }
+.footer-contact p a { display: inline-block; min-height: 1.5rem; }
 /* The e-mail address stays on one line: it is set a little smaller if its column is narrow. */
 @supports (font-size: 1cqi) { .footer-contact { container-type: inline-size; } .footer-contact a[href^="mailto:"] { font-size: min(1em, 7.1cqi); } }
 /* Japanese link text is wider: one column of links on the narrowest phones. */

@@ -467,7 +467,8 @@ async function testContactForm(browser, labels) {
   await fillContact(page);
   await page.click('form[data-form] button[type="submit"]');
   await waitStatus(page, labels.sending);
-  ok("when the mail system fails the page says so", (await status(page)) === labels.mailFailed, await status(page));
+  ok("when the mail system fails the page says so", (await status(page)).startsWith(labels.mailFailed), await status(page));
+  ok("and the address it asks the visitor to write to is a mailto link", await page.$eval("[data-form-status]", (s) => { const a = s.querySelector("a"); return !!a && a.getAttribute("href") === "mailto:info@thinkinnovnexgen.co.jp" && a.textContent === "info@thinkinnovnexgen.co.jp"; }));
   ok("and the visitor's text is kept", await page.$eval('[name="message"]', (m) => m.value === "Local test message."));
   await done(page);
 }

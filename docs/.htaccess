@@ -8,8 +8,10 @@ RewriteCond %{HTTPS} !=on
 RewriteCond %{HTTP:X-Forwarded-Proto} !=https
 RewriteRule ^ https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
 
-# Server-side includes and dotfiles are not web pages
+# Server-side includes and dotfiles are not web pages. /.well-known/ is the
+# exception: certificate renewal (ACME) and similar checks are served from it.
 RewriteRule ^inc/ - [F,L]
+RewriteCond %{REQUEST_URI} !^/\.well-known/
 RewriteRule (^|/)\. - [F,L]
 
 # Custom 404

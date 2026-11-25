@@ -82,9 +82,11 @@ $$("form[data-form]").forEach(function (form) {
     }
     button.disabled = true;
     say("", form.getAttribute("data-l10n-sending"));
+    var email = form.getAttribute("data-mailto");
+    // A message that asks the visitor to write to us carries the address as a link.
+    var direct = { href: "mailto:" + email, text: email };
     var fallback = function () {
       // No working mail handler here (for example a static preview host).
-      var email = form.getAttribute("data-mailto");
       say("error", form.getAttribute("data-l10n-fallback"), { href: mailtoHref(form), text: email });
       status.focus();
     };
@@ -103,12 +105,12 @@ $$("form[data-form]").forEach(function (form) {
           form.elements.form_started.value = String(Date.now());
           form.dispatchEvent(new CustomEvent("tin:sent"));
         } else if (r.data && r.data.error) {
-          say("error", r.data.error);
+          say("error", r.data.error, /^(rate|rejected|mail_failed)$/.test(r.data.code || "") ? direct : null);
         } else if (!r.data) {
           fallback();
           return;
         } else {
-          say("error", form.getAttribute("data-l10n-failed"));
+          say("error", form.getAttribute("data-l10n-failed"), direct);
         }
         status.focus();
       })

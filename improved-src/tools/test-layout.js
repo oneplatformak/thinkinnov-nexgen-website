@@ -5,7 +5,9 @@
  *  - visible elements that extend past the right or left edge of the viewport,
  *  - text that is cut off (an element whose content is wider than its box
  *    while overflow is hidden),
- *  - images that failed to load, and
+ *  - images that failed to load,
+ *  - links and controls in the header, forms, open dialogs and the footer
+ *    that are smaller than 24 by 24 CSS pixels, and
  *  - words broken across lines:
  *      a Latin word, number, e-mail address or product name ("Solid Edge",
  *      "Teamcenter X") split between two lines, anywhere on the page, in either language;
@@ -46,7 +48,7 @@ function pages(dir, prefix = "") {
 
 function inspect() {
   const vw = document.documentElement.clientWidth;
-  const out = { overflowX: document.documentElement.scrollWidth - vw, offscreen: [], clipped: [], brokenImages: [] };
+  const out = { overflowX: document.documentElement.scrollWidth - vw, offscreen: [], clipped: [], brokenImages: [], small: [] };
   const describe = (el) => el.tagName.toLowerCase() + (el.id ? "#" + el.id : "") + (el.className && typeof el.className === "string" ? "." + el.className.trim().split(/\s+/).join(".") : "");
   const scrollerOf = (el) => {
     for (let p = el.parentElement; p; p = p.parentElement) {
@@ -69,6 +71,16 @@ function inspect() {
   for (const img of document.images) {
     if (img.complete && img.naturalWidth === 0 && !img.closest("dialog:not([open])")) out.brokenImages.push(img.getAttribute("src"));
   }
+  // Controls and links in the header, forms, open dialogs and the footer: at least 24 by 24 CSS pixels.
+  for (const el of document.querySelectorAll("header a, header button, form a, form button, form input, form select, form textarea, form label, dialog[open] a, dialog[open] button, footer a, footer button")) {
+    if (el.type === "hidden" || el.closest("[hidden], dialog:not([open]), .visually-hidden, .skip-link, .field-trap")) continue;
+    const style = getComputedStyle(el);
+    if (style.display === "none" || style.visibility === "hidden") continue;
+    const r = el.getBoundingClientRect();
+    if (r.width === 0 || r.height === 0) continue;
+    if (r.width < 24 || r.height < 24) out.small.push(`${describe(el)} ${Math.round(r.width * 10) / 10}x${Math.round(r.height * 10) / 10} "${(el.textContent || el.getAttribute("aria-label") || "").trim().slice(0, 30)}"`);
+  }
+  out.small = out.small.slice(0, 8);
   out.offscreen = out.offscreen.slice(0, 5);
   out.clipped = out.clipped.slice(0, 5);
   return out;
@@ -156,7 +168,7 @@ function wordBreaks(JA_TARGETS, JA_SHORT, ROOT) {
   const only = process.env.PAGES ? new RegExp(process.env.PAGES) : null; // development aid
   const list = pages(DOCS).sort().filter((rel) => !only || only.test(rel));
   const browser = await puppeteer.launch({ executablePath: process.env.CHROME || "/usr/bin/google-chrome", headless: "new", args: ["--no-sandbox", "--disable-dev-shm-usage"] });
-  const totals = Object.fromEntries(WIDTHS.map((w) => [w, { pages: 0, overflow: 0, offscreen: 0, clipped: 0, broken: 0, wordBreaks: 0 }]));
+  const totals = Object.fromEntries(WIDTHS.map((w) => [w, { pages: 0, overflow: 0, offscreen: 0, clipped: 0, broken: 0, small: 0, wordBreaks: 0 }]));
   const failures = [];
   const broken = [];
   const queue = list.flatMap((p) => WIDTHS.map((w) => [p, w]));
@@ -190,7 +202,8 @@ function wordBreaks(JA_TARGETS, JA_SHORT, ROOT) {
       if (r.offscreen.length) t.offscreen += 1;
       if (r.clipped.length) t.clipped += 1;
       if (r.brokenImages.length) t.broken += 1;
-      if (r.overflowX > 0 || r.offscreen.length || r.clipped.length || r.brokenImages.length) failures.push({ rel, width, ...r });
+      if (r.small.length) t.small += 1;
+      if (r.overflowX > 0 || r.offscreen.length || r.clipped.length || r.brokenImages.length || r.small.length) failures.push({ rel, width, ...r });
     }
     await page.close();
   };
@@ -198,10 +211,10 @@ function wordBreaks(JA_TARGETS, JA_SHORT, ROOT) {
   await browser.close();
 
   console.log(`Pages: ${list.length} (${list.filter((p) => p.startsWith("ja/")).length} Japanese), widths: ${WIDTHS.join(", ")}`);
-  console.log("width  pages  overflow  offscreen  clipped  broken-images  pages-with-broken-words");
+  console.log("width  pages  overflow  offscreen  clipped  broken-images  small-targets  pages-with-broken-words");
   for (const w of WIDTHS) {
     const t = totals[w];
-    console.log(`${String(w).padStart(5)}  ${String(t.pages).padStart(5)}  ${String(t.overflow).padStart(8)}  ${String(t.offscreen).padStart(9)}  ${String(t.clipped).padStart(7)}  ${String(t.broken).padStart(13)}  ${String(t.wordBreaks).padStart(23)}`);
+    console.log(`${String(w).padStart(5)}  ${String(t.pages).padStart(5)}  ${String(t.overflow).padStart(8)}  ${String(t.offscreen).padStart(9)}  ${String(t.clipped).padStart(7)}  ${String(t.broken).padStart(13)}  ${String(t.small).padStart(13)}  ${String(t.wordBreaks).padStart(23)}`);
   }
   for (const f of failures.slice(0, 40)) console.log(JSON.stringify(f));
   if (failures.length > 40) console.log(`... and ${failures.length - 40} more`);

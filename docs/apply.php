@@ -97,6 +97,12 @@ $signatures = ['pdf' => '%PDF-', 'doc' => "\xD0\xCF\x11\xE0", 'docx' => "PK\x03\
 if (!str_starts_with($data, $signatures[$extension])) {
     tin_respond(400, 'file_type', FORM_PAGE);
 }
+// A DOCX is a zip whose entries include [Content_Types].xml and a word/ part.
+// A zip stores entry names as plain text, so a zip of anything else that has
+// been renamed .docx is refused here without unpacking it.
+if ($extension === 'docx' && !(str_contains($data, '[Content_Types].xml') && str_contains($data, 'word/'))) {
+    tin_respond(400, 'file_type', FORM_PAGE);
+}
 
 $lines = ['New job application', '', 'Role: ' . ($job !== '' ? $options['jobs'][$job] . ' (' . $job . ')' : 'General application'), 'Page language: ' . tin_lang(), ''];
 foreach ($fields as $key => [$label]) {
