@@ -4,10 +4,14 @@
  * these items live in relations.js.
  */
 
-// The three staging hero messages. All three stay on the home page.
+// The three staging hero messages. All three stay on the home page. The source
+// shows "Siemens Solution Partner" once, as the line above its first headline.
+// The home hero carries that line, so the first message below repeats only the
+// headline and text; `labelInHero` stops the label being printed a second time.
 const heroMessages = {
   partner: {
     label: "Siemens Solution Partner",
+    labelInHero: true,
     title: "Your partner for innovation and digital transformation",
     text: "As experts in specific industries, innovative digital technologies and systems, we reliably meet your requirements using Siemens product and system portfolios.",
   },

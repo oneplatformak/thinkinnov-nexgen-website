@@ -92,6 +92,15 @@ def pages_with(phrase: str) -> list[str]:
 # The Japanese form is the original site's own (staging assets/i18n.js).
 solution_partner = sorted(set(pages_with("Siemens Solution Partner") + pages_with("Siemensソリューションパートナー")))
 report(solution_partner == ["index.html", "ja/index.html"], '"Siemens Solution Partner" only on the home page', ", ".join(solution_partner))
+# Once per home page, in the hero, as the source has it; counted in the whole
+# file so that titles, descriptions, attributes and structured data count too.
+partner_re = re.compile(r"Solution\s*Partner|ソリューション\s*パートナー", flags=re.I)
+partner_counts = {p: len(partner_re.findall(re.sub(r"<wbr\s*/?>", "", r))) for p, r in raw_of.items()}
+partner_counts = {p: n for p, n in partner_counts.items() if n}
+report(partner_counts == {"index.html": 1, "ja/index.html": 1}, '"Siemens Solution Partner" / 「Siemensソリューションパートナー」 exactly once on each home page and on no other page', ", ".join(f"{p}: {n}" for p, n in sorted(partner_counts.items())))
+for home in ("index.html", "ja/index.html"):
+    hero = re.search(r'<section class="hero\b.*?</section>', raw_of[home], flags=re.S)
+    report(bool(hero) and len(partner_re.findall(re.sub(r"<wbr\s*/?>", "", hero.group(0)))) == 1, f"that one occurrence is in the hero of {home}")
 report(not pages_with("ソリューションパートナー") or pages_with("ソリューションパートナー") == ["ja/index.html"], "Japanese partner wording only on the Japanese home page", ", ".join(pages_with("ソリューションパートナー")))
 report(pages_with("Expert Partner") == ["about.html", "ja/about.html"], '"Expert Partner - PLM" only on About', ", ".join(pages_with("Expert Partner")))
 report(pages_with("A Strategic Partnership in Japan") == ["about.html"] or pages_with("A Strategic Partnership in Japan") == ["about.html", "ja/about.html"], '"ThinkInnov-NexGen KK - A Strategic Partnership in Japan" only on About', ", ".join(pages_with("A Strategic Partnership in Japan")))

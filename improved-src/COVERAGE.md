@@ -31,7 +31,7 @@ Text that does **not** come from staging is listed separately in `notes/CLAIM-RE
 | EN / JP toggle (client-side dictionary) | Real URLs: English at `/`, Japanese at `/ja/`, same page on switch | `lang`, canonical and `hreflang` (`en`, `ja`, `x-default`) on every page. |
 | Footer Quick Links / Explore / Locate Us | Footer with head office, four offices, What we do, Products, Company, privacy, accessibility, sitemap, language switch | Map link kept. |
 | Footer statement ("We enable customers to innovate more and faster…") | Footer, under the logo | Capitalisation normalised, words unchanged. |
-| "Siemens Solution Partner" (home hero badge) | Home hero only, as in the original | Wording unchanged; the Japanese is the original site's own. Not in the footer, page descriptions or structured data. Confirmed as official wording by the Nexware package. |
+| "Siemens Solution Partner" (home hero badge) | Home hero only and once only, as in the original | Wording unchanged; the Japanese is the original site's own. Not in the footer, page descriptions or structured data. Confirmed as official wording by the Nexware package. |
 | Footer © `2014 - 2026 ThinkInnov-NexGen Corporation` | `© 2026 ThinkInnov-NexGen` | The legal name and what 2014 refers to are open client questions, so the footer names neither. |
 | Footer "ThinkInnov-NexGen Technologies Pvt Ltd" | Not shown | Same reason: three forms of the company name are in the original. The company profile on About keeps "ThinkInnov-NexGen Corporation" as the original prints it. |
 | Email `info@thinkinnovnexgen.com` | `info@thinkinnovnexgen.co.jp` | **This is a change from the original, made before this build on the strength of the company's business cards, and it is not confirmed.** Both copies of the original show only `.com`. If the `.co.jp` mailbox does not exist, enquiries and applications go nowhere. Launch-blocking question in `notes/REVIEW.md`. |
@@ -69,7 +69,7 @@ Anchors that existed in the previous pass of this repo (`#home`, `#about`, `#pro
 
 | Original | Now |
 |---|---|
-| Hero slider, three messages (Siemens Solution Partner / innovate more and faster / Mendix) | A single headline composed from staging wording, with the three original messages kept in full as a three-column strip directly under the hero |
+| Hero slider, three messages (Siemens Solution Partner / innovate more and faster / Mendix) | A single headline composed from staging wording, with the three original messages kept as a three-column strip directly under the hero: each headline and text in full, and the lines above the second and third. The line above the first, "Siemens Solution Partner", is the hero badge and is not printed a second time in the strip |
 | About intro and photo | Section 01 `#about`: the staging heading and sentences, with the four words consulting, mapping, implementation, adoption |
 | "We help companies effectively address the critical business issues of new product development" and four problems | Section 02 `#problem`, all four, each linked to the finder |
 | "Collect, analyse and visualize data and processes throughout the product lifecycle…" | Section 03 `#plm`, as the introduction to the lifecycle diagram |

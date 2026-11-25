@@ -36,7 +36,7 @@ function messages() {
   const items = Object.values(content.heroMessages)
     .map(
       (m, i) => `<article class="message">
-          <p class="marker"><span class="marker-n">${pad2(i + 1)}</span><span>${esc(m.label)}</span></p>
+          <p class="marker"><span class="marker-n">${pad2(i + 1)}</span>${m.labelInHero ? "" : `<span>${esc(m.label)}</span>`}</p>
           <h2>${esc(m.title)}</h2>
           <p>${esc(m.text)}</p>
         </article>`
