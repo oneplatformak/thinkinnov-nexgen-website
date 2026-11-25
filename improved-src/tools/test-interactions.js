@@ -286,6 +286,8 @@ async function testLanguage(browser, base) {
   ok("switching works from a role page", page.url() === base + "ja/careers/05-project-manager.html", page.url());
   await Promise.all([page.waitForNavigation(), page.click('[data-lang-switch] a[data-lang="en"]')]);
   ok("and back to English", page.url() === base + "careers/05-project-manager.html", page.url());
+  const cookies = await page.browserContext().cookies();
+  ok("no cookie has been set after five page views and a language choice", cookies.length === 0 && (await page.evaluate(() => document.cookie)) === "", JSON.stringify(cookies));
   await done(page);
   page = await open(browser, base + "index.html", { lang: "ja-JP" });
   ok("a Japanese browser is offered Japanese on the English home page, without a redirect", page.url() === base + "index.html" && (await page.$(".lang-suggest")) !== null);
@@ -293,6 +295,46 @@ async function testLanguage(browser, base) {
   page = await open(browser, base + "ja/index.html", { lang: "en-US" });
   ok("an English browser on a Japanese page is left alone", (await page.$(".lang-suggest")) === null);
   await done(page);
+}
+
+// The original site's addresses (page.html?page=…, jobdetails.html?id=…, application.html?id=…)
+// as the three stub files forward them. On Apache the same moves are 301s in .htaccess, which
+// this test cannot reach.
+async function testLegacyUrls(browser, base) {
+  group = "old addresses";
+  const land = async (from, js = true) => {
+    const page = await open(browser, base + from, { js });
+    await page.waitForFunction(() => !/\/(page|jobdetails|application)\.html$/.test(location.pathname), { timeout: 5000 }).catch(() => null);
+    await page.waitForFunction(() => document.readyState === "complete", { timeout: 5000 }).catch(() => null);
+    const result = { url: page.url(), h1: await page.$eval("h1", (h) => h.textContent.trim()).catch(() => ""), errors: page.errors.length };
+    result.anchor = await page.evaluate(() => (location.hash ? !!document.getElementById(location.hash.slice(1)) : true));
+    result.role = await page.$eval('[name="job"]', (el) => el.value).catch(() => null);
+    await done(page);
+    return result;
+  };
+  const pages = ["about", "plm", "services", "digital-transformation", "products", "solutions", "industries", "behind-the-brand", "careers"];
+  for (const name of pages) {
+    const r = await land(`page.html?page=${name}`);
+    ok(`page.html?page=${name} opens ${name}.html`, r.url === `${base}${name}.html` && r.h1 !== "" && r.h1 !== "This page has moved", `${r.url} "${r.h1}"`);
+  }
+  let r = await land("page.html?page=about#leadership");
+  ok("an old anchor is carried over and exists on the new page", r.url === base + "about.html#leadership" && r.anchor, r.url);
+  r = await land("page.html?page=plm#business-size");
+  ok("a second old anchor is carried over and exists", r.url === base + "plm.html#business-size" && r.anchor, r.url);
+  r = await land("page.html?page=no-such-page");
+  ok("an unknown old page name opens the home page", r.url === base || r.url === base + "index.html", r.url);
+  r = await land("jobdetails.html?id=1");
+  ok("jobdetails.html?id=1 opens the first role", r.url === base + "careers/01-tech-lead-teamcenter.html" && r.h1 === "Tech Lead - Teamcenter", `${r.url} "${r.h1}"`);
+  r = await land("jobdetails.html?id=18");
+  ok("jobdetails.html?id=18 opens the last role", r.url === base + "careers/18-mendix-developer.html" && r.h1 === "Mendix Developer", `${r.url} "${r.h1}"`);
+  r = await land("jobdetails.html?id=99");
+  ok("an unknown role number opens the careers page", r.url === base + "careers.html", r.url);
+  r = await land("application.html?id=5");
+  ok("application.html?id=5 opens the application form with that role chosen", r.url === base + "apply.html?job=05-project-manager" && r.role === "05-project-manager", `${r.url} ${r.role}`);
+  r = await land("application.html");
+  ok("application.html without a number opens the application form", r.url === base + "apply.html", r.url);
+  r = await land("page.html?page=about", false);
+  ok("with scripts off the old address still leads somewhere: the home page, or a page with a link to it", r.url === base || r.url === base + "index.html" || r.h1 === "This page has moved", `${r.url} "${r.h1}"`);
 }
 
 async function fillContact(page) {
@@ -610,6 +652,7 @@ const JA = {
       await testNoScript(browser, STATIC, labels);
     }
     await testLanguage(browser, STATIC);
+    await testLegacyUrls(browser, STATIC);
   } catch (err) {
     failed.push(`${group}: crashed: ${err.message}`);
     console.log(`FAIL  ${group}: crashed`, err);
