@@ -1,0 +1,66 @@
+# 2026-11-25T12:18:28Z  commit f9e9cf2
+# bash improved-src/tools/test-forms.sh
+
+== contact.php ==
+PASS  GET is refused (405)
+PASS  GET sends no mail
+PASS  valid enquiry is accepted (200)
+PASS  valid enquiry writes exactly one mail
+PASS  mail goes to the fixed recipient
+PASS  mail has the whitelisted type and topic labels
+PASS  mail has the business need label
+PASS  reply-to is the validated sender
+PASS  extra fields are ignored (200)
+PASS  recipient cannot be overridden
+PASS  unknown fields are not mailed
+PASS  name with CR/LF is accepted as one line (200)
+PASS  no injected header reaches the mail headers
+PASS  email with CR/LF is rejected (400)
+PASS  rejected email sends no mail
+PASS  missing name is rejected (400)
+PASS  invalid email is rejected (400)
+PASS  missing consent is rejected (400)
+PASS  unknown enquiry type is rejected (400)
+PASS  malformed phone is rejected (400)
+PASS  filled honeypot is rejected, not reported as sent (400)
+PASS  submission inside 3 seconds is rejected (400)
+PASS  none of the rejected requests sent mail
+PASS  unknown topic is dropped, enquiry still accepted (200)
+PASS  dropped topic is mailed as '-'
+PASS  dropped industry is mailed as '-'
+PASS  over-long message is accepted but truncated (200)
+PASS  message is cut to 5000 characters
+PASS  8th enquiry in the window is still accepted (200)
+PASS  9th enquiry in the window is rate limited (429)
+PASS  rate-limited request sent no mail
+PASS  without scripts: success is an HTML page (200)
+PASS  without scripts: Japanese error page (400)
+PASS  error page links back to the Japanese form
+PASS  unknown language falls back to English (200)
+PASS  mail failure is reported as failure (500)
+PASS  inc/enquiry-options.php prints nothing when requested directly
+== apply.php ==
+PASS  valid application is accepted (200)
+PASS  application writes exactly one mail
+PASS  application goes to the fixed recipient
+PASS  application names the whitelisted role
+PASS  CV is attached under a generated file name
+PASS  application without gender, CTC and notice period is accepted (200)
+PASS  optional fields left blank are mailed as not provided
+PASS  a required field left blank is still rejected (400)
+PASS  the rejected application sent no mail
+PASS  unknown role becomes a general application (200)
+PASS  unknown role is not mailed
+PASS  unknown fields are not mailed
+PASS  missing CV is rejected (400)
+PASS  wrong extension is rejected (400)
+PASS  wrong content behind a .pdf name is rejected (400)
+PASS  file over 5 MB is rejected (400)
+PASS  non-numeric graduation year is rejected (400)
+PASS  filled honeypot is rejected (400)
+PASS  none of the rejected applications sent mail
+PASS  7th application in the window is rate limited (429)
+PASS  mail failure is reported as failure (500)
+
+Passed: 58  Failed: 0
+# exit code 0

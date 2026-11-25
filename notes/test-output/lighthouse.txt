@@ -1,0 +1,55 @@
+# 2026-11-25T12:06:13Z to 12:14:41Z  commit 45dbdd6
+# Lighthouse 12.8.2, headless Chrome, 44 runs: 11 pages x 2 languages x mobile and desktop presets
+# served by: node improved-src/tools/serve.js 8812 (production headers, local machine)
+# command per run: npx lighthouse@12 http://127.0.0.1:8812/<page> [--preset=desktop] --quiet --output=json --chrome-flags="--headless=new --no-sandbox --disable-dev-shm-usage"  (no preset = mobile)
+# These are local lab numbers with Lighthouse's simulated throttling. They are not field data,
+# and say nothing about the response time of the production host.
+# about.html is the page that holds the photo gallery.
+# LCP = Largest Contentful Paint, CLS = Cumulative Layout Shift, TBT = Total Blocking Time (lab stand-in; INP cannot be measured in a lab)
+
+page                                                       perf a11y bp seo  LCP    CLS   TBT
+about_html_desktop                                          100  100 100 100  0.4 s  0     0 ms
+about_html_mobile                                            99  100 100 100  2.0 s  0     0 ms
+careers_01-tech-lead-teamcenter_html_desktop                100  100 100 100  0.4 s  0     0 ms
+careers_01-tech-lead-teamcenter_html_mobile                 100  100 100 100  1.7 s  0     0 ms
+careers_html_desktop                                        100  100 100 100  0.4 s  0     0 ms
+careers_html_mobile                                         100  100 100 100  1.7 s  0     0 ms
+contact_html_desktop                                        100  100 100 100  0.4 s  0     0 ms
+contact_html_mobile                                         100  100 100 100  1.7 s  0     0 ms
+digital-transformation_html_desktop                         100  100 100 100  0.4 s  0     0 ms
+digital-transformation_html_mobile                          100  100 100 100  1.7 s  0     0 ms
+index_html_desktop                                          100  100 100 100  0.4 s  0     0 ms
+index_html_mobile                                           100  100 100 100  1.8 s  0     0 ms
+industries_html_desktop                                     100  100 100 100  0.4 s  0     0 ms
+industries_html_mobile                                      100  100 100 100  1.9 s  0     0 ms
+ja_about_html_desktop                                       100  100 100 100  0.4 s  0     0 ms
+ja_about_html_mobile                                         99  100 100 100  2.1 s  0     40 ms
+ja_careers_01-tech-lead-teamcenter_html_desktop             100  100 100 100  0.4 s  0     0 ms
+ja_careers_01-tech-lead-teamcenter_html_mobile              100  100 100 100  1.7 s  0     0 ms
+ja_careers_html_desktop                                     100  100 100 100  0.4 s  0     0 ms
+ja_careers_html_mobile                                      100  100 100 100  1.7 s  0     0 ms
+ja_contact_html_desktop                                     100  100 100 100  0.4 s  0     0 ms
+ja_contact_html_mobile                                      100  100 100 100  1.7 s  0     40 ms
+ja_digital-transformation_html_desktop                      100  100 100 100  0.4 s  0     0 ms
+ja_digital-transformation_html_mobile                       100  100 100 100  1.7 s  0     0 ms
+ja_index_html_desktop                                       100  100 100 100  0.4 s  0     0 ms
+ja_index_html_mobile                                         99  100 100 100  2.0 s  0     110 ms
+ja_industries_html_desktop                                  100  100 100 100  0.4 s  0     0 ms
+ja_industries_html_mobile                                   100  100 100 100  1.8 s  0     0 ms
+ja_products_html_desktop                                    100  100 100 100  0.4 s  0     0 ms
+ja_products_html_mobile                                     100  100 100 100  1.7 s  0     0 ms
+ja_products_teamcenter_html_desktop                         100  100 100 100  0.4 s  0     0 ms
+ja_products_teamcenter_html_mobile                          100  100 100 100  1.7 s  0     60 ms
+ja_search_html_desktop                                      100  100 100 100  0.4 s  0     0 ms
+ja_search_html_mobile                                       100  100 100 100  1.7 s  0     0 ms
+ja_solutions_html_desktop                                   100  100 100 100  0.4 s  0     0 ms
+ja_solutions_html_mobile                                     99  100 100 100  1.9 s  0     100 ms
+products_html_desktop                                       100  100 100 100  0.4 s  0     0 ms
+products_html_mobile                                        100  100 100 100  1.7 s  0     0 ms
+products_teamcenter_html_desktop                            100  100 100 100  0.4 s  0     0 ms
+products_teamcenter_html_mobile                             100  100 100 100  1.7 s  0     0 ms
+search_html_desktop                                         100  100 100 100  0.4 s  0     0 ms
+search_html_mobile                                          100  100 100 100  1.7 s  0     0 ms
+solutions_html_desktop                                      100  100 100 100  0.4 s  0     0 ms
+solutions_html_mobile                                       100  100 100 100  1.7 s  0     30 ms
+# exit code 0

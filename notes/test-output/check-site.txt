@@ -1,0 +1,27 @@
+# 2026-11-25T12:18:27Z  commit f9e9cf2
+# python3 improved-src/check-site.py
+
+Checked 85 HTML files under /workspace/docs
+Internal links and assets resolved: 4095 (of which 984 with a #fragment)
+Language pairs: 41 English pages, 41 Japanese pages, 3 redirect stubs without a counterpart (application.html, jobdetails.html, page.html)
+Third-party scan: 98 text files, 951 resource references examined
+H1: 0
+lang attribute: 0
+duplicate ids: 0
+missing files: 0
+missing anchors: 0
+images without alt: 0
+images without dimensions: 0
+title: 0
+meta description: 0
+duplicate titles: 0
+duplicate descriptions: 0
+canonical: 0
+hreflang: 0
+language parity: 0
+legacy anchors: 0
+sitemap.xml: 0
+tracker strings: 0
+third-party resources: 0
+PASS
+# exit code 0
