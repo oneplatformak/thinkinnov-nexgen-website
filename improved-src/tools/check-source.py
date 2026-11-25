@@ -4,7 +4,9 @@ the things that must never be published.
 
 1. The four testimonials and their attributions are word-for-word the same.
 2. The same 21 customer logos, with the same names, in the same order.
-3. The same job titles, each with a page in both languages.
+3. The same job titles, each with a page in both languages; every English
+   sentence of the original on the site with the same words; the careers-list
+   summaries character for character; the finder's quotations exact.
 4. Partner wording appears only where the source has it.
 5. No placeholder text, no banned wording, no empty headings.
 6. Structured data parses and contains none of the excluded types.
@@ -84,6 +86,66 @@ for title, page in zip(staging_jobs, job_pages):
     h1 = re.search(r"<h1[^>]*>(.*?)</h1>", raw_of[page], flags=re.S)
     report(bool(h1) and squash(visible(h1.group(1))) == squash(title), f"job title unchanged on {page}", title)
 report("JobPosting" not in "".join(raw_of.values()), "no JobPosting structured data")
+
+# 3b. Source wording. Every sentence the original shows in English is on the
+# English site with the same words in the same order. Capitals, punctuation
+# and the word "Infographic" (moved from the industry titles to the captions
+# of the images) are not compared; a changed, added or dropped word fails.
+def loose(text: str) -> str:
+    text = re.sub(r"<[^>]+>", " ", text).lower().replace("infographic", " ")
+    return re.sub(r"\s+", " ", re.sub(r"[^a-z0-9]+", " ", text)).strip()
+
+# The exceptions, each with the corrected wording the site must show instead
+# (None: nothing is shown). All are listed with their reasons in COVERAGE.md.
+SOURCE_EXCEPTIONS = {
+    "Bussiness process re-Engineering": "Business process re-engineering",
+    "Solution evalution Consulting": "Solution evaluation consulting",
+    "Your partners for innovation digital transformation solutions.": "Your partners for innovation and digital transformation solutions.",
+    "104-0053, 1-40 Harumi Prime Square, 15th Floor 2-Chome, Harumi, Chuo-ku, Tokyo": "15th Floor, Harumi Prime Square, 2-1-40 Harumi, Chuo-ku, Tokyo 104-0053, Japan",
+    "ThinkInnov-NexGen Technologies Pvt Ltd 104-0053, 1-40 Harumi Prime Square, 15th Floor 2-Chome, Harumi, Chuo-ku, Tokyo": "15th Floor, Harumi Prime Square, 2-1-40 Harumi, Chuo-ku, Tokyo 104-0053, Japan",
+    # Text of the old menu panel, which described the About page.
+    "ThinkInnov-NexGen profile, mission, values, gallery, leadership and company profile.": None,
+    # Filler in jobdetails.html that its script replaces with the role's own lists.
+    "Deliver customer-focused PLM and digital transformation work.": None,
+    "Collaborate with cross-functional teams and support project milestones.": None,
+    "Create clear documentation and help users adopt practical solutions.": None,
+    "Relevant experience in the selected role.": None,
+    "Strong communication and problem-solving skills.": None,
+    "Interest in PLM, engineering systems and digital transformation.": None,
+}
+source_strings: list[str] = []
+for name in ("jobs.js", "page-data.js"):
+    js = (STAGING / "assets" / name).read_text(encoding="utf-8")
+    if name == "page-data.js":
+        js = js[: js.find("function getPageKey")]  # the English content; the Japanese copy follows
+    source_strings += [json.loads('"' + m + '"') for m in re.findall(r'"((?:[^"\\]|\\.)*)"', js)]
+for name in ("index.html", "jobdetails.html", "application.html", "page.html"):
+    markup = (STAGING / name).read_text(encoding="utf-8")
+    markup = re.sub(r"<(script|style|template|title)\b.*?</\1>", " ", markup, flags=re.S | re.I)
+    markup = re.sub(r"<br\s*/?>", " ", markup)
+    source_strings += [squash(html.unescape(t)) for t in re.findall(r">([^<]+)<", markup)]
+source_strings = [x for x in dict.fromkeys(source_strings) if len(x) >= 25 and " " in x and not x.startswith("assets/")]
+english_site = loose(" ".join(t for p, t in text_of.items() if not p.startswith("ja/")))
+changed = [x for x in source_strings if x not in SOURCE_EXCEPTIONS and loose(x) not in english_site]
+report(len(source_strings) > 200 and not changed, f"all {len(source_strings)} English sentences of the original are on the site with the same words in the same order ({len(SOURCE_EXCEPTIONS)} listed exceptions)", " | ".join(x[:80] for x in changed[:6]))
+stale = [x for x in SOURCE_EXCEPTIONS if x not in source_strings or loose(x) in english_site]
+report(not stale, "every listed exception is still needed", " | ".join(x[:60] for x in stale))
+uncorrected = [f"{x[:40]}…" for x, fixed in SOURCE_EXCEPTIONS.items() if fixed and loose(fixed) not in english_site]
+report(not uncorrected, "each corrected sentence is shown in its corrected form", " | ".join(uncorrected))
+# The careers list and the home problem statements: character for character.
+page_data = (STAGING / "assets" / "page-data.js").read_text(encoding="utf-8")
+listings = re.search(r"jobs: \[(.*?)\], cta:", page_data, flags=re.S)
+listing_texts = [json.loads('"' + b + '"') for _, b in re.findall(r'\["((?:[^"\\]|\\.)*)",\s*"((?:[^"\\]|\\.)*)"\]', listings.group(1))] if listings else []
+careers_text = squash(text_of["careers.html"])
+not_verbatim = [t for t in listing_texts if squash(t) not in careers_text]
+report(len(listing_texts) == 18 and not not_verbatim, "the 18 careers-list summaries are character for character the original's", " | ".join(t[:60] for t in not_verbatim))
+# "What our site says" in the finder: each is a whole sentence shown elsewhere on the site.
+for prefix, page in (("", "solutions.html"), ("ja/", "ja/solutions.html")):
+    quotes = [squash(visible(q)) for q in re.findall(r'<span class="need-source-label"[^>]*>.*?</span>(.*?)</p>', raw_of[page], flags=re.S)]
+    elsewhere = squash(" ".join(t for p, t in text_of.items() if p.startswith("ja/") == bool(prefix) and not p.endswith("solutions.html") and not p.endswith("search.html")))
+    solutions_rest = squash(visible(re.sub(r'<div class="finder\b.*?</section>', " ", re.sub(r'<span class="solution-need-source".*?</span>', " ", raw_of[page], flags=re.S), flags=re.S)))
+    unquoted = [q for q in quotes if q not in elsewhere and q not in solutions_rest]
+    report(len(quotes) == 16 and not unquoted, f"each of the 16 “what our site says” lines in the finder is a whole sentence shown elsewhere on the site ({page})", " | ".join(q[:70] for q in unquoted))
 
 # 4. Partner wording, only where the source places it
 def pages_with(phrase: str) -> list[str]:

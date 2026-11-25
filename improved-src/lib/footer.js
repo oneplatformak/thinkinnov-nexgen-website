@@ -52,7 +52,7 @@ function footer() {
         ])}
       </div>
       <div class="footer-bottom">
-        <p class="footer-legal">${verbatim(config.copyright)}</p>
+        <p class="footer-legal">${config.copyright.map((line) => `<span>${verbatim(line)}</span>`).join(" ")}</p>
         <ul class="footer-meta">
           <li><a href="${site.page("privacy.html")}">Privacy notice</a></li>
           <li><a href="${site.page("accessibility.html")}">Accessibility</a></li>

@@ -12,7 +12,9 @@ const heroMessages = {
   partner: {
     label: "Siemens Solution Partner",
     labelInHero: true,
-    title: "Your partner for innovation and digital transformation",
+    // The source prints "Your partners for innovation digital transformation
+    // solutions."; its own Japanese reads "innovation and DX solutions", so "and" is supplied.
+    title: "Your partners for innovation and digital transformation solutions.",
     text: "As experts in specific industries, innovative digital technologies and systems, we reliably meet your requirements using Siemens product and system portfolios.",
   },
   innovate: {
@@ -54,10 +56,10 @@ const deployment = [
 ];
 
 const servicesIntro = {
-  home: "From startup to enterprise — we guide you to the right software solution, manage implementation, and provide training and ongoing support (sustenance) so you get the best value from your investment.",
+  home: "Start-up to enterprise — we have the expertise to guide you to the right software solution, manage the implementation, and provide the training and sustenance support so that you will get the best value from your investment.",
   page: "From startup to enterprise, ThinkInnov-NexGen guides teams to the right software solution, manages implementation and supports adoption.",
   kicker: "Consulting to Adoption",
-  boardText: "Structured consulting, implementation and sustaining services grouped for clearer reading.",
+  boardText: "Structured consulting, implementation and sustaining services grouped for easier reading.",
 };
 
 const services = [
@@ -115,7 +117,7 @@ const solutions = [
   ["3d-shape-search", "3D Shape Search", "Find similar parts and reuse knowledge to consolidate suppliers and make informed decisions.", "3D Shape Search", "Reuse similar parts knowledge to improve sourcing and engineering decisions."],
   ["quality-management", "Quality Management Solution", "Support the full quality lifecycle from planning to production and lessons learned for the next planning cycle.", "Quality Management Solution", "Support quality from planning to production and lessons learned."],
   ["quality-issue-management", "Quality Issue Management Solution", "Integrating quality planning in the design phase is critical to competitive advantage. Engineering data provides the information needed to successfully manage quality projects and real products.", "Quality Issue Management", "Integrate quality planning and manage real product issues during engineering."],
-  ["design-verification-management", "Design Verification Management", "Manage the design verification plan as one critical activity in product development. Parts designed and requirements defined by internal specification as well as external specification like regulatory authorities.", "Design Verification Management", "Manage verification plans, requirements and internal or regulatory specifications."],
+  ["design-verification-management", "Design Verification Management", "Manage the design verification plan as one critical activity in product development. Part designed and requirements defined by internal specification as well as external specification like regulatory authorities.", "Design Verification Management", "Manage verification plans, requirements and internal or regulatory specifications."],
   ["engineering-change-management", "Engineering Change Management Solution", "Continuously improve product offerings with best practice solutions for rapid change and full change management using a leading PLM digital enterprise backbone.", "Engineering Change Management", "Improve offerings with digital enterprise change and full change management."],
   ["requirements-management", "Requirements Management Solution", "Requirements are the blueprint for product development, but traditional paper and document-driven approaches are not sufficient for meeting complex customer needs.", "Requirements Management", "Manage complex customer needs beyond traditional document-driven approaches."],
   ["mendix-low-code", "Mendix | Low-Code Application Development Platform", "With ever-evolving technology and digital transformation pressures, modern enterprises often need flexible change without relying on legacy systems and outdated tech."],
@@ -153,7 +155,7 @@ const industries = [
   ["consumer-products", "Teamcenter X for Consumer Products", "Manage consumer product complexity from design through launch.", "ind-consumer", 8],
   ["electronics", "Teamcenter X for Electronics", "Support electronics lifecycle and cross-domain product data.", "ind-electronics", 9],
   ["marine", "Teamcenter X for Marine", "PLM workflows for marine product development.", "ind-marine", 10],
-  ["cloud-saas-plm", "Teamcenter X — Cloud-based SaaS PLM", "Understand the business value of cloud-based SaaS PLM with Teamcenter X.", "ind-saas-cloud", 11],
+  ["cloud-saas-plm", "Teamcenter X: The business value of cloud-based SaaS PLM", "Understand the business value of cloud-based SaaS PLM with Teamcenter X.", "ind-saas-cloud", 11],
 ].map(([key, title, text, visual, n]) => ({ key, title, text, visual, n }));
 
 const industriesIntro = {

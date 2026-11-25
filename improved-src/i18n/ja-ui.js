@@ -6,7 +6,7 @@ const kanji = (n) => n;
 
 module.exports = {
   area: "Navigation, footer and forms",
-  keep: ["English", "LinkedIn", "mx", "Siemens SW PDM to PLM"],
+  keep: ["English", "LinkedIn", "mx"],
   patterns: [
     [/^Enlarge photo (\d+) of (\d+)$/, (m) => `写真を拡大（${m[2]}枚中${kanji(m[1])}枚目）`],
     [/^Infographic: (.+)$/, (m, inner) => `インフォグラフィック：${inner(m[1])}`],
@@ -52,7 +52,7 @@ module.exports = {
     "On this page": "このページの内容",
 
     // Footer
-    "We enable customers to innovate more and faster by effectively re-using knowledge acquired during the product lifecycle through our innovative digital solutions.":
+    "We enable customers to innovate more and faster by effectively re-using their knowledge acquired during product lifecycle through our innovative digital solutions.":
       "製品ライフサイクルで得られた知識を革新的なデジタルソリューションで効果的に再利用し、お客様がより多く、より速くイノベーションを実現できるよう支援します。",
     "Head office": "本社",
     "Privacy notice": "個人情報の取り扱い",

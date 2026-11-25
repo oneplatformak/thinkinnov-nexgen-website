@@ -49,7 +49,7 @@ module.exports = {
       "計画から生産、そして次の計画サイクルに向けた教訓の活用まで、品質のライフサイクル全体を支援します。",
     "Integrating quality planning in the design phase is critical to competitive advantage. Engineering data provides the information needed to successfully manage quality projects and real products.":
       "設計段階に品質計画を組み込むことは、競争優位の確立に不可欠です。エンジニアリングデータは、品質プロジェクトと実製品を適切に管理するために必要な情報を提供します。",
-    "Manage the design verification plan as one critical activity in product development. Parts designed and requirements defined by internal specification as well as external specification like regulatory authorities.":
+    "Manage the design verification plan as one critical activity in product development. Part designed and requirements defined by internal specification as well as external specification like regulatory authorities.":
       "設計検証計画を、製品開発における重要な活動のひとつとして管理します。設計された部品と要件は、社内仕様に加え、規制当局などの外部仕様にも基づいて定義されます。",
     "Requirements are the blueprint for product development, but traditional paper and document-driven approaches are not sufficient for meeting complex customer needs.":
       "要件は製品開発の設計図です。しかし、従来の紙や文書を中心とした手法では、複雑な顧客ニーズに十分に対応できません。",
@@ -92,28 +92,6 @@ module.exports = {
     "Upgrade PLM or move it to the cloud": "PLMをアップグレードしたい、クラウドへ移行したい",
     "Keep our PLM running and improving": "PLMを安定稼働させ、改善を続けたい",
     "What our site says": "当サイトの記述",
-    "Making meaningful information and insights out of product data needs a well-defined digital foundation and vision.":
-      "製品データから意味のある情報や知見を引き出すには、明確に定義されたデジタル基盤とビジョンが必要です。",
-    "Re-using existing IP during new product development is the biggest opportunity to reduce development cost and time.":
-      "新製品開発において既存の知的資産を再利用することは、開発コストと期間を削減する最大の機会です。",
-    "System and part duplication is the main concern area for companies in new product introduction.":
-      "システムや部品の重複は、新製品導入における企業の主要な懸念事項です。",
-    "Predicting the performance of a new product is not possible at the early stages of product development.":
-      "製品開発の初期段階では、新製品の性能を予測することができません。",
-    "Traditional paper and document-driven approaches are not sufficient for meeting complex customer needs.":
-      "従来の紙や文書を中心とした手法では、複雑な顧客ニーズに十分に対応できません。",
-    "Best practice solutions for rapid change and full change management.": "迅速な変更と包括的な変更管理のためのベストプラクティスソリューション。",
-    "Create project plans with work breakdown structures and schedule task hierarchy from best-practice templates.":
-      "ベストプラクティスのテンプレートから、作業分解構成（WBS）とタスク階層を備えたプロジェクト計画を作成します。",
-    "Realize your digital threads with ERP, MES and enterprise applications.": "ERP、MES、エンタープライズアプリケーションとのデジタルスレッドを実現します。",
-    "Digitalization helps companies respond to rapidly changing industrial challenges.": "デジタル化は、急速に変化する産業上の課題に企業が対応する助けとなります。",
-    "Build, integrate and deploy applications rapidly while improving collaboration and agility.":
-      "コラボレーションと俊敏性を高めながら、アプリケーションを迅速に構築・統合・展開します。",
-    "Extend and tailor NX capabilities to fit specific needs.": "固有のニーズに合わせてNXの機能を拡張・調整します。",
-    "We guide you to the right software solution.": "最適なソフトウェアソリューションの選定をご案内します。",
-    "Get Teamcenter delivered any way you want it – on premises or on the cloud.": "Teamcenterを、オンプレミスでもクラウドでも、ご希望の形態でご利用いただけます。",
-    "We provide training and ongoing support so you get the best value from your investment.":
-      "投資の効果を最大限に引き出していただけるよう、トレーニングと継続的なサポートをご提供します。",
     "Digital thread delivery combining PLM, ERP and MES": "PLM・ERP・MESを組み合わせたデジタルスレッドの提供",
     "PLM strategy and roadmap with PDMM": "PDMMによるPLM戦略とロードマップ",
     "PDMM L4: Innovation Platform": "PDMM L4：イノベーションプラットフォーム",

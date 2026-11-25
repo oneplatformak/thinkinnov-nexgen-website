@@ -13,6 +13,8 @@ module.exports = {
     "Title or keyword": "職種名またはキーワード",
     "Discipline": "職種分野",
     "All disciplines": "すべての分野",
+    "The discipline shown with each role and the experience ranges in the filter are this site's grouping of the role titles and of the experience each role states, added to make the list easier to search. They are not part of the job descriptions.":
+      "各職種に表示している職種分野と、絞り込みの経験年数の区分は、職種名と各職種に記載の経験年数をもとに、一覧を探しやすくするために当サイトで設けた分類です。募集要項の一部ではありません。",
     "Any experience": "経験年数を問わない",
     "From 1–2 years": "1〜2年以上",
     "From 3–6 years": "3〜6年以上",
@@ -47,21 +49,21 @@ module.exports = {
 
     // Role summaries
     "Lead end-to-end technical delivery of Teamcenter PLM projects.": "Teamcenter PLMプロジェクトの技術面を、最初から最後まで一貫してリードします。",
-    "Minimum 2+ years of experience in Teamcenter PLM customization, configuration and development.":
+    "Minimum 2+ Years of Experience in Teamcenter PLM Customization, Configuration and Development.":
       "Teamcenter PLMのカスタマイズ、コンフィグレーション、開発における2年以上の経験。",
     "Minimum 5+ years of experience in Teamcenter PLM customization, configuration, development and solution mapping.":
       "Teamcenter PLMのカスタマイズ、コンフィグレーション、開発、ソリューションマッピングにおける5年以上の経験。",
     "Minimum 8 to 10 years of experience in Teamcenter implementation projects.": "Teamcenter導入プロジェクトにおける8〜10年以上の経験。",
-    "Should have 10+ years of experience as a Solution Architect.": "ソリューションアーキテクトとして10年以上の経験。",
-    "Should have 8+ years of experience in the PLM domain. ITK server side coding experience with C & C++.":
+    "Should have 10+ years of experience as Solution Architect.": "ソリューションアーキテクトとして10年以上の経験。",
+    "Should have 8+ years of experience in PLM Domain. ITK Server side coding experience with C & C++.":
       "PLM分野における8年以上の経験。C／C++によるITKサーバーサイドのコーディング経験。",
-    "Should have minimum 2+ years of experience in a Teamcenter administration role, with Oracle and MS SQL environment setup.":
+    "Should have minimum 2+ years experience in Teamcenter Administration Role, Oracle and MS SQL environment setup.":
       "Teamcenter管理者として2年以上の経験、およびOracle・MS SQL環境の構築経験。",
     "ITK Server side coding experience with C & C++.": "C／C++によるITKサーバーサイドのコーディング経験。",
-    "Knowledge and experience in PLM (preferably Teamcenter).": "PLM（Teamcenterが望ましい）に関する知識と経験。",
-    "Should be able to travel to customer sites for requirement gathering, solution signoff and UAT signoff events.":
-      "要件ヒアリング、ソリューション承認、UAT承認のために、お客様先へ出張できること。",
-    "1 year of experience in Mentor Graphics/Capital software (Logic and Harness XC).":
+    "Knowledge and Experience in PLM (preferably Teamcenter).": "PLM（Teamcenterが望ましい）に関する知識と経験。",
+    "Should be able to Travel to Customer Site for Requirement Gathering, Solution Signoff and UAT Signoff Events.":
+      "要件ヒアリング、ソリューション承認、ユーザー受け入れテスト（UAT）の承認のために、お客様先へ出張できること。",
+    "1 Yr Experience in Mentor Graphics/Capital software (logic and Harness XC).":
       "Mentor Graphics／Capitalソフトウェア（LogicおよびHarness XC）における1年の経験。",
     "Articulate technology and product positioning to both business and technical users.":
       "業務部門と技術部門の双方のユーザーに、技術と製品の位置づけを明確に説明します。",
@@ -69,7 +71,8 @@ module.exports = {
       "NX CADソリューションのデモンストレーションを担当し、適切なCAD機能でお客様の課題に対応します。",
     "Technical support, software installation and configuration.": "技術サポート、ソフトウェアのインストールおよび設定。",
     "Design, develop and deploy applications using the Mendix low-code platform.": "Mendixローコードプラットフォームを用いて、アプリケーションを設計・開発・展開します。",
-    "Set up and configure new PDMLink environments for validation and testing.": "検証およびテスト用に、新しいPDMLink環境を構築・設定します。",
+    "Design, develop, and deploy applications using the Mendix low-code platform.": "Mendixローコードプラットフォームを用いて、アプリケーションを設計・開発・展開します。",
+    "Setup and configure new PDMLink environments for validation and testing.": "検証およびテスト用に、新しいPDMLink環境を構築・設定します。",
     "Sales and business development for territories, working with marketing and technical support teams.":
       "マーケティングおよび技術サポートのチームと連携し、担当地域の営業と事業開発を行います。",
     "Generating new prospects and customer leads from the database provided.": "提供されるデータベースをもとに、新規の見込み客とリードを創出します。",
@@ -77,7 +80,7 @@ module.exports = {
     // Role detail
     "About this role": "この職種について",
     "Employment type": "雇用形態",
-    "Responsibilities": "職務内容",
+    "Key responsibilities": "主な職務内容",
     "I'm interested": "この職種に応募する",
     "Share job via email": "この求人をメールで共有する",
     "Questions about this role?": "この職種についてのご質問",
@@ -88,7 +91,7 @@ module.exports = {
     "Ensure code quality, performance, and security compliance.": "コード品質、パフォーマンス、セキュリティ要件への適合を確保します。",
     "Manage version upgrades, data migration, and system integrations (ERP, MES).": "バージョンアップ、データ移行、システム連携（ERP、MES）を管理します。",
     "Conduct code reviews and enforce best practices.": "コードレビューを実施し、ベストプラクティスを徹底します。",
-    "Provide technical documentation and support UAT.": "技術文書を作成し、UATを支援します。",
+    "Provide technical documentation and support UAT.": "技術文書を作成し、ユーザー受け入れテスト（UAT）を支援します。",
     "Strong expertise in Siemens Teamcenter, Active Workspace, ITK, RAC and BMIDE.": "Siemens Teamcenter、Active Workspace、ITK、RAC、BMIDEに関する高い専門性。",
     "Proficiency in Java, C++, Webservice, SOA and scripting.": "Java、C++、Webサービス、SOA、スクリプティングの実務能力。",
     "Experience with Teamcenter integrations such as SAP and Oracle.": "SAPやOracleなどとのTeamcenter連携の経験。",
@@ -101,7 +104,7 @@ module.exports = {
     "Experience working in large-scale industrial or manufacturing environments.": "大規模な産業・製造業の環境での実務経験。",
     "Work with customer and internal teams to understand requirements and delivery priorities.":
       "お客様および社内チームと連携し、要件と納品上の優先事項を把握します。",
-    "Prepare clear technical documentation and support implementation or UAT activities.": "明確な技術文書を作成し、導入作業やUATを支援します。",
+    "Prepare clear technical documentation and support implementation or UAT activities.": "明確な技術文書を作成し、導入作業やユーザー受け入れテスト（UAT）を支援します。",
     "Follow project quality, timeline and communication expectations.": "プロジェクトの品質、スケジュール、コミュニケーションに関する要求事項を遵守します。",
     "Contribute to continuous improvement in PLM and digital transformation delivery.": "PLMおよびデジタルトランスフォーメーションの提供における継続的改善に貢献します。",
     "Relevant hands-on experience for the selected role.": "当該職種に関連する実務経験。",
@@ -115,7 +118,7 @@ module.exports = {
     "Teamcenter administration and environment setup with Oracle and MS SQL.": "Teamcenterの管理、およびOracle・MS SQLによる環境構築。",
     "PLM delivery leadership with ITK server side coding experience.": "ITKサーバーサイドのコーディング経験を生かした、PLMデリバリーのリード。",
     "PLM project planning, customer coordination and delivery governance.": "PLMプロジェクトの計画、お客様との調整、デリバリーガバナンス。",
-    "Requirement gathering, solution signoff and UAT signoff with customer teams.": "お客様チームとの要件ヒアリング、ソリューション承認、UAT承認。",
+    "Requirement gathering, solution signoff and UAT signoff with customer teams.": "お客様チームとの要件ヒアリング、ソリューション承認、ユーザー受け入れテスト（UAT）の承認。",
     "Mentor Graphics/Capital software support for Logic and Harness XC.": "Mentor Graphics／Capitalソフトウェア（LogicおよびHarness XC）のサポート。",
     "Product positioning, demonstrations and support for business and technical users.": "業務部門・技術部門のユーザーに向けた、製品の位置づけの説明、デモンストレーション、サポート。",
     "NX CAD demonstrations and customer problem solving with CAD features.": "NX CADのデモンストレーションと、CAD機能によるお客様の課題解決。",
@@ -154,7 +157,7 @@ module.exports = {
     "Skill set": "スキル",
     "Current location": "現在の居住地",
     "Preferred location": "希望勤務地",
-    "How did you find this vacancy?": "この求人をどこでお知りになりましたか",
+    "How did you come across this vacancy?": "この求人をどこでお知りになりましたか",
     "CV / resume": "履歴書・職務経歴書",
     "Website": "ウェブサイト",
     "I consent to ThinkInnov-NexGen processing my application data for recruitment purposes.":

@@ -135,7 +135,7 @@ function products() {
     .join("");
   return `<section class="section section-tint" id="products">
     <div class="container">
-      ${c.sectionHead({ n: 5, kicker: content.productsIntro.kicker, title: "Six Siemens products, and where each one sits", text: content.productsIntro.home, link: [site.page("products.html"), "All products"] })}
+      ${c.sectionHead({ n: 5, kicker: "Our Catalogue of Products", title: "Six Siemens products, and where each one sits", text: content.productsIntro.home, link: [site.page("products.html"), "All products"] })}
       <ul class="portfolio">${rows}</ul>
     </div>
   </section>`;

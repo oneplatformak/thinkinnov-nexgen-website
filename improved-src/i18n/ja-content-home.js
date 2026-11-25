@@ -16,7 +16,7 @@ module.exports = {
     "Key messages": "主要メッセージ",
     // Alt text of the Global Presence photograph. Both languages were supplied by the owner (25 November 2026).
     "ThinkInnov-NexGen Tokyo office opening ceremony": "ThinkInnov-NexGen 東京オフィス開設式",
-    "Your partner for innovation and digital transformation": "イノベーションとデジタルトランスフォーメーションのパートナー",
+    "Your partners for innovation and digital transformation solutions.": "イノベーションとDXソリューションのパートナーです。",
 
     // About band
     "About ThinkInnov-NexGen": "ThinkInnov-NexGenについて",
@@ -25,15 +25,15 @@ module.exports = {
     "Adoption": "定着化",
 
     // Problems
-    "We help companies effectively address the critical business issues of new product development.":
+    "We help companies to effectively address the critical business issues of new product development.":
       "新製品開発における重要な経営課題に、効果的に取り組めるよう企業を支援します。",
     "Digital & technology disruption facilitated collecting a lot of product data, but making meaningful information & insights out of the product data needs a well-defined digital foundation and vision; lack of it reduces the effective usage of existing product data.":
       "デジタル化と技術革新によって大量の製品データを収集できるようになりました。しかし、そのデータから意味のある情報や知見を引き出すには、明確に定義されたデジタル基盤とビジョンが必要です。これが欠けていると、既存の製品データを有効に活用できません。",
-    "Re-using the existing IP during new product development is the biggest opportunity for companies to reduce new product development cost & time.":
+    "Re-using the existing IP during the new product development is the biggest opportunity for the companies to reduce new product development cost & time.":
       "新製品開発において既存の知的資産を再利用することは、開発コストと期間を削減する最大の機会です。",
-    "System(s) / part(s) duplication is the main concern area for companies in new product introduction.":
+    "System(s) / part(s) duplication is the main concern area for the companies in new product introduction.":
       "システムや部品の重複は、新製品導入における企業の主要な懸念事項です。",
-    "Predicting the performance of the new product is not possible at the early stages of product development.":
+    "Predicting the performance of the new product is not possible at the early stages of the product development.":
       "製品開発の初期段階では、新製品の性能を予測することができません。",
 
     // Lifecycle
@@ -130,13 +130,15 @@ module.exports = {
     "Teamcenter X for Consumer Products": "消費財向け Teamcenter X",
     "Teamcenter X for Electronics": "エレクトロニクス向け Teamcenter X",
     "Teamcenter X for Marine": "船舶・海洋向け Teamcenter X",
-    "Teamcenter X — Cloud-based SaaS PLM": "Teamcenter X — クラウド型SaaS PLM",
+    "Teamcenter X: The business value of cloud-based SaaS PLM": "Teamcenter X：クラウド型SaaS PLMのビジネス価値",
 
     // PLM for everyone
     "PLM should be accessible to businesses of every size, from small startups and micro-industries to global enterprises.":
       "PLMは、小規模なスタートアップや零細企業からグローバル企業まで、あらゆる規模の企業が利用できるものであるべきです。",
     "Startups": "スタートアップ",
     "Enterprises": "大企業",
+    "SMBs": "中堅・中小企業",
+    "Siemens SW PDM to PLM": "Siemens SW：PDMからPLMへ",
     "Organize product data, facilitate collaboration, ensure quality and track everything from the beginning.":
       "事業の初期段階から、製品データを整理し、コラボレーションを促進し、品質を確保し、すべてを追跡できます。",
     "Simplify data management, enhance communication and accelerate time to market.":
@@ -148,7 +150,7 @@ module.exports = {
     // Proof and presence
     "Testimonials": "お客様の声",
     "Japan and India": "日本とインド",
-    "ThinkInnov-NexGen KK — A Strategic Partnership in Japan": "ThinkInnov-NexGen KK — 日本における戦略的パートナーシップ",
+    "ThinkInnov-NexGen KK - A Strategic Partnership in Japan": "ThinkInnov-NexGen KK - 日本における戦略的パートナーシップ",
     "A Siemens Certified \"Expert Partner - PLM\" synergizing with ThinkInnov-NexGen's extensive project delivery experience in Japan, to deliver high value to customers in Japan.":
       "Siemens認定「Expert Partner - PLM」としての専門性と、ThinkInnov-NexGenが日本で培ってきた豊富なプロジェクト遂行経験を掛け合わせ、日本のお客様に高い価値をお届けします。",
     "Key Value Drivers": "主な提供価値",

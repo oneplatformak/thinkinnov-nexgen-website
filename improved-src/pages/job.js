@@ -16,7 +16,6 @@ function render(job) {
     ["Experience", job.experience],
     ["Location", job.location],
     ["Employment type", job.employment],
-    ["Discipline", content.disciplines[job.discipline]],
   ]
     .map(([k, v]) => `<div><dt>${esc(k)}</dt><dd>${esc(v)}</dd></div>`)
     .join("");
@@ -43,7 +42,7 @@ function render(job) {
     <section class="section">
       <div class="container job-layout">
         <div class="job-body">
-          <h2>Responsibilities</h2>
+          <h2>Key responsibilities</h2>
           ${list(job.responsibilities)}
           <h2>Required skills</h2>
           ${list(job.skills)}

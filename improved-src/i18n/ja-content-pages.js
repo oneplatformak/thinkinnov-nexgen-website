@@ -10,6 +10,7 @@ module.exports = {
     "Service positioning": "サービスポジショニング",
     "Solution mapping": "ソリューションマッピング",
     "Proof of concepts": "概念実証（PoC）",
+    "UAT": "ユーザー受け入れテスト（UAT）",
     "Requirement analysis": "要件分析",
     "Solution architecting": "ソリューションアーキテクチャ設計",
     "Technical architecting": "テクニカルアーキテクチャ設計",
@@ -35,7 +36,7 @@ module.exports = {
     "Partnership": "パートナーシップ",
     "Partnership in Japan": "日本におけるパートナーシップ",
     "CEO & Founder": "CEO・創業者",
-    "MD & Founder": "MD・創業者",
+    "MD & Founder": "マネージングディレクター・創業者",
     "Click here to view map": "地図を見る",
     "A group cutting a red ribbon at the office entrance": "オフィス入口でテープカットを行う人々",
     "A group standing in the office beside the ThinkInnov-NexGen sign and a ceremonial lamp": "オフィス内、ThinkInnov-NexGenのサインと儀式用のランプの横に並ぶ人々",
@@ -50,7 +51,7 @@ module.exports = {
     "Team members gathered around a table with food, smiling at the camera": "料理の並ぶテーブルを囲み、カメラに笑顔を向けるメンバー",
     "Two people exchanging a bouquet of flowers in the office": "オフィスで花束を受け渡す2名",
     "Japan on-site sales & market development and customer relationship": "日本国内でのオンサイト営業、市場開拓、顧客リレーション",
-    "Pre-sales support & PoC development": "プリセールス支援とPoC開発",
+    "Pre-sales support & PoC development": "プリセールス支援と概念実証（PoC）の開発",
     "Bilingual PM / PMO / Bridge Engineer / Coordinators with offshore and any onsite support":
       "バイリンガルのPM／PMO／ブリッジエンジニア／コーディネーターによる、オフショアおよびオンサイトでの支援",
     "End-to-end Digital Thread / Digital Transformation delivery combining the expertise of PLM, ERP and MES (onsite & offshore)":
@@ -61,8 +62,8 @@ module.exports = {
     // Services
     "Pre-implementation, implementation and post-implementation services: consulting, solution mapping, development, deployment, L1 to L3 support and enhancements.":
       "導入前・導入・導入後の各サービス：コンサルティング、ソリューションマッピング、開発、展開、L1〜L3サポート、機能拡張。",
-    "Structured consulting, implementation and sustaining services grouped for clearer reading.":
-      "コンサルティング、導入、保守・運用支援の各サービスを、段階ごとに整理してご紹介します。",
+    "Structured consulting, implementation and sustaining services grouped for easier reading.":
+      "コンサルティング、導入、保守・運用支援の各サービスを、読みやすく整理してご紹介します。",
     "Service phases": "サービスの段階",
     "Discuss an implementation": "導入について相談する",
     "Tell us where you are in your PLM journey": "PLMへの取り組みの現在地をお聞かせください",

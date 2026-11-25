@@ -21,6 +21,7 @@ html[lang="ja"] .footer-title { letter-spacing: 0.08em; font-size: 0.8125rem; }
 .footer-office-role { display: block; font-size: var(--t-xs); color: var(--on-dark-2); }
 .footer-office-name { display: block; font-family: var(--font-display); font-weight: 700; color: var(--on-dark); }
 .footer-bottom { display: flex; flex-wrap: wrap; align-items: center; gap: 1rem 2rem; margin-top: var(--s-8); padding-top: var(--s-5); border-top: 1px solid var(--dark-rule); font-size: var(--t-sm); }
+.footer-legal { display: flex; flex-wrap: wrap; gap: 0.25rem 1.5rem; }
 .footer-meta { display: flex; flex-wrap: wrap; gap: 0.25rem 1.5rem; }
 .footer-meta a, .to-top { display: inline-flex; align-items: center; gap: 0.4rem; min-height: 2.75rem; }
 .site-footer .lang-switch { border-color: var(--dark-rule); }

@@ -66,6 +66,7 @@ function render() {
           ${c.sectionHead({ n: 2, kicker: "Roles", title: ci.areasTitle })}
           ${filters()}
           <ol class="roles" data-role-list>${content.jobs.map(role).join("")}</ol>
+          <p class="note note-wide roles-note">The discipline shown with each role and the experience ranges in the filter are this site's grouping of the role titles and of the experience each role states, added to make the list easier to search. They are not part of the job descriptions.</p>
         </div>
       </section>`,
       c.ctaBand({

@@ -2,7 +2,7 @@
 
 Source of truth: `staging-original/thinkinnov-nexgen/`. This file answers one question: where did each thing the original site had end up? Nothing the original had was dropped unless it is listed under "Removed on purpose" at the end.
 
-`improved-src/tools/check-source.py` compares the built site with the original for the four testimonials, the 21 customer logos and the 18 role titles, and fails if one differs.
+`improved-src/tools/check-source.py` compares the built site with the original and fails if one of these differs: the four testimonials, the 21 customer logos, the 18 role titles, the 18 careers-list summaries (character for character), and every English sentence of the original (242 of them, from `page-data.js`, `jobs.js` and the four HTML files), which must be on the English site with the same words in the same order. Capitals and punctuation are not compared. The twelve exceptions are written into the check and explained under "Wording: what is the original's, and what is not" below.
 
 ## Two copies of the original
 
@@ -30,13 +30,13 @@ Text that does **not** come from staging is listed separately in `notes/CLAIM-RE
 | Header logo and 9 navigation pages | Header with the same logo, a mega menu (What we do, Products, Industries, Company), language switch and Contact button | Every original page is one click from the menu. Mobile uses a full-screen menu; without scripts the menu button is a link to `sitemap.html`. |
 | EN / JP toggle (client-side dictionary) | Real URLs: English at `/`, Japanese at `/ja/`, same page on switch | `lang`, canonical and `hreflang` (`en`, `ja`, `x-default`) on every page. |
 | Footer Quick Links / Explore / Locate Us | Footer with head office, four offices, What we do, Products, Company, privacy, accessibility, sitemap, language switch | Map link kept. |
-| Footer statement ("We enable customers to innovate more and faster…") | Footer, under the logo | Capitalisation normalised, words unchanged. |
+| Footer statement ("We enable Customers to Innovate More and Faster by effectively re-using their Knowledge Acquired during Product Lifecycle through Our Innovative Digital Solutions.") | Footer, under the logo | Capitalisation normalised, words unchanged. An earlier pass had dropped "their" and added "the"; both are restored. |
 | "Siemens Solution Partner" (home hero badge) | Home hero only and once only, as in the original | Wording unchanged; the Japanese is the original site's own. Not in the footer, page descriptions or structured data. Confirmed as official wording by the Nexware package. |
-| Footer © `2014 - 2026 ThinkInnov-NexGen Corporation` | `© 2026 ThinkInnov-NexGen` | The legal name and what 2014 refers to are open client questions, so the footer names neither. |
+| Footer `© 2014 - 2026 ThinkInnov-NexGen Corporation` and `ThinkInnov-NexGen. All Rights Reserved.` | The same two lines, as printed, at the foot of every page in both languages | Restored. An earlier pass showed `© 2026 ThinkInnov-NexGen` because the legal name and what 2014 refers to are open client questions; the independent verifier pointed out that this departs from the original, and the original's own line is what the owner has approved so far. The questions stay open in `notes/REVIEW.md`. |
 | Footer "ThinkInnov-NexGen Technologies Pvt Ltd" | Not shown | Same reason: three forms of the company name are in the original. The company profile on About keeps "ThinkInnov-NexGen Corporation" as the original prints it. |
 | Email `info@thinkinnovnexgen.com` | `info@thinkinnovnexgen.co.jp` | **This is a change from the original, made before this build on the strength of the company's business cards, and it is not confirmed.** Both copies of the original show only `.com`. If the `.co.jp` mailbox does not exist, enquiries and applications go nowhere. Launch-blocking question in `notes/REVIEW.md`. |
 | — | Trademark line in the footer | New. Says the six products are Siemens' and that the names are Siemens trademarks. Source in `notes/CLAIM-REGISTER.md`. |
-| Phone `+03-3525-8197` | `+81 3-3525-8197`, `tel:+81335258197` | Same number in international form. |
+| Phone `+03-3525-8197` | `+81 3-3525-8197`, `tel:+81335258197` | **Kept as a necessary correction.** The original's `+03-…` is not a number that can be dialled: `+` introduces a country code and Japan's is 81, after which the leading 0 of the Tokyo area code is dropped. The digits are the original's; only the prefix is written correctly, so the link works from a phone anywhere. To be confirmed by the client with the number itself (`notes/REVIEW.md`). |
 | Address (unformatted staging string) | `15th Floor, Harumi Prime Square, 2-1-40 Harumi, Chuo-ku, Tokyo 104-0053, Japan`; Japanese pages use the staging Japanese address | Same address. |
 | Branch offices Nagaoka, Coimbatore, Chennai | Home (hero facts and presence section), About profile, Contact, footer | |
 
@@ -71,7 +71,7 @@ Anchors that existed in the previous pass of this repo (`#home`, `#about`, `#pro
 |---|---|
 | Hero slider, three messages (Siemens Solution Partner / innovate more and faster / Mendix) | A single headline composed from staging wording, with the three original messages kept as a three-column strip directly under the hero: each headline and text in full, and the lines above the second and third. The line above the first, "Siemens Solution Partner", is the hero badge and is not printed a second time in the strip |
 | About intro and photo | Section 01 `#about`: the staging heading and sentences, with the four words consulting, mapping, implementation, adoption |
-| "We help companies effectively address the critical business issues of new product development" and four problems | Section 02 `#problem`, all four, each linked to the finder |
+| "We help companies to effectively address the critical business issues of New Product Development." and four problems | Section 02 `#problem`, all four, each linked to the finder. Words as the original has them (an earlier pass had dropped "to" and four "the"s; restored) |
 | "Collect, analyse and visualize data and processes throughout the product lifecycle…" | Section 03 `#plm`, as the introduction to the lifecycle diagram |
 | PLM On premises / On cloud / SaaS | Kept on the home page inside section 08 ("PLM your way"), and also on `plm.html#deployment` |
 | Services Pre / Implementation / Post lists | Section 04 `#services`, all three phases with every item |
@@ -126,15 +126,56 @@ Anchors that existed in the previous pass of this repo (`#home`, `#about`, `#pro
 | Favicon | ico, 32px PNG, 180px touch icon |
 | Fonts (referenced but never loaded on staging) | Manrope and Inter, self-hosted WOFF2 |
 
-## Corrections made to staging text
+## Wording: what is the original's, and what is not
 
-These are spelling and capitalisation fixes carried over from the previous pass. The meaning is unchanged except where noted.
+The rule: the original's sentences are shown with the original's words in the original's order. `check-source.py` enforces it for all 242 English sentences of the original and fails on a changed, added or dropped word.
 
-- "Bussiness process re-Engineering" → "Business process re-engineering"
-- "Solution evalution Consulting" → "Solution evaluation consulting"
-- "Sustenance support" → "ongoing support (sustenance)"
-- "Production Development" in the Enhancements list is kept as the original has it. An earlier pass had changed it to "Production deployment"; that was reversed, because it changed a word and not just spelling. What the term means is an open client question.
-- Title case and sentence case made consistent in service lists and the footer statement.
+**Restored after the independent verification (25 November 2026).** Each of these had been reworded slightly in an earlier pass and now reads as the original does:
+
+| Where | Was | Now, as the original |
+|---|---|---|
+| Services, closing block | "…grouped for clearer reading." | "…grouped for easier reading." |
+| Solutions, Design Verification Management | "Parts designed and requirements defined…" | "Part designed and requirements defined…" |
+| Careers list, nine summaries (roles 3, 5, 7, 8, 9, 10, 12, 16, 18) | tidied capitals, "1 year of experience", "a Teamcenter administration role, with…", "Set up", no serial comma | Character for character the original's card text, for example "1 Yr Experience in Mentor Graphics/Capital software (logic and Harness XC)." |
+| Home hero strip, first headline | "Your partner for innovation and digital transformation" | "Your partners for innovation and digital transformation solutions." (one word supplied, see below) |
+| Home, services introduction | "From startup to enterprise — we guide you to the right software solution, manage implementation, and provide training and ongoing support (sustenance)…" | "Start-up to enterprise — we have the expertise to guide you to the right software solution, manage the implementation, and provide the training and sustenance support so that you will get the best value from your investment." |
+| Home and Behind the Brand, problem statements | "to" and four "the"s dropped | Words as the original |
+| About, profile introduction | "Key ThinkInnov-NexGen details…" | "Key ThinkInnov-NexGen Corporation details…" |
+| About, partnership heading | "…KK — A Strategic Partnership…" | "…KK - A Strategic Partnership…" |
+| Careers, culture text | "…enriching — one that…" | "…enriching, one that…" |
+| Footer statement | "…re-using knowledge acquired during the product lifecycle…" | "…re-using their knowledge acquired during product lifecycle…" |
+| Footer legal lines | "© 2026 ThinkInnov-NexGen" | "© 2014 - 2026 ThinkInnov-NexGen Corporation" and "ThinkInnov-NexGen. All Rights Reserved." |
+| Industries, eleventh title | "Teamcenter X — Cloud-based SaaS PLM" | "Teamcenter X: The business value of cloud-based SaaS PLM" |
+| Application form | "How did you find this vacancy?" | "How did you come across this vacancy?" |
+| Job pages | heading "Responsibilities" | "Key responsibilities" |
+| Home, products section | label "Siemens Portfolio" | "Our Catalogue of Products" ("Siemens Portfolio" stays on the Products page, where the original has it) |
+| Solutions finder, "What our site says" | eleven of the sixteen lines were shortened or paraphrased | Each is now a whole sentence shown elsewhere on the site, word for word; `check-source.py` compares them in both languages |
+
+**Kept different from the original, and why.**
+
+| Original | Now | Why |
+|---|---|---|
+| "Bussiness process re-Engineering", "Solution evalution Consulting" | "Business process re-engineering", "Solution evaluation consulting" | Spelling mistakes. |
+| "Expertise:- MCAD, … IIOT, …" | "Expertise: MCAD, … IIoT, …" | Punctuation slip and the usual spelling of the abbreviation. |
+| "…digital foundation and Vision, lack of it reduces…" | "…digital foundation and vision; lack of it reduces…" | Two sentences joined by a comma; the words are unchanged. |
+| "Your partners for innovation digital transformation solutions." | "Your partners for innovation and digital transformation solutions." | The sentence lacks a word. The original's own Japanese for it reads "innovation and DX solutions" (イノベーションとDXソリューションのパートナーです。), so "and" is supplied and nothing else is touched. |
+| Phone "+03-3525-8197" | "+81 3-3525-8197" | Not a diallable number as written; see Site-wide above. |
+| Address "104-0053, 1-40 Harumi Prime Square, 15th Floor 2-Chome, Harumi, Chuo-ku, Tokyo" | "15th Floor, Harumi Prime Square, 2-1-40 Harumi, Chuo-ku, Tokyo 104-0053, Japan" | The same address in the usual English order; Japanese pages use the original's Japanese address. |
+| "ThinkInnov-NexGen Technologies Pvt Ltd" above the footer address | Not shown | Three forms of the company name are in the original; which is the legal name of which entity is an open client question. |
+| Capital letters in the middle of sentences ("New Product Development", "Requirement Gathering, Solution Signoff…") | Sentence case in running text and lists | One typographic convention across the site. Words unchanged. The careers-list summaries are the exception: they are shown exactly as printed, capitals included. |
+| The word "Infographic" at the end of each industry title | Titles without it; the word is in the caption of each image ("Infographic: …") | The title now heads a section that contains more than the image. |
+| "Production Development" (Enhancements list) | Unchanged | An earlier pass had made it "Production deployment"; reversed, because that changed a word. What the term means is an open client question. |
+
+**Added by this site, and labelled as such.**
+
+| What | Where | Why it is there |
+|---|---|---|
+| "Discipline" of a role (six groups) and three experience ranges | Careers list: the filter and one chip per role. Not on the job pages; the facts of a role there are the original's three (experience, location, employment type) | The owner's brief asks for working filters, and the delegation specifies "discipline derived from the titles, experience band, text search". The original has no such classification, so the list carries a note under it: the grouping is this site's, made from the role titles and the experience each role states, and is not part of the job descriptions. The verifier listed it as a departure; it is kept for the filter and no longer presented as a fact about the vacancy. |
+| "Onsite" / "Offshore" labels, nine lifecycle stage sentences, the home headline | See `notes/CLAIM-REGISTER.md` | Disclosed there with their sources. |
+
+**Headings, menu labels and buttons.** These are interface text, rewritten with the new structure; the content they lead to is the original's. The ones that differ: the old menu's "Vision Mission Values" (now the heading "Vision, Mission and Values"), "Gallery Media" ("Gallery"), the menu panel sentence "ThinkInnov-NexGen profile, mission, values, gallery, leadership and company profile." (the menu has no descriptions now), the job page heading "Job Information" (the three facts are shown without it), the button "Send Message" ("Send enquiry"), and the form controls "Select your gender *" and "Choose File *" (a labelled, optional field and the browser's own file control).
+
+**Japanese pages: text that was left in Latin letters.** Ordinary words are now Japanese: "SMBs" → 中堅・中小企業; "UAT" → ユーザー受け入れテスト（UAT）; "PoC development" → 概念実証（PoC）の開発; "MD & Founder" → マネージングディレクター・創業者 (the original's own Japanese for "Managing Director"); the industry title "Siemens SW PDM to PLM" → Siemens SW：PDMからPLMへ. Left in Latin letters because they are names, or are written that way in Japanese business use: company, product and people's names; the solution names "Teamcenter Gateway for SAP Business Suite" and "Teamcenter Gateway for Oracle E-Business Suite"; "Expert Partner - PLM"; "Siemens Industry Software Inc."; "Head, Heart and Hand" (kept in English by the original's own Japanese, with its Japanese gloss); "PDMM L1–L4"; "LinkedIn"; abbreviations such as PLM, ERP, MES, CAD, SaaS, PM/PMO, WBS (glossed), CTC and LPA (glossed); the two footer legal lines; and the four testimonials, which are English with a Japanese rendering under each.
 
 ## Removed on purpose
 

@@ -123,7 +123,7 @@ const about = {
     ["assets/img/leadership/sindhu.webp", "Sindhuja Jayaprakash", "Executive Director"],
   ],
   partnership: {
-    title: "ThinkInnov-NexGen KK — A Strategic Partnership in Japan",
+    title: "ThinkInnov-NexGen KK - A Strategic Partnership in Japan",
     intro:
       'A Siemens Certified "Expert Partner - PLM" synergizing with ThinkInnov-NexGen\'s extensive project delivery experience in Japan, to deliver high value to customers in Japan.',
     label: "Key Value Drivers",
@@ -136,7 +136,7 @@ const about = {
     ],
   },
   profileTitle: "Company Profile",
-  profileText: "Key ThinkInnov-NexGen details for leadership, headquarters and branch offices.",
+  profileText: "Key ThinkInnov-NexGen Corporation details for leadership, headquarters and branch offices.",
   profile: [
     ["Company Name", config.legalNameProfile],
     ["President/CEO", "Rajeshkumar Sankarlingam"],
@@ -162,13 +162,13 @@ const behind = {
   kicker: "People and Stories",
   intro: "The people, problem-solving approach and delivery culture behind ThinkInnov-NexGen.",
   problemTitle: "Problem We Solve",
-  problemText: "We help companies effectively address the critical business issues of new product development.",
+  problemText: "We help companies to effectively address the critical business issues of new product development.",
   // key links each problem to the finder (content/relations.js).
   problems: [
     ["unlock-data", "Unlocking the Potential", "Digital & technology disruption facilitated collecting a lot of product data, but making meaningful information & insights out of the product data needs a well-defined digital foundation and vision; lack of it reduces the effective usage of existing product data."],
-    ["reuse-ip", "Maximizing Efficiency", "Re-using the existing IP during new product development is the biggest opportunity for companies to reduce new product development cost & time."],
-    ["duplication", "Duplication Concerns", "System(s) / part(s) duplication is the main concern area for companies in new product introduction."],
-    ["predict", "Navigating Uncertainty", "Predicting the performance of the new product is not possible at the early stages of product development."],
+    ["reuse-ip", "Maximizing Efficiency", "Re-using the existing IP during the new product development is the biggest opportunity for the companies to reduce new product development cost & time."],
+    ["duplication", "Duplication Concerns", "System(s) / part(s) duplication is the main concern area for the companies in new product introduction."],
+    ["predict", "Navigating Uncertainty", "Predicting the performance of the new product is not possible at the early stages of the product development."],
   ],
   teamTitle: "Our Team",
   teamText: "Delivery leaders and specialists helping customers adopt practical PLM and digital transformation.",
@@ -186,7 +186,7 @@ const careersIntro = {
   intro: "Create your own journey in an environment designed to be meaningful, rewarding and enriching.",
   cultureTitle: "Ready to create your own journey?",
   cultureText:
-    "We know that finding a meaningful and rewarding career can be a long journey. Our goal is to make that process easy for you and to create a work environment that's enriching — one that you'll look forward to every day.",
+    "We know that finding a meaningful and rewarding career can be a long journey. Our goal is to make that process easy for you and to create a work environment that's enriching, one that you'll look forward to every day.",
   areasTitle: "Current Opportunity Areas",
   ctaTitle: "Can't find what you're looking for?",
   ctaLabel: "Register here",

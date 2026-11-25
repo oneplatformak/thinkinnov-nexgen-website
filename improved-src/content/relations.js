@@ -124,8 +124,8 @@ const productExpertise = {
 };
 
 /* ---- Business needs for the finder ----
- * `source` quotes or closely paraphrases the staging sentence that justifies
- * showing these items. `services` are [phase key, item] pairs. */
+ * `source` is the sentence on this site, word for word and in full, that
+ * justifies showing these items (check-source.py compares them). `services` are [phase key, item] pairs. */
 const needGroups = [
   { key: "npd", title: "New product development issues" },
   { key: "specific", title: "Specific needs" },
@@ -134,28 +134,28 @@ const needGroups = [
 const needs = [
   {
     key: "unlock-data", group: "npd", title: "We collect product data but gain little insight from it",
-    source: "Making meaningful information and insights out of product data needs a well-defined digital foundation and vision.",
+    source: "Digital & technology disruption facilitated collecting a lot of product data, but making meaningful information & insights out of the product data needs a well-defined digital foundation and vision; lack of it reduces the effective usage of existing product data.",
     solutions: ["design-data-management", "simulation-process-data-management"], products: ["teamcenter"],
     services: [["pre-implementation", "Strategic business consulting"]],
     links: [["digital-transformation.html#pdmm", "Product Data Maturity Model"], ["digital-transformation.html#outcomes", "Process Data"]],
   },
   {
     key: "reuse-ip", group: "npd", title: "We want to reuse existing designs and IP in new products",
-    source: "Re-using existing IP during new product development is the biggest opportunity to reduce development cost and time.",
+    source: "Re-using the existing IP during the new product development is the biggest opportunity for the companies to reduce new product development cost & time.",
     solutions: ["3d-shape-search", "simulation-process-data-management", "design-data-management"], products: ["teamcenter"],
     services: [],
     links: [["plm.html#benefits", "Synchronize: find, share and reuse product data"]],
   },
   {
     key: "duplication", group: "npd", title: "Duplicate parts and systems keep appearing",
-    source: "System and part duplication is the main concern area for companies in new product introduction.",
+    source: "System(s) / part(s) duplication is the main concern area for the companies in new product introduction.",
     solutions: ["3d-shape-search", "design-data-management"], products: ["teamcenter"],
     services: [],
     links: [],
   },
   {
     key: "predict", group: "npd", title: "We cannot predict product performance early enough",
-    source: "Predicting the performance of a new product is not possible at the early stages of product development.",
+    source: "Predicting the performance of the new product is not possible at the early stages of the product development.",
     solutions: ["simulation-process-data-management", "design-verification-management"], products: [],
     services: [],
     links: [["digital-transformation.html#pdmm", "PDMM L4: Innovation Platform"], ["digital-transformation.html#outcomes", "Predictive Innovation"]],
@@ -176,56 +176,56 @@ const needs = [
   },
   {
     key: "change", group: "specific", title: "Keep engineering change under control",
-    source: "Best practice solutions for rapid change and full change management.",
+    source: "Continuously improve product offerings with best practice solutions for rapid change and full change management using a leading PLM digital enterprise backbone.",
     solutions: ["engineering-change-management"], products: ["teamcenter"],
     services: [],
     links: [],
   },
   {
     key: "requirements", group: "specific", title: "Manage requirements and verify designs against them",
-    source: "Traditional paper and document-driven approaches are not sufficient for meeting complex customer needs.",
+    source: "Requirements are the blueprint for product development, but traditional paper and document-driven approaches are not sufficient for meeting complex customer needs.",
     solutions: ["requirements-management", "design-verification-management"], products: ["teamcenter"],
     services: [],
     links: [],
   },
   {
     key: "integrate", group: "specific", title: "Connect PLM with ERP and MES",
-    source: "Realize your digital threads with ERP, MES and enterprise applications.",
+    source: "Realize your digital threads with ERP, MES and enterprise applications by using the Teamcenter connection platform.",
     solutions: ["active-integration", "teamcenter-gateway-sap", "teamcenter-gateway-oracle"], products: ["teamcenter"],
     services: [],
     links: [["about.html#partnership", "Digital thread delivery combining PLM, ERP and MES"]],
   },
   {
     key: "manufacturing", group: "specific", title: "Plan and digitalize manufacturing",
-    source: "Digitalization helps companies respond to rapidly changing industrial challenges.",
+    source: "Digitalization helps companies respond to rapidly changing industrial challenges, geopolitical tensions, technological change, labour markets and climate impact.",
     solutions: ["digital-factory-enterprise"], products: ["tecnomatix"],
     services: [],
     links: [],
   },
   {
     key: "apps", group: "specific", title: "Build business applications faster",
-    source: "Build, integrate and deploy applications rapidly while improving collaboration and agility.",
+    source: "Build, integrate and deploy applications rapidly while improving collaboration and agility in a dynamic digital landscape.",
     solutions: ["mendix-low-code"], products: ["mendix"],
     services: [],
     links: [],
   },
   {
     key: "cad", group: "specific", title: "Extend or tailor our NX environment",
-    source: "Extend and tailor NX capabilities to fit specific needs.",
+    source: "NX programming and customization software tools help companies extend and tailor NX capabilities to fit specific needs.",
     solutions: ["nx-programming-customization"], products: ["nx"],
     services: [["implementation", "Customization"]],
     links: [],
   },
   {
     key: "projects", group: "specific", title: "Plan and track development projects",
-    source: "Create project plans with work breakdown structures and schedule task hierarchy from best-practice templates.",
+    source: "With schedule manager, team leaders can create project plans with work breakdown structures and schedule task hierarchy from best-practice templates.",
     solutions: ["project-management"], products: [],
     services: [],
     links: [["plm.html#npd", "Real-Time Tracking in the NPD process"]],
   },
   {
     key: "start", group: "specific", title: "Choose the right PLM and plan the rollout",
-    source: "We guide you to the right software solution.",
+    source: "Start-up to enterprise — we have the expertise to guide you to the right software solution, manage the implementation, and provide the training and sustenance support so that you will get the best value from your investment.",
     solutions: [], products: [],
     services: [
       ["pre-implementation", "Strategic business consulting"],
@@ -238,14 +238,14 @@ const needs = [
   },
   {
     key: "cloud", group: "specific", title: "Upgrade PLM or move it to the cloud",
-    source: "Get Teamcenter delivered any way you want it – on premises or on the cloud.",
+    source: "Get Teamcenter delivered any way you want it – on premises or on the cloud – operated by your IT team or Siemens.",
     solutions: [], products: ["teamcenter"],
     services: [["pre-implementation", "Cloud transition & upgrades"]],
-    links: [["plm.html#deployment", "Deployment options"], ["industries.html#cloud-saas-plm", "Teamcenter X — Cloud-based SaaS PLM"]],
+    links: [["plm.html#deployment", "Deployment options"], ["industries.html#cloud-saas-plm", "Teamcenter X: The business value of cloud-based SaaS PLM"]],
   },
   {
     key: "support", group: "specific", title: "Keep our PLM running and improving",
-    source: "We provide training and ongoing support so you get the best value from your investment.",
+    source: "Start-up to enterprise — we have the expertise to guide you to the right software solution, manage the implementation, and provide the training and sustenance support so that you will get the best value from your investment.",
     solutions: [], products: [],
     services: [
       ["post-implementation", "L1 support"],

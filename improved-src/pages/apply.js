@@ -33,7 +33,7 @@ function fields() {
     f.input({ name: "expected_ctc", label: "Expected CTC (LPA)", prefix: p }),
     f.input({ name: "notice", label: "Notice period (days)", prefix: p }),
     f.select({
-      name: "source", label: "How did you find this vacancy?", required: true, prefix: p, placeholder: "Select",
+      name: "source", label: "How did you come across this vacancy?", required: true, prefix: p, placeholder: "Select",
       options: [["LinkedIn", "LinkedIn"], ["Referral", "Referral"], ["Website", "Website"], ["Other", "Other"]],
       messages: { required: "Please choose an option." },
     }),

@@ -1,7 +1,8 @@
 /**
  * The 18 roles from staging (assets/jobs.js + the careers list in
  * assets/page-data.js). Nothing here is new: `summary` is the focus line from
- * jobs.js, `listing` is the card text from the careers list.
+ * jobs.js, `listing` is the card text from the careers list, character for
+ * character (its capitals and abbreviations included).
  * `discipline` is derived from the title only, to drive the filters.
  */
 const { slugify, pad2 } = require("../lib/html");
@@ -70,22 +71,22 @@ const sharedSkills = [
 // [title, focus (jobs.js), experience, careers-list text (page-data.js), discipline]
 const rest = [
   ["Teamcenter Developer", "ITK Server side coding experience with C & C++.", "2+ Years", "ITK Server side coding experience with C & C++.", "development"],
-  ["Support Engineer - Capital", "Mentor Graphics/Capital software support for Logic and Harness XC.", "1+ Years", "1 year of experience in Mentor Graphics/Capital software (Logic and Harness XC).", "application"],
+  ["Support Engineer - Capital", "Mentor Graphics/Capital software support for Logic and Harness XC.", "1+ Years", "1 Yr Experience in Mentor Graphics/Capital software (logic and Harness XC).", "application"],
   ["Application Engineer - Capital", "Product positioning, demonstrations and support for business and technical users.", "2+ Years", "Articulate technology and product positioning to both business and technical users.", "application"],
-  ["Project Manager", "PLM project planning, customer coordination and delivery governance.", "6+ Years", "Knowledge and experience in PLM (preferably Teamcenter).", "project"],
+  ["Project Manager", "PLM project planning, customer coordination and delivery governance.", "6+ Years", "Knowledge and Experience in PLM (preferably Teamcenter).", "project"],
   ["PLM Teamcenter Developer", "Teamcenter implementation, customization, configuration and development.", "8 - 10 Years", "Minimum 8 to 10 years of experience in Teamcenter implementation projects.", "development"],
-  ["Teamcenter PLM Solution Architect", "Requirement gathering, solution signoff and UAT signoff with customer teams.", "10+ Years", "Should be able to travel to customer sites for requirement gathering, solution signoff and UAT signoff events.", "architecture"],
-  ["Team Lead", "PLM delivery leadership with ITK server side coding experience.", "8+ Years", "Should have 8+ years of experience in the PLM domain. ITK server side coding experience with C & C++.", "architecture"],
-  ["PLM Teamcenter Developer", "Teamcenter PLM customization, configuration and development.", "2+ Years", "Minimum 2+ years of experience in Teamcenter PLM customization, configuration and development.", "development"],
-  ["PLM Teamcenter Administrator", "Teamcenter administration and environment setup with Oracle and MS SQL.", "2+ Years", "Should have minimum 2+ years of experience in a Teamcenter administration role, with Oracle and MS SQL environment setup.", "administration"],
+  ["Teamcenter PLM Solution Architect", "Requirement gathering, solution signoff and UAT signoff with customer teams.", "10+ Years", "Should be able to Travel to Customer Site for Requirement Gathering, Solution Signoff and UAT Signoff Events.", "architecture"],
+  ["Team Lead", "PLM delivery leadership with ITK server side coding experience.", "8+ Years", "Should have 8+ years of experience in PLM Domain. ITK Server side coding experience with C & C++.", "architecture"],
+  ["PLM Teamcenter Developer", "Teamcenter PLM customization, configuration and development.", "2+ Years", "Minimum 2+ Years of Experience in Teamcenter PLM Customization, Configuration and Development.", "development"],
+  ["PLM Teamcenter Administrator", "Teamcenter administration and environment setup with Oracle and MS SQL.", "2+ Years", "Should have minimum 2+ years experience in Teamcenter Administration Role, Oracle and MS SQL environment setup.", "administration"],
   ["Technical Lead", "Teamcenter customization, configuration, development and solution mapping.", "5+ Years", "Minimum 5+ years of experience in Teamcenter PLM customization, configuration, development and solution mapping.", "architecture"],
-  ["Solution Architect - Digital Manufacturing", "Digital manufacturing solution architecture and customer delivery.", "10+ Years", "Should have 10+ years of experience as a Solution Architect.", "architecture"],
+  ["Solution Architect - Digital Manufacturing", "Digital manufacturing solution architecture and customer delivery.", "10+ Years", "Should have 10+ years of experience as Solution Architect.", "architecture"],
   ["Sales Engineer", "Territory sales and business development with marketing and technical support teams.", "3+ Years", "Sales and business development for territories, working with marketing and technical support teams.", "sales"],
   ["Inside Sales Specialist", "Prospecting and customer lead generation from provided databases.", "1+ Years", "Generating new prospects and customer leads from the database provided.", "sales"],
   ["NX Application Engineer", "NX CAD demonstrations and customer problem solving with CAD features.", "2+ Years", "Responsible for NX CAD solution demonstration and addressing customer problems with appropriate CAD features.", "application"],
-  ["PLM Analyst", "PDMLink environment setup and configuration for validation and testing.", "2+ Years", "Set up and configure new PDMLink environments for validation and testing.", "administration"],
+  ["PLM Analyst", "PDMLink environment setup and configuration for validation and testing.", "2+ Years", "Setup and configure new PDMLink environments for validation and testing.", "administration"],
   ["CATIA Support Engineer", "Technical support, software installation and configuration.", "1+ Years", "Technical support, software installation and configuration.", "application"],
-  ["Mendix Developer", "Design, develop and deploy applications using the Mendix low-code platform.", "2+ Years", "Design, develop and deploy applications using the Mendix low-code platform.", "development"],
+  ["Mendix Developer", "Design, develop and deploy applications using the Mendix low-code platform.", "2+ Years", "Design, develop, and deploy applications using the Mendix low-code platform.", "development"],
 ].map(([title, summary, experience, listing, discipline]) => ({
   title,
   experience,

@@ -33,7 +33,7 @@ Listed one by one in `notes/CUSTOMER-REGISTER.md`. Source: original site `assets
 | `assets/img/industries/infographic-08.webp` | Teamcenter X for Consumer Products | Original site `assets/I8.png` | Open |
 | `assets/img/industries/infographic-09.webp` | Teamcenter X for Electronics | Original site `assets/I9.png` | Open |
 | `assets/img/industries/infographic-10.webp` | Teamcenter X for Marine | Original site `assets/I10.png` | Open |
-| `assets/img/industries/infographic-11.webp` | Teamcenter X — Cloud-based SaaS PLM | Original site `assets/I11.png` | Open |
+| `assets/img/industries/infographic-11.webp` | Teamcenter X: The business value of cloud-based SaaS PLM | Original site `assets/I11.png` | Open |
 
 What is and is not known about these eleven images:
 

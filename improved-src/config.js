@@ -22,7 +22,8 @@ module.exports = {
   },
   mapUrl: "https://www.google.com/maps/search/?api=1&query=Harumi+Prime+Square+Chuo-ku+Tokyo",
   branches: ["Nagaoka - Japan", "Coimbatore - India", "Chennai - India"],
-  copyright: "© 2026 ThinkInnov-NexGen",
+  // The two lines at the foot of every page of the original, as printed there.
+  copyright: ["© 2014 - 2026 ThinkInnov-NexGen Corporation", "ThinkInnov-NexGen. All Rights Reserved."],
   themeColor: "#FBFAF7",
   logoPath: "assets/img/logo.svg",
   ogImage: "assets/img/og-image.jpg",
@@ -30,5 +31,5 @@ module.exports = {
   logoTagline: "Accelerating Change Through Innovation",
   // Staging footer statement, capitalisation normalised.
   tagline:
-    "We enable customers to innovate more and faster by effectively re-using knowledge acquired during the product lifecycle through our innovative digital solutions.",
+    "We enable customers to innovate more and faster by effectively re-using their knowledge acquired during product lifecycle through our innovative digital solutions.",
 };

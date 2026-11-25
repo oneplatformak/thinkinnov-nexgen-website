@@ -42,7 +42,7 @@ return [
         'industry-consumer-products' => 'Teamcenter X for Consumer Products',
         'industry-electronics' => 'Teamcenter X for Electronics',
         'industry-marine' => 'Teamcenter X for Marine',
-        'industry-cloud-saas-plm' => 'Teamcenter X — Cloud-based SaaS PLM',
+        'industry-cloud-saas-plm' => 'Teamcenter X: The business value of cloud-based SaaS PLM',
         'service-pre-implementation' => 'Pre-Implementation',
         'service-implementation' => 'Implementation',
         'service-post-implementation' => 'Post-Implementation',
@@ -76,7 +76,7 @@ return [
         'consumer-products' => 'Teamcenter X for Consumer Products',
         'electronics' => 'Teamcenter X for Electronics',
         'marine' => 'Teamcenter X for Marine',
-        'cloud-saas-plm' => 'Teamcenter X — Cloud-based SaaS PLM',
+        'cloud-saas-plm' => 'Teamcenter X: The business value of cloud-based SaaS PLM',
     ],
     'sizes' => [
         'startups' => 'Startups',
