@@ -2,6 +2,10 @@
 
 Newest first. The first section is the full rebuild; the sections under "Earlier passes" describe work it replaced or built on, and are kept as history.
 
+## Two industry images removed (25 November 2026, same branch)
+
+- Owner's decision (AK): the images of industry entries 2 and 11 are no longer published, in either language, because one carries a Siemens wordmark and the other prints unsourced figures about a Siemens product, inside inherited images of unknown origin and rights. The two entries stay, in a layout made for an entry without an image; the other nine images are unchanged. An owner-approved exception to "nothing dropped"; `check-source.py` expects exactly these two removals (`b0cb123`).
+
 ## After the independent verification (25 November 2026, same branch)
 
 A verifier who did not build the site checked it at commit `30c9b8a`. Commits `6af4466` to `a590595` fix what it found; `notes/REVIEW.md` §12 has the account, finding by finding.
@@ -28,7 +32,7 @@ A verifier who did not build the site checked it at commit `30c9b8a`. Commits `6
 ### Documents
 
 - `docs/README-DEPLOY.md`: compression must be on at the host, how to check it, and the checks to make after upload; every `.htaccess` rule is untested until then.
-- Claim and asset registers: where "since 2014" appears; the figures and the Siemens wordmark inside two inherited industry images, recorded as inherited and unsourced. The images are unchanged by the owner's decision.
+- Claim and asset registers: where "since 2014" appears; the figures and the Siemens wordmark inside two inherited industry images, recorded as inherited and unsourced. (The images were left unchanged in that round and removed in the next; see above.)
 - `ACCEPTANCE.md`, `REVIEW.md`, `EXECUTIVE-REVIEW.md`, `TRACEABILITY.md`, `STATUS.md`, `TEST-EVIDENCE.md` corrected where the verifier found them wrong or overstated.
 
 ## Completion against the master brief (25 November 2026, same branch)

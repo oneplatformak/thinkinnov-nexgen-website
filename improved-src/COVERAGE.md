@@ -2,7 +2,7 @@
 
 Source of truth: `staging-original/thinkinnov-nexgen/`. This file answers one question: where did each thing the original site had end up? Nothing the original had was dropped unless it is listed under "Removed on purpose" at the end.
 
-`improved-src/tools/check-source.py` compares the built site with the original and fails if one of these differs: the four testimonials, the 21 customer logos, the 18 role titles, the 18 careers-list summaries (character for character), and every English sentence of the original (242 of them, from `page-data.js`, `jobs.js` and the four HTML files), which must be on the English site with the same words in the same order. Capitals and punctuation are not compared. The twelve exceptions are written into the check and explained under "Wording: what is the original's, and what is not" below.
+`improved-src/tools/check-source.py` compares the built site with the original and fails if one of these differs: the four testimonials, the 21 customer logos, the eleven industry entries and their images (the original's eleven images less the two removed by the owner's decision, listed under "Removed on purpose"), the 18 role titles, the 18 careers-list summaries (character for character), and every English sentence of the original (242 of them, from `page-data.js`, `jobs.js` and the four HTML files), which must be on the English site with the same words in the same order. Capitals and punctuation are not compared. The twelve exceptions are written into the check and explained under "Wording: what is the original's, and what is not" below.
 
 ## Two copies of the original
 
@@ -105,7 +105,7 @@ Anchors that existed in the previous pass of this repo (`#home`, `#about`, `#pro
 | Products | Six Siemens products, each with the staging tagline and category, a table of products against lifecycle stages, and a link to each product's page |
 | Product pages (6) | The staging tagline and category; one sentence from Siemens' own website saying what the product is, with its source; where the product sits on the lifecycle; which of the company's services, solutions, business needs and roles mention it; an enquiry link that carries the product |
 | Solutions | All 15 solutions in five groups, each with the staging paragraph, the business needs it answers, related products, services and industries, and an enquiry link; and the finder |
-| Industries | All 11, each with its staging description and the original infographic (I1–I11), enlargeable, plus related solutions and an enquiry link that carries the industry |
+| Industries | All 11 entries, each with its staging title and description, related solutions and an enquiry link that carries the industry. Nine are shown with the original's image, enlargeable (I1, I3–I10). **Entry 2, "Siemens SW PDM to PLM": the image (I2) was removed by the owner's decision; the entry stays, without an image.** **Entry 11, "Teamcenter X: The business value of cloud-based SaaS PLM": the image (I11) was removed by the owner's decision; the entry stays, without an image.** See "Removed on purpose" |
 | Behind the Brand | Four problems and four team members |
 | Careers | Culture text and all 18 roles with filters; a job page for each role with responsibilities and skills |
 | Apply | Every original field, role selector, CV upload. Gender, current CTC, expected CTC and notice period are now optional |
@@ -120,9 +120,11 @@ Anchors that existed in the previous pass of this repo (`#home`, `#about`, `#pro
 | 21 customer logos (including the two with broken paths on staging) | `assets/img/customers/`, WebP, artwork unchanged |
 | Leadership, team and gallery photographs | WebP, resized and cropped only |
 | — | Two more gallery photographs from the official Nexware package (see the top of this file) |
-| I1–I11 industry infographics | `assets/img/industries/infographic-XX.webp` |
+| I1, I3–I10 industry infographics (nine) | `assets/img/industries/infographic-XX.webp` |
+| I2 industry infographic (shown with "Siemens SW PDM to PLM") | **Not published. Image removed by the owner's decision, 25 November 2026.** The original stays in `staging-original/` |
+| I11 industry infographic (shown with "Teamcenter X: The business value of cloud-based SaaS PLM") | **Not published. Image removed by the owner's decision, 25 November 2026.** The original stays in `staging-original/` |
 | Stock-style illustrations on staging (`about-digital-engineering.png`, `hero-collaboration.jpeg`, `mendix-image.png`, `PLM_bg.png`, `seimens_partner.png`) | Not used. They are generic illustrations, not pictures of the company; `seimens_partner.png` is a globe-and-city illustration with no Siemens mark. Listed in `notes/ASSET-REGISTER.md` |
-| Generated visuals added in an earlier pass | All deleted. Nothing generated for this rebuild is on the site. (The eleven industry images come from the original site and their origin is unknown: `notes/ASSET-REGISTER.md` §3) |
+| Generated visuals added in an earlier pass | All deleted. Nothing generated for this rebuild is on the site. (The nine industry images that are published come from the original site and their origin is unknown: `notes/ASSET-REGISTER.md` §3) |
 | Favicon | ico, 32px PNG, 180px touch icon |
 | Fonts (referenced but never loaded on staging) | Manrope and Inter, self-hosted WOFF2 |
 
@@ -188,3 +190,4 @@ The rule: the original's sentences are shown with the original's words in the or
 | Scrolling customer logo marquee | Replaced by a static grid of the same 21 logos. |
 | Magnetic buttons and animated number counters | Decoration with no content. |
 | Generic Japanese filler sentence that staging repeated for every solution, industry and job | Each item now has its own Japanese text (see the translation register). |
+| **Two industry images: `assets/I2.png` and `assets/I11.png`** | **Removed by the owner's decision (AK, 25 November 2026), as an explicit, owner-approved exception to "nothing dropped".** I2 carries a Siemens wordmark. I11 prints five unsourced figures about a Siemens product ("20–30% faster time to market", "15–25% lower IT & infrastructure costs", "30–50% improvement in team productivity", "20–40% reduction in change cycle time", "99.9%+ cloud reliability and availability"). Both are inherited images of unknown origin and rights. Only the images are gone: the two industry entries keep their titles, text, relations and links, in English and Japanese. `check-source.py` names these two as the only missing images and fails if any other goes missing or if either comes back. `notes/ASSET-REGISTER.md` §3, `notes/CLAIM-REGISTER.md` §6. |

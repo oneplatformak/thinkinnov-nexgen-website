@@ -10,6 +10,8 @@ The brief asks for three reviews of the finished site. They overlap, so they are
 
 **Since then an independent verifier has checked the site** (25 November 2026, at commit `30c9b8a`). It scored six areas at least ten points lower than this review did, and it was right about the cause: the design scores rested on a layout test that could not see the faults that were there. Section 7 records its scores, what was fixed and the scores now. Sections 2 to 6 are left as they were written, as the record of the two rounds, apart from one correction marked in the table. Where a judgement really belongs to one of them, the score is capped and the cap is stated.
 
+**After that, the owner decided the question of the inherited industry images** (25 November 2026): the two that carried a Siemens wordmark and unsourced figures about a Siemens product were removed; the other nine stay. Section 8 records what that changes in the scores. Sections 2 to 7 speak of eleven industry images because there were eleven when they were written.
+
 Two rounds were run on 25 November 2026:
 
 | Round | Build reviewed | Evidence used |
@@ -195,7 +197,7 @@ R1 and R2 are the two rounds. "Why not higher" is the reason the score stops whe
 | Area | Criterion | R1 | R2 | Evidence | Why not higher |
 | --- | --- | --- | --- | --- | --- |
 | Functional completeness | Everything on the pages does what it says | 86 | 88 | 389 interaction checks, 58 form checks | One browser |
-| Broken links | None | 95 | 95 | 4,095 internal links and assets resolved, 984 with a fragment; 0 missing | Outbound links are not fetched by the checker; old-URL redirects unproven on Apache |
+| Broken links | None | 95 | 95 | 4,091 internal links and assets resolved, 984 with a fragment; 0 missing | Outbound links are not fetched by the checker; old-URL redirects unproven on Apache |
 | Missing content | Nothing from the original lost; nothing promised and absent | 80 | 80 | `COVERAGE.md`; `check-source` | What the brief asks for beyond the source is absent by design |
 | Error handling | Failures are shown as failures, with a way forward | 86 | 86 | Form tests for 500, 429 and validation; 404 page; empty filter and search states | The 404 status itself needs Apache |
 | Browser compatibility | Works in Chrome, Safari, Edge and Firefox | 40 | 40 | Chrome only | The other three were not available |
@@ -242,3 +244,17 @@ The other thirty-one scores stand as in round 2; the verifier put each within a 
 After these changes: highest are broken links 95, architecture 88, functional completeness 88, SEO 86 and error handling 86. Lowest are browser compatibility 40, technical depth 48, integration reliability 50, competitive differentiation 55 and imagery 55. No area is scored 100, and none above 88 except broken links.
 
 What the verifier recommended and was not done in this round, by the owner's decision, is listed in `REVIEW.md` §12.
+
+## 8. After the owner's decision on the industry images
+
+On 25 November 2026 the owner (AK) decided to remove two of the eleven inherited industry images: the one with the SIEMENS wordmark in it, and the one that printed five figures about Teamcenter X and a security and compliance sentence with no source. Both are gone from the English and the Japanese pages and the files are no longer served. The two industry entries stay, in a layout made for an entry without an image. The other nine images are unchanged. `REVIEW.md` §8, decision 22.
+
+The author looked at the nine that remain, one by one: none carries the Siemens wordmark and none prints a figure. Seven carry the product name "Teamcenter X", four of them with an X-shaped symbol beside it, and four carry short phrases about what the product does. Who made them is still not known.
+
+| Area | Verifier | After the fixes (§7) | Now | Reason |
+| --- | --- | --- | --- | --- |
+| Product accuracy | 62 | 62 | 70 | The verifier's reason for 62 was what two images said about a Siemens product, and those two are no longer published. Not back to the 78 of round 2: nine images of unknown origin still show the name of a Siemens product with phrases about what it does, four product pages are thin, and the product relations have not been read by a specialist. Set by the author; nobody independent has seen the site since the change |
+| Imagery | 55 | 55 | 55 | Unchanged. There are fewer inherited images, but the nine that remain look machine-made, are not labelled as illustrations and are of unknown origin; two entries now have no picture at all |
+| Design consistency | 76 | 79 | 79 | Unchanged. The two entries without an image are in the site's own style, but nine images in another style remain beside them |
+
+No other score changes. Highest and lowest areas are as at the end of section 7.

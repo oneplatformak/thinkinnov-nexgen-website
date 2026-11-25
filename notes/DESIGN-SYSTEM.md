@@ -47,19 +47,20 @@ Paper and ink. A warm off-white page, near-black text, hairline rules, square co
 | CTA band | `.cta-band` | Closing invitation |
 | Forms | `.field`, `.field-label`, `.field-req` / `.field-opt`, `.field-error`, `.form-status` | Every field is marked Required or Optional in words. Labels, checkboxes and links inside labels are at least 24 px high |
 | Photo viewer | `dialog.lightbox` | Gallery and industry images |
+| Industry entry | `.industry`; `.industry-plain` with `.industry-side` and `.industry-rel-rows` | Number, title, description, relations, two links, and the image in the second column from 800px. `.industry-plain` is the entry without an image (two of the eleven): the relations take the image's column as ruled rows, label beside value when the column is at least 30rem wide, and the links sit under the description. Below 800px both kinds stack in the same order |
 
 ## Layout rules
 
 - One `h1` per page; sections are numbered in order.
 - Main breakpoints at 700, 900, 1000 and 1100px, with larger type and a wider container from 1800 and 2400px. Checked at 320, 375, 390, 430, 768, 1024, 1280, 1440, 1920 and 2560px on every page.
 - Nothing depends on hover. Menus open on click and keyboard as well.
-- Text is never placed in an image by this build. (The eleven industry images inherited from the original site do contain text; see `ASSET-REGISTER.md`.)
+- Text is never placed in an image by this build. (The nine industry images inherited from the original site do contain text; see `ASSET-REGISTER.md`.)
 
 ## Imagery
 
 - Photographs are the company's own (gallery, leadership, team). They are resized and cropped only.
 - Diagrams are SVG drawn in `lib/diagrams.js` from words that are in the source.
-- This rebuild adds no generated or stock image, and every generated image from its earlier passes has been deleted. The eleven industry images inherited from the original site are of unknown origin (`ASSET-REGISTER.md` §3).
+- This rebuild adds no generated or stock image, and every generated image from its earlier passes has been deleted. The nine industry images inherited from the original site are of unknown origin; two more were removed by the owner's decision (`ASSET-REGISTER.md` §3).
 
 ## Motion (`90-motion.css`)
 

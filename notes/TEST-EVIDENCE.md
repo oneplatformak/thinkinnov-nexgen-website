@@ -2,7 +2,7 @@
 
 Every test run whose result is quoted anywhere in these notes, with its date, the commit it ran on, the command, where the output is saved and the result. Times are UTC, 25 November 2026. Nothing here was measured on the production host or on any device other than the build machine.
 
-Section 2 was rewritten after the independent verification (`REVIEW.md` §12): every suite was run again on the build that contains the fixes, and the outputs in `notes/test-output/` were replaced. Section 10 holds the runs of the new checks on the build the verifier saw, where they failed. The independent verifier re-ran all of the suites itself at `30c9b8a` and got the totals this register then stated.
+Section 2 was rewritten after the independent verification (`REVIEW.md` §12), and again after the owner's decision to remove two industry images (`REVIEW.md` §8, decision 22): every suite, Lighthouse and the screenshots were run again on the build without those images, and the outputs in `notes/test-output/` were replaced. Section 10 holds the runs of the new checks on the build the verifier saw, where they failed. The independent verifier re-ran all of the suites itself at `30c9b8a` and got the totals this register then stated.
 
 ## 1. Where the tests ran
 
@@ -21,30 +21,30 @@ Each output file begins with the time, the commit and the command, and ends with
 
 ## 2. Final runs
 
-The pages were last changed in commit `a590595`. `d0fcd00` changes the registers and documents only, and commits after it change documents, test outputs and screenshots (`git diff --stat a590595 HEAD -- docs ':!docs/README-DEPLOY.md' improved-src/pages improved-src/styles improved-src/scripts improved-src/content improved-src/i18n` is empty). So every run below is a run on the final pages. The commit named for a run is the one checked out when it ran.
+The pages were last changed in commit `b0cb123`, which removes the two industry images. `201c2a5` changes four figures in `docs/README-DEPLOY.md`, a text file that is uploaded with the site but is not a page; commits after it change documents, test outputs and screenshots (`git diff --stat b0cb123 HEAD -- docs ':!docs/README-DEPLOY.md' improved-src/pages improved-src/styles improved-src/scripts improved-src/content improved-src/i18n improved-src/lib` is empty). So every run below is a run on the final pages. The commit named for a run is the one checked out when it ran.
+
+The suites (runs 1 to 9) were run twice: at `b0cb123` from 15:33:31, before Lighthouse and the screenshots, and again at `201c2a5` after the deploy notes changed, so that the saved outputs are of the last commit that touches anything under `docs/`. Both runs gave the same totals; the outputs of the second are the ones saved. Nothing else was running during Lighthouse (run 10) this time, and nothing was rebuilt.
 
 | # | Time | Commit | Command | Output | Result |
 | --- | --- | --- | --- | --- | --- |
-| 1 | 15:09:44 | `d0fcd00` | `cd improved-src && node build.js --strict && node build.js --strict`, then `git status --short` on `docs/` and the four generated registers | `notes/test-output/build.txt` | 82 pages (41 per language); CSS 80.9 kB, JS 31.7 kB; 0 Japanese strings without a translation; no file changed by the second build. Pass |
-| 2 | 15:09:44 | `d0fcd00` | `python3 improved-src/check-site.py` | `notes/test-output/check-site.txt` | 85 HTML files; 4,095 internal links and assets resolved, 984 with a fragment; 0 failures in 18 categories. Pass |
-| 3 | 15:09:45 | `d0fcd00` | `python3 improved-src/tools/check-source.py` | `notes/test-output/check-source.txt` | 98 checks passed, 0 failed. Pass |
-| 4 | 15:09:45 | `d0fcd00` | `bash improved-src/tools/test-forms.sh` | `notes/test-output/forms.txt` | 62 passed, 0 failed. Pass |
-| 5 | 15:09:48 | `d0fcd00` | `node improved-src/tools/test-layout.js` | `notes/test-output/layout.txt` | 82 pages × 16 widths (320, 360, 375, 390, 430, 768, 900, 1000, 1024, 1100, 1180, 1280, 1366, 1440, 1920, 2560): overflow 0, off-screen 0, clipped 0, broken images 0, small targets 0, pages with broken words 0. Pass |
-| 6 | 15:10:23 | `d0fcd00` | `node improved-src/tools/test-interactions.js` | `notes/test-output/interactions.txt` | 427 passed, 0 failed. Pass |
-| 7 | 15:11:15 | `d0fcd00` | `STATIC=http://127.0.0.1:8812/ node improved-src/tools/test-interactions.js` | `notes/test-output/interactions-csp.txt` | The same 427 with the production Content-Security-Policy in force: 427 passed, 0 failed. Pass |
-| 8 | 15:12:08 | `d0fcd00` | `node improved-src/tools/test-axe.js` | `notes/test-output/axe.txt` | 82 pages × 2 widths = 164 scans; 60 rules passed somewhere; 0 violations; 36 results axe could not decide, all of one rule (see section 8). Pass |
-| 9 | 15:12:38 | `d0fcd00` | `cd improved-src && npm audit --omit=dev; npm audit; npm ls --all` | `notes/test-output/npm-audit.txt` | 0 known vulnerabilities. One direct dependency (BudouX 0.10.4, build time only) |
-| 10 | 14:58:06 to 15:08:48 | `a590595` | `npx lighthouse@12 http://127.0.0.1:<port>/<page> [--preset=desktop] --output=json`: 44 times against the server that compresses, then 10 times against one that does not | `notes/test-output/lighthouse.txt` | See below |
-| 11 | about 15:13 to 15:16:32 | `d0fcd00` | `NAMES=final QUALITY=50 node improved-src/tools/snap.js screenshots-after 390,1440 all` | `screenshots-after/` (164 JPEG) and `screenshots-after/index.json` | 82 pages × 2 widths. Horizontal overflow: no on 164. H1 count: 1 on 164. Images not loaded: 0 on 164 |
-
-Run 10 began after `a590595` was committed. While it ran, `node build.js` was run twice to regenerate the registers; that rewrites the files in `docs/` with identical content. No Lighthouse run reported an error and none shows an odd figure, but the two were not kept apart as they should have been.
+| 1 | 15:52:35 | `201c2a5` | `cd improved-src && node build.js --strict && node build.js --strict`, then `git status --short` on `docs/` and the four generated registers | `notes/test-output/build.txt` | 82 pages (41 per language); CSS 81.6 kB, JS 31.7 kB; 0 Japanese strings without a translation; no file changed by the second build. Pass |
+| 2 | 15:52:36 | `201c2a5` | `python3 improved-src/check-site.py` | `notes/test-output/check-site.txt` | 85 HTML files; 4,091 internal links and assets resolved, 984 with a fragment; 0 failures in 18 categories. Pass |
+| 3 | 15:52:36 | `201c2a5` | `python3 improved-src/tools/check-source.py` | `notes/test-output/check-source.txt` | 109 checks passed, 0 failed. Pass |
+| 4 | 15:52:37 | `201c2a5` | `bash improved-src/tools/test-forms.sh` | `notes/test-output/forms.txt` | 62 passed, 0 failed. Pass |
+| 5 | 15:52:40 | `201c2a5` | `node improved-src/tools/test-layout.js` | `notes/test-output/layout.txt` | 82 pages × 16 widths (320, 360, 375, 390, 430, 768, 900, 1000, 1024, 1100, 1180, 1280, 1366, 1440, 1920, 2560): overflow 0, off-screen 0, clipped 0, broken images 0, small targets 0, pages with broken words 0. Pass |
+| 6 | 15:53:15 | `201c2a5` | `node improved-src/tools/test-interactions.js` | `notes/test-output/interactions.txt` | 445 passed, 0 failed. Pass |
+| 7 | 15:54:08 | `201c2a5` | `STATIC=http://127.0.0.1:8812/ node improved-src/tools/test-interactions.js` | `notes/test-output/interactions-csp.txt` | The same 445 with the production Content-Security-Policy in force: 445 passed, 0 failed. Pass |
+| 8 | 15:55:00 | `201c2a5` | `node improved-src/tools/test-axe.js` | `notes/test-output/axe.txt` | 82 pages × 2 widths = 164 scans; 60 rules passed somewhere; 0 violations; 36 results axe could not decide, all of one rule (see section 8). Pass |
+| 9 | 15:55:30 | `201c2a5` | `cd improved-src && npm audit --omit=dev; npm audit; npm ls --all` | `notes/test-output/npm-audit.txt` | 0 known vulnerabilities. One direct dependency (BudouX 0.10.4, build time only) |
+| 10 | 15:41:02 to 15:51:48 | `b0cb123` | `npx lighthouse@12 http://127.0.0.1:<port>/<page> [--preset=desktop] --output=json`: 44 times against the server that compresses, then 10 times against one that does not | `notes/test-output/lighthouse.txt` | See below |
+| 11 | 15:36:54 to 15:40:19 | `b0cb123` | `NAMES=final QUALITY=50 node improved-src/tools/snap.js screenshots-after 390,1440 all` | `screenshots-after/` (164 JPEG) and `screenshots-after/index.json` | 82 pages × 2 widths. Horizontal overflow: no on 164. H1 count: 1 on 164. Images not loaded: 0 on 164. Of the 164 files, those of Industries and of the accessibility statement differ from the set before (the two pages whose content changed), with a few others that differ by rendering noise only |
 
 All browser commands need `NODE_PATH` set to a folder that holds puppeteer-core and axe-core.
 
 ### What each suite covers
 
 - **check-site** (run 2): one H1 per page; `lang`; duplicate ids; missing files; missing anchors; images without alt text or dimensions; title and description present and unique; canonical; `hreflang`; that every English page has a Japanese page and the reverse; anchors of the original site; `sitemap.xml`; tracker strings; resources loaded from other hosts.
-- **check-source** (run 3): the four testimonials and their attributions, word for word, against the original home page, in both languages; the 21 customer logos, same names and order; the 18 role titles against the original job data; where each partner wording appears, and that "Siemens Solution Partner" (and its Japanese form) appears exactly once on each home page and nowhere else; wording that must not appear; empty headings; star symbols; that structured data parses and contains none of the excluded types or fields; credential patterns in every tracked text file. Added after the independent verification: every drawn figure has a caption that begins "Conceptual diagram" or 概念図, and no figure has an axis or trend line; all 242 English sentences of the original (25 characters or longer, from its page data, job data and four HTML files) are on the English site with the same words in the same order, capitals and punctuation aside, with 12 listed exceptions each of which must still be needed; the 18 careers-list summaries match the original character for character; each "what our site says" line in the finder is a whole sentence shown elsewhere on the site.
+- **check-source** (run 3): the four testimonials and their attributions, word for word, against the original home page, in both languages; the 21 customer logos, same names and order; the industry images (the original lists eleven, I1 to I11, and all eleven are still in `staging-original/`; `docs/` holds exactly nine, the eleven less I2 and I11, which the owner decided to remove; on the English and the Japanese page there are eleven entries, entry n shows image n, and entries 2 and 11 show none and have no figure, caption, alt text or enlarge control but keep their title, relations and contact link; neither removed file is present or named in any file under `docs/`; none of the five figures the removed image printed is on any page); the 18 role titles against the original job data; where each partner wording appears, and that "Siemens Solution Partner" (and its Japanese form) appears exactly once on each home page and nowhere else; wording that must not appear; empty headings; star symbols; that structured data parses and contains none of the excluded types or fields; credential patterns in every tracked text file. Added after the independent verification: every drawn figure has a caption that begins "Conceptual diagram" or 概念図, and no figure has an axis or trend line; all 242 English sentences of the original (25 characters or longer, from its page data, job data and four HTML files) are on the English site with the same words in the same order, capitals and punctuation aside, with 12 listed exceptions each of which must still be needed; the 18 careers-list summaries match the original character for character; each "what our site says" line in the finder is a whole sentence shown elsewhere on the site.
 - **forms** (run 4): both PHP handlers. Accepts a valid enquiry and a valid application with a PDF. Refuses GET, missing or malformed fields, missing consent, unknown option values, a filled trap field, a submission inside three seconds, too many submissions, a missing or wrong or oversized CV. Ignores a recipient supplied by the sender. Reports a mail failure as a failure. Returns Japanese messages for a Japanese form. Accepts an application that leaves gender, current CTC and notice period empty. Refuses a zip of other files renamed `.docx`, and accepts and attaches a real `.docx`.
 - **layout** (run 5): at each width, whether the page is wider than the window, whether any element ends outside it, whether any text is cut off by its own box, whether any image failed to load, whether any link or control in the header, a form, an open dialog or the footer is smaller than 24 by 24 CSS pixels, and whether any word is split across two lines. For the last, every text node is examined: a Latin word or a product name of two words that continues on the next line counts, and so does a Japanese phrase of the build's own phrase list in headings, labels, buttons and other text of up to 30 characters. Each of the finder's sixteen results and each lifecycle tab is opened and checked as well. What it cannot tell: how the text breaks with other fonts than this machine's, and whether a Japanese paragraph longer than 30 characters breaks well.
 - **interactions** (runs 6 and 7), in both languages unless noted:
@@ -62,7 +62,7 @@ All browser commands need `NODE_PATH` set to a folder that holds puppeteer-core 
 | Contact form, including that the mail-failure message carries the address as a `mailto:` link | 15 per language |
 | Application form | 7 per language |
 | Career filters, including that the facts of every role are laid out the same way at 1440, 1280 and 1024 | 14 per language |
-| Photo viewer | 11 per language |
+| Photo viewer, and the industry entries: an industry image opens in the viewer; eleven entries, nine with an image; the two without one are entries 2 and 11; they have no figure, caption or enlarge control; every entry keeps its title, text, relations and both links; the index lists all eleven; at 1440 and 1024 an entry without an image has two columns with its relations exactly in the column the image has in the other entries, at 768 and 390 one column, and at all four nothing is left empty above or below its parts | 20 per language |
 | Search | 9 per language |
 | Pages with scripts turned off | 10 per language |
 | Language switch, and that no cookie is set | 11 |
@@ -72,7 +72,7 @@ All browser commands need `NODE_PATH` set to a folder that holds puppeteer-core 
 
 ### Lighthouse (run 10)
 
-Eleven pages, in English and Japanese, with the mobile and the desktop preset: home, the Teamcenter product page, Products, Solutions, Industries, Digital Transformation, Careers, one job page, Contact, About (the page with the photo gallery) and Search. Run after the last change to any of them.
+Eleven pages, in English and Japanese, with the mobile and the desktop preset: home, the Teamcenter product page, Products, Solutions, Industries, Digital Transformation, Careers, one job page, Contact, About (the page with the photo gallery) and Search. Run after the last change to any of them, with nothing else running on the machine.
 
 These are laboratory numbers from a server on the same machine, with Lighthouse's simulated throttling. They are not field data. The real host's response time will change them.
 
@@ -80,23 +80,25 @@ These are laboratory numbers from a server on the same machine, with Lighthouse'
 
 | | Mobile (22 runs) | Desktop (22 runs) |
 | --- | --- | --- |
-| Performance | 100 on 18, 99 on 4 | 100 on 22 |
+| Performance | 100 on 19, 99 on 3 | 100 on 22 |
 | Accessibility | 100 on 22 | 100 on 22 |
 | Best practices | 100 on 22 | 100 on 22 |
 | SEO | 100 on 22 | 100 on 22 |
-| Largest Contentful Paint | 1.7 s to 2.1 s | 0.4 s |
+| Largest Contentful Paint | 1.6 s to 2.1 s | 0.4 s to 0.5 s |
 | Cumulative Layout Shift | 0 | 0 |
-| Total Blocking Time | at most 100 ms | 0 ms |
+| Total Blocking Time | at most 60 ms | 0 ms |
 
 **With compression off** (`python3 -m http.server`, which also opens a new connection for every file), mobile preset, five pages in both languages (home, Products, Solutions, the Teamcenter product page, About), 10 runs:
 
 | | Mobile (10 runs) |
 | --- | --- |
-| Performance | 92 to 98; below 95 on 4 |
-| Largest Contentful Paint | 2.4 s to 3.2 s; over 2.5 s on 8 |
+| Performance | 93 to 97; below 95 on 2 |
+| Largest Contentful Paint | 2.6 s to 3.2 s; over 2.5 s on all 10 |
 | Cumulative Layout Shift | 0 |
 
-So the brief's performance targets (95 or more, LCP 2.5 s or less) are met in the laboratory only when the server compresses. `.htaccess` asks Apache to, inside `<IfModule mod_deflate.c>`, which does nothing where the module is absent. Whether the production host has it is not known; `docs/README-DEPLOY.md` §6 gives the check. The independent verifier measured 1.6 to 1.8 s with compression and 2.2 to 2.8 s without. The full tables are in the output file.
+So the brief's performance targets (95 or more, LCP 2.5 s or less) are met in the laboratory only when the server compresses. `.htaccess` asks Apache to, inside `<IfModule mod_deflate.c>`, which does nothing where the module is absent. Whether the production host has it is not known; `docs/README-DEPLOY.md` §6 gives the check. The independent verifier measured 1.6 to 1.8 s with compression and 2.2 to 2.8 s without. The runs of the round before, on the build with eleven industry images, gave 1.7 to 2.1 s and 2.4 to 3.2 s; laboratory figures move by this much from one run to the next.
+
+Industries, the page that changed, in both languages: performance, accessibility, best practices and SEO 100 with the phone and the desktop preset; LCP 1.7 s (English) and 1.9 s (Japanese) on the phone preset, 0.4 s on desktop; CLS 0. The full tables are in the output file.
 
 **Interaction to Next Paint was not measured.** It is a field metric: it needs real visitors and something to record them, and the site has neither. Total Blocking Time is the usual laboratory stand-in and is reported as that, not as INP.
 
@@ -139,7 +141,9 @@ Read from the earlier screenshot sets, before the independent verification:
 | Final set of the second review round | Home, English, 1440 (top) and 390 (first third); home, Japanese, 1440 (top); Teamcenter product page, English, 1440 (top) and Japanese, 390 (first half); Products, Japanese, 390 (first half); Solutions, English, 1440 (top); Digital Transformation, English, 1440 (maturity model and digital thread); Industries, English, 390 (first half); About, Japanese, 390 (first half, including the gallery); Apply, Japanese, 390 (whole page); Contact, Japanese, 1440 (whole page) |
 | Review round 2, one build earlier | Home, English and Japanese, 1440, whole page; home, English, 390; Teamcenter and Solid Edge product pages, 1440; Mendix and Teamcenter product pages, Japanese, 390; Digital Transformation, 1440, whole page, and Japanese, 390; Industries, 1440; Products, Japanese, 390; About, Japanese, 390; Apply, Japanese, 390; Search, 1440; Contact, 1440 |
 
-Not looked at on the final build: Industries, About, Behind the Brand, PLM, the privacy, accessibility, sitemap and 404 pages, and 17 of the 18 job pages. They were measured by the layout test at sixteen widths.
+Looked at after the two industry images were removed (25 November 2026), in Chrome at 390, 768, 1024, 1366 and 1440 in English and Japanese: Industries, entries 1 to 3 and entries 10 and 11, so that each entry without an image is seen beside entries that have one. The check of the live preview comes after the push and is reported to the coordinator; it is not recorded in this file.
+
+Not looked at on the final build: the rest of Industries, About, Behind the Brand, PLM, the privacy, accessibility, sitemap and 404 pages, and 17 of the 18 job pages. They were measured by the layout test at sixteen widths.
 
 ## 6. Defects the tests found in this round, and the retest
 
@@ -181,8 +185,8 @@ Every issue found is either fixed (section 6) or listed here.
 | Enquiries and applications are addressed to `info@thinkinnovnexgen.co.jp`, which the official package does not confirm | Open. Blocks launch. `REVIEW.md` §9, question 2 |
 | 36 results that axe-core could not decide, covering 222 elements. All are the colour-contrast rule. On six pages looked at more closely they were of two kinds: drop-down lists, whose arrow is a background image, so axe cannot work out the background (the stylesheet gives them #14181c text on white, about 17 to 1); and spans holding only a punctuation mark | Open. The contrast by the stylesheet is sufficient, but nobody has checked each element by eye |
 | On a Japanese page the file-upload control says "Choose File" in the visitor's browser language | Not fixed: the text belongs to the browser, and follows the visitor's own language setting |
-| The eleven industry images contain English text that is not translated and is described only briefly for screen readers | Open. Inherited images; needs the client (`REVIEW.md` §9) |
-| Two of those images carry a Siemens wordmark and unsourced figures about a Siemens product. No test here reads text inside a picture; the independent verifier found it by looking | Open, by the owner's decision. `REVIEW.md` §9, first question; `CLAIM-REGISTER.md` §6 |
+| The nine industry images contain English text that is not translated and is described only briefly for screen readers | Open. Inherited images; needs the client (`REVIEW.md` §9, question 19) |
+| Two of the original's eleven industry images carried a Siemens wordmark and unsourced figures about a Siemens product. No test here reads text inside a picture; the independent verifier found it by looking | **Closed: both images removed on 25 November 2026 by the owner's decision** (`b0cb123`). `check-source.py` fails if either comes back. The author looked at the nine that remain and saw neither a Siemens wordmark nor a printed figure; that is a reading by eye, not a test. `REVIEW.md` §8, decision 22; `ASSET-REGISTER.md` §3 |
 | Japanese paragraphs longer than 30 characters break wherever the browser breaks them, which can be inside a word | Accepted. Headings, labels, buttons and short text break only between phrases |
 | The broken-word check depends on the fonts of the machine it runs on | Accepted. A different font changes line lengths; the check was also run at every 20 px from 320 to 2560 when the fix was made, with 0 found |
 | A CV upload is checked by extension, detected type, signature and, for `.docx`, its required parts. It is not scanned for viruses or macros | Accepted. Stated in the deploy notes |
@@ -224,3 +228,13 @@ Each new check was run on the build as the verifier saw it, or on the build just
 | Form test, a zip renamed `.docx` | Before: accepted (the independent verifier's finding; not re-run here before the fix) | Refused with `file_type`; a real `.docx` accepted and attached | `forms.txt` |
 
 The "before" run of the careers check was not saved to a file: it was seen to fail in the terminal, which is weaker evidence than a file. The zip-as-`.docx` case was not run here before the fix at all; that it was accepted is the independent verifier's finding and follows from the earlier code, which checked only the zip signature.
+
+## 11. Checks written for the owner's decision on the industry images, before and after
+
+| Check | Before | After | Files |
+| --- | --- | --- | --- |
+| `check-source`, industry images: nine in `docs/`, entries 2 and 11 without one, neither removed file present or named under `docs/` | On the build at `4ec3c0f`, which still had both images, with the check as now written: **fail**, 6 of the 11 new checks (both files present and named on both pages; eleven images, not nine) | Final build: 11 of 11; 109 checks in all, 0 failed | `test-output/industries-images-before.txt`, `check-source.txt` |
+| The same check, with one of the removed files put back; with another image taken away; with a removed file name written into a page as a comment | Each tried once by hand on the build without the images: **fail** each time, on the check meant to catch it. Seen in the terminal, not saved to a file | — | — |
+| Interaction test, eleven entries, nine images, the two without one complete at four widths | Not run on the earlier build | Final build: 20 of 20 in each language | `interactions.txt` |
+
+What no check does: read what a picture says. That the nine remaining images carry no Siemens wordmark and no printed figure is the author's reading of them (`ASSET-REGISTER.md` §3).

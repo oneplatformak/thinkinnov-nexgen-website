@@ -13,7 +13,7 @@ The six labels are the brief's (`notes/MASTER_PROMPT.txt`, L2497–2500 and L506
 
 An item can carry more than one label. "Verified" never means approved by the client, tested in a browser other than Chrome, or read by a native Japanese speaker. An independent verifier checked the build at commit `30c9b8a` on 25 November 2026 (`notes/REVIEW.md` §12). The fixes made since then have been checked by the author only.
 
-Tests named below: **site** = `improved-src/check-site.py`; **source** = `tools/check-source.py`; **layout** = `tools/test-layout.js` (sixteen widths; overflow, clipped text, broken images, controls under 24 px, words broken across lines); **interactions** = `tools/test-interactions.js` (427 checks); **forms** = `tools/test-forms.sh` (62 checks); **axe** = `tools/test-axe.js`; **Lighthouse** = Lighthouse 12, 44 local runs with compression on and 10 with it off. Every page in the table passes site, layout and axe, so those three are not repeated on each row.
+Tests named below: **site** = `improved-src/check-site.py`; **source** = `tools/check-source.py`; **layout** = `tools/test-layout.js` (sixteen widths; overflow, clipped text, broken images, controls under 24 px, words broken across lines); **interactions** = `tools/test-interactions.js` (445 checks); **forms** = `tools/test-forms.sh` (62 checks); **axe** = `tools/test-axe.js`; **Lighthouse** = Lighthouse 12, 44 local runs with compression on and 10 with it off. Every page in the table passes site, layout and axe, so those three are not repeated on each row.
 
 ## Pages
 
@@ -30,7 +30,7 @@ Each exists in English and at the same path under `/ja/`: 41 pages per language.
 | Teamcenter `products/teamcenter.html` | Verified (interactions: product pages, journey 1; Lighthouse) · Requires Business Approval | Q17, Q18. One sentence from Siemens' site, logged in `CLAIM-REGISTER.md` §1 |
 | NX, Solid Edge, Capital, Tecnomatix, Mendix `products/*.html` | Tested (interactions: product pages) · Requires Business Approval | Same template as Teamcenter. Solid Edge and Mendix were looked at one build earlier. Q17, Q18 |
 | Solutions `solutions.html` | Verified (interactions: finder, journeys; Lighthouse) · Requires Business Approval | Fifteen solutions and the finder. Q18 |
-| Industries `industries.html` | Verified (interactions: photo viewer, journeys; Lighthouse) · Requires Business Approval | First question in §9 ("Q0"): two of the eleven inherited images carry a Siemens wordmark and unsourced figures about a Siemens product; left as they are by the owner's decision. Q19: origin unknown; they contain untranslated English text |
+| Industries `industries.html` | Verified (interactions: photo viewer, journeys; Lighthouse) · Requires Business Approval | Eleven entries, nine with the original's image. The images of entries 2 and 11 (a Siemens wordmark; unsourced figures about a Siemens product) were removed on 25 November 2026 by the owner's decision, and those two entries use the layout without an image (`REVIEW.md` §8, decision 22). Q19: the origin and rights of the nine that remain are unknown; they contain untranslated English text |
 | Behind the Brand `behind-the-brand.html` | Tested · Requires Business Approval | Q20. Not in the Lighthouse set |
 | Careers `careers.html` | Tested (interactions: career filters; Lighthouse) · Requires Business Approval | Q4 whether the roles are open |
 | 18 role pages `careers/*.html` | Tested (source: titles match the original; Lighthouse on one) · Requires Business Approval | One template. Q4 |
@@ -66,7 +66,7 @@ Each exists in English and at the same path under `/ja/`: 41 pages per language.
 | Product pages: lifecycle position, related solutions, needs, industries and roles | Tested (interactions: 28 per language) | |
 | Search in both languages, built at build time, run in the browser | Tested (interactions: 9 per language) | Nothing is sent to a server |
 | Career filters (discipline, experience, keyword); every role row laid out alike | Tested (interactions: 14 per language) | Discipline and the experience ranges are this site's grouping, and the page says so |
-| Photo viewer for gallery and industry images | Tested (interactions: 11 per language) | |
+| Photo viewer for gallery and industry images | Tested (interactions: 20 per language, including eleven industry entries, nine images, and the two entries without one at four widths) | |
 | Pages with scripts turned off | Tested (interactions: 10 per language) | |
 | Contact form in the browser: messages tied to fields, context from links, success only on the server's confirmation, email fallback on a static host | Verified (interactions: 15 per language) | |
 | Application form in the browser, with gender, current and expected CTC and notice period optional | Verified (interactions: 7 per language) · Requires Business Approval | Q21 |
@@ -87,7 +87,8 @@ Each exists in English and at the same path under `/ja/`: 41 pages per language.
 | Automated accessibility scan | Tested (axe: 0 violations on 164 scans; 36 colour-contrast results undecided) | Not a conformance claim |
 | Performance, accessibility, best-practice and SEO audits | Tested (Lighthouse: 11 pages × 2 languages × 2 presets with compression on; 5 pages × 2 languages, phone preset, with it off) | Lab numbers. The performance targets are met only with compression on, and whether the host compresses is unknown |
 | No tracker, nothing loaded from another host | Tested (site: 0 and 0; interactions under the production CSP) | |
-| Testimonials, logos and role titles identical to the original; partner wording only where the source has it | Tested (source: 98 checks) · Requires Business Approval | Q3, Q7 |
+| Testimonials, logos and role titles identical to the original; partner wording only where the source has it | Tested (source: 109 checks) · Requires Business Approval | Q3, Q7 |
+| Industry images: the original's eleven less the two removed by the owner's decision; neither removed file present or named in `docs/`; none of the five figures on any page | Tested (source) · Requires Business Approval | Q19: origin and rights of the nine that remain |
 | Claim, customer, asset and Japanese registers | Implemented · Requires Business Approval | Written by the build |
 | Acceptance mapping, traceability, test evidence, executive review | Implemented | `notes/` |
 | Interaction to Next Paint | Requires External Integration | Field data only |

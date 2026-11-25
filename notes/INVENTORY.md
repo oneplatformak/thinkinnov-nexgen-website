@@ -12,7 +12,7 @@ Mirror: `staging-original/thinkinnov-nexgen/` (69 files, ~40 MB). Note: the stag
 | page.html?page=digital-transformation | | digital-transformation.html |
 | page.html?page=products | Siemens product cards | products.html |
 | page.html?page=solutions | solution cards | solutions.html |
-| page.html?page=industries | 11 industry cards with Teamcenter X infographics I1–I11 | industries.html (infographics kept, opened in lightbox) |
+| page.html?page=industries | 11 industry cards with Teamcenter X infographics I1–I11 | industries.html (all 11 cards kept; nine infographics kept and opened in lightbox; I2 and I11 removed by the owner's decision, 25 November 2026) |
 | page.html?page=behind-the-brand | #problem (4), #team (4 people) | behind-the-brand.html |
 | page.html?page=careers | intro, 18 job cards | careers.html + careers/01..18-*.html |
 | jobdetails.html?id=N | job details from assets/jobs.js | careers/NN-slug.html |
