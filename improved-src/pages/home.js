@@ -24,7 +24,7 @@ function hero() {
         <dl class="hero-facts">
           <div><dt>Head office</dt><dd>Harumi, Tokyo</dd></div>
           <div><dt>Branch offices</dt><dd><span>Nagaoka</span> · <span>Coimbatore</span> · <span>Chennai</span></dd></div>
-          <div><dt>Siemens portfolio</dt><dd>${content.products.map((p) => verbatim(p.name)).join(" · ")}</dd></div>
+          <div><dt>Siemens products</dt><dd>${content.products.map((p) => verbatim(p.name)).join(" · ")}</dd></div>
         </dl>
       </div>
       ${diagrams.heroLoop()}

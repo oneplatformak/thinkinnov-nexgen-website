@@ -72,7 +72,7 @@ module.exports = {
     "Siemens products at this stage": "この段階に関連するSiemens製品",
     "Related solutions": "関連ソリューション",
     "Related on this site": "サイト内の関連情報",
-    "Not tied to a single stage": "特定の段階に限定されないもの",
+    "Not tied to a single stage": "特定の段階に限定されない",
     "Structured Ideation in the NPD process": "新製品開発プロセスの「体系的なアイデア創出」",
     "Collaborative Design in the NPD process": "新製品開発プロセスの「協調設計」",
     "Real-Time Tracking in the NPD process": "新製品開発プロセスの「リアルタイム追跡」",

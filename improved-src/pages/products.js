@@ -23,7 +23,7 @@ function product(p, i) {
   const href = site.page(content.productPath(p.key));
   const rows = [
     `<div><dt>Product family</dt><dd>${esc(p.category)}</dd></div>`,
-    `<div><dt>Lifecycle stage</dt><dd>${esc(stageNames(p.key))}</dd></div>`,
+    `<div><dt data-phrase>Lifecycle stage</dt><dd data-phrase>${esc(stageNames(p.key))}</dd></div>`,
   ];
   if (expertise) rows.push(`<div><dt>Our expertise</dt><dd>${esc(expertise)}</dd></div>`);
   return `<section class="product" id="${p.key}">

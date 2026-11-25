@@ -322,7 +322,7 @@ The build does not hide gaps: it reports every English string on a Japanese page
 | Siemens products at this stage | この段階に関連するSiemens製品 | index.html |
 | Related solutions | 関連ソリューション | index.html, industries.html, products.html and 4 more |
 | Related on this site | サイト内の関連情報 | index.html, industries.html, solutions.html |
-| Not tied to a single stage | 特定の段階に限定されないもの | index.html, products.html, products/mendix.html, solutions.html |
+| Not tied to a single stage | 特定の段階に限定されない | index.html, products.html, products/mendix.html, solutions.html |
 | Structured Ideation in the NPD process | 新製品開発プロセスの「体系的なアイデア創出」 | index.html |
 | Collaborative Design in the NPD process | 新製品開発プロセスの「協調設計」 | index.html |
 | Real-Time Tracking in the NPD process | 新製品開発プロセスの「リアルタイム追跡」 | solutions.html |
@@ -561,7 +561,7 @@ The build does not hide gaps: it reports every English string on a Japanese page
 | Catalogue | ソリューション一覧 | (not used) |
 | Business needs | 関連する課題 | products/mendix.html, products/nx.html, products/teamcenter.html and 2 more |
 | Siemens product | Siemens製品 | solutions.html |
-| Siemens products | Siemens製品 | solutions.html |
+| Siemens products | Siemens製品 | index.html, solutions.html |
 | Enquire about this solution | このソリューションについて問い合わせる | solutions.html |
 | Product data and reuse | 製品データと再利用 | solutions.html |
 | Quality and verification | 品質と検証 | solutions.html |

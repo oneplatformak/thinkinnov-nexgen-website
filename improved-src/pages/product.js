@@ -22,7 +22,7 @@ function facts(p) {
     ["Maker", "Siemens"],
   ];
   if (content.productExpertise[p.key]) rows.push(["Our expertise", content.productExpertise[p.key]]);
-  return `<dl class="facts facts-compact">${rows.map(([k, v]) => `<div><dt>${esc(k)}</dt><dd>${esc(v)}</dd></div>`).join("")}</dl>`;
+  return `<dl class="facts facts-compact">${rows.map(([k, v]) => `<div><dt data-phrase>${esc(k)}</dt><dd data-phrase>${esc(v)}</dd></div>`).join("")}</dl>`;
 }
 
 function overview(p) {
