@@ -58,7 +58,7 @@ Paper and ink. A warm off-white page, near-black text, hairline rules, square co
 
 - Photographs are the company's own (gallery, leadership, team). They are resized and cropped only.
 - Diagrams are SVG drawn in `lib/diagrams.js` from words that are in the source.
-- No generated or stock image is used.
+- This rebuild adds no generated or stock image, and every generated image from its earlier passes has been deleted. The eleven industry images inherited from the original site are of unknown origin (`ASSET-REGISTER.md` §3).
 
 ## Motion (`90-motion.css`)
 

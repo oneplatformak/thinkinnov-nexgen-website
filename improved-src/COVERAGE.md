@@ -122,7 +122,7 @@ Anchors that existed in the previous pass of this repo (`#home`, `#about`, `#pro
 | — | Two more gallery photographs from the official Nexware package (see the top of this file) |
 | I1–I11 industry infographics | `assets/img/industries/infographic-XX.webp` |
 | Stock-style illustrations on staging (`about-digital-engineering.png`, `hero-collaboration.jpeg`, `mendix-image.png`, `PLM_bg.png`, `seimens_partner.png`) | Not used. They are generic illustrations, not pictures of the company; `seimens_partner.png` is a globe-and-city illustration with no Siemens mark. Listed in `notes/ASSET-REGISTER.md` |
-| Generated visuals added in an earlier pass | All deleted. The site now contains no generated image |
+| Generated visuals added in an earlier pass | All deleted. Nothing generated for this rebuild is on the site. (The eleven industry images come from the original site and their origin is unknown: `notes/ASSET-REGISTER.md` §3) |
 | Favicon | ico, 32px PNG, 180px touch icon |
 | Fonts (referenced but never loaded on staging) | Manrope and Inter, self-hosted WOFF2 |
 
