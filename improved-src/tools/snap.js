@@ -3,6 +3,9 @@
  * Development screenshots.
  *   node improved-src/tools/snap.js <outDir> <width[,width]> <page> [page...]
  *   NAMES=final node improved-src/tools/snap.js screenshots-after 390,1440 all
+ * With "all", stale .jpg files in <outDir> are removed first and an index.json
+ * is written: page, language, width, height, file, horizontal overflow, H1 count,
+ * images not loaded.
  * Needs puppeteer-core and a local Chrome; serves nothing itself (set BASE).
  * Full-page JPEGs; motion is disabled so that every element is in its final state.
  */
@@ -21,6 +24,9 @@ const fullPage = process.env.FOLD !== "1";
 
 (async () => {
   fs.mkdirSync(outDir, { recursive: true });
+  const all = pageArgs[0] === "all";
+  if (all) fs.readdirSync(outDir).filter((f) => /\.(jpg|json)$/.test(f)).forEach((f) => fs.unlinkSync(path.join(outDir, f)));
+  const index = [];
   const browser = await puppeteer.launch({
     executablePath: process.env.CHROME || "/usr/bin/google-chrome",
     headless: "new",
@@ -55,10 +61,22 @@ const fullPage = process.env.FOLD !== "1";
           await page.setViewport({ width, height, deviceScaleFactor: 1 });
         }
       }
+      // Images are lazy and decode asynchronously; without this a few are still blank when the picture is taken.
+      await page.evaluate(async () => {
+        document.querySelectorAll("img[loading=lazy]").forEach((img) => { img.loading = "eager"; });
+        await Promise.all(Array.from(document.images).map((img) => (img.complete ? null : new Promise((r) => { img.onload = img.onerror = r; }))));
+        await Promise.all(Array.from(document.images).map((img) => img.decode().catch(() => null)));
+        await new Promise((r) => requestAnimationFrame(() => requestAnimationFrame(r)));
+      });
       await page.screenshot({ path: path.join(outDir, name), type: "jpeg", quality: Number(process.env.QUALITY || 80), captureBeyondViewport: false });
-      console.log(`${name} overflowX=${overflow}`);
+      const h1 = await page.evaluate(() => document.querySelectorAll("h1").length);
+      const notLoaded = await page.evaluate(() => Array.from(document.querySelectorAll("img[src]")).filter((img) => !img.complete || img.naturalWidth === 0).length);
+      const height = await page.evaluate(() => document.documentElement.scrollHeight);
+      index.push({ page: file.replace(/^ja\//, ""), language: file.startsWith("ja/") ? "ja" : "en", width, height, file: name, horizontalOverflow: overflow > 0 ? "yes" : "no", h1Count: h1, imagesNotLoaded: notLoaded });
+      console.log(`${name} overflowX=${overflow} h1=${h1} imagesNotLoaded=${notLoaded}`);
       await page.close();
     }
   }
   await browser.close();
+  if (all) fs.writeFileSync(path.join(outDir, "index.json"), JSON.stringify(index, null, 1) + "\n");
 })();
