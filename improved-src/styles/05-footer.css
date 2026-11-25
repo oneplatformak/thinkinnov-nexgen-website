@@ -4,8 +4,9 @@
 .site-footer a:hover { text-decoration: underline; }
 .footer-top { display: grid; gap: var(--s-7) var(--s-6); grid-template-columns: repeat(2, minmax(0, 1fr)); }
 .footer-brand, .footer-contact { grid-column: 1 / -1; }
-/* The logo is dark artwork: it sits on a paper plate rather than being recoloured. */
-.footer-logo { display: inline-block; padding: 0.75rem 1rem; background: var(--paper); }
+/* The logo is dark artwork and a brand asset: it is not recoloured or redrawn. It sits on a
+   paper plate with even margins until the client supplies a version for dark backgrounds. */
+.footer-logo { display: inline-block; padding: 1rem 1.25rem; border-radius: var(--radius); background: var(--paper); line-height: 0; }
 .footer-logo img { width: auto; height: 3.5rem; }
 .footer-tagline { margin-top: var(--s-5); max-width: 26rem; line-height: 1.6; }
 .footer-title { margin-bottom: var(--s-4); padding-bottom: 0.6rem; border-bottom: 1px solid var(--dark-rule); font-family: var(--font-display); font-size: var(--t-xs); font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; color: var(--on-dark-2); }
