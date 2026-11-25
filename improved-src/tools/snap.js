@@ -36,7 +36,17 @@ const fullPage = process.env.FOLD !== "1";
       });
       const overflow = await page.evaluate(() => document.documentElement.scrollWidth - document.documentElement.clientWidth);
       const name = (rel.split("#")[0] || "index.html").replace(/\.html$/, "").replace(/\//g, "_") + `_${width}.jpg`;
-      await page.screenshot({ path: path.join(outDir, name), fullPage, type: "jpeg", quality: 78 });
+      if (fullPage) {
+        // Chrome's own full-page capture sometimes re-lays out very tall pages with
+        // viewport units at zero. Growing the viewport to the page height and taking
+        // an ordinary screenshot is deterministic.
+        for (let i = 0; i < 3; i += 1) {
+          const height = await page.evaluate(() => document.documentElement.scrollHeight);
+          if (page.viewport().height === height) break;
+          await page.setViewport({ width, height, deviceScaleFactor: 1 });
+        }
+      }
+      await page.screenshot({ path: path.join(outDir, name), type: "jpeg", quality: Number(process.env.QUALITY || 80), captureBeyondViewport: false });
       console.log(`${name} overflowX=${overflow}`);
       await page.close();
     }

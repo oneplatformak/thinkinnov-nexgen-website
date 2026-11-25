@@ -22,11 +22,23 @@ try {
 
 const HAS_JA = /[\u3040-\u30ff\u4e00-\u9fff]/;
 
+/**
+ * BudouX keeps a compound such as "エンドツーエンドPLMソリューションです。" as one
+ * phrase, which is wider than a narrow column and then breaks mid-word. In long
+ * phrases only, a break is also allowed where a katakana word meets a Latin one.
+ */
+function loosen(phrase) {
+  if (phrase.length < 12) return phrase;
+  return phrase
+    .replace(/([\u30a1-\u30fc]{4,})(?=[A-Za-z]{2,})/g, "$1<wbr>")
+    .replace(/([A-Za-z]{2,})(?=[\u30a1-\u30fc]{4,})/g, "$1<wbr>");
+}
+
 function split(text) {
   if (!parser || !HAS_JA.test(text) || text.length < 9) return text;
   return text
     .split(/(&[a-z#0-9]+;)/)
-    .map((part) => (part.startsWith("&") ? part : parser.parse(part).join("<wbr>")))
+    .map((part) => (part.startsWith("&") ? part : parser.parse(part).map(loosen).join("<wbr>")))
     .join("");
 }
 
