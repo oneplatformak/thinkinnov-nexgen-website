@@ -4,7 +4,9 @@ This folder is the finished site. **It has not been deployed.** Nothing in this 
 
 ## Before launch
 
-Read `notes/REVIEW.md` in the repository first. It lists the questions only the owner can answer (legal name, email domain, Siemens partner wording, whether the 18 roles are open, native Japanese review, legal review of the privacy notice). The site should not go live until the owner has seen them.
+Read `notes/REVIEW.md` in the repository first. It lists the questions only the owner can answer (legal name, email domain, whether the 18 roles are open, permission for the customer logos and photographs, native Japanese review, legal review of the privacy notice). The site should not go live until the owner has seen them.
+
+**The one that stops the forms working: the mailbox.** The pages and both forms use `info@thinkinnovnexgen.co.jp`. The original site, in both the crawl and the developer's official files, shows only `info@thinkinnovnexgen.com`. If the `.co.jp` mailbox does not exist, every enquiry and application is lost without anyone noticing. Confirm the address, and create the mailbox, before launch (section 3).
 
 ## 1. Requirements on the host
 
@@ -15,7 +17,7 @@ Read `notes/REVIEW.md` in the repository first. It lists the questions only the 
 
 ## 2. Upload
 
-1. Upload the **contents** of this folder to the document root (`public_html`), keeping the folder structure. `index.html`, `.htaccess`, `contact.php`, `apply.php`, `inc/`, `assets/`, `ja/` and `careers/` must sit at the root.
+1. Upload the **contents** of this folder to the document root (`public_html`), keeping the folder structure. `index.html`, `.htaccess`, `contact.php`, `apply.php`, `inc/`, `assets/`, `ja/`, `careers/` and `products/` must sit at the root.
 2. Make sure `.htaccess` was uploaded (turn on “show hidden files” in File Manager).
 3. `README-DEPLOY.md` does not need to be uploaded.
 
@@ -31,13 +33,13 @@ inc/form-lib.php   TIN_RECIPIENT = info@thinkinnovnexgen.co.jp
 - Nothing a visitor submits can change the recipient or add mail headers.
 - `TIN_FROM` must be an address on the site's own domain so that SPF and DKIM pass. Create the mailbox or alias in cPanel if it does not exist.
 - The address shown on the pages comes from `improved-src/config.js`. If the recipient changes, change both and rebuild.
-- Staging used `info@thinkinnovnexgen.com`; this site uses `.co.jp`. Which is correct is an open question for the owner.
+- The original site used `info@thinkinnovnexgen.com`; this site uses `.co.jp`. Which is correct is an open question for the owner, and the forms deliver nowhere if the `.co.jp` mailbox does not exist.
 
 ## 4. What the forms do
 
 | | Contact (`contact.php`) | Application (`apply.php`) |
 | --- | --- | --- |
-| Accepts | Enquiry type, optional topic, name, company, email, phone, message, consent, and the business need, industry and company size passed from the finder | Role, the 15 fields of the original form, consent, one CV file |
+| Accepts | Enquiry type, optional topic, name, company, email, phone, message, consent, and the business need, industry and company size carried from the finder, an industry or a business-size link | Role, the fields of the original form, consent, one CV file. Gender, current CTC, expected CTC and notice period are optional and are mailed as "not provided" when left blank |
 | Whitelists | Type, topic, need, industry and size must match `inc/enquiry-options.php` (written by the build from the site's content) | Role must be one of the 18 listed; only the listed fields are read |
 | File | none | PDF, DOC or DOCX, 5 MB or smaller; checked by extension, detected type and file signature; attached under a generated name |
 | Abuse controls | Hidden honeypot field, 3-second minimum, 8 submissions per 10 minutes per sender | Same, 6 per 10 minutes |
@@ -45,7 +47,7 @@ inc/form-lib.php   TIN_RECIPIENT = info@thinkinnovnexgen.co.jp
 
 The page shows “sent” only when the server answers that the mail was handed to the mail system. Any other answer shows an error, and if there is no working handler at all (GitHub Pages) the page offers a pre-filled email link instead. With scripts switched off the forms still work and the server returns a small result page in the visitor's language.
 
-**Test after upload** with a real submission of each form, in both languages, and check that the message and the CV arrive. This could not be tested before launch because it needs the real mail system; locally the handlers were tested against a mail program that writes to a file (`improved-src/tools/test-forms.sh`, 54 checks).
+**Test after upload** with a real submission of each form, in both languages, and check that the message and the CV arrive. This could not be tested before launch because it needs the real mail system; locally the handlers were tested against a mail program that writes to a file (`improved-src/tools/test-forms.sh`, 58 checks).
 
 ## 5. What `.htaccess` does
 
@@ -58,17 +60,22 @@ The page shows “sent” only when the server answers that the mail was handed 
 
 `.htaccess` was written for Apache 2.4 and has **not** been run on a real Apache server here. The redirects and the 404 page should be checked after upload. `Strict-Transport-Security` is deliberately not set; add it once HTTPS is confirmed to be permanent.
 
-## 6. GitHub Pages preview
+## 6. Search
 
-Pages serves this folder as static files. `.htaccess` and PHP are ignored there: the forms use the email-link fallback and old URLs are handled by the stub pages.
+`search.html` reads `assets/search-en.json` or `assets/search-ja.json`, which the build writes. Nothing is sent to the server and there is nothing to configure. If a page is added or renamed, rebuild so that the index follows.
 
-## 7. Rebuilding
+## 7. GitHub Pages preview
+
+Pages serves this folder as static files. `.htaccess` and PHP are ignored there: the forms use the email-link fallback and old URLs are handled by the stub pages (`page.html`, `jobdetails.html`, `application.html`).
+
+## 8. Rebuilding
 
 ```bash
 cd improved-src
 npm ci
 node build.js
 python3 check-site.py
+python3 tools/check-source.py
 ```
 
 Company details are in `improved-src/config.js`; all text is in `improved-src/content/`; Japanese is in `improved-src/i18n/`. See the README at the top of the repository.
