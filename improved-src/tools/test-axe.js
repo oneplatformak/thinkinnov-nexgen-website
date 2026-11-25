@@ -29,6 +29,7 @@ function pages(dir, prefix = "") {
   await page.emulateMediaFeatures([{ name: "prefers-reduced-motion", value: "reduce" }]);
   let violations = 0, incomplete = 0, checks = 0;
   const rules = new Set();
+  const undecided = new Map();
   for (const width of [390, 1440]) {
     await page.setViewport({ width, height: 900 });
     for (const rel of list) {
@@ -38,6 +39,14 @@ function pages(dir, prefix = "") {
       checks += 1;
       result.passes.forEach((p) => rules.add(p.id));
       incomplete += result.incomplete.length;
+      for (const item of result.incomplete) {
+        const key = `${item.id}: ${item.help}`;
+        if (!undecided.has(key)) undecided.set(key, { scans: 0, nodes: 0, examples: new Set() });
+        const entry = undecided.get(key);
+        entry.scans += 1;
+        entry.nodes += item.nodes.length;
+        if (entry.examples.size < 3) entry.examples.add(`${rel} @${width}: ${item.nodes[0].target.join(" ")}`);
+      }
       for (const v of result.violations) {
         violations += v.nodes.length;
         console.log(`VIOLATION ${rel} @${width}: ${v.id} (${v.impact}) x${v.nodes.length}: ${v.help}`);
@@ -48,6 +57,10 @@ function pages(dir, prefix = "") {
   await browser.close();
   console.log(`\naxe-core ${require("axe-core/package.json").version}: ${list.length} pages x 2 widths = ${checks} scans, ${rules.size} rules passed somewhere`);
   console.log(`Violations: ${violations}. Items axe could not decide and left for a person: ${incomplete}`);
+  for (const [key, entry] of undecided) {
+    console.log(`UNDECIDED ${key}: ${entry.scans} scans, ${entry.nodes} elements`);
+    entry.examples.forEach((example) => console.log(`    ${example}`));
+  }
   console.log(violations ? "FAIL" : "PASS");
   process.exit(violations ? 1 : 0);
 })();
