@@ -6,7 +6,9 @@ The brief asks for three reviews of the finished site. They overlap, so they are
 - **Part C §35, "Multi-Persona Final Review"** (L4761–4865): forty areas scored from 0 to 100 "based on documented criteria". "Do not assign arbitrary perfect scores."
 - **Part A §17, "Multiple Independent Expert Reviews"** (L543–578): twelve viewpoints, five of which are not in Part B's list (investor, psychologist, cybersecurity expert, accessibility expert, first-time non-technical visitor).
 
-**What this is.** The builder of the site reading it as each of these people would, using the screenshots, the test outputs and the source. **What it is not.** It is not approval by the client, by Siemens or by a native Japanese reader, and no such person took part. Where a judgement really belongs to one of them, the score is capped and the cap is stated.
+**What this is.** The builder of the site reading it as each of these people would, using the screenshots, the test outputs and the source. **What it is not.** It is not approval by the client, by Siemens or by a native Japanese reader, and no such person took part.
+
+**Since then an independent verifier has checked the site** (25 November 2026, at commit `30c9b8a`). It scored six areas at least ten points lower than this review did, and it was right about the cause: the design scores rested on a layout test that could not see the faults that were there. Section 7 records its scores, what was fixed and the scores now. Sections 2 to 6 are left as they were written, as the record of the two rounds, apart from one correction marked in the table. Where a judgement really belongs to one of them, the score is capped and the cap is stated.
 
 Two rounds were run on 25 November 2026:
 
@@ -122,7 +124,7 @@ The other reviewers' answers are unchanged, because what they found wanting is i
 
 ### Scores
 
-R1 and R2 are the two rounds. "Why not higher" is the reason the score stops where it does.
+R1 and R2 are the two rounds. "Why not higher" is the reason the score stops where it does. The evidence columns give the test totals as they were at round 2. Nine of these scores were changed after the independent verification; the current ones are in section 7.
 
 #### Business
 
@@ -139,7 +141,7 @@ R1 and R2 are the two rounds. "Why not higher" is the reason the score stops whe
 | Area | Criterion | R1 | R2 | Evidence | Why not higher |
 | --- | --- | --- | --- | --- | --- |
 | Language quality | Natural, professional Japanese, reviewed by a native reader | 60 | 62 | 0 untranslated strings; register of every string; awkward label breaks fixed in round 2 | No native review (cap 75); written by a machine and likely to read as such in places |
-| Professionalism | Nothing careless: consistent terms, no mixed-language leftovers, correct forms of address | 78 | 80 | Language-parity check; です・ます throughout; product names in Latin script | The same cap applies to tone |
+| Professionalism | Nothing careless: consistent terms, no mixed-language leftovers, correct forms of address | 75 | 75 | Language-parity check; です・ます throughout; product names in Latin script | The cap of 75 applies. **Corrected:** this row was recorded as 78 and 80, both above the cap that section 1 sets for anything depending on the unreviewed Japanese. The independent verifier found the error. Score after the verification: 72 (section 7) |
 | Trustworthiness | The facts a Japanese buyer checks first are present and confirmed | 66 | 66 | 会社概要, representative, address in Japanese form, Tokyo telephone | Registered name and titles unconfirmed; no 沿革 |
 | Technical accuracy | PLM and product terms are the ones used in Japanese industry | 72 | 75 | Terms follow the original site's Japanese where it had any; trademark sentence corrected | No specialist has read it |
 | Cultural appropriateness | Structure and manner fit a Japanese corporate site | 68 | 68 | Company information first-class in the menu; restrained design; no superlatives | No message from the representative, no history; delivery from India is implied, not explained |
@@ -199,7 +201,7 @@ R1 and R2 are the two rounds. "Why not higher" is the reason the score stops whe
 | Browser compatibility | Works in Chrome, Safari, Edge and Firefox | 40 | 40 | Chrome only | The other three were not available |
 | Integration reliability | Mail arrives; nothing else is integrated | 50 | 50 | Handlers hand a correct message to a stand-in for `sendmail` | No real delivery; the mailbox may not exist |
 
-No area is scored 100. The lowest scores are the honest ones to look at: technical depth (48), browser compatibility (40), integration reliability (50) and competitive differentiation (55). Three of the four cannot be raised by more building.
+No area is scored 100 (the scores as they stood after round 2; see section 7 for the nine that changed). The lowest scores are the honest ones to look at: technical depth (48), browser compatibility (40), integration reliability (50) and competitive differentiation (55). Three of the four cannot be raised by more building.
 
 ## 6. What remains after round 2
 
@@ -213,3 +215,30 @@ Fixable only by the client or a third party:
 6. Safari, Edge, Firefox, real phones and a screen reader.
 
 Still imperfect in the build itself, and left: long pages; the visual clash of the eleven inherited industry images; acronyms unexplained; no unit tests for the generator; 36 accessibility items that need a person.
+
+## 7. After the independent verification
+
+An independent verifier checked the whole site at commit `30c9b8a` on 25 November 2026: every page at eight widths in both languages, the interactions, the owner's rules, the build, the tests and these documents. Its report is summarised in `REVIEW.md` §12. It agreed with most of the scores above and put six at least ten points lower. Each of those is taken in turn here. The scores in the last column were set after the fixes, against the same scale and caps as before; none was simply put back.
+
+| Area | Round 2 | Verifier | What the verifier found | What was done | Score now | Why not higher |
+| --- | --- | --- | --- | --- | --- | --- |
+| Responsive design | 90 | 72 | Words broke in the middle in headings between 900 and 1180 px on four kinds of page, and on Products at every desktop width. The finder hid its own button inside a scrolling panel at 1366×768. The 90 claimed "shown by a measurement" from a test that measured neither | Both fixed. The layout test now runs at sixteen widths, fails on a word split across lines and on controls under 24 px, and opens every finder result and lifecycle tab; a new interaction test checks the finder button at 1280×720, 1366×768 and 1440×900. Both tests were first run on the unfixed build and failed there | 84 | Emulated widths in one browser, no device. The word-break check depends on this machine's fonts. And the earlier 90 was wrong, so a figure in the 90s should wait until someone other than the author has looked again |
+| Typography | 86 | 68 | The criterion names bad breaks, and there were many: English product names and service headings, Japanese page headings, a lead paragraph, the address, footer links | English headings no longer break inside a word at any tested width (sizes fitted to their columns, a breakpoint added between 900 and 1180 px). Japanese headings, labels, buttons and short text break only between phrases | 80 | Japanese paragraphs longer than 30 characters are left to the browser and can still break inside a word. Phrase breaking leaves some uneven line ends on phones. One Japanese font, one system, no native reader |
+| Layout | 84 | 72 | Job facts wrapped differently from row to row on Careers at 1440; the finder panel; headings broken at tablet widths; and the empty columns already noted | Careers rows now use one arrangement at each width, tested for all 18 roles; finder panel grows with its content; a repeated sentence on Services and wrapped links in the product page strip were found and fixed while checking | 78 | Not changed, and the verifier is right about them: a very long home page, gallery columns that end unevenly at 1440, sections on four product pages that hold one link beside an empty area |
+| Product accuracy | 78 | 62 | The site's text about Siemens products is sourced. The eleven inherited industry images are not: one prints five figures about Teamcenter X with no source, and one carries the Siemens wordmark | Nothing on the pages: the owner has decided to leave the images as they are for now. The figures are now in the claim register as inherited and unsourced, both images are noted in the asset register, and the matter is the first open question for the client | 62 | The verifier's score is accepted. The round 2 score looked only at text and missed what the images say. It cannot rise while the images are published without a source |
+| Professionalism (Japanese) | 80, corrected to 75 | 68 | The score broke this document's own cap. English left in ordinary Japanese text ("SMBs", "UAT", a job title, an industry title); headings broken inside words | The cap is applied. The leftovers that were ordinary text are translated; names that are proper names in the source stay in Latin script. Heading breaks fixed as above | 72 | No native reader (cap 75). The browser's own "Choose File" label on the upload control is still English in an English browser. Three points below the cap because this area was overstated once already |
+| Design consistency | 86 | 76 | The footer logo on a light plate on every page; the industry images; diagram captions labelled three different ways | All four drawn diagrams (the home hero and three on Digital Transformation) are now captioned "Conceptual diagram" / 概念図 in the same form in both languages, and `check-source.py` fails otherwise. The header logo is larger and the footer plate tidied. The logo itself is not recoloured: a version for dark backgrounds is a request to the client | 79 | The plate is still a plate, and the industry images are still in another style. Both wait on the client |
+
+Three further scores were changed although the difference was smaller than ten:
+
+| Area | Round 2 | Verifier | Score now | Reason |
+| --- | --- | --- | --- | --- |
+| Interaction quality | 86 | 80 | 84 | The finder panel is fixed and tested at three desktop sizes, and the failure message on the forms now links the address. But 389 checks had passed while a button was out of reach, which is a fault of the tests as much as of the page |
+| Imagery | 62 | 55 | 55 | Accepted. Nothing about the imagery changed, and the verifier is right that the industry images look machine-made and are not labelled as illustrations |
+| Performance | 93 | not rescored | 80 | The verifier measured the phone results with and without compression: the targets are met only with it on. This review's own cap says anything that needs the real host cannot score above 80 until it has run there, and the 93 ignored that. Laboratory figures with compression on are unchanged (`test-output/lighthouse.txt`) |
+
+The other thirty-one scores stand as in round 2; the verifier put each within a few points of them.
+
+After these changes: highest are broken links 95, architecture 88, functional completeness 88, SEO 86 and error handling 86. Lowest are browser compatibility 40, technical depth 48, integration reliability 50, competitive differentiation 55 and imagery 55. No area is scored 100, and none above 88 except broken links.
+
+What the verifier recommended and was not done in this round, by the owner's decision, is listed in `REVIEW.md` §12.

@@ -39,6 +39,9 @@ What is and is not known about these eleven images:
 
 - They are on the site because the original site shows them on its Industries page. This build did not create or alter them.
 - Several carry the text “Teamcenter X”, and `infographic-02.webp` (shown with “Siemens SW PDM to PLM”) has the Siemens wordmark in its top-left corner. The coordinator's notes describe them as Siemens infographics. **This build could not verify who made them**, so the site does not say they are Siemens material and does not say they are the company's own.
+- **`infographic-02.webp` contains the SIEMENS wordmark.** No Siemens logo file exists in this repository and none was added; the mark is part of the inherited picture.
+- **`infographic-11.webp`** (“The Business Value of Cloud-based SaaS PLM”, about Teamcenter X) **prints five figures** under the heading “Real Business Impact”: “20–30% faster time to market”, “15–25% lower IT & infrastructure costs”, “30–50% improvement in team productivity”, “20–40% reduction in change cycle time” and “99.9%+ cloud reliability and availability”. It also says the product is “built on a secure, compliant cloud platform”. No source is given in the image or on the original site, and this build did not look for one elsewhere. They are listed in `notes/CLAIM-REGISTER.md` §6 as inherited and unsourced.
+- **Owner's decision, 25 November 2026: all eleven stay as they are.** The options (keep; remove images 02 and 11; replace all eleven with redrawn neutral diagrams) are the first open question in `notes/REVIEW.md` §9.
 - If they are Siemens material, permission to republish is needed. If they were generated or commissioned by the company, the Siemens marks inside them need Siemens' approval. Either way this is a launch question.
 - Each image contains text that is not available as text; the page gives a short description beside each (noted on the accessibility page).
 

@@ -75,14 +75,14 @@ curl -s -o /dev/null -D - -H "Accept-Encoding: gzip, br" https://thinkinnovnexge
 
 Each must print `content-encoding: gzip` (or `br`). If a line prints nothing, that file is being sent uncompressed. The same can be seen in a browser: developer tools, Network, select the page, Response Headers. If compression is off, ask the host to enable `mod_deflate` (or Brotli) for the account; some cPanel installations also offer this under Software, “Optimize Website”.
 
-What it changes, measured here with Lighthouse on a local server (laboratory figures, phone preset, not real visitors):
+What it changes, measured here with Lighthouse 12 on a local server (laboratory figures with the phone preset and simulated throttling, not real visitors; `notes/test-output/lighthouse.txt`):
 
-| | Home page HTML | `styles.css` | `site.js` | Largest Contentful Paint, phone preset, five pages |
-| --- | --- | --- | --- | --- |
-| Compression on | 14 KB | 15 KB | 10 KB | see `notes/test-output/lighthouse.txt` |
-| Compression off | 84 KB | 83 KB | 33 KB | see `notes/test-output/lighthouse.txt` |
+| | Home page HTML | `styles.css` | `site.js` | Performance score | Largest Contentful Paint |
+| --- | --- | --- | --- | --- | --- |
+| Compression on (22 phone-preset runs, 11 pages in both languages) | 14 KB | 15 KB | 10 KB | 99 to 100 | 1.7 to 2.1 s |
+| Compression off (10 phone-preset runs, 5 pages in both languages) | 84 KB | 83 KB | 33 KB | 92 to 98 | 2.4 to 3.2 s, over the 2.5 s target on 8 of the 10 |
 
-The independent verifier measured 1.6 to 1.8 s with compression and 2.2 to 2.8 s without, against a target of 2.5 s. The preview on GitHub Pages compresses by itself, so it does not show whether the real host will.
+The independent verifier's own runs gave 1.6 to 1.8 s with compression and 2.2 to 2.8 s without. The server used here for the uncompressed runs also opens a new connection for every file, which Apache does not, so the real difference may be smaller; it will not be nothing. The preview on GitHub Pages compresses by itself, so it does not show whether the real host will.
 
 **Redirects from the old addresses.** Each should answer `301` with the new address in `Location`:
 

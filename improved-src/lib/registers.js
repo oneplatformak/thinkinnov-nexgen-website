@@ -118,8 +118,8 @@ function japaneseRegister(i18n) {
 const STAGING_CLAIMS = [
   ["“Siemens Solution Partner”", "Home hero, above the headline, once on the English home page and once on the Japanese. Nowhere else: not in the key messages under the hero, the footer, metadata or structured data. Until 25 November 2026 it was also printed a second time on each home page, as the label of the first of the three key messages; the independent verification found this and it was removed. `check-source.py` now fails if the phrase occurs more or less than once on a home page, or anywhere else.", "Official `index.html` line 48 (hero eyebrow), the only occurrence in the source; same in the crawl.", "Wording confirmed from the official source; placement kept as in source. Whether it is the current designation is for the client and Siemens."],
   ["“A Siemens Certified \"Expert Partner - PLM\" synergizing with ThinkInnov-NexGen's extensive project delivery experience in Japan, to deliver high value to customers in Japan.”", "About, `#partnership`. Nowhere else.", "Official `assets/page-data.js` line 29; same in the crawl.", "Wording confirmed from the official source; placement kept as in source. Two different partner designations exist in the source; which is current is open."],
-  ["“ThinkInnov-NexGen KK — A Strategic Partnership in Japan”", "About, `#partnership` heading. Nowhere else.", "Official `assets/page-data.js` line 28.", "Kept as the source has it. The source never says “joint venture” and never names Nexware or NEXGEN as a separate company, so neither does the site."],
-  ["“since 2014” (“A software development service provider since 2014…”, “…serving customers since 2014.”)", "About intro and `#identity`.", "Official `assets/page-data.js` line 8 and Japanese lines 250 and 254; footer “© 2014 - 2026”.", "Open: which legal entity dates from 2014."],
+  ["“ThinkInnov-NexGen KK - A Strategic Partnership in Japan”", "About, `#partnership` heading. Nowhere else.", "Official `assets/page-data.js` line 28.", "Kept as the source has it. The source never says “joint venture” and never names Nexware or NEXGEN as a separate company, so neither does the site."],
+  ["“since 2014” (“A software development service provider since 2014…”, “…serving customers since 2014.”; in Japanese 2014年創業), and the year in the copyright line “© 2014 - 2026 ThinkInnov-NexGen Corporation”", "Three places. Home `#about`, the first sentence of the section (English and Japanese). About: the page introduction and `#identity`. The copyright line in the footer of every page.", "Official `assets/page-data.js` line 8 and Japanese lines 250 and 254; `index.html` line 237 (copyright line).", "Open: which legal entity dates from 2014."],
   ["“Trusted by product-led teams across automotive, aerospace, energy, electrical and manufacturing industries.”", "Home `#customers`, under the source heading “Our key customers”.", "Staging home page, customers section.", "Open: depends on the logo permissions in `notes/CUSTOMER-REGISTER.md`."],
   ["“Faster time to market, improved quality, cost reduction, innovation and regulatory compliance.”", "`plm.html#why` and home `#why`, as the source card “Business Benefits”.", "Staging `assets/page-data.js`, “Why ThinkInnov-NexGen for PLM”.", "Open: a general benefit statement about PLM. The site attaches no figure, customer or guarantee to it and makes no compliance claim of its own."],
   ["Key Value Drivers: bilingual PM / PMO / bridge engineers; onsite and offshore support; expertise list (MCAD, ECAD, Teamcenter, Mendix, SAP, …); end-to-end digital thread delivery combining PLM, ERP and MES", "About `#partnership`; quoted as the basis for links on product pages and solution entries.", "Staging `assets/page-data.js`, partnership panel.", "Open: confirm the list is current."],
@@ -202,12 +202,36 @@ function claimRegister() {
   out.push("| --- | --- | --- | --- |");
   for (const row of STAGING_CLAIMS) out.push(`| ${row.map(cell).join(" | ")} |`);
   out.push("");
-  out.push("## 6. Things deliberately not stated anywhere");
+  out.push("## 6. Statements inside inherited images: unsourced");
   out.push("");
-  out.push("No customer counts, project counts, years of experience, certifications beyond the staging wording, awards, partnership tiers beyond the staging wording, case studies, pricing, SLAs, response times, retention periods, legal bases or compliance claims. No `JobPosting`, review or rating markup. The description of the company as a joint venture is **not** in staging and is therefore not on the site.");
+  out.push("The eleven industry images were carried over from the original site unchanged. They are pictures with text in them, and two of them carry things about Siemens that this site's own text does not say and that no source in this repository supports: figures about a Siemens product in one, the Siemens wordmark in the other. They were found by the independent verification of 25 November 2026; the checks in this repository read page text and cannot read text inside an image. **The owner has decided to leave all eleven as they are for now**; the decision and its options are the first open question in `notes/REVIEW.md` §9.");
+  out.push("");
+  out.push("| Image | Shown with | What the image says | Source for the statement | Status |");
+  out.push("| --- | --- | --- | --- | --- |");
+  for (const f of INFOGRAPHIC_FIGURES) out.push(`| ${f.map(cell).join(" | ")} |`);
+  out.push("");
+  out.push("None of these figures appears anywhere in the site's text, metadata or structured data, in either language. The Japanese pages show the same images, with the English text inside them untranslated.");
+  out.push("");
+  out.push("## 7. Things deliberately not stated anywhere");
+  out.push("");
+  out.push("In the site's own text: no customer counts, project counts, years of experience, certifications beyond the staging wording, awards, partnership tiers beyond the staging wording, case studies, pricing, SLAs, response times, retention periods, legal bases or compliance claims. No `JobPosting`, review or rating markup. The description of the company as a joint venture is **not** in staging and is therefore not on the site.");
   out.push("");
   return out.join("\n") + "\n";
 }
+
+// Statements printed inside the inherited industry images. [image, shown with, statement, source, status]
+const IMAGE_11 = ["`assets/img/industries/infographic-11.webp`, headed in the image “The Business Value of Cloud-based SaaS PLM”", "Industries, entry 11, “Teamcenter X: The business value of cloud-based SaaS PLM”"];
+const UNSOURCED = "Inherited and unsourced. Nothing in the source says these are results of ThinkInnov-NexGen's projects or figures published by Siemens.";
+const NO_SOURCE = "None. The image names no source and neither does the original site. This build did not look for one elsewhere.";
+const INFOGRAPHIC_FIGURES = [
+  [...IMAGE_11, "“20–30% faster time to market”, under the heading “Real Business Impact”", NO_SOURCE, UNSOURCED],
+  [...IMAGE_11, "“15–25% lower IT & infrastructure costs”", NO_SOURCE, UNSOURCED],
+  [...IMAGE_11, "“30–50% improvement in team productivity”", NO_SOURCE, UNSOURCED],
+  [...IMAGE_11, "“20–40% reduction in change cycle time”", NO_SOURCE, UNSOURCED],
+  [...IMAGE_11, "“99.9%+ cloud reliability and availability”", NO_SOURCE, UNSOURCED + " It reads as a service-level figure for a Siemens product."],
+  [...IMAGE_11, "“Enterprise-grade Security: built on a secure, compliant cloud platform to protect your IP and critical product data.”", NO_SOURCE, UNSOURCED + " It reads as a security and compliance statement, which the site's own text never makes."],
+  ["`assets/img/industries/infographic-02.webp`", "Industries, entry 2, “Siemens SW PDM to PLM”", "The SIEMENS wordmark, in the top-left corner of the image", "Not a statement but a mark. No Siemens brand asset was added by this build; this one is inside an inherited image.", "Inherited. Whether the image is Siemens material, and whether the mark may be shown, is not known."],
+];
 
 // What the official HTML prints as each logo's alt text is all the source says about a customer.
 const FILE_LABELS = new Set(["BR", "STS", "SUV", "ADA"]);
@@ -295,6 +319,9 @@ function assetRegister() {
   out.push("");
   out.push("- They are on the site because the original site shows them on its Industries page. This build did not create or alter them.");
   out.push("- Several carry the text “Teamcenter X”, and \`infographic-02.webp\` (shown with “Siemens SW PDM to PLM”) has the Siemens wordmark in its top-left corner. The coordinator's notes describe them as Siemens infographics. **This build could not verify who made them**, so the site does not say they are Siemens material and does not say they are the company's own.");
+  out.push("- **\`infographic-02.webp\` contains the SIEMENS wordmark.** No Siemens logo file exists in this repository and none was added; the mark is part of the inherited picture.");
+  out.push("- **\`infographic-11.webp\`** (“The Business Value of Cloud-based SaaS PLM”, about Teamcenter X) **prints five figures** under the heading “Real Business Impact”: “20–30% faster time to market”, “15–25% lower IT & infrastructure costs”, “30–50% improvement in team productivity”, “20–40% reduction in change cycle time” and “99.9%+ cloud reliability and availability”. It also says the product is “built on a secure, compliant cloud platform”. No source is given in the image or on the original site, and this build did not look for one elsewhere. They are listed in \`notes/CLAIM-REGISTER.md\` §6 as inherited and unsourced.");
+  out.push("- **Owner's decision, 25 November 2026: all eleven stay as they are.** The options (keep; remove images 02 and 11; replace all eleven with redrawn neutral diagrams) are the first open question in \`notes/REVIEW.md\` §9.");
   out.push("- If they are Siemens material, permission to republish is needed. If they were generated or commissioned by the company, the Siemens marks inside them need Siemens' approval. Either way this is a launch question.");
   out.push("- Each image contains text that is not available as text; the page gives a short description beside each (noted on the accessibility page).");
   out.push("");
