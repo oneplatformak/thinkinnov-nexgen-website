@@ -313,6 +313,20 @@ if (root) {
   var industry = $("[data-finder-industry]", root);
   var size = $("[data-finder-size]", root);
   var stack = window.matchMedia("(max-width: 999px)");
+  var box = $("[data-finder-panels]", root);
+  // The style sheet needs the height of the result to keep a tall one in reach.
+  var measure = function () { box.style.setProperty("--finder-panel-h", box.offsetHeight + "px"); };
+  // Beside the list, a result always starts in view, below the header. Where
+  // the result will sit is worked out from the same numbers the style sheet
+  // uses, so the answer does not depend on the browser having laid it out yet.
+  var toStart = function () {
+    var header = $(".site-header").getBoundingClientRect().bottom;
+    var natural = root.getBoundingClientRect().top;
+    var stuck = Math.min(header + 24, window.innerHeight - box.offsetHeight - 24);
+    var top = Math.max(natural, stuck);
+    if (top >= header && top < window.innerHeight * 0.6) return;
+    window.scrollTo({ top: window.pageYOffset + natural - header - 24, behavior: window.TIN.reducedMotion ? "auto" : "smooth" });
+  };
 
   var show = function (key, focus) {
     var found = false;
@@ -326,10 +340,11 @@ if (root) {
       if (link.getAttribute("data-need-link") === key) link.setAttribute("aria-current", "true");
       else link.removeAttribute("aria-current");
     });
-    $("[data-finder-panels]", root).scrollTop = 0;
+    measure();
     if (focus) {
-      found.focus({ preventScroll: !stack.matches });
+      found.focus({ preventScroll: true });
       if (stack.matches) found.scrollIntoView({ block: "start", behavior: window.TIN.reducedMotion ? "auto" : "smooth" });
+      else toStart();
     }
     return true;
   };
@@ -374,6 +389,8 @@ if (root) {
   };
   if (!fromHash(false)) show(panels[0].getAttribute("data-need-panel"), false);
   window.addEventListener("hashchange", function () { fromHash(true); });
+  if ("ResizeObserver" in window) new ResizeObserver(measure).observe(box);
+  else window.addEventListener("resize", measure);
   // Links elsewhere on the page that point at a need (solution entries).
   document.addEventListener("click", function (e) {
     var a = e.target.closest('a[href^="#need-"]');

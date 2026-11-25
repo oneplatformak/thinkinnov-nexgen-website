@@ -18,6 +18,8 @@
  * The ten original widths are the common device sizes. 360, 900, 1000, 1100,
  * 1180 and 1366 were added because columns are at their narrowest just above
  * a breakpoint, which is where words broke and no device size happened to be.
+ * Results shown one at a time (the sixteen needs of the finder, the nine
+ * stages of the lifecycle diagram) are each opened and checked.
  *
  * WB_JSON=<file> writes every broken word found, for diagnosis.
  * PAGES=<regex> limits the run to matching pages while working on a fix.
@@ -72,8 +74,14 @@ function inspect() {
   return out;
 }
 
+/** Controls that switch one result for another, and where the result appears. */
+const SWITCHED = [
+  ["[data-need-link]", "[data-need-panel]:not([hidden])"],
+  ["[data-lc-tab]", "[data-lifecycle] [role=tabpanel]:not([hidden])"],
+];
+
 /** Words and Japanese phrases broken across lines. Runs in the page. */
-function wordBreaks(JA_TARGETS, JA_SHORT) {
+function wordBreaks(JA_TARGETS, JA_SHORT, ROOT) {
   const isJa = document.documentElement.lang === "ja";
   // Japanese display text that must break at phrase boundaries only: the
   // elements and classes the build treats, and any element whose whole text
@@ -97,7 +105,7 @@ function wordBreaks(JA_TARGETS, JA_SHORT) {
     const r = range.getClientRects()[0];
     return r && r.width > 0.5 ? r.top : null;
   };
-  const walker = document.createTreeWalker(document.body, NodeFilter.SHOW_TEXT);
+  const walker = document.createTreeWalker(ROOT ? document.querySelector(ROOT) : document.body, NodeFilter.SHOW_TEXT);
   for (let node = walker.nextNode(); node; node = walker.nextNode()) {
     const el = node.parentElement;
     const text = node.nodeValue;
@@ -165,6 +173,15 @@ function wordBreaks(JA_TARGETS, JA_SHORT) {
       await page.evaluate(() => document.fonts.ready);
       const r = await page.evaluate(inspect);
       const words = await page.evaluate(wordBreaks, phrase.SELECTOR, phrase.SHORT);
+      // Results that scripts show one at a time: every need of the finder and
+      // every stage of the lifecycle diagram is opened and checked as well.
+      for (const [control, shown] of SWITCHED) {
+        const n = await page.$$eval(control, (cs) => cs.length);
+        for (let i = 1; i < n; i += 1) {
+          await page.$$eval(control, (cs, k) => cs[k].click(), i);
+          words.push(...(await page.evaluate(wordBreaks, phrase.SELECTOR, phrase.SHORT, shown)).map((w) => ({ ...w, where: `${w.where} (result ${i + 1})` })));
+        }
+      }
       const t = totals[width];
       t.pages += 1;
       if (words.length) t.wordBreaks += 1;

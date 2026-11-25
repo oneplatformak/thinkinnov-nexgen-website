@@ -162,6 +162,63 @@ async function testLifecycle(browser, base, labels, width) {
   await done(page);
 }
 
+/**
+ * The result panel at three common desktop sizes, for every need. The panel
+ * must show the whole result: it may not scroll inside itself, and the
+ * "discuss this need" button must be inside the panel's visible area and
+ * reachable by scrolling the page.
+ */
+async function testFinderPanel(browser, base, labels) {
+  group = `finder result panel (${labels.lang})`;
+  for (const [width, height] of [[1280, 720], [1366, 768], [1440, 900]]) {
+    const page = await open(browser, base + labels.prefix + "solutions.html", { width, height });
+    const keys = await page.$$eval("[data-need-link]", (ls) => ls.map((l) => l.getAttribute("data-need-link")));
+    const bad = { scrolls: [], outside: [], start: [], reach: [] };
+    let worst = 0;
+    for (const key of keys) {
+      // As a visitor would: bring the need into view in the list, then choose it.
+      await page.$eval(`[data-need-link="${key}"]`, (l) => l.scrollIntoView({ block: "center" }));
+      await page.click(`[data-need-link="${key}"]`);
+      await sleep(50);
+      const r = await page.evaluate(() => {
+        const box = document.querySelector("[data-finder-panels]");
+        const panel = document.querySelector("[data-need-panel]:not([hidden])");
+        const cta = panel.querySelector("[data-need-cta]");
+        const header = document.querySelector(".site-header").getBoundingClientRect().bottom;
+        const b = box.getBoundingClientRect();
+        const c = cta.getBoundingClientRect();
+        const h = panel.querySelector("h3").getBoundingClientRect();
+        return {
+          hidden: box.scrollHeight - box.clientHeight,
+          clips: getComputedStyle(box).overflowY !== "visible",
+          inside: c.top >= b.top - 1 && c.bottom <= b.bottom + 1,
+          below: Math.round(c.bottom - b.bottom),
+          starts: h.top >= header - 1 && h.bottom <= window.innerHeight,
+        };
+      });
+      if (r.clips && r.hidden > 1) bad.scrolls.push(`${key} (${r.hidden}px hidden)`);
+      if (!r.inside) { bad.outside.push(`${key} (${r.below}px below)`); worst = Math.max(worst, r.below); }
+      if (!r.starts) bad.start.push(key);
+      const reached = await page.evaluate(() => {
+        const cta = document.querySelector("[data-need-panel]:not([hidden]) [data-need-cta]");
+        const before = document.querySelector("[data-finder-panels]").scrollTop;
+        window.scrollBy(0, cta.getBoundingClientRect().top - window.innerHeight / 2); // page scrolling only
+        const c = cta.getBoundingClientRect();
+        const at = document.elementFromPoint(c.left + c.width / 2, c.top + c.height / 2);
+        return document.querySelector("[data-finder-panels]").scrollTop === before && c.top >= 0 && c.bottom <= window.innerHeight && !!at && (at === cta || cta.contains(at));
+      });
+      if (!reached) bad.reach.push(key);
+    }
+    const size = `${width}x${height}`;
+    ok(`${size}: all ${keys.length} results are shown in full (the panel does not scroll inside itself)`, bad.scrolls.length === 0, `${bad.scrolls.length} of ${keys.length}: ${bad.scrolls.join(", ")}`);
+    ok(`${size}: the "discuss this need" button of every need is inside the panel's visible area`, bad.outside.length === 0, `${bad.outside.length} of ${keys.length}, worst ${worst}px: ${bad.outside.join(", ")}`);
+    ok(`${size}: every result starts in view, below the header, when its need is chosen`, bad.start.length === 0, bad.start.join(", "));
+    ok(`${size}: every button comes into view by scrolling the page, and nothing covers it`, bad.reach.length === 0, bad.reach.join(", "));
+    ok(`${size}: no script errors`, page.errors.length === 0, page.errors.join(" | "));
+    await done(page);
+  }
+}
+
 async function testFinder(browser, base, labels) {
   group = `finder (${labels.lang})`;
   const page = await open(browser, base + labels.prefix + "solutions.html");
@@ -642,6 +699,7 @@ const JA = {
       await testLifecycle(browser, STATIC, labels, 1440);
       await testLifecycle(browser, STATIC, labels, 390);
       await testFinder(browser, STATIC, labels);
+      await testFinderPanel(browser, STATIC, labels);
       await testProductPages(browser, STATIC, labels);
       await testJourneys(browser, labels);
       await testSearch(browser, STATIC, labels);

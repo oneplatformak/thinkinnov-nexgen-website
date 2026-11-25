@@ -44,6 +44,14 @@ html[lang="ja"] .need-block h4 { letter-spacing: 0.08em; font-size: 0.8125rem; }
 .js .need { border-top: 0; padding-top: 0; }
 @media (min-width: 1000px) {
   .finder { grid-template-columns: minmax(0, 5fr) minmax(0, 7fr); gap: clamp(3rem, 5vw, 6rem); align-items: start; }
-  .js .finder-panels { position: sticky; top: calc(var(--header-h) + 1.5rem); padding: var(--s-6); border: 1px solid var(--ink); background: var(--paper); max-height: calc(100vh - var(--header-h) - 3rem); overflow-y: auto; }
+  /*
+   * The result is as tall as its content and never scrolls inside itself. A
+   * result that fits the window stays below the header while the list is
+   * read. A taller one scrolls with the page until its last line, the
+   * "discuss" button, is in view and then stays there: the script reports the
+   * height, and the second term of min() is the offset that keeps the bottom
+   * edge 1.5rem above the bottom of the window.
+   */
+  .js .finder-panels { position: sticky; top: min(calc(var(--header-h) + 1.5rem), calc(100vh - var(--finder-panel-h, 0px) - 1.5rem)); padding: var(--s-6); border: 1px solid var(--ink); background: var(--paper); transition-property: none !important; }
   .js .need-source { background: var(--paper-2); }
 }
